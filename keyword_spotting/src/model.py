@@ -26,6 +26,9 @@ class KeywordGRU(nn.Module):
         num_classes=NUM_CLASSES,
         use_delta=True,
         use_delta_delta=True,
+        spec_augment=False,
+        freq_mask_param=8,
+        time_mask_param=30,
     ):
         super().__init__()
         self.mel = build_mel_spectrogram(n_mels=n_mels)
@@ -33,6 +36,10 @@ class KeywordGRU(nn.Module):
         self.use_delta = use_delta
         self.use_delta_delta = use_delta_delta
         self.compute_deltas = torchaudio.transforms.ComputeDeltas()
+        self.apply_specaugment = spec_augment
+        if self.apply_specaugment:
+            self.freq_mask = torchaudio.transforms.FrequencyMasking(freq_mask_param)
+            self.time_mask = torchaudio.transforms.TimeMasking(time_mask_param)
 
         input_multiplier = 1
         if self.use_delta:
@@ -64,10 +71,17 @@ class KeywordGRU(nn.Module):
 
         x = torch.cat(features, dim=2)
 
+        # remove channel dim: (B, 1, F, T) -> (B, F, T)
+        x = x.squeeze(1)
+
+        # SpecAugment (training only)
+        if self.training and self.apply_specaugment:
+            x = self.freq_mask(x)
+            x = self.time_mask(x)
+
         std = x.std(dim=-1, keepdim=True).clamp(min=0.1)
         x = (x - x.mean(dim=-1, keepdim=True)) / std
 
-        x = x.squeeze(1)
         x = x.permute(0, 2, 1)
 
         _, h_n = self.gru(x)

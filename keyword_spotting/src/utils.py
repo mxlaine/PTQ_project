@@ -1,8 +1,10 @@
 from pathlib import Path
 import random
+from functools import lru_cache
 
 import torch
 import torch.nn.functional as F
+import torchaudio
 from torchaudio import datasets
 
 
@@ -35,8 +37,6 @@ def collate_fn(batch, training=False):
             elif shift < 0:
                 waveform = F.pad(waveform[..., -shift:], (0, -shift))
 
-            noise_amp = random.uniform(0.0, 0.005)
-            waveform = waveform + noise_amp * torch.randn_like(waveform)
 
         mapped_label = LABEL_TO_IDX[label] if label in COMMANDS_10 else LABEL_TO_IDX["unknown"]
         waveforms.append(waveform)

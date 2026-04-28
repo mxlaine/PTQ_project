@@ -2,6 +2,7 @@ from pathlib import Path
 import warnings
 import importlib
 import argparse
+import os
 
 import torch
 import torch.nn as nn
@@ -89,6 +90,10 @@ def parse_args():
     parser.add_argument("--batch-size-train", type=int, default=64)
     parser.add_argument("--batch-size-eval", type=int, default=1024)
     parser.add_argument("--num-workers", type=int, default=4)
+    parser.add_argument("--spec-augment", action="store_true", help="Enable SpecAugment (freq/time masking) during training")
+    parser.add_argument("--freq-mask-param", type=int, default=8, help="Frequency mask param for SpecAugment")
+    parser.add_argument("--time-mask-param", type=int, default=30, help="Time mask param for SpecAugment")
+    parser.add_argument("--label-smoothing", type=float, default=0.05, help="Label smoothing for CrossEntropyLoss")
     parser.add_argument(
         "--feature-config",
         choices=list(FEATURE_CONFIGS.keys()),
@@ -118,6 +123,9 @@ def main():
         num_layers=args.num_layers,
         use_delta=feature_config["use_delta"],
         use_delta_delta=feature_config["use_delta_delta"],
+        spec_augment=args.spec_augment,
+        freq_mask_param=args.freq_mask_param,
+        time_mask_param=args.time_mask_param,
     ).to(device)
 
     epochs = args.epochs
@@ -135,10 +143,11 @@ def main():
     class_weights[LABEL_TO_IDX["unknown"]] = 1.20
     class_weights[LABEL_TO_IDX["silence"]] = 1.10
 
-    criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=0.05)
+    criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=args.label_smoothing)
 
     print(f"Device: {device}")
     print(f"Feature config: {args.feature_config} -> {feature_config}")
+    print(f"SpecAugment: {args.spec_augment} freq_mask={args.freq_mask_param} time_mask={args.time_mask_param}")
     if torch.cuda.is_available():
         print(f"GPU Name: {torch.cuda.get_device_name(0)}")
         print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB")
@@ -153,6 +162,15 @@ def main():
     artifact_dir = Path(__file__).resolve().parents[1] / "notebooks"
     artifact_dir.mkdir(parents=True, exist_ok=True)
     best_model_path = artifact_dir / f"best_keyword_gru_{args.feature_config}.pt"
+
+    # Plots are grouped by job and task similar to .err/.out naming in slurm.
+    # Allow SLURM or explicit PLOT_* env vars set by the submit script.
+    job_id = os.environ.get("PLOT_JOB") or os.environ.get("SLURM_ARRAY_JOB_ID") or os.environ.get("SLURM_JOB_ID") or "local"
+    task_id = os.environ.get("PLOT_TASK") or os.environ.get("SLURM_ARRAY_TASK_ID") or "0"
+
+    plots_dir = Path(__file__).resolve().parents[1] / "plots" / f"{job_id}"
+    plots_dir.mkdir(parents=True, exist_ok=True)
+    plot_path = plots_dir / f"train_val_{args.feature_config}_{job_id}_{task_id}.png"
 
     for epoch in range(1, epochs + 1):
         train_acc = train_one_epoch(
@@ -196,6 +214,11 @@ def main():
     pyplot.grid(True, alpha=0.3)
     pyplot.legend()
     pyplot.tight_layout()
+    try:
+        pyplot.savefig(plot_path)
+        print(f"Saved plot to {plot_path}")
+    except Exception as e:
+        print(f"Failed to save plot: {e}")
     pyplot.show()
 
 

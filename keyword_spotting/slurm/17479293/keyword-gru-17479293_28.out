@@ -1,0 +1,2079 @@
+Running feature config: 40_mels (task 28)
+SpecAugment freq_mask=4 time_mask=30
+Device: cuda
+Feature config: 40_mels -> {'n_mels': 40, 'use_delta': False, 'use_delta_delta': False}
+SpecAugment: True freq_mask=4 time_mask=30
+GPU Name: Tesla V100-PCIE-32GB
+GPU Memory: 34.07 GB
+Total model parameters: 46,092
+Epoch 1 [0/84843] Loss: 2.467916
+Epoch 1 [35000/84843] Loss: 1.675389
+Epoch 1 [70000/84843] Loss: 1.805180
+Epoch 1 - Avg Loss: 1.713985 | Train Acc: 55.36%
+Val: loss=1.6010, acc=6262/10975 (57.06%)
+saved best: 57.06%
+Epoch 2 [0/84843] Loss: 1.766672
+Epoch 2 [35000/84843] Loss: 1.955442
+Epoch 2 [70000/84843] Loss: 1.229461
+Epoch 2 - Avg Loss: 1.492345 | Train Acc: 60.94%
+Val: loss=1.4761, acc=6877/10975 (62.66%)
+saved best: 62.66%
+Epoch 3 [0/84843] Loss: 1.378516
+Epoch 3 [35000/84843] Loss: 1.183284
+Epoch 3 [70000/84843] Loss: 1.337106
+Epoch 3 - Avg Loss: 1.366346 | Train Acc: 66.31%
+Val: loss=1.4044, acc=7140/10975 (65.06%)
+saved best: 65.06%
+Epoch 4 [0/84843] Loss: 1.400766
+Epoch 4 [35000/84843] Loss: 1.155653
+Epoch 4 [70000/84843] Loss: 1.417068
+Epoch 4 - Avg Loss: 1.337480 | Train Acc: 66.53%
+Val: loss=1.3503, acc=7200/10975 (65.60%)
+saved best: 65.60%
+Epoch 5 [0/84843] Loss: 1.364875
+Epoch 5 [35000/84843] Loss: 1.345127
+Epoch 5 [70000/84843] Loss: 1.238956
+Epoch 5 - Avg Loss: 1.291949 | Train Acc: 66.54%
+Val: loss=1.2922, acc=7236/10975 (65.93%)
+saved best: 65.93%
+Epoch 6 [0/84843] Loss: 1.109573
+Epoch 6 [35000/84843] Loss: 1.145276
+Epoch 6 [70000/84843] Loss: 1.247916
+Epoch 6 - Avg Loss: 1.238753 | Train Acc: 67.09%
+Val: loss=1.2493, acc=7283/10975 (66.36%)
+saved best: 66.36%
+Epoch 7 [0/84843] Loss: 1.424617
+Epoch 7 [35000/84843] Loss: 1.110344
+Epoch 7 [70000/84843] Loss: 1.402066
+Epoch 7 - Avg Loss: 1.201022 | Train Acc: 67.65%
+Val: loss=1.2017, acc=7385/10975 (67.29%)
+saved best: 67.29%
+Epoch 8 [0/84843] Loss: 1.001607
+Epoch 8 [35000/84843] Loss: 1.101089
+Epoch 8 [70000/84843] Loss: 1.219449
+Epoch 8 - Avg Loss: 1.172553 | Train Acc: 68.19%
+Val: loss=1.1987, acc=7379/10975 (67.23%)
+Epoch 9 [0/84843] Loss: 1.213853
+Epoch 9 [35000/84843] Loss: 1.227582
+Epoch 9 [70000/84843] Loss: 1.054031
+Epoch 9 - Avg Loss: 1.146888 | Train Acc: 68.70%
+Val: loss=1.1379, acc=7516/10975 (68.48%)
+saved best: 68.48%
+Epoch 10 [0/84843] Loss: 1.146425
+Epoch 10 [35000/84843] Loss: 1.207170
+Epoch 10 [70000/84843] Loss: 0.859794
+Epoch 10 - Avg Loss: 1.127439 | Train Acc: 69.04%
+Val: loss=1.1263, acc=7541/10975 (68.71%)
+saved best: 68.71%
+Epoch 11 [0/84843] Loss: 1.022496
+Epoch 11 [35000/84843] Loss: 1.229379
+Epoch 11 [70000/84843] Loss: 1.055174
+Epoch 11 - Avg Loss: 1.104207 | Train Acc: 69.40%
+Val: loss=1.0939, acc=7623/10975 (69.46%)
+saved best: 69.46%
+Epoch 12 [0/84843] Loss: 1.019779
+Epoch 12 [35000/84843] Loss: 1.008981
+Epoch 12 [70000/84843] Loss: 0.918063
+Epoch 12 - Avg Loss: 1.077200 | Train Acc: 70.12%
+Val: loss=1.0565, acc=7778/10975 (70.87%)
+saved best: 70.87%
+Epoch 13 [0/84843] Loss: 1.198452
+Epoch 13 [35000/84843] Loss: 1.098661
+Epoch 13 [70000/84843] Loss: 1.012138
+Epoch 13 - Avg Loss: 1.051050 | Train Acc: 70.99%
+Val: loss=1.0347, acc=7902/10975 (72.00%)
+saved best: 72.00%
+Epoch 14 [0/84843] Loss: 0.969852
+Epoch 14 [35000/84843] Loss: 1.018187
+Epoch 14 [70000/84843] Loss: 0.950656
+Epoch 14 - Avg Loss: 1.024160 | Train Acc: 72.07%
+Val: loss=0.9886, acc=8052/10975 (73.37%)
+saved best: 73.37%
+Epoch 15 [0/84843] Loss: 0.872734
+Epoch 15 [35000/84843] Loss: 0.872772
+Epoch 15 [70000/84843] Loss: 0.874358
+Epoch 15 - Avg Loss: 0.989080 | Train Acc: 73.12%
+Val: loss=0.9567, acc=8115/10975 (73.94%)
+saved best: 73.94%
+Epoch 16 [0/84843] Loss: 1.056754
+Epoch 16 [35000/84843] Loss: 0.770879
+Epoch 16 [70000/84843] Loss: 0.991569
+Epoch 16 - Avg Loss: 0.951712 | Train Acc: 74.16%
+Val: loss=0.8941, acc=8350/10975 (76.08%)
+saved best: 76.08%
+Epoch 17 [0/84843] Loss: 1.014562
+Epoch 17 [35000/84843] Loss: 0.967890
+Epoch 17 [70000/84843] Loss: 0.800080
+Epoch 17 - Avg Loss: 0.922176 | Train Acc: 75.07%
+Val: loss=0.8477, acc=8564/10975 (78.03%)
+saved best: 78.03%
+Epoch 18 [0/84843] Loss: 0.771781
+Epoch 18 [35000/84843] Loss: 0.973571
+Epoch 18 [70000/84843] Loss: 0.793477
+Epoch 18 - Avg Loss: 0.883090 | Train Acc: 76.58%
+Val: loss=0.8063, acc=8750/10975 (79.73%)
+saved best: 79.73%
+Epoch 19 [0/84843] Loss: 0.705318
+Epoch 19 [35000/84843] Loss: 0.987342
+Epoch 19 [70000/84843] Loss: 0.967880
+Epoch 19 - Avg Loss: 0.845550 | Train Acc: 77.92%
+Val: loss=0.7906, acc=8871/10975 (80.83%)
+saved best: 80.83%
+Epoch 20 [0/84843] Loss: 1.053898
+Epoch 20 [35000/84843] Loss: 0.758112
+Epoch 20 [70000/84843] Loss: 0.764555
+Epoch 20 - Avg Loss: 0.811372 | Train Acc: 79.17%
+Val: loss=0.7403, acc=9041/10975 (82.38%)
+saved best: 82.38%
+Epoch 21 [0/84843] Loss: 1.012609
+Epoch 21 [35000/84843] Loss: 0.726852
+Epoch 21 [70000/84843] Loss: 0.699695
+Epoch 21 - Avg Loss: 0.790098 | Train Acc: 80.19%
+Val: loss=0.7171, acc=9165/10975 (83.51%)
+saved best: 83.51%
+Epoch 22 [0/84843] Loss: 0.643883
+Epoch 22 [35000/84843] Loss: 0.856123
+Epoch 22 [70000/84843] Loss: 0.507730
+Epoch 22 - Avg Loss: 0.761498 | Train Acc: 81.31%
+Val: loss=0.6955, acc=9266/10975 (84.43%)
+saved best: 84.43%
+Epoch 23 [0/84843] Loss: 0.795299
+Epoch 23 [35000/84843] Loss: 0.869980
+Epoch 23 [70000/84843] Loss: 0.741876
+Epoch 23 - Avg Loss: 0.746358 | Train Acc: 81.88%
+Val: loss=0.7062, acc=9224/10975 (84.05%)
+Epoch 24 [0/84843] Loss: 0.646903
+Epoch 24 [35000/84843] Loss: 0.495938
+Epoch 24 [70000/84843] Loss: 0.730861
+Epoch 24 - Avg Loss: 0.718957 | Train Acc: 82.95%
+Val: loss=0.6700, acc=9394/10975 (85.59%)
+saved best: 85.59%
+Epoch 25 [0/84843] Loss: 0.588942
+Epoch 25 [35000/84843] Loss: 0.540213
+Epoch 25 [70000/84843] Loss: 0.736494
+Epoch 25 - Avg Loss: 0.703635 | Train Acc: 83.65%
+Val: loss=0.6449, acc=9482/10975 (86.40%)
+saved best: 86.40%
+Epoch 26 [0/84843] Loss: 0.605021
+Epoch 26 [35000/84843] Loss: 0.645226
+Epoch 26 [70000/84843] Loss: 0.729931
+Epoch 26 - Avg Loss: 0.690010 | Train Acc: 84.14%
+Val: loss=0.6266, acc=9580/10975 (87.29%)
+saved best: 87.29%
+Epoch 27 [0/84843] Loss: 0.534552
+Epoch 27 [35000/84843] Loss: 0.598890
+Epoch 27 [70000/84843] Loss: 0.729863
+Epoch 27 - Avg Loss: 0.677656 | Train Acc: 84.58%
+Val: loss=0.6244, acc=9567/10975 (87.17%)
+Epoch 28 [0/84843] Loss: 0.507784
+Epoch 28 [35000/84843] Loss: 0.753047
+Epoch 28 [70000/84843] Loss: 0.601157
+Epoch 28 - Avg Loss: 0.660937 | Train Acc: 85.18%
+Val: loss=0.6049, acc=9669/10975 (88.10%)
+saved best: 88.10%
+Epoch 29 [0/84843] Loss: 0.408612
+Epoch 29 [35000/84843] Loss: 0.677293
+Epoch 29 [70000/84843] Loss: 0.608278
+Epoch 29 - Avg Loss: 0.652791 | Train Acc: 85.48%
+Val: loss=0.5901, acc=9715/10975 (88.52%)
+saved best: 88.52%
+Epoch 30 [0/84843] Loss: 0.999710
+Epoch 30 [35000/84843] Loss: 0.780789
+Epoch 30 [70000/84843] Loss: 0.736175
+Epoch 30 - Avg Loss: 0.634455 | Train Acc: 86.24%
+Val: loss=0.5798, acc=9738/10975 (88.73%)
+saved best: 88.73%
+Epoch 31 [0/84843] Loss: 0.740300
+Epoch 31 [35000/84843] Loss: 0.643800
+Epoch 31 [70000/84843] Loss: 0.433237
+Epoch 31 - Avg Loss: 0.630879 | Train Acc: 86.41%
+Val: loss=0.5615, acc=9826/10975 (89.53%)
+saved best: 89.53%
+Epoch 32 [0/84843] Loss: 0.784139
+Epoch 32 [35000/84843] Loss: 0.691074
+Epoch 32 [70000/84843] Loss: 0.699842
+Epoch 32 - Avg Loss: 0.621646 | Train Acc: 86.70%
+Val: loss=0.5630, acc=9800/10975 (89.29%)
+Epoch 33 [0/84843] Loss: 0.488032
+Epoch 33 [35000/84843] Loss: 0.437535
+Epoch 33 [70000/84843] Loss: 0.715714
+Epoch 33 - Avg Loss: 0.611322 | Train Acc: 87.12%
+Val: loss=0.5605, acc=9794/10975 (89.24%)
+Epoch 34 [0/84843] Loss: 0.562989
+Epoch 34 [35000/84843] Loss: 0.461493
+Epoch 34 [70000/84843] Loss: 0.580856
+Epoch 34 - Avg Loss: 0.601671 | Train Acc: 87.41%
+Val: loss=0.5417, acc=9895/10975 (90.16%)
+saved best: 90.16%
+Epoch 35 [0/84843] Loss: 0.462923
+Epoch 35 [35000/84843] Loss: 0.566864
+Epoch 35 [70000/84843] Loss: 0.626692
+Epoch 35 - Avg Loss: 0.595398 | Train Acc: 87.78%
+Val: loss=0.5329, acc=9950/10975 (90.66%)
+saved best: 90.66%
+Epoch 36 [0/84843] Loss: 0.586880
+Epoch 36 [35000/84843] Loss: 0.438622
+Epoch 36 [70000/84843] Loss: 0.536959
+Epoch 36 - Avg Loss: 0.589640 | Train Acc: 87.81%
+Val: loss=0.5338, acc=9926/10975 (90.44%)
+Epoch 37 [0/84843] Loss: 0.625803
+Epoch 37 [35000/84843] Loss: 0.693157
+Epoch 37 [70000/84843] Loss: 0.721766
+Epoch 37 - Avg Loss: 0.576711 | Train Acc: 88.46%
+Val: loss=0.5159, acc=9988/10975 (91.01%)
+saved best: 91.01%
+Epoch 38 [0/84843] Loss: 0.653679
+Epoch 38 [35000/84843] Loss: 0.559210
+Epoch 38 [70000/84843] Loss: 0.570487
+Epoch 38 - Avg Loss: 0.575245 | Train Acc: 88.50%
+Val: loss=0.5334, acc=9900/10975 (90.21%)
+Epoch 39 [0/84843] Loss: 0.614164
+Epoch 39 [35000/84843] Loss: 0.849100
+Epoch 39 [70000/84843] Loss: 0.569284
+Epoch 39 - Avg Loss: 0.562853 | Train Acc: 88.91%
+Val: loss=0.5016, acc=10052/10975 (91.59%)
+saved best: 91.59%
+Epoch 40 [0/84843] Loss: 0.480104
+Epoch 40 [35000/84843] Loss: 0.601382
+Epoch 40 [70000/84843] Loss: 0.454511
+Epoch 40 - Avg Loss: 0.555153 | Train Acc: 89.33%
+Val: loss=0.5033, acc=10050/10975 (91.57%)
+Epoch 41 [0/84843] Loss: 0.376214
+Epoch 41 [35000/84843] Loss: 0.450412
+Epoch 41 [70000/84843] Loss: 0.536727
+Epoch 41 - Avg Loss: 0.548834 | Train Acc: 89.50%
+Val: loss=0.5087, acc=10024/10975 (91.33%)
+Epoch 42 [0/84843] Loss: 0.507692
+Epoch 42 [35000/84843] Loss: 0.521582
+Epoch 42 [70000/84843] Loss: 0.495409
+Epoch 42 - Avg Loss: 0.539357 | Train Acc: 89.90%
+Val: loss=0.4784, acc=10155/10975 (92.53%)
+saved best: 92.53%
+Epoch 43 [0/84843] Loss: 0.660899
+Epoch 43 [35000/84843] Loss: 0.613224
+Epoch 43 [70000/84843] Loss: 0.533588
+Epoch 43 - Avg Loss: 0.538242 | Train Acc: 89.83%
+Val: loss=0.4918, acc=10071/10975 (91.76%)
+Epoch 44 [0/84843] Loss: 0.560683
+Epoch 44 [35000/84843] Loss: 0.388784
+Epoch 44 [70000/84843] Loss: 0.507921
+Epoch 44 - Avg Loss: 0.534736 | Train Acc: 89.95%
+Val: loss=0.4857, acc=10113/10975 (92.15%)
+Epoch 45 [0/84843] Loss: 0.404247
+Epoch 45 [35000/84843] Loss: 0.486441
+Epoch 45 [70000/84843] Loss: 0.483778
+Epoch 45 - Avg Loss: 0.534170 | Train Acc: 89.98%
+Val: loss=0.4752, acc=10166/10975 (92.63%)
+saved best: 92.63%
+Epoch 46 [0/84843] Loss: 0.483352
+Epoch 46 [35000/84843] Loss: 0.422286
+Epoch 46 [70000/84843] Loss: 0.508769
+Epoch 46 - Avg Loss: 0.522788 | Train Acc: 90.43%
+Val: loss=0.4744, acc=10164/10975 (92.61%)
+Epoch 47 [0/84843] Loss: 0.436034
+Epoch 47 [35000/84843] Loss: 0.619428
+Epoch 47 [70000/84843] Loss: 0.574327
+Epoch 47 - Avg Loss: 0.520991 | Train Acc: 90.50%
+Val: loss=0.4784, acc=10156/10975 (92.54%)
+Epoch 48 [0/84843] Loss: 0.566548
+Epoch 48 [35000/84843] Loss: 0.585949
+Epoch 48 [70000/84843] Loss: 0.463943
+Epoch 48 - Avg Loss: 0.512252 | Train Acc: 90.75%
+Val: loss=0.4737, acc=10149/10975 (92.47%)
+Epoch 49 [0/84843] Loss: 0.414735
+Epoch 49 [35000/84843] Loss: 0.663016
+Epoch 49 [70000/84843] Loss: 0.603978
+Epoch 49 - Avg Loss: 0.514686 | Train Acc: 90.65%
+Val: loss=0.4623, acc=10213/10975 (93.06%)
+saved best: 93.06%
+Epoch 50 [0/84843] Loss: 0.341923
+Epoch 50 [35000/84843] Loss: 0.420119
+Epoch 50 [70000/84843] Loss: 0.439676
+Epoch 50 - Avg Loss: 0.506960 | Train Acc: 90.92%
+Val: loss=0.4665, acc=10192/10975 (92.87%)
+Epoch 51 [0/84843] Loss: 0.464605
+Epoch 51 [35000/84843] Loss: 0.462749
+Epoch 51 [70000/84843] Loss: 0.401504
+Epoch 51 - Avg Loss: 0.502997 | Train Acc: 91.14%
+Val: loss=0.4668, acc=10187/10975 (92.82%)
+Epoch 52 [0/84843] Loss: 0.414214
+Epoch 52 [35000/84843] Loss: 0.480403
+Epoch 52 [70000/84843] Loss: 0.453240
+Epoch 52 - Avg Loss: 0.498314 | Train Acc: 91.31%
+Val: loss=0.4763, acc=10127/10975 (92.27%)
+Epoch 53 [0/84843] Loss: 0.477591
+Epoch 53 [35000/84843] Loss: 0.478526
+Epoch 53 [70000/84843] Loss: 0.369046
+Epoch 53 - Avg Loss: 0.496130 | Train Acc: 91.35%
+Val: loss=0.4551, acc=10238/10975 (93.28%)
+saved best: 93.28%
+Epoch 54 [0/84843] Loss: 0.487862
+Epoch 54 [35000/84843] Loss: 0.478213
+Epoch 54 [70000/84843] Loss: 0.645919
+Epoch 54 - Avg Loss: 0.490203 | Train Acc: 91.58%
+Val: loss=0.4580, acc=10237/10975 (93.28%)
+Epoch 55 [0/84843] Loss: 0.392330
+Epoch 55 [35000/84843] Loss: 0.455503
+Epoch 55 [70000/84843] Loss: 0.568758
+Epoch 55 - Avg Loss: 0.484723 | Train Acc: 91.84%
+Val: loss=0.4494, acc=10256/10975 (93.45%)
+saved best: 93.45%
+Epoch 56 [0/84843] Loss: 0.465911
+Epoch 56 [35000/84843] Loss: 0.785899
+Epoch 56 [70000/84843] Loss: 0.430777
+Epoch 56 - Avg Loss: 0.488584 | Train Acc: 91.60%
+Val: loss=0.4691, acc=10168/10975 (92.65%)
+Epoch 57 [0/84843] Loss: 0.361948
+Epoch 57 [35000/84843] Loss: 0.404083
+Epoch 57 [70000/84843] Loss: 0.390716
+Epoch 57 - Avg Loss: 0.481183 | Train Acc: 91.96%
+Val: loss=0.4439, acc=10278/10975 (93.65%)
+saved best: 93.65%
+Epoch 58 [0/84843] Loss: 0.396258
+Epoch 58 [35000/84843] Loss: 0.541460
+Epoch 58 [70000/84843] Loss: 0.479560
+Epoch 58 - Avg Loss: 0.476738 | Train Acc: 92.10%
+Val: loss=0.4571, acc=10235/10975 (93.26%)
+Epoch 59 [0/84843] Loss: 0.667059
+Epoch 59 [35000/84843] Loss: 0.610374
+Epoch 59 [70000/84843] Loss: 0.518909
+Epoch 59 - Avg Loss: 0.481106 | Train Acc: 91.91%
+Val: loss=0.4621, acc=10209/10975 (93.02%)
+Epoch 60 [0/84843] Loss: 0.664012
+Epoch 60 [35000/84843] Loss: 0.413602
+Epoch 60 [70000/84843] Loss: 0.463446
+Epoch 60 - Avg Loss: 0.475390 | Train Acc: 92.19%
+Val: loss=0.4535, acc=10246/10975 (93.36%)
+Epoch 61 [0/84843] Loss: 0.499164
+Epoch 61 [35000/84843] Loss: 0.397785
+Epoch 61 [70000/84843] Loss: 0.635216
+Epoch 61 - Avg Loss: 0.475242 | Train Acc: 92.20%
+Val: loss=0.4366, acc=10311/10975 (93.95%)
+saved best: 93.95%
+Epoch 62 [0/84843] Loss: 0.395838
+Epoch 62 [35000/84843] Loss: 0.505530
+Epoch 62 [70000/84843] Loss: 0.416920
+Epoch 62 - Avg Loss: 0.470399 | Train Acc: 92.32%
+Val: loss=0.4381, acc=10298/10975 (93.83%)
+Epoch 63 [0/84843] Loss: 0.486886
+Epoch 63 [35000/84843] Loss: 0.379547
+Epoch 63 [70000/84843] Loss: 0.527025
+Epoch 63 - Avg Loss: 0.469285 | Train Acc: 92.38%
+Val: loss=0.4343, acc=10330/10975 (94.12%)
+saved best: 94.12%
+Epoch 64 [0/84843] Loss: 0.471529
+Epoch 64 [35000/84843] Loss: 0.619065
+Epoch 64 [70000/84843] Loss: 0.538270
+Epoch 64 - Avg Loss: 0.466259 | Train Acc: 92.50%
+Val: loss=0.4310, acc=10317/10975 (94.00%)
+Epoch 65 [0/84843] Loss: 0.555641
+Epoch 65 [35000/84843] Loss: 0.562605
+Epoch 65 [70000/84843] Loss: 0.518577
+Epoch 65 - Avg Loss: 0.465384 | Train Acc: 92.42%
+Val: loss=0.4353, acc=10314/10975 (93.98%)
+Epoch 66 [0/84843] Loss: 0.413563
+Epoch 66 [35000/84843] Loss: 0.509834
+Epoch 66 [70000/84843] Loss: 0.315590
+Epoch 66 - Avg Loss: 0.461098 | Train Acc: 92.70%
+Val: loss=0.4259, acc=10360/10975 (94.40%)
+saved best: 94.40%
+Epoch 67 [0/84843] Loss: 0.358507
+Epoch 67 [35000/84843] Loss: 0.408294
+Epoch 67 [70000/84843] Loss: 0.337458
+Epoch 67 - Avg Loss: 0.458291 | Train Acc: 92.76%
+Val: loss=0.4332, acc=10330/10975 (94.12%)
+Epoch 68 [0/84843] Loss: 0.508154
+Epoch 68 [35000/84843] Loss: 0.365531
+Epoch 68 [70000/84843] Loss: 0.332994
+Epoch 68 - Avg Loss: 0.459271 | Train Acc: 92.74%
+Val: loss=0.4228, acc=10369/10975 (94.48%)
+saved best: 94.48%
+Epoch 69 [0/84843] Loss: 0.602732
+Epoch 69 [35000/84843] Loss: 0.391493
+Epoch 69 [70000/84843] Loss: 0.457729
+Epoch 69 - Avg Loss: 0.453010 | Train Acc: 93.01%
+Val: loss=0.4343, acc=10341/10975 (94.22%)
+Epoch 70 [0/84843] Loss: 0.481499
+Epoch 70 [35000/84843] Loss: 0.372781
+Epoch 70 [70000/84843] Loss: 0.434649
+Epoch 70 - Avg Loss: 0.452564 | Train Acc: 92.90%
+Val: loss=0.4315, acc=10314/10975 (93.98%)
+Epoch 71 [0/84843] Loss: 0.592561
+Epoch 71 [35000/84843] Loss: 0.665221
+Epoch 71 [70000/84843] Loss: 0.450709
+Epoch 71 - Avg Loss: 0.454306 | Train Acc: 92.97%
+Val: loss=0.4252, acc=10350/10975 (94.31%)
+Epoch 72 [0/84843] Loss: 0.600716
+Epoch 72 [35000/84843] Loss: 0.389729
+Epoch 72 [70000/84843] Loss: 0.539316
+Epoch 72 - Avg Loss: 0.452731 | Train Acc: 92.97%
+Val: loss=0.4176, acc=10372/10975 (94.51%)
+saved best: 94.51%
+Epoch 73 [0/84843] Loss: 0.449765
+Epoch 73 [35000/84843] Loss: 0.457562
+Epoch 73 [70000/84843] Loss: 0.453327
+Epoch 73 - Avg Loss: 0.450463 | Train Acc: 93.04%
+Val: loss=0.4263, acc=10366/10975 (94.45%)
+Epoch 74 [0/84843] Loss: 0.506041
+Epoch 74 [35000/84843] Loss: 0.583080
+Epoch 74 [70000/84843] Loss: 0.443596
+Epoch 74 - Avg Loss: 0.446014 | Train Acc: 93.32%
+Val: loss=0.4211, acc=10378/10975 (94.56%)
+saved best: 94.56%
+Epoch 75 [0/84843] Loss: 0.438235
+Epoch 75 [35000/84843] Loss: 0.380850
+Epoch 75 [70000/84843] Loss: 0.365714
+Epoch 75 - Avg Loss: 0.449559 | Train Acc: 93.07%
+Val: loss=0.4261, acc=10353/10975 (94.33%)
+Epoch 76 [0/84843] Loss: 0.442613
+Epoch 76 [35000/84843] Loss: 0.398085
+Epoch 76 [70000/84843] Loss: 0.417526
+Epoch 76 - Avg Loss: 0.448703 | Train Acc: 93.18%
+Val: loss=0.4275, acc=10347/10975 (94.28%)
+Epoch 77 [0/84843] Loss: 0.487097
+Epoch 77 [35000/84843] Loss: 0.506718
+Epoch 77 [70000/84843] Loss: 0.377972
+Epoch 77 - Avg Loss: 0.446935 | Train Acc: 93.20%
+Val: loss=0.4237, acc=10338/10975 (94.20%)
+Epoch 78 [0/84843] Loss: 0.594345
+Epoch 78 [35000/84843] Loss: 0.401360
+Epoch 78 [70000/84843] Loss: 0.587086
+Epoch 78 - Avg Loss: 0.445225 | Train Acc: 93.29%
+Val: loss=0.4157, acc=10403/10975 (94.79%)
+saved best: 94.79%
+Epoch 79 [0/84843] Loss: 0.433324
+Epoch 79 [35000/84843] Loss: 0.405803
+Epoch 79 [70000/84843] Loss: 0.651413
+Epoch 79 - Avg Loss: 0.441322 | Train Acc: 93.42%
+Val: loss=0.4292, acc=10334/10975 (94.16%)
+Epoch 80 [0/84843] Loss: 0.459698
+Epoch 80 [35000/84843] Loss: 0.393636
+Epoch 80 [70000/84843] Loss: 0.407525
+Epoch 80 - Avg Loss: 0.443109 | Train Acc: 93.38%
+Val: loss=0.4167, acc=10396/10975 (94.72%)
+Epoch 81 [0/84843] Loss: 0.300082
+Epoch 81 [35000/84843] Loss: 0.483158
+Epoch 81 [70000/84843] Loss: 0.400039
+Epoch 81 - Avg Loss: 0.444084 | Train Acc: 93.38%
+Val: loss=0.4234, acc=10348/10975 (94.29%)
+Epoch 82 [0/84843] Loss: 0.468444
+Epoch 82 [35000/84843] Loss: 0.311372
+Epoch 82 [70000/84843] Loss: 0.377104
+Epoch 82 - Avg Loss: 0.444107 | Train Acc: 93.33%
+Val: loss=0.4161, acc=10382/10975 (94.60%)
+Epoch 83 [0/84843] Loss: 0.527090
+Epoch 83 [35000/84843] Loss: 0.529866
+Epoch 83 [70000/84843] Loss: 0.321889
+Epoch 83 - Avg Loss: 0.440519 | Train Acc: 93.47%
+Val: loss=0.4202, acc=10385/10975 (94.62%)
+Epoch 84 [0/84843] Loss: 0.378491
+Epoch 84 [35000/84843] Loss: 0.500491
+Epoch 84 [70000/84843] Loss: 0.371623
+Epoch 84 - Avg Loss: 0.437143 | Train Acc: 93.60%
+Val: loss=0.4148, acc=10395/10975 (94.72%)
+Epoch 85 [0/84843] Loss: 0.513002
+Epoch 85 [35000/84843] Loss: 0.626218
+Epoch 85 [70000/84843] Loss: 0.505418
+Epoch 85 - Avg Loss: 0.437014 | Train Acc: 93.49%
+Val: loss=0.4168, acc=10375/10975 (94.53%)
+Epoch 86 [0/84843] Loss: 0.459130
+Epoch 86 [35000/84843] Loss: 0.400986
+Epoch 86 [70000/84843] Loss: 0.324371
+Epoch 86 - Avg Loss: 0.434925 | Train Acc: 93.63%
+Val: loss=0.4087, acc=10438/10975 (95.11%)
+saved best: 95.11%
+Epoch 87 [0/84843] Loss: 0.418989
+Epoch 87 [35000/84843] Loss: 0.487907
+Epoch 87 [70000/84843] Loss: 0.303214
+Epoch 87 - Avg Loss: 0.431896 | Train Acc: 93.79%
+Val: loss=0.4229, acc=10360/10975 (94.40%)
+Epoch 88 [0/84843] Loss: 0.419734
+Epoch 88 [35000/84843] Loss: 0.628082
+Epoch 88 [70000/84843] Loss: 0.485043
+Epoch 88 - Avg Loss: 0.437909 | Train Acc: 93.53%
+Val: loss=0.4199, acc=10379/10975 (94.57%)
+Epoch 89 [0/84843] Loss: 0.334413
+Epoch 89 [35000/84843] Loss: 0.341700
+Epoch 89 [70000/84843] Loss: 0.383308
+Epoch 89 - Avg Loss: 0.432380 | Train Acc: 93.79%
+Val: loss=0.4176, acc=10358/10975 (94.38%)
+Epoch 90 [0/84843] Loss: 0.347156
+Epoch 90 [35000/84843] Loss: 0.303274
+Epoch 90 [70000/84843] Loss: 0.481148
+Epoch 90 - Avg Loss: 0.435763 | Train Acc: 93.65%
+Val: loss=0.4032, acc=10437/10975 (95.10%)
+Epoch 91 [0/84843] Loss: 0.421187
+Epoch 91 [35000/84843] Loss: 0.297567
+Epoch 91 [70000/84843] Loss: 0.406053
+Epoch 91 - Avg Loss: 0.430258 | Train Acc: 93.81%
+Val: loss=0.4065, acc=10430/10975 (95.03%)
+Epoch 92 [0/84843] Loss: 0.509507
+Epoch 92 [35000/84843] Loss: 0.365951
+Epoch 92 [70000/84843] Loss: 0.558696
+Epoch 92 - Avg Loss: 0.436474 | Train Acc: 93.60%
+Val: loss=0.4048, acc=10420/10975 (94.94%)
+Epoch 93 [0/84843] Loss: 0.425057
+Epoch 93 [35000/84843] Loss: 0.608321
+Epoch 93 [70000/84843] Loss: 0.342708
+Epoch 93 - Avg Loss: 0.428213 | Train Acc: 93.97%
+Val: loss=0.4065, acc=10435/10975 (95.08%)
+Epoch 94 [0/84843] Loss: 0.594438
+Epoch 94 [35000/84843] Loss: 0.585488
+Epoch 94 [70000/84843] Loss: 0.460834
+Epoch 94 - Avg Loss: 0.427395 | Train Acc: 93.94%
+Val: loss=0.4083, acc=10426/10975 (95.00%)
+Epoch 95 [0/84843] Loss: 0.349619
+Epoch 95 [35000/84843] Loss: 0.463822
+Epoch 95 [70000/84843] Loss: 0.323799
+Epoch 95 - Avg Loss: 0.431934 | Train Acc: 93.79%
+Val: loss=0.4109, acc=10419/10975 (94.93%)
+Epoch 96 [0/84843] Loss: 0.357275
+Epoch 96 [35000/84843] Loss: 0.443250
+Epoch 96 [70000/84843] Loss: 0.354079
+Epoch 96 - Avg Loss: 0.429681 | Train Acc: 93.84%
+Val: loss=0.4078, acc=10422/10975 (94.96%)
+Epoch 97 [0/84843] Loss: 0.392771
+Epoch 97 [35000/84843] Loss: 0.359385
+Epoch 97 [70000/84843] Loss: 0.317224
+Epoch 97 - Avg Loss: 0.428059 | Train Acc: 93.90%
+Val: loss=0.4115, acc=10402/10975 (94.78%)
+Epoch 98 [0/84843] Loss: 0.361545
+Epoch 98 [35000/84843] Loss: 0.457118
+Epoch 98 [70000/84843] Loss: 0.442666
+Epoch 98 - Avg Loss: 0.429478 | Train Acc: 93.83%
+Val: loss=0.4055, acc=10431/10975 (95.04%)
+Epoch 99 [0/84843] Loss: 0.443402
+Epoch 99 [35000/84843] Loss: 0.317608
+Epoch 99 [70000/84843] Loss: 0.449164
+Epoch 99 - Avg Loss: 0.427310 | Train Acc: 93.92%
+Val: loss=0.4218, acc=10354/10975 (94.34%)
+Epoch 100 [0/84843] Loss: 0.396740
+Epoch 100 [35000/84843] Loss: 0.447771
+Epoch 100 [70000/84843] Loss: 0.359805
+Epoch 100 - Avg Loss: 0.425627 | Train Acc: 94.03%
+Val: loss=0.4073, acc=10433/10975 (95.06%)
+Epoch 101 [0/84843] Loss: 0.375757
+Epoch 101 [35000/84843] Loss: 0.361048
+Epoch 101 [70000/84843] Loss: 0.330675
+Epoch 101 - Avg Loss: 0.423545 | Train Acc: 94.11%
+Val: loss=0.4112, acc=10398/10975 (94.74%)
+Epoch 102 [0/84843] Loss: 0.423446
+Epoch 102 [35000/84843] Loss: 0.581481
+Epoch 102 [70000/84843] Loss: 0.325559
+Epoch 102 - Avg Loss: 0.422897 | Train Acc: 94.11%
+Val: loss=0.4173, acc=10390/10975 (94.67%)
+Epoch 103 [0/84843] Loss: 0.467627
+Epoch 103 [35000/84843] Loss: 0.360053
+Epoch 103 [70000/84843] Loss: 0.425376
+Epoch 103 - Avg Loss: 0.425401 | Train Acc: 94.00%
+Val: loss=0.4180, acc=10358/10975 (94.38%)
+Epoch 104 [0/84843] Loss: 0.679713
+Epoch 104 [35000/84843] Loss: 0.340183
+Epoch 104 [70000/84843] Loss: 0.453060
+Epoch 104 - Avg Loss: 0.422864 | Train Acc: 94.08%
+Val: loss=0.4186, acc=10375/10975 (94.53%)
+Epoch 105 [0/84843] Loss: 0.382550
+Epoch 105 [35000/84843] Loss: 0.320426
+Epoch 105 [70000/84843] Loss: 0.331683
+Epoch 105 - Avg Loss: 0.424525 | Train Acc: 93.98%
+Val: loss=0.4063, acc=10442/10975 (95.14%)
+saved best: 95.14%
+Epoch 106 [0/84843] Loss: 0.424180
+Epoch 106 [35000/84843] Loss: 0.370603
+Epoch 106 [70000/84843] Loss: 0.589990
+Epoch 106 - Avg Loss: 0.425092 | Train Acc: 94.07%
+Val: loss=0.4091, acc=10416/10975 (94.91%)
+Epoch 107 [0/84843] Loss: 0.362845
+Epoch 107 [35000/84843] Loss: 0.381699
+Epoch 107 [70000/84843] Loss: 0.437165
+Epoch 107 - Avg Loss: 0.424729 | Train Acc: 94.08%
+Val: loss=0.4104, acc=10427/10975 (95.01%)
+Epoch 108 [0/84843] Loss: 0.357274
+Epoch 108 [35000/84843] Loss: 0.430383
+Epoch 108 [70000/84843] Loss: 0.417217
+Epoch 108 - Avg Loss: 0.421536 | Train Acc: 94.19%
+Val: loss=0.4006, acc=10466/10975 (95.36%)
+saved best: 95.36%
+Epoch 109 [0/84843] Loss: 0.319323
+Epoch 109 [35000/84843] Loss: 0.481166
+Epoch 109 [70000/84843] Loss: 0.343867
+Epoch 109 - Avg Loss: 0.422910 | Train Acc: 94.07%
+Val: loss=0.4095, acc=10426/10975 (95.00%)
+Epoch 110 [0/84843] Loss: 0.534304
+Epoch 110 [35000/84843] Loss: 0.397843
+Epoch 110 [70000/84843] Loss: 0.315592
+Epoch 110 - Avg Loss: 0.420216 | Train Acc: 94.26%
+Val: loss=0.4022, acc=10455/10975 (95.26%)
+Epoch 111 [0/84843] Loss: 0.323938
+Epoch 111 [35000/84843] Loss: 0.399523
+Epoch 111 [70000/84843] Loss: 0.339615
+Epoch 111 - Avg Loss: 0.420994 | Train Acc: 94.15%
+Val: loss=0.4022, acc=10470/10975 (95.40%)
+saved best: 95.40%
+Epoch 112 [0/84843] Loss: 0.333340
+Epoch 112 [35000/84843] Loss: 0.594209
+Epoch 112 [70000/84843] Loss: 0.525583
+Epoch 112 - Avg Loss: 0.421116 | Train Acc: 94.16%
+Val: loss=0.4154, acc=10411/10975 (94.86%)
+Epoch 113 [0/84843] Loss: 0.372543
+Epoch 113 [35000/84843] Loss: 0.452695
+Epoch 113 [70000/84843] Loss: 0.419604
+Epoch 113 - Avg Loss: 0.422130 | Train Acc: 94.09%
+Val: loss=0.4138, acc=10409/10975 (94.84%)
+Epoch 114 [0/84843] Loss: 0.369846
+Epoch 114 [35000/84843] Loss: 0.401032
+Epoch 114 [70000/84843] Loss: 0.348024
+Epoch 114 - Avg Loss: 0.423630 | Train Acc: 94.12%
+Val: loss=0.4071, acc=10433/10975 (95.06%)
+Epoch 115 [0/84843] Loss: 0.342932
+Epoch 115 [35000/84843] Loss: 0.624451
+Epoch 115 [70000/84843] Loss: 0.335430
+Epoch 115 - Avg Loss: 0.420780 | Train Acc: 94.24%
+Val: loss=0.3944, acc=10480/10975 (95.49%)
+saved best: 95.49%
+Epoch 116 [0/84843] Loss: 0.399094
+Epoch 116 [35000/84843] Loss: 0.347546
+Epoch 116 [70000/84843] Loss: 0.299069
+Epoch 116 - Avg Loss: 0.418759 | Train Acc: 94.24%
+Val: loss=0.4036, acc=10458/10975 (95.29%)
+Epoch 117 [0/84843] Loss: 0.396658
+Epoch 117 [35000/84843] Loss: 0.350718
+Epoch 117 [70000/84843] Loss: 0.394111
+Epoch 117 - Avg Loss: 0.420488 | Train Acc: 94.23%
+Val: loss=0.4058, acc=10426/10975 (95.00%)
+Epoch 118 [0/84843] Loss: 0.356413
+Epoch 118 [35000/84843] Loss: 0.292223
+Epoch 118 [70000/84843] Loss: 0.434336
+Epoch 118 - Avg Loss: 0.421337 | Train Acc: 94.17%
+Val: loss=0.4160, acc=10380/10975 (94.58%)
+Epoch 119 [0/84843] Loss: 0.471982
+Epoch 119 [35000/84843] Loss: 0.436756
+Epoch 119 [70000/84843] Loss: 0.527540
+Epoch 119 - Avg Loss: 0.419750 | Train Acc: 94.24%
+Val: loss=0.3983, acc=10471/10975 (95.41%)
+Epoch 120 [0/84843] Loss: 0.410948
+Epoch 120 [35000/84843] Loss: 0.325044
+Epoch 120 [70000/84843] Loss: 0.353271
+Epoch 120 - Avg Loss: 0.417335 | Train Acc: 94.27%
+Val: loss=0.4024, acc=10442/10975 (95.14%)
+Epoch 121 [0/84843] Loss: 0.383793
+Epoch 121 [35000/84843] Loss: 0.406413
+Epoch 121 [70000/84843] Loss: 0.387147
+Epoch 121 - Avg Loss: 0.415227 | Train Acc: 94.35%
+Val: loss=0.3981, acc=10467/10975 (95.37%)
+Epoch 122 [0/84843] Loss: 0.425615
+Epoch 122 [35000/84843] Loss: 0.465100
+Epoch 122 [70000/84843] Loss: 0.414283
+Epoch 122 - Avg Loss: 0.415983 | Train Acc: 94.39%
+Val: loss=0.3975, acc=10453/10975 (95.24%)
+Epoch 123 [0/84843] Loss: 0.293833
+Epoch 123 [35000/84843] Loss: 0.438725
+Epoch 123 [70000/84843] Loss: 0.400928
+Epoch 123 - Avg Loss: 0.416698 | Train Acc: 94.36%
+Val: loss=0.4005, acc=10455/10975 (95.26%)
+Epoch 124 [0/84843] Loss: 0.524749
+Epoch 124 [35000/84843] Loss: 0.410763
+Epoch 124 [70000/84843] Loss: 0.395634
+Epoch 124 - Avg Loss: 0.417353 | Train Acc: 94.24%
+Val: loss=0.3942, acc=10491/10975 (95.59%)
+saved best: 95.59%
+Epoch 125 [0/84843] Loss: 0.392017
+Epoch 125 [35000/84843] Loss: 0.480835
+Epoch 125 [70000/84843] Loss: 0.350255
+Epoch 125 - Avg Loss: 0.415704 | Train Acc: 94.38%
+Val: loss=0.4067, acc=10446/10975 (95.18%)
+Epoch 126 [0/84843] Loss: 0.416586
+Epoch 126 [35000/84843] Loss: 0.285534
+Epoch 126 [70000/84843] Loss: 0.513447
+Epoch 126 - Avg Loss: 0.413151 | Train Acc: 94.51%
+Val: loss=0.4084, acc=10439/10975 (95.12%)
+Epoch 127 [0/84843] Loss: 0.501748
+Epoch 127 [35000/84843] Loss: 0.510596
+Epoch 127 [70000/84843] Loss: 0.330701
+Epoch 127 - Avg Loss: 0.416367 | Train Acc: 94.30%
+Val: loss=0.4022, acc=10440/10975 (95.13%)
+Epoch 128 [0/84843] Loss: 0.398274
+Epoch 128 [35000/84843] Loss: 0.386291
+Epoch 128 [70000/84843] Loss: 0.337843
+Epoch 128 - Avg Loss: 0.412921 | Train Acc: 94.49%
+Val: loss=0.4275, acc=10344/10975 (94.25%)
+Epoch 129 [0/84843] Loss: 0.439922
+Epoch 129 [35000/84843] Loss: 0.305793
+Epoch 129 [70000/84843] Loss: 0.444906
+Epoch 129 - Avg Loss: 0.412714 | Train Acc: 94.48%
+Val: loss=0.3945, acc=10491/10975 (95.59%)
+Epoch 130 [0/84843] Loss: 0.416208
+Epoch 130 [35000/84843] Loss: 0.277879
+Epoch 130 [70000/84843] Loss: 0.368386
+Epoch 130 - Avg Loss: 0.412944 | Train Acc: 94.48%
+Val: loss=0.4123, acc=10423/10975 (94.97%)
+Epoch 131 [0/84843] Loss: 0.335630
+Epoch 131 [35000/84843] Loss: 0.482235
+Epoch 131 [70000/84843] Loss: 0.379151
+Epoch 131 - Avg Loss: 0.413208 | Train Acc: 94.50%
+Val: loss=0.4125, acc=10412/10975 (94.87%)
+Epoch 132 [0/84843] Loss: 0.375474
+Epoch 132 [35000/84843] Loss: 0.356660
+Epoch 132 [70000/84843] Loss: 0.559340
+Epoch 132 - Avg Loss: 0.414557 | Train Acc: 94.41%
+Val: loss=0.4151, acc=10400/10975 (94.76%)
+Epoch 133 [0/84843] Loss: 0.662379
+Epoch 133 [35000/84843] Loss: 0.355259
+Epoch 133 [70000/84843] Loss: 0.471692
+Epoch 133 - Avg Loss: 0.410633 | Train Acc: 94.55%
+Val: loss=0.4101, acc=10398/10975 (94.74%)
+Epoch 134 [0/84843] Loss: 0.297603
+Epoch 134 [35000/84843] Loss: 0.319237
+Epoch 134 [70000/84843] Loss: 0.390612
+Epoch 134 - Avg Loss: 0.414762 | Train Acc: 94.39%
+Val: loss=0.3967, acc=10464/10975 (95.34%)
+Epoch 135 [0/84843] Loss: 0.459778
+Epoch 135 [35000/84843] Loss: 0.341948
+Epoch 135 [70000/84843] Loss: 0.317197
+Epoch 135 - Avg Loss: 0.411498 | Train Acc: 94.55%
+Val: loss=0.4105, acc=10396/10975 (94.72%)
+Epoch 136 [0/84843] Loss: 0.342286
+Epoch 136 [35000/84843] Loss: 0.436839
+Epoch 136 [70000/84843] Loss: 0.511618
+Epoch 136 - Avg Loss: 0.411142 | Train Acc: 94.52%
+Val: loss=0.3966, acc=10479/10975 (95.48%)
+Epoch 137 [0/84843] Loss: 0.575014
+Epoch 137 [35000/84843] Loss: 0.404536
+Epoch 137 [70000/84843] Loss: 0.446453
+Epoch 137 - Avg Loss: 0.409869 | Train Acc: 94.64%
+Val: loss=0.4078, acc=10425/10975 (94.99%)
+Epoch 138 [0/84843] Loss: 0.387313
+Epoch 138 [35000/84843] Loss: 0.363970
+Epoch 138 [70000/84843] Loss: 0.334703
+Epoch 138 - Avg Loss: 0.406354 | Train Acc: 94.77%
+Val: loss=0.3963, acc=10471/10975 (95.41%)
+Epoch 139 [0/84843] Loss: 0.279106
+Epoch 139 [35000/84843] Loss: 0.410176
+Epoch 139 [70000/84843] Loss: 0.377986
+Epoch 139 - Avg Loss: 0.411427 | Train Acc: 94.50%
+Val: loss=0.4030, acc=10452/10975 (95.23%)
+Epoch 140 [0/84843] Loss: 0.314812
+Epoch 140 [35000/84843] Loss: 0.412232
+Epoch 140 [70000/84843] Loss: 0.316969
+Epoch 140 - Avg Loss: 0.408484 | Train Acc: 94.57%
+Val: loss=0.3991, acc=10479/10975 (95.48%)
+Epoch 141 [0/84843] Loss: 0.594797
+Epoch 141 [35000/84843] Loss: 0.389892
+Epoch 141 [70000/84843] Loss: 0.360767
+Epoch 141 - Avg Loss: 0.410129 | Train Acc: 94.59%
+Val: loss=0.3983, acc=10467/10975 (95.37%)
+Epoch 142 [0/84843] Loss: 0.888102
+Epoch 142 [35000/84843] Loss: 0.365082
+Epoch 142 [70000/84843] Loss: 0.718852
+Epoch 142 - Avg Loss: 0.410267 | Train Acc: 94.54%
+Val: loss=0.4034, acc=10441/10975 (95.13%)
+Epoch 143 [0/84843] Loss: 0.309583
+Epoch 143 [35000/84843] Loss: 0.517657
+Epoch 143 [70000/84843] Loss: 0.372327
+Epoch 143 - Avg Loss: 0.407351 | Train Acc: 94.66%
+Val: loss=0.4028, acc=10464/10975 (95.34%)
+Epoch 144 [0/84843] Loss: 0.397989
+Epoch 144 [35000/84843] Loss: 0.397088
+Epoch 144 [70000/84843] Loss: 0.415151
+Epoch 144 - Avg Loss: 0.410361 | Train Acc: 94.55%
+Val: loss=0.4031, acc=10443/10975 (95.15%)
+Epoch 145 [0/84843] Loss: 0.552644
+Epoch 145 [35000/84843] Loss: 0.310198
+Epoch 145 [70000/84843] Loss: 0.504655
+Epoch 145 - Avg Loss: 0.406898 | Train Acc: 94.60%
+Val: loss=0.4035, acc=10445/10975 (95.17%)
+Epoch 146 [0/84843] Loss: 0.389488
+Epoch 146 [35000/84843] Loss: 0.430668
+Epoch 146 [70000/84843] Loss: 0.290330
+Epoch 146 - Avg Loss: 0.406428 | Train Acc: 94.74%
+Val: loss=0.4126, acc=10405/10975 (94.81%)
+Epoch 147 [0/84843] Loss: 0.448246
+Epoch 147 [35000/84843] Loss: 0.491559
+Epoch 147 [70000/84843] Loss: 0.348442
+Epoch 147 - Avg Loss: 0.406509 | Train Acc: 94.74%
+Val: loss=0.4055, acc=10427/10975 (95.01%)
+Epoch 148 [0/84843] Loss: 0.318346
+Epoch 148 [35000/84843] Loss: 0.313887
+Epoch 148 [70000/84843] Loss: 0.368649
+Epoch 148 - Avg Loss: 0.409642 | Train Acc: 94.58%
+Val: loss=0.3902, acc=10494/10975 (95.62%)
+saved best: 95.62%
+Epoch 149 [0/84843] Loss: 0.456305
+Epoch 149 [35000/84843] Loss: 0.445496
+Epoch 149 [70000/84843] Loss: 0.602692
+Epoch 149 - Avg Loss: 0.402786 | Train Acc: 94.92%
+Val: loss=0.3939, acc=10473/10975 (95.43%)
+Epoch 150 [0/84843] Loss: 0.333294
+Epoch 150 [35000/84843] Loss: 0.687605
+Epoch 150 [70000/84843] Loss: 0.399507
+Epoch 150 - Avg Loss: 0.404284 | Train Acc: 94.83%
+Val: loss=0.4026, acc=10456/10975 (95.27%)
+Epoch 151 [0/84843] Loss: 0.392060
+Epoch 151 [35000/84843] Loss: 0.353575
+Epoch 151 [70000/84843] Loss: 0.369544
+Epoch 151 - Avg Loss: 0.407194 | Train Acc: 94.66%
+Val: loss=0.4021, acc=10439/10975 (95.12%)
+Epoch 152 [0/84843] Loss: 0.441474
+Epoch 152 [35000/84843] Loss: 0.284310
+Epoch 152 [70000/84843] Loss: 0.382756
+Epoch 152 - Avg Loss: 0.400217 | Train Acc: 94.95%
+Val: loss=0.3982, acc=10477/10975 (95.46%)
+Epoch 153 [0/84843] Loss: 0.319664
+Epoch 153 [35000/84843] Loss: 0.360482
+Epoch 153 [70000/84843] Loss: 0.322007
+Epoch 153 - Avg Loss: 0.398913 | Train Acc: 94.97%
+Val: loss=0.3906, acc=10501/10975 (95.68%)
+saved best: 95.68%
+Epoch 154 [0/84843] Loss: 0.342950
+Epoch 154 [35000/84843] Loss: 0.358557
+Epoch 154 [70000/84843] Loss: 0.295952
+Epoch 154 - Avg Loss: 0.407979 | Train Acc: 94.67%
+Val: loss=0.3914, acc=10491/10975 (95.59%)
+Epoch 155 [0/84843] Loss: 0.332049
+Epoch 155 [35000/84843] Loss: 0.355309
+Epoch 155 [70000/84843] Loss: 0.306786
+Epoch 155 - Avg Loss: 0.402862 | Train Acc: 94.81%
+Val: loss=0.3920, acc=10512/10975 (95.78%)
+saved best: 95.78%
+Epoch 156 [0/84843] Loss: 0.410528
+Epoch 156 [35000/84843] Loss: 0.465334
+Epoch 156 [70000/84843] Loss: 0.392766
+Epoch 156 - Avg Loss: 0.406155 | Train Acc: 94.75%
+Val: loss=0.3879, acc=10507/10975 (95.74%)
+Epoch 157 [0/84843] Loss: 0.419257
+Epoch 157 [35000/84843] Loss: 0.393381
+Epoch 157 [70000/84843] Loss: 0.400784
+Epoch 157 - Avg Loss: 0.405110 | Train Acc: 94.78%
+Val: loss=0.3959, acc=10464/10975 (95.34%)
+Epoch 158 [0/84843] Loss: 0.406812
+Epoch 158 [35000/84843] Loss: 0.313190
+Epoch 158 [70000/84843] Loss: 0.382180
+Epoch 158 - Avg Loss: 0.403359 | Train Acc: 94.87%
+Val: loss=0.3936, acc=10493/10975 (95.61%)
+Epoch 159 [0/84843] Loss: 0.402823
+Epoch 159 [35000/84843] Loss: 0.360814
+Epoch 159 [70000/84843] Loss: 0.353336
+Epoch 159 - Avg Loss: 0.405433 | Train Acc: 94.78%
+Val: loss=0.3948, acc=10492/10975 (95.60%)
+Epoch 160 [0/84843] Loss: 0.316797
+Epoch 160 [35000/84843] Loss: 0.362210
+Epoch 160 [70000/84843] Loss: 0.478324
+Epoch 160 - Avg Loss: 0.402975 | Train Acc: 94.86%
+Val: loss=0.3977, acc=10483/10975 (95.52%)
+Epoch 161 [0/84843] Loss: 0.432613
+Epoch 161 [35000/84843] Loss: 0.683696
+Epoch 161 [70000/84843] Loss: 0.343165
+Epoch 161 - Avg Loss: 0.403499 | Train Acc: 94.84%
+Val: loss=0.3895, acc=10508/10975 (95.74%)
+Epoch 162 [0/84843] Loss: 0.363867
+Epoch 162 [35000/84843] Loss: 0.399787
+Epoch 162 [70000/84843] Loss: 0.385242
+Epoch 162 - Avg Loss: 0.400294 | Train Acc: 95.00%
+Val: loss=0.3959, acc=10466/10975 (95.36%)
+Epoch 163 [0/84843] Loss: 0.452259
+Epoch 163 [35000/84843] Loss: 0.329435
+Epoch 163 [70000/84843] Loss: 0.416273
+Epoch 163 - Avg Loss: 0.402857 | Train Acc: 94.89%
+Val: loss=0.3929, acc=10502/10975 (95.69%)
+Epoch 164 [0/84843] Loss: 0.390166
+Epoch 164 [35000/84843] Loss: 0.370564
+Epoch 164 [70000/84843] Loss: 0.465513
+Epoch 164 - Avg Loss: 0.404160 | Train Acc: 94.77%
+Val: loss=0.4015, acc=10454/10975 (95.25%)
+Epoch 165 [0/84843] Loss: 0.543701
+Epoch 165 [35000/84843] Loss: 0.593032
+Epoch 165 [70000/84843] Loss: 0.371822
+Epoch 165 - Avg Loss: 0.401308 | Train Acc: 94.91%
+Val: loss=0.3962, acc=10476/10975 (95.45%)
+Epoch 166 [0/84843] Loss: 0.364743
+Epoch 166 [35000/84843] Loss: 0.328221
+Epoch 166 [70000/84843] Loss: 0.304797
+Epoch 166 - Avg Loss: 0.399332 | Train Acc: 95.01%
+Val: loss=0.4011, acc=10453/10975 (95.24%)
+Epoch 167 [0/84843] Loss: 0.379457
+Epoch 167 [35000/84843] Loss: 0.334346
+Epoch 167 [70000/84843] Loss: 0.648920
+Epoch 167 - Avg Loss: 0.402927 | Train Acc: 94.82%
+Val: loss=0.3991, acc=10472/10975 (95.42%)
+Epoch 168 [0/84843] Loss: 0.355529
+Epoch 168 [35000/84843] Loss: 0.362751
+Epoch 168 [70000/84843] Loss: 0.428689
+Epoch 168 - Avg Loss: 0.400696 | Train Acc: 94.95%
+Val: loss=0.3966, acc=10473/10975 (95.43%)
+Epoch 169 [0/84843] Loss: 0.543762
+Epoch 169 [35000/84843] Loss: 0.288568
+Epoch 169 [70000/84843] Loss: 0.431647
+Epoch 169 - Avg Loss: 0.399691 | Train Acc: 95.00%
+Val: loss=0.3999, acc=10466/10975 (95.36%)
+Epoch 170 [0/84843] Loss: 0.431013
+Epoch 170 [35000/84843] Loss: 0.451813
+Epoch 170 [70000/84843] Loss: 0.412398
+Epoch 170 - Avg Loss: 0.401257 | Train Acc: 94.90%
+Val: loss=0.3902, acc=10500/10975 (95.67%)
+Epoch 171 [0/84843] Loss: 0.295102
+Epoch 171 [35000/84843] Loss: 0.312734
+Epoch 171 [70000/84843] Loss: 0.366683
+Epoch 171 - Avg Loss: 0.402869 | Train Acc: 94.86%
+Val: loss=0.3957, acc=10480/10975 (95.49%)
+Epoch 172 [0/84843] Loss: 0.318980
+Epoch 172 [35000/84843] Loss: 0.598240
+Epoch 172 [70000/84843] Loss: 0.421256
+Epoch 172 - Avg Loss: 0.400053 | Train Acc: 94.98%
+Val: loss=0.3879, acc=10522/10975 (95.87%)
+saved best: 95.87%
+Epoch 173 [0/84843] Loss: 0.449549
+Epoch 173 [35000/84843] Loss: 0.305305
+Epoch 173 [70000/84843] Loss: 0.375989
+Epoch 173 - Avg Loss: 0.400558 | Train Acc: 94.94%
+Val: loss=0.3884, acc=10498/10975 (95.65%)
+Epoch 174 [0/84843] Loss: 0.461273
+Epoch 174 [35000/84843] Loss: 0.501197
+Epoch 174 [70000/84843] Loss: 0.379733
+Epoch 174 - Avg Loss: 0.396044 | Train Acc: 95.17%
+Val: loss=0.3859, acc=10514/10975 (95.80%)
+Epoch 175 [0/84843] Loss: 0.339783
+Epoch 175 [35000/84843] Loss: 0.319715
+Epoch 175 [70000/84843] Loss: 0.422551
+Epoch 175 - Avg Loss: 0.400523 | Train Acc: 94.82%
+Val: loss=0.3944, acc=10481/10975 (95.50%)
+Epoch 176 [0/84843] Loss: 0.332679
+Epoch 176 [35000/84843] Loss: 0.380987
+Epoch 176 [70000/84843] Loss: 0.545467
+Epoch 176 - Avg Loss: 0.397571 | Train Acc: 95.03%
+Val: loss=0.3888, acc=10508/10975 (95.74%)
+Epoch 177 [0/84843] Loss: 0.345126
+Epoch 177 [35000/84843] Loss: 0.447184
+Epoch 177 [70000/84843] Loss: 0.341045
+Epoch 177 - Avg Loss: 0.398267 | Train Acc: 94.98%
+Val: loss=0.3898, acc=10507/10975 (95.74%)
+Epoch 178 [0/84843] Loss: 0.478169
+Epoch 178 [35000/84843] Loss: 0.338596
+Epoch 178 [70000/84843] Loss: 0.430732
+Epoch 178 - Avg Loss: 0.401983 | Train Acc: 94.81%
+Val: loss=0.3953, acc=10486/10975 (95.54%)
+Epoch 179 [0/84843] Loss: 0.349189
+Epoch 179 [35000/84843] Loss: 0.455673
+Epoch 179 [70000/84843] Loss: 0.382867
+Epoch 179 - Avg Loss: 0.396081 | Train Acc: 95.13%
+Val: loss=0.3981, acc=10473/10975 (95.43%)
+Epoch 180 [0/84843] Loss: 0.388680
+Epoch 180 [35000/84843] Loss: 0.293580
+Epoch 180 [70000/84843] Loss: 0.411001
+Epoch 180 - Avg Loss: 0.397488 | Train Acc: 95.10%
+Val: loss=0.3916, acc=10503/10975 (95.70%)
+Epoch 181 [0/84843] Loss: 0.295579
+Epoch 181 [35000/84843] Loss: 0.335285
+Epoch 181 [70000/84843] Loss: 0.279896
+Epoch 181 - Avg Loss: 0.397716 | Train Acc: 95.05%
+Val: loss=0.3986, acc=10469/10975 (95.39%)
+Epoch 182 [0/84843] Loss: 0.432256
+Epoch 182 [35000/84843] Loss: 0.379617
+Epoch 182 [70000/84843] Loss: 0.311848
+Epoch 182 - Avg Loss: 0.398278 | Train Acc: 95.04%
+Val: loss=0.3958, acc=10496/10975 (95.64%)
+Epoch 183 [0/84843] Loss: 0.387954
+Epoch 183 [35000/84843] Loss: 0.349496
+Epoch 183 [70000/84843] Loss: 0.345840
+Epoch 183 - Avg Loss: 0.396659 | Train Acc: 95.08%
+Val: loss=0.3882, acc=10505/10975 (95.72%)
+Epoch 184 [0/84843] Loss: 0.377965
+Epoch 184 [35000/84843] Loss: 0.417354
+Epoch 184 [70000/84843] Loss: 0.340243
+Epoch 184 - Avg Loss: 0.397034 | Train Acc: 95.05%
+Val: loss=0.3921, acc=10484/10975 (95.53%)
+Epoch 185 [0/84843] Loss: 0.311734
+Epoch 185 [35000/84843] Loss: 0.402241
+Epoch 185 [70000/84843] Loss: 0.412084
+Epoch 185 - Avg Loss: 0.398096 | Train Acc: 95.00%
+Val: loss=0.3995, acc=10475/10975 (95.44%)
+Epoch 186 [0/84843] Loss: 0.353112
+Epoch 186 [35000/84843] Loss: 0.452365
+Epoch 186 [70000/84843] Loss: 0.341464
+Epoch 186 - Avg Loss: 0.396771 | Train Acc: 95.07%
+Val: loss=0.3857, acc=10519/10975 (95.85%)
+Epoch 187 [0/84843] Loss: 0.456392
+Epoch 187 [35000/84843] Loss: 0.341731
+Epoch 187 [70000/84843] Loss: 0.416824
+Epoch 187 - Avg Loss: 0.395168 | Train Acc: 95.08%
+Val: loss=0.3886, acc=10526/10975 (95.91%)
+saved best: 95.91%
+Epoch 188 [0/84843] Loss: 0.300846
+Epoch 188 [35000/84843] Loss: 0.328429
+Epoch 188 [70000/84843] Loss: 0.346234
+Epoch 188 - Avg Loss: 0.396006 | Train Acc: 95.09%
+Val: loss=0.3889, acc=10505/10975 (95.72%)
+Epoch 189 [0/84843] Loss: 0.385982
+Epoch 189 [35000/84843] Loss: 0.296899
+Epoch 189 [70000/84843] Loss: 0.408505
+Epoch 189 - Avg Loss: 0.393568 | Train Acc: 95.19%
+Val: loss=0.3878, acc=10520/10975 (95.85%)
+Epoch 190 [0/84843] Loss: 0.315116
+Epoch 190 [35000/84843] Loss: 0.384479
+Epoch 190 [70000/84843] Loss: 0.368640
+Epoch 190 - Avg Loss: 0.394211 | Train Acc: 95.15%
+Val: loss=0.3937, acc=10494/10975 (95.62%)
+Epoch 191 [0/84843] Loss: 0.398568
+Epoch 191 [35000/84843] Loss: 0.326224
+Epoch 191 [70000/84843] Loss: 0.327879
+Epoch 191 - Avg Loss: 0.394818 | Train Acc: 95.10%
+Val: loss=0.3936, acc=10506/10975 (95.73%)
+Epoch 192 [0/84843] Loss: 0.365368
+Epoch 192 [35000/84843] Loss: 0.325429
+Epoch 192 [70000/84843] Loss: 0.340965
+Epoch 192 - Avg Loss: 0.394426 | Train Acc: 95.12%
+Val: loss=0.3917, acc=10496/10975 (95.64%)
+Epoch 193 [0/84843] Loss: 0.540016
+Epoch 193 [35000/84843] Loss: 0.448064
+Epoch 193 [70000/84843] Loss: 0.359035
+Epoch 193 - Avg Loss: 0.392188 | Train Acc: 95.28%
+Val: loss=0.3823, acc=10532/10975 (95.96%)
+saved best: 95.96%
+Epoch 194 [0/84843] Loss: 0.356399
+Epoch 194 [35000/84843] Loss: 0.322066
+Epoch 194 [70000/84843] Loss: 0.500104
+Epoch 194 - Avg Loss: 0.394233 | Train Acc: 95.10%
+Val: loss=0.3949, acc=10483/10975 (95.52%)
+Epoch 195 [0/84843] Loss: 0.361993
+Epoch 195 [35000/84843] Loss: 0.367815
+Epoch 195 [70000/84843] Loss: 0.446391
+Epoch 195 - Avg Loss: 0.392284 | Train Acc: 95.28%
+Val: loss=0.3907, acc=10492/10975 (95.60%)
+Epoch 196 [0/84843] Loss: 0.312838
+Epoch 196 [35000/84843] Loss: 0.476884
+Epoch 196 [70000/84843] Loss: 0.398784
+Epoch 196 - Avg Loss: 0.392973 | Train Acc: 95.21%
+Val: loss=0.4160, acc=10391/10975 (94.68%)
+Epoch 197 [0/84843] Loss: 0.397565
+Epoch 197 [35000/84843] Loss: 0.342091
+Epoch 197 [70000/84843] Loss: 0.292550
+Epoch 197 - Avg Loss: 0.394120 | Train Acc: 95.18%
+Val: loss=0.3917, acc=10504/10975 (95.71%)
+Epoch 198 [0/84843] Loss: 0.312665
+Epoch 198 [35000/84843] Loss: 0.392999
+Epoch 198 [70000/84843] Loss: 0.380154
+Epoch 198 - Avg Loss: 0.394333 | Train Acc: 95.15%
+Val: loss=0.3848, acc=10521/10975 (95.86%)
+Epoch 199 [0/84843] Loss: 0.489828
+Epoch 199 [35000/84843] Loss: 0.453590
+Epoch 199 [70000/84843] Loss: 0.376451
+Epoch 199 - Avg Loss: 0.391497 | Train Acc: 95.25%
+Val: loss=0.3924, acc=10480/10975 (95.49%)
+Epoch 200 [0/84843] Loss: 0.494535
+Epoch 200 [35000/84843] Loss: 0.369311
+Epoch 200 [70000/84843] Loss: 0.458142
+Epoch 200 - Avg Loss: 0.392831 | Train Acc: 95.22%
+Val: loss=0.3957, acc=10482/10975 (95.51%)
+Epoch 201 [0/84843] Loss: 0.410291
+Epoch 201 [35000/84843] Loss: 0.401886
+Epoch 201 [70000/84843] Loss: 0.354649
+Epoch 201 - Avg Loss: 0.394077 | Train Acc: 95.13%
+Val: loss=0.3899, acc=10501/10975 (95.68%)
+Epoch 202 [0/84843] Loss: 0.359846
+Epoch 202 [35000/84843] Loss: 0.290676
+Epoch 202 [70000/84843] Loss: 0.398498
+Epoch 202 - Avg Loss: 0.393599 | Train Acc: 95.20%
+Val: loss=0.3883, acc=10515/10975 (95.81%)
+Epoch 203 [0/84843] Loss: 0.607420
+Epoch 203 [35000/84843] Loss: 0.357594
+Epoch 203 [70000/84843] Loss: 0.387596
+Epoch 203 - Avg Loss: 0.389617 | Train Acc: 95.41%
+Val: loss=0.3899, acc=10505/10975 (95.72%)
+Epoch 204 [0/84843] Loss: 0.349597
+Epoch 204 [35000/84843] Loss: 0.288421
+Epoch 204 [70000/84843] Loss: 0.371677
+Epoch 204 - Avg Loss: 0.390847 | Train Acc: 95.31%
+Val: loss=0.3833, acc=10529/10975 (95.94%)
+Epoch 205 [0/84843] Loss: 0.389787
+Epoch 205 [35000/84843] Loss: 0.302014
+Epoch 205 [70000/84843] Loss: 0.331205
+Epoch 205 - Avg Loss: 0.391785 | Train Acc: 95.32%
+Val: loss=0.3921, acc=10495/10975 (95.63%)
+Epoch 206 [0/84843] Loss: 0.391772
+Epoch 206 [35000/84843] Loss: 0.359291
+Epoch 206 [70000/84843] Loss: 0.410696
+Epoch 206 - Avg Loss: 0.391824 | Train Acc: 95.24%
+Val: loss=0.3957, acc=10480/10975 (95.49%)
+Epoch 207 [0/84843] Loss: 0.379658
+Epoch 207 [35000/84843] Loss: 0.454727
+Epoch 207 [70000/84843] Loss: 0.299724
+Epoch 207 - Avg Loss: 0.391167 | Train Acc: 95.29%
+Val: loss=0.3919, acc=10494/10975 (95.62%)
+Epoch 208 [0/84843] Loss: 0.582067
+Epoch 208 [35000/84843] Loss: 0.455394
+Epoch 208 [70000/84843] Loss: 0.442405
+Epoch 208 - Avg Loss: 0.388073 | Train Acc: 95.43%
+Val: loss=0.3985, acc=10482/10975 (95.51%)
+Epoch 209 [0/84843] Loss: 0.462776
+Epoch 209 [35000/84843] Loss: 0.459654
+Epoch 209 [70000/84843] Loss: 0.316783
+Epoch 209 - Avg Loss: 0.387892 | Train Acc: 95.44%
+Val: loss=0.3919, acc=10504/10975 (95.71%)
+Epoch 210 [0/84843] Loss: 0.339599
+Epoch 210 [35000/84843] Loss: 0.501359
+Epoch 210 [70000/84843] Loss: 0.476019
+Epoch 210 - Avg Loss: 0.389162 | Train Acc: 95.34%
+Val: loss=0.3927, acc=10490/10975 (95.58%)
+Epoch 211 [0/84843] Loss: 0.292872
+Epoch 211 [35000/84843] Loss: 0.397140
+Epoch 211 [70000/84843] Loss: 0.414783
+Epoch 211 - Avg Loss: 0.388234 | Train Acc: 95.43%
+Val: loss=0.3900, acc=10510/10975 (95.76%)
+Epoch 212 [0/84843] Loss: 0.389013
+Epoch 212 [35000/84843] Loss: 0.361041
+Epoch 212 [70000/84843] Loss: 0.368730
+Epoch 212 - Avg Loss: 0.390006 | Train Acc: 95.37%
+Val: loss=0.3877, acc=10506/10975 (95.73%)
+Epoch 213 [0/84843] Loss: 0.377342
+Epoch 213 [35000/84843] Loss: 0.302863
+Epoch 213 [70000/84843] Loss: 0.314210
+Epoch 213 - Avg Loss: 0.389972 | Train Acc: 95.31%
+Val: loss=0.3862, acc=10510/10975 (95.76%)
+Epoch 214 [0/84843] Loss: 0.300969
+Epoch 214 [35000/84843] Loss: 0.421269
+Epoch 214 [70000/84843] Loss: 0.323861
+Epoch 214 - Avg Loss: 0.390713 | Train Acc: 95.29%
+Val: loss=0.3864, acc=10509/10975 (95.75%)
+Epoch 215 [0/84843] Loss: 0.305335
+Epoch 215 [35000/84843] Loss: 0.460733
+Epoch 215 [70000/84843] Loss: 0.304726
+Epoch 215 - Avg Loss: 0.387582 | Train Acc: 95.47%
+Val: loss=0.3827, acc=10547/10975 (96.10%)
+saved best: 96.10%
+Epoch 216 [0/84843] Loss: 0.444574
+Epoch 216 [35000/84843] Loss: 0.329670
+Epoch 216 [70000/84843] Loss: 0.284985
+Epoch 216 - Avg Loss: 0.391100 | Train Acc: 95.30%
+Val: loss=0.3910, acc=10502/10975 (95.69%)
+Epoch 217 [0/84843] Loss: 0.359690
+Epoch 217 [35000/84843] Loss: 0.354106
+Epoch 217 [70000/84843] Loss: 0.318786
+Epoch 217 - Avg Loss: 0.386106 | Train Acc: 95.48%
+Val: loss=0.3892, acc=10510/10975 (95.76%)
+Epoch 218 [0/84843] Loss: 0.302773
+Epoch 218 [35000/84843] Loss: 0.408663
+Epoch 218 [70000/84843] Loss: 0.409425
+Epoch 218 - Avg Loss: 0.386938 | Train Acc: 95.50%
+Val: loss=0.3950, acc=10490/10975 (95.58%)
+Epoch 219 [0/84843] Loss: 0.364932
+Epoch 219 [35000/84843] Loss: 0.420223
+Epoch 219 [70000/84843] Loss: 0.448790
+Epoch 219 - Avg Loss: 0.385951 | Train Acc: 95.48%
+Val: loss=0.3877, acc=10511/10975 (95.77%)
+Epoch 220 [0/84843] Loss: 0.391302
+Epoch 220 [35000/84843] Loss: 0.295422
+Epoch 220 [70000/84843] Loss: 0.399183
+Epoch 220 - Avg Loss: 0.386546 | Train Acc: 95.41%
+Val: loss=0.3890, acc=10510/10975 (95.76%)
+Epoch 221 [0/84843] Loss: 0.338622
+Epoch 221 [35000/84843] Loss: 0.633667
+Epoch 221 [70000/84843] Loss: 0.394988
+Epoch 221 - Avg Loss: 0.388473 | Train Acc: 95.40%
+Val: loss=0.3950, acc=10480/10975 (95.49%)
+Epoch 222 [0/84843] Loss: 0.437195
+Epoch 222 [35000/84843] Loss: 0.486552
+Epoch 222 [70000/84843] Loss: 0.397953
+Epoch 222 - Avg Loss: 0.389442 | Train Acc: 95.37%
+Val: loss=0.3837, acc=10539/10975 (96.03%)
+Epoch 223 [0/84843] Loss: 0.465572
+Epoch 223 [35000/84843] Loss: 0.352008
+Epoch 223 [70000/84843] Loss: 0.386212
+Epoch 223 - Avg Loss: 0.389016 | Train Acc: 95.34%
+Val: loss=0.3852, acc=10530/10975 (95.95%)
+Epoch 224 [0/84843] Loss: 0.283207
+Epoch 224 [35000/84843] Loss: 0.500547
+Epoch 224 [70000/84843] Loss: 0.385433
+Epoch 224 - Avg Loss: 0.384522 | Train Acc: 95.57%
+Val: loss=0.3898, acc=10510/10975 (95.76%)
+Epoch 225 [0/84843] Loss: 0.331558
+Epoch 225 [35000/84843] Loss: 0.365795
+Epoch 225 [70000/84843] Loss: 0.371825
+Epoch 225 - Avg Loss: 0.386670 | Train Acc: 95.48%
+Val: loss=0.3877, acc=10522/10975 (95.87%)
+Epoch 226 [0/84843] Loss: 0.372975
+Epoch 226 [35000/84843] Loss: 0.334512
+Epoch 226 [70000/84843] Loss: 0.369780
+Epoch 226 - Avg Loss: 0.387994 | Train Acc: 95.41%
+Val: loss=0.3813, acc=10546/10975 (96.09%)
+Epoch 227 [0/84843] Loss: 0.494791
+Epoch 227 [35000/84843] Loss: 0.480262
+Epoch 227 [70000/84843] Loss: 0.330353
+Epoch 227 - Avg Loss: 0.387262 | Train Acc: 95.46%
+Val: loss=0.3847, acc=10521/10975 (95.86%)
+Epoch 228 [0/84843] Loss: 0.307252
+Epoch 228 [35000/84843] Loss: 0.287666
+Epoch 228 [70000/84843] Loss: 0.371346
+Epoch 228 - Avg Loss: 0.386254 | Train Acc: 95.46%
+Val: loss=0.3858, acc=10516/10975 (95.82%)
+Epoch 229 [0/84843] Loss: 0.639073
+Epoch 229 [35000/84843] Loss: 0.342924
+Epoch 229 [70000/84843] Loss: 0.471636
+Epoch 229 - Avg Loss: 0.388479 | Train Acc: 95.41%
+Val: loss=0.3902, acc=10517/10975 (95.83%)
+Epoch 230 [0/84843] Loss: 0.565369
+Epoch 230 [35000/84843] Loss: 0.432995
+Epoch 230 [70000/84843] Loss: 0.406186
+Epoch 230 - Avg Loss: 0.384923 | Train Acc: 95.55%
+Val: loss=0.3896, acc=10508/10975 (95.74%)
+Epoch 231 [0/84843] Loss: 0.444542
+Epoch 231 [35000/84843] Loss: 0.323036
+Epoch 231 [70000/84843] Loss: 0.355719
+Epoch 231 - Avg Loss: 0.383309 | Train Acc: 95.59%
+Val: loss=0.3865, acc=10540/10975 (96.04%)
+Epoch 232 [0/84843] Loss: 0.299664
+Epoch 232 [35000/84843] Loss: 0.304121
+Epoch 232 [70000/84843] Loss: 0.349915
+Epoch 232 - Avg Loss: 0.385091 | Train Acc: 95.48%
+Val: loss=0.3783, acc=10548/10975 (96.11%)
+saved best: 96.11%
+Epoch 233 [0/84843] Loss: 0.323742
+Epoch 233 [35000/84843] Loss: 0.364033
+Epoch 233 [70000/84843] Loss: 0.424659
+Epoch 233 - Avg Loss: 0.382947 | Train Acc: 95.54%
+Val: loss=0.3870, acc=10507/10975 (95.74%)
+Epoch 234 [0/84843] Loss: 0.368998
+Epoch 234 [35000/84843] Loss: 0.387377
+Epoch 234 [70000/84843] Loss: 0.375653
+Epoch 234 - Avg Loss: 0.385769 | Train Acc: 95.43%
+Val: loss=0.3837, acc=10525/10975 (95.90%)
+Epoch 235 [0/84843] Loss: 0.327015
+Epoch 235 [35000/84843] Loss: 0.349919
+Epoch 235 [70000/84843] Loss: 0.322193
+Epoch 235 - Avg Loss: 0.382915 | Train Acc: 95.59%
+Val: loss=0.3853, acc=10497/10975 (95.64%)
+Epoch 236 [0/84843] Loss: 0.323599
+Epoch 236 [35000/84843] Loss: 0.471480
+Epoch 236 [70000/84843] Loss: 0.299243
+Epoch 236 - Avg Loss: 0.383237 | Train Acc: 95.55%
+Val: loss=0.3839, acc=10528/10975 (95.93%)
+Epoch 237 [0/84843] Loss: 0.456134
+Epoch 237 [35000/84843] Loss: 0.364349
+Epoch 237 [70000/84843] Loss: 0.340662
+Epoch 237 - Avg Loss: 0.384546 | Train Acc: 95.52%
+Val: loss=0.3836, acc=10523/10975 (95.88%)
+Epoch 238 [0/84843] Loss: 0.290460
+Epoch 238 [35000/84843] Loss: 0.415747
+Epoch 238 [70000/84843] Loss: 0.326208
+Epoch 238 - Avg Loss: 0.384611 | Train Acc: 95.56%
+Val: loss=0.3827, acc=10546/10975 (96.09%)
+Epoch 239 [0/84843] Loss: 0.374036
+Epoch 239 [35000/84843] Loss: 0.390357
+Epoch 239 [70000/84843] Loss: 0.438596
+Epoch 239 - Avg Loss: 0.379994 | Train Acc: 95.76%
+Val: loss=0.3785, acc=10550/10975 (96.13%)
+saved best: 96.13%
+Epoch 240 [0/84843] Loss: 0.295037
+Epoch 240 [35000/84843] Loss: 0.490934
+Epoch 240 [70000/84843] Loss: 0.433836
+Epoch 240 - Avg Loss: 0.383531 | Train Acc: 95.52%
+Val: loss=0.3877, acc=10510/10975 (95.76%)
+Epoch 241 [0/84843] Loss: 0.425384
+Epoch 241 [35000/84843] Loss: 0.356269
+Epoch 241 [70000/84843] Loss: 0.351060
+Epoch 241 - Avg Loss: 0.383706 | Train Acc: 95.58%
+Val: loss=0.3861, acc=10528/10975 (95.93%)
+Epoch 242 [0/84843] Loss: 0.455332
+Epoch 242 [35000/84843] Loss: 0.348788
+Epoch 242 [70000/84843] Loss: 0.311386
+Epoch 242 - Avg Loss: 0.381627 | Train Acc: 95.65%
+Val: loss=0.3794, acc=10525/10975 (95.90%)
+Epoch 243 [0/84843] Loss: 0.493471
+Epoch 243 [35000/84843] Loss: 0.515394
+Epoch 243 [70000/84843] Loss: 0.305921
+Epoch 243 - Avg Loss: 0.380459 | Train Acc: 95.68%
+Val: loss=0.3837, acc=10522/10975 (95.87%)
+Epoch 244 [0/84843] Loss: 0.383167
+Epoch 244 [35000/84843] Loss: 0.352913
+Epoch 244 [70000/84843] Loss: 0.641265
+Epoch 244 - Avg Loss: 0.381271 | Train Acc: 95.65%
+Val: loss=0.3790, acc=10542/10975 (96.05%)
+Epoch 245 [0/84843] Loss: 0.294169
+Epoch 245 [35000/84843] Loss: 0.401031
+Epoch 245 [70000/84843] Loss: 0.430843
+Epoch 245 - Avg Loss: 0.383081 | Train Acc: 95.61%
+Val: loss=0.3810, acc=10545/10975 (96.08%)
+Epoch 246 [0/84843] Loss: 0.285249
+Epoch 246 [35000/84843] Loss: 0.367559
+Epoch 246 [70000/84843] Loss: 0.305690
+Epoch 246 - Avg Loss: 0.379198 | Train Acc: 95.74%
+Val: loss=0.3801, acc=10553/10975 (96.15%)
+saved best: 96.15%
+Epoch 247 [0/84843] Loss: 0.471904
+Epoch 247 [35000/84843] Loss: 0.532390
+Epoch 247 [70000/84843] Loss: 0.411622
+Epoch 247 - Avg Loss: 0.382367 | Train Acc: 95.62%
+Val: loss=0.3945, acc=10495/10975 (95.63%)
+Epoch 248 [0/84843] Loss: 0.299343
+Epoch 248 [35000/84843] Loss: 0.410199
+Epoch 248 [70000/84843] Loss: 0.286340
+Epoch 248 - Avg Loss: 0.378122 | Train Acc: 95.80%
+Val: loss=0.3854, acc=10513/10975 (95.79%)
+Epoch 249 [0/84843] Loss: 0.282158
+Epoch 249 [35000/84843] Loss: 0.353133
+Epoch 249 [70000/84843] Loss: 0.389981
+Epoch 249 - Avg Loss: 0.379475 | Train Acc: 95.76%
+Val: loss=0.3790, acc=10555/10975 (96.17%)
+saved best: 96.17%
+Epoch 250 [0/84843] Loss: 0.354241
+Epoch 250 [35000/84843] Loss: 0.303705
+Epoch 250 [70000/84843] Loss: 0.367785
+Epoch 250 - Avg Loss: 0.379339 | Train Acc: 95.79%
+Val: loss=0.3922, acc=10514/10975 (95.80%)
+Epoch 251 [0/84843] Loss: 0.303148
+Epoch 251 [35000/84843] Loss: 0.369496
+Epoch 251 [70000/84843] Loss: 0.346080
+Epoch 251 - Avg Loss: 0.381003 | Train Acc: 95.62%
+Val: loss=0.3821, acc=10522/10975 (95.87%)
+Epoch 252 [0/84843] Loss: 0.489109
+Epoch 252 [35000/84843] Loss: 0.364134
+Epoch 252 [70000/84843] Loss: 0.335033
+Epoch 252 - Avg Loss: 0.377986 | Train Acc: 95.85%
+Val: loss=0.3827, acc=10533/10975 (95.97%)
+Epoch 253 [0/84843] Loss: 0.356850
+Epoch 253 [35000/84843] Loss: 0.381598
+Epoch 253 [70000/84843] Loss: 0.404275
+Epoch 253 - Avg Loss: 0.377538 | Train Acc: 95.78%
+Val: loss=0.3803, acc=10540/10975 (96.04%)
+Epoch 254 [0/84843] Loss: 0.296161
+Epoch 254 [35000/84843] Loss: 0.542349
+Epoch 254 [70000/84843] Loss: 0.452619
+Epoch 254 - Avg Loss: 0.376129 | Train Acc: 95.90%
+Val: loss=0.3740, acc=10554/10975 (96.16%)
+Epoch 255 [0/84843] Loss: 0.326621
+Epoch 255 [35000/84843] Loss: 0.404555
+Epoch 255 [70000/84843] Loss: 0.335595
+Epoch 255 - Avg Loss: 0.378455 | Train Acc: 95.81%
+Val: loss=0.3830, acc=10530/10975 (95.95%)
+Epoch 256 [0/84843] Loss: 0.316580
+Epoch 256 [35000/84843] Loss: 0.354702
+Epoch 256 [70000/84843] Loss: 0.343678
+Epoch 256 - Avg Loss: 0.378840 | Train Acc: 95.72%
+Val: loss=0.3814, acc=10520/10975 (95.85%)
+Epoch 257 [0/84843] Loss: 0.367568
+Epoch 257 [35000/84843] Loss: 0.464031
+Epoch 257 [70000/84843] Loss: 0.442733
+Epoch 257 - Avg Loss: 0.378605 | Train Acc: 95.73%
+Val: loss=0.3800, acc=10541/10975 (96.05%)
+Epoch 258 [0/84843] Loss: 0.366732
+Epoch 258 [35000/84843] Loss: 0.520777
+Epoch 258 [70000/84843] Loss: 0.418664
+Epoch 258 - Avg Loss: 0.376706 | Train Acc: 95.86%
+Val: loss=0.3806, acc=10538/10975 (96.02%)
+Epoch 259 [0/84843] Loss: 0.422803
+Epoch 259 [35000/84843] Loss: 0.346146
+Epoch 259 [70000/84843] Loss: 0.365523
+Epoch 259 - Avg Loss: 0.375342 | Train Acc: 95.87%
+Val: loss=0.3760, acc=10571/10975 (96.32%)
+saved best: 96.32%
+Epoch 260 [0/84843] Loss: 0.339219
+Epoch 260 [35000/84843] Loss: 0.348018
+Epoch 260 [70000/84843] Loss: 0.372509
+Epoch 260 - Avg Loss: 0.375604 | Train Acc: 95.85%
+Val: loss=0.3816, acc=10546/10975 (96.09%)
+Epoch 261 [0/84843] Loss: 0.409164
+Epoch 261 [35000/84843] Loss: 0.296081
+Epoch 261 [70000/84843] Loss: 0.439542
+Epoch 261 - Avg Loss: 0.377233 | Train Acc: 95.83%
+Val: loss=0.3803, acc=10539/10975 (96.03%)
+Epoch 262 [0/84843] Loss: 0.336036
+Epoch 262 [35000/84843] Loss: 0.366334
+Epoch 262 [70000/84843] Loss: 0.362554
+Epoch 262 - Avg Loss: 0.377359 | Train Acc: 95.77%
+Val: loss=0.3776, acc=10556/10975 (96.18%)
+Epoch 263 [0/84843] Loss: 0.465875
+Epoch 263 [35000/84843] Loss: 0.463826
+Epoch 263 [70000/84843] Loss: 0.395491
+Epoch 263 - Avg Loss: 0.375699 | Train Acc: 95.90%
+Val: loss=0.3903, acc=10494/10975 (95.62%)
+Epoch 264 [0/84843] Loss: 0.409642
+Epoch 264 [35000/84843] Loss: 0.358037
+Epoch 264 [70000/84843] Loss: 0.304085
+Epoch 264 - Avg Loss: 0.376624 | Train Acc: 95.84%
+Val: loss=0.3847, acc=10529/10975 (95.94%)
+Epoch 265 [0/84843] Loss: 0.494565
+Epoch 265 [35000/84843] Loss: 0.334583
+Epoch 265 [70000/84843] Loss: 0.313875
+Epoch 265 - Avg Loss: 0.374149 | Train Acc: 95.93%
+Val: loss=0.3830, acc=10519/10975 (95.85%)
+Epoch 266 [0/84843] Loss: 0.401331
+Epoch 266 [35000/84843] Loss: 0.388124
+Epoch 266 [70000/84843] Loss: 0.329366
+Epoch 266 - Avg Loss: 0.377771 | Train Acc: 95.84%
+Val: loss=0.3788, acc=10546/10975 (96.09%)
+Epoch 267 [0/84843] Loss: 0.448518
+Epoch 267 [35000/84843] Loss: 0.375227
+Epoch 267 [70000/84843] Loss: 0.411855
+Epoch 267 - Avg Loss: 0.373245 | Train Acc: 95.96%
+Val: loss=0.3843, acc=10530/10975 (95.95%)
+Epoch 268 [0/84843] Loss: 0.399934
+Epoch 268 [35000/84843] Loss: 0.467692
+Epoch 268 [70000/84843] Loss: 0.364802
+Epoch 268 - Avg Loss: 0.376771 | Train Acc: 95.78%
+Val: loss=0.3745, acc=10563/10975 (96.25%)
+Epoch 269 [0/84843] Loss: 0.295521
+Epoch 269 [35000/84843] Loss: 0.486623
+Epoch 269 [70000/84843] Loss: 0.292412
+Epoch 269 - Avg Loss: 0.375157 | Train Acc: 95.89%
+Val: loss=0.3857, acc=10515/10975 (95.81%)
+Epoch 270 [0/84843] Loss: 0.453479
+Epoch 270 [35000/84843] Loss: 0.390456
+Epoch 270 [70000/84843] Loss: 0.301671
+Epoch 270 - Avg Loss: 0.373955 | Train Acc: 95.91%
+Val: loss=0.3776, acc=10560/10975 (96.22%)
+Epoch 271 [0/84843] Loss: 0.490510
+Epoch 271 [35000/84843] Loss: 0.409846
+Epoch 271 [70000/84843] Loss: 0.370107
+Epoch 271 - Avg Loss: 0.375029 | Train Acc: 95.87%
+Val: loss=0.3799, acc=10547/10975 (96.10%)
+Epoch 272 [0/84843] Loss: 0.321769
+Epoch 272 [35000/84843] Loss: 0.441420
+Epoch 272 [70000/84843] Loss: 0.378669
+Epoch 272 - Avg Loss: 0.376889 | Train Acc: 95.77%
+Val: loss=0.3780, acc=10556/10975 (96.18%)
+Epoch 273 [0/84843] Loss: 0.403924
+Epoch 273 [35000/84843] Loss: 0.308970
+Epoch 273 [70000/84843] Loss: 0.432944
+Epoch 273 - Avg Loss: 0.373701 | Train Acc: 95.88%
+Val: loss=0.3776, acc=10553/10975 (96.15%)
+Epoch 274 [0/84843] Loss: 0.472121
+Epoch 274 [35000/84843] Loss: 0.364813
+Epoch 274 [70000/84843] Loss: 0.325866
+Epoch 274 - Avg Loss: 0.375109 | Train Acc: 95.89%
+Val: loss=0.3761, acc=10559/10975 (96.21%)
+Epoch 275 [0/84843] Loss: 0.412933
+Epoch 275 [35000/84843] Loss: 0.361383
+Epoch 275 [70000/84843] Loss: 0.295721
+Epoch 275 - Avg Loss: 0.373808 | Train Acc: 95.97%
+Val: loss=0.3741, acc=10576/10975 (96.36%)
+saved best: 96.36%
+Epoch 276 [0/84843] Loss: 0.420331
+Epoch 276 [35000/84843] Loss: 0.354843
+Epoch 276 [70000/84843] Loss: 0.429064
+Epoch 276 - Avg Loss: 0.375153 | Train Acc: 95.88%
+Val: loss=0.3787, acc=10556/10975 (96.18%)
+Epoch 277 [0/84843] Loss: 0.339584
+Epoch 277 [35000/84843] Loss: 0.425806
+Epoch 277 [70000/84843] Loss: 0.399940
+Epoch 277 - Avg Loss: 0.370404 | Train Acc: 96.07%
+Val: loss=0.3763, acc=10565/10975 (96.26%)
+Epoch 278 [0/84843] Loss: 0.310118
+Epoch 278 [35000/84843] Loss: 0.334514
+Epoch 278 [70000/84843] Loss: 0.391179
+Epoch 278 - Avg Loss: 0.375681 | Train Acc: 95.83%
+Val: loss=0.3823, acc=10558/10975 (96.20%)
+Epoch 279 [0/84843] Loss: 0.431542
+Epoch 279 [35000/84843] Loss: 0.311426
+Epoch 279 [70000/84843] Loss: 0.414183
+Epoch 279 - Avg Loss: 0.370571 | Train Acc: 96.12%
+Val: loss=0.3766, acc=10579/10975 (96.39%)
+saved best: 96.39%
+Epoch 280 [0/84843] Loss: 0.289802
+Epoch 280 [35000/84843] Loss: 0.350046
+Epoch 280 [70000/84843] Loss: 0.352994
+Epoch 280 - Avg Loss: 0.372946 | Train Acc: 95.99%
+Val: loss=0.3795, acc=10529/10975 (95.94%)
+Epoch 281 [0/84843] Loss: 0.372055
+Epoch 281 [35000/84843] Loss: 0.358551
+Epoch 281 [70000/84843] Loss: 0.300162
+Epoch 281 - Avg Loss: 0.370291 | Train Acc: 96.10%
+Val: loss=0.3757, acc=10547/10975 (96.10%)
+Epoch 282 [0/84843] Loss: 0.338838
+Epoch 282 [35000/84843] Loss: 0.437282
+Epoch 282 [70000/84843] Loss: 0.341198
+Epoch 282 - Avg Loss: 0.372620 | Train Acc: 95.94%
+Val: loss=0.3791, acc=10545/10975 (96.08%)
+Epoch 283 [0/84843] Loss: 0.348275
+Epoch 283 [35000/84843] Loss: 0.328850
+Epoch 283 [70000/84843] Loss: 0.288932
+Epoch 283 - Avg Loss: 0.371773 | Train Acc: 96.06%
+Val: loss=0.3781, acc=10553/10975 (96.15%)
+Epoch 284 [0/84843] Loss: 0.361404
+Epoch 284 [35000/84843] Loss: 0.347885
+Epoch 284 [70000/84843] Loss: 0.471744
+Epoch 284 - Avg Loss: 0.372581 | Train Acc: 96.00%
+Val: loss=0.3831, acc=10545/10975 (96.08%)
+Epoch 285 [0/84843] Loss: 0.398849
+Epoch 285 [35000/84843] Loss: 0.323876
+Epoch 285 [70000/84843] Loss: 0.305852
+Epoch 285 - Avg Loss: 0.371790 | Train Acc: 96.04%
+Val: loss=0.3740, acc=10575/10975 (96.36%)
+Epoch 286 [0/84843] Loss: 0.341043
+Epoch 286 [35000/84843] Loss: 0.318578
+Epoch 286 [70000/84843] Loss: 0.322961
+Epoch 286 - Avg Loss: 0.371859 | Train Acc: 96.02%
+Val: loss=0.3786, acc=10558/10975 (96.20%)
+Epoch 287 [0/84843] Loss: 0.325898
+Epoch 287 [35000/84843] Loss: 0.282772
+Epoch 287 [70000/84843] Loss: 0.353964
+Epoch 287 - Avg Loss: 0.370321 | Train Acc: 96.08%
+Val: loss=0.3767, acc=10566/10975 (96.27%)
+Epoch 288 [0/84843] Loss: 0.534068
+Epoch 288 [35000/84843] Loss: 0.441338
+Epoch 288 [70000/84843] Loss: 0.322006
+Epoch 288 - Avg Loss: 0.371045 | Train Acc: 96.06%
+Val: loss=0.3725, acc=10580/10975 (96.40%)
+saved best: 96.40%
+Epoch 289 [0/84843] Loss: 0.291678
+Epoch 289 [35000/84843] Loss: 0.554448
+Epoch 289 [70000/84843] Loss: 0.501072
+Epoch 289 - Avg Loss: 0.370478 | Train Acc: 96.07%
+Val: loss=0.3839, acc=10539/10975 (96.03%)
+Epoch 290 [0/84843] Loss: 0.332123
+Epoch 290 [35000/84843] Loss: 0.419664
+Epoch 290 [70000/84843] Loss: 0.446069
+Epoch 290 - Avg Loss: 0.369628 | Train Acc: 96.10%
+Val: loss=0.3789, acc=10544/10975 (96.07%)
+Epoch 291 [0/84843] Loss: 0.605771
+Epoch 291 [35000/84843] Loss: 0.342991
+Epoch 291 [70000/84843] Loss: 0.322096
+Epoch 291 - Avg Loss: 0.369525 | Train Acc: 96.07%
+Val: loss=0.3794, acc=10564/10975 (96.26%)
+Epoch 292 [0/84843] Loss: 0.289598
+Epoch 292 [35000/84843] Loss: 0.304842
+Epoch 292 [70000/84843] Loss: 0.382301
+Epoch 292 - Avg Loss: 0.369498 | Train Acc: 96.19%
+Val: loss=0.3785, acc=10558/10975 (96.20%)
+Epoch 293 [0/84843] Loss: 0.441998
+Epoch 293 [35000/84843] Loss: 0.298197
+Epoch 293 [70000/84843] Loss: 0.398670
+Epoch 293 - Avg Loss: 0.369583 | Train Acc: 96.13%
+Val: loss=0.3757, acc=10557/10975 (96.19%)
+Epoch 294 [0/84843] Loss: 0.333662
+Epoch 294 [35000/84843] Loss: 0.282633
+Epoch 294 [70000/84843] Loss: 0.355161
+Epoch 294 - Avg Loss: 0.366639 | Train Acc: 96.27%
+Val: loss=0.3777, acc=10553/10975 (96.15%)
+Epoch 295 [0/84843] Loss: 0.424264
+Epoch 295 [35000/84843] Loss: 0.293028
+Epoch 295 [70000/84843] Loss: 0.359455
+Epoch 295 - Avg Loss: 0.371501 | Train Acc: 96.06%
+Val: loss=0.3792, acc=10559/10975 (96.21%)
+Epoch 296 [0/84843] Loss: 0.527855
+Epoch 296 [35000/84843] Loss: 0.389118
+Epoch 296 [70000/84843] Loss: 0.292812
+Epoch 296 - Avg Loss: 0.369408 | Train Acc: 96.18%
+Val: loss=0.3802, acc=10529/10975 (95.94%)
+Epoch 297 [0/84843] Loss: 0.379405
+Epoch 297 [35000/84843] Loss: 0.378226
+Epoch 297 [70000/84843] Loss: 0.520500
+Epoch 297 - Avg Loss: 0.369407 | Train Acc: 96.15%
+Val: loss=0.3762, acc=10554/10975 (96.16%)
+Epoch 298 [0/84843] Loss: 0.420923
+Epoch 298 [35000/84843] Loss: 0.404613
+Epoch 298 [70000/84843] Loss: 0.362340
+Epoch 298 - Avg Loss: 0.368862 | Train Acc: 96.11%
+Val: loss=0.3775, acc=10539/10975 (96.03%)
+Epoch 299 [0/84843] Loss: 0.338371
+Epoch 299 [35000/84843] Loss: 0.358350
+Epoch 299 [70000/84843] Loss: 0.337172
+Epoch 299 - Avg Loss: 0.367871 | Train Acc: 96.14%
+Val: loss=0.3781, acc=10555/10975 (96.17%)
+Epoch 300 [0/84843] Loss: 0.324428
+Epoch 300 [35000/84843] Loss: 0.382228
+Epoch 300 [70000/84843] Loss: 0.324664
+Epoch 300 - Avg Loss: 0.368512 | Train Acc: 96.12%
+Val: loss=0.3780, acc=10555/10975 (96.17%)
+Epoch 301 [0/84843] Loss: 0.358453
+Epoch 301 [35000/84843] Loss: 0.342727
+Epoch 301 [70000/84843] Loss: 0.473173
+Epoch 301 - Avg Loss: 0.370060 | Train Acc: 96.12%
+Val: loss=0.3810, acc=10539/10975 (96.03%)
+Epoch 302 [0/84843] Loss: 0.299693
+Epoch 302 [35000/84843] Loss: 0.303410
+Epoch 302 [70000/84843] Loss: 0.299647
+Epoch 302 - Avg Loss: 0.368373 | Train Acc: 96.16%
+Val: loss=0.3797, acc=10556/10975 (96.18%)
+Epoch 303 [0/84843] Loss: 0.320991
+Epoch 303 [35000/84843] Loss: 0.370101
+Epoch 303 [70000/84843] Loss: 0.321087
+Epoch 303 - Avg Loss: 0.365453 | Train Acc: 96.23%
+Val: loss=0.3811, acc=10522/10975 (95.87%)
+Epoch 304 [0/84843] Loss: 0.388982
+Epoch 304 [35000/84843] Loss: 0.448634
+Epoch 304 [70000/84843] Loss: 0.391256
+Epoch 304 - Avg Loss: 0.368297 | Train Acc: 96.20%
+Val: loss=0.3741, acc=10574/10975 (96.35%)
+Epoch 305 [0/84843] Loss: 0.340835
+Epoch 305 [35000/84843] Loss: 0.326722
+Epoch 305 [70000/84843] Loss: 0.534621
+Epoch 305 - Avg Loss: 0.366837 | Train Acc: 96.27%
+Val: loss=0.3774, acc=10567/10975 (96.28%)
+Epoch 306 [0/84843] Loss: 0.391435
+Epoch 306 [35000/84843] Loss: 0.392177
+Epoch 306 [70000/84843] Loss: 0.347382
+Epoch 306 - Avg Loss: 0.366606 | Train Acc: 96.21%
+Val: loss=0.3802, acc=10556/10975 (96.18%)
+Epoch 307 [0/84843] Loss: 0.336443
+Epoch 307 [35000/84843] Loss: 0.318919
+Epoch 307 [70000/84843] Loss: 0.410959
+Epoch 307 - Avg Loss: 0.363332 | Train Acc: 96.27%
+Val: loss=0.3720, acc=10588/10975 (96.47%)
+saved best: 96.47%
+Epoch 308 [0/84843] Loss: 0.350939
+Epoch 308 [35000/84843] Loss: 0.366985
+Epoch 308 [70000/84843] Loss: 0.396649
+Epoch 308 - Avg Loss: 0.368514 | Train Acc: 96.08%
+Val: loss=0.3790, acc=10569/10975 (96.30%)
+Epoch 309 [0/84843] Loss: 0.302398
+Epoch 309 [35000/84843] Loss: 0.298031
+Epoch 309 [70000/84843] Loss: 0.342074
+Epoch 309 - Avg Loss: 0.364389 | Train Acc: 96.32%
+Val: loss=0.3729, acc=10573/10975 (96.34%)
+Epoch 310 [0/84843] Loss: 0.325428
+Epoch 310 [35000/84843] Loss: 0.272914
+Epoch 310 [70000/84843] Loss: 0.394299
+Epoch 310 - Avg Loss: 0.366914 | Train Acc: 96.16%
+Val: loss=0.3743, acc=10571/10975 (96.32%)
+Epoch 311 [0/84843] Loss: 0.310670
+Epoch 311 [35000/84843] Loss: 0.280775
+Epoch 311 [70000/84843] Loss: 0.378725
+Epoch 311 - Avg Loss: 0.364739 | Train Acc: 96.32%
+Val: loss=0.3752, acc=10564/10975 (96.26%)
+Epoch 312 [0/84843] Loss: 0.479095
+Epoch 312 [35000/84843] Loss: 0.497601
+Epoch 312 [70000/84843] Loss: 0.326882
+Epoch 312 - Avg Loss: 0.367092 | Train Acc: 96.23%
+Val: loss=0.3751, acc=10567/10975 (96.28%)
+Epoch 313 [0/84843] Loss: 0.518541
+Epoch 313 [35000/84843] Loss: 0.320405
+Epoch 313 [70000/84843] Loss: 0.287871
+Epoch 313 - Avg Loss: 0.362974 | Train Acc: 96.39%
+Val: loss=0.3733, acc=10576/10975 (96.36%)
+Epoch 314 [0/84843] Loss: 0.300262
+Epoch 314 [35000/84843] Loss: 0.346216
+Epoch 314 [70000/84843] Loss: 0.291743
+Epoch 314 - Avg Loss: 0.368025 | Train Acc: 96.17%
+Val: loss=0.3738, acc=10569/10975 (96.30%)
+Epoch 315 [0/84843] Loss: 0.345288
+Epoch 315 [35000/84843] Loss: 0.316214
+Epoch 315 [70000/84843] Loss: 0.395354
+Epoch 315 - Avg Loss: 0.364639 | Train Acc: 96.34%
+Val: loss=0.3727, acc=10580/10975 (96.40%)
+Epoch 316 [0/84843] Loss: 0.421383
+Epoch 316 [35000/84843] Loss: 0.357968
+Epoch 316 [70000/84843] Loss: 0.304340
+Epoch 316 - Avg Loss: 0.365002 | Train Acc: 96.33%
+Val: loss=0.3741, acc=10583/10975 (96.43%)
+Epoch 317 [0/84843] Loss: 0.303352
+Epoch 317 [35000/84843] Loss: 0.370131
+Epoch 317 [70000/84843] Loss: 0.473204
+Epoch 317 - Avg Loss: 0.365405 | Train Acc: 96.25%
+Val: loss=0.3775, acc=10556/10975 (96.18%)
+Epoch 318 [0/84843] Loss: 0.274179
+Epoch 318 [35000/84843] Loss: 0.411303
+Epoch 318 [70000/84843] Loss: 0.282504
+Epoch 318 - Avg Loss: 0.366191 | Train Acc: 96.27%
+Val: loss=0.3749, acc=10567/10975 (96.28%)
+Epoch 319 [0/84843] Loss: 0.368631
+Epoch 319 [35000/84843] Loss: 0.363977
+Epoch 319 [70000/84843] Loss: 0.375149
+Epoch 319 - Avg Loss: 0.364046 | Train Acc: 96.33%
+Val: loss=0.3773, acc=10559/10975 (96.21%)
+Epoch 320 [0/84843] Loss: 0.346487
+Epoch 320 [35000/84843] Loss: 0.358878
+Epoch 320 [70000/84843] Loss: 0.271275
+Epoch 320 - Avg Loss: 0.361558 | Train Acc: 96.48%
+Val: loss=0.3748, acc=10570/10975 (96.31%)
+Epoch 321 [0/84843] Loss: 0.538780
+Epoch 321 [35000/84843] Loss: 0.330143
+Epoch 321 [70000/84843] Loss: 0.287891
+Epoch 321 - Avg Loss: 0.365693 | Train Acc: 96.26%
+Val: loss=0.3736, acc=10575/10975 (96.36%)
+Epoch 322 [0/84843] Loss: 0.307148
+Epoch 322 [35000/84843] Loss: 0.317761
+Epoch 322 [70000/84843] Loss: 0.342177
+Epoch 322 - Avg Loss: 0.362511 | Train Acc: 96.43%
+Val: loss=0.3746, acc=10567/10975 (96.28%)
+Epoch 323 [0/84843] Loss: 0.467995
+Epoch 323 [35000/84843] Loss: 0.440612
+Epoch 323 [70000/84843] Loss: 0.297207
+Epoch 323 - Avg Loss: 0.364767 | Train Acc: 96.28%
+Val: loss=0.3779, acc=10559/10975 (96.21%)
+Epoch 324 [0/84843] Loss: 0.352459
+Epoch 324 [35000/84843] Loss: 0.358179
+Epoch 324 [70000/84843] Loss: 0.438873
+Epoch 324 - Avg Loss: 0.362837 | Train Acc: 96.32%
+Val: loss=0.3747, acc=10569/10975 (96.30%)
+Epoch 325 [0/84843] Loss: 0.289884
+Epoch 325 [35000/84843] Loss: 0.285602
+Epoch 325 [70000/84843] Loss: 0.394600
+Epoch 325 - Avg Loss: 0.361885 | Train Acc: 96.40%
+Val: loss=0.3761, acc=10567/10975 (96.28%)
+Epoch 326 [0/84843] Loss: 0.288238
+Epoch 326 [35000/84843] Loss: 0.376906
+Epoch 326 [70000/84843] Loss: 0.364574
+Epoch 326 - Avg Loss: 0.362723 | Train Acc: 96.33%
+Val: loss=0.3723, acc=10573/10975 (96.34%)
+Epoch 327 [0/84843] Loss: 0.341793
+Epoch 327 [35000/84843] Loss: 0.339492
+Epoch 327 [70000/84843] Loss: 0.383739
+Epoch 327 - Avg Loss: 0.363965 | Train Acc: 96.32%
+Val: loss=0.3772, acc=10561/10975 (96.23%)
+Epoch 328 [0/84843] Loss: 0.273886
+Epoch 328 [35000/84843] Loss: 0.437530
+Epoch 328 [70000/84843] Loss: 0.287789
+Epoch 328 - Avg Loss: 0.363854 | Train Acc: 96.35%
+Val: loss=0.3730, acc=10588/10975 (96.47%)
+Epoch 329 [0/84843] Loss: 0.368697
+Epoch 329 [35000/84843] Loss: 0.284543
+Epoch 329 [70000/84843] Loss: 0.312757
+Epoch 329 - Avg Loss: 0.362039 | Train Acc: 96.41%
+Val: loss=0.3755, acc=10569/10975 (96.30%)
+Epoch 330 [0/84843] Loss: 0.412842
+Epoch 330 [35000/84843] Loss: 0.385304
+Epoch 330 [70000/84843] Loss: 0.344508
+Epoch 330 - Avg Loss: 0.361686 | Train Acc: 96.36%
+Val: loss=0.3730, acc=10581/10975 (96.41%)
+Epoch 331 [0/84843] Loss: 0.290328
+Epoch 331 [35000/84843] Loss: 0.424094
+Epoch 331 [70000/84843] Loss: 0.338576
+Epoch 331 - Avg Loss: 0.358378 | Train Acc: 96.55%
+Val: loss=0.3729, acc=10585/10975 (96.45%)
+Epoch 332 [0/84843] Loss: 0.336759
+Epoch 332 [35000/84843] Loss: 0.295645
+Epoch 332 [70000/84843] Loss: 0.324107
+Epoch 332 - Avg Loss: 0.361143 | Train Acc: 96.44%
+Val: loss=0.3758, acc=10574/10975 (96.35%)
+Epoch 333 [0/84843] Loss: 0.410714
+Epoch 333 [35000/84843] Loss: 0.328590
+Epoch 333 [70000/84843] Loss: 0.332569
+Epoch 333 - Avg Loss: 0.363275 | Train Acc: 96.36%
+Val: loss=0.3753, acc=10575/10975 (96.36%)
+Epoch 334 [0/84843] Loss: 0.282261
+Epoch 334 [35000/84843] Loss: 0.341820
+Epoch 334 [70000/84843] Loss: 0.318662
+Epoch 334 - Avg Loss: 0.360545 | Train Acc: 96.43%
+Val: loss=0.3695, acc=10598/10975 (96.56%)
+saved best: 96.56%
+Epoch 335 [0/84843] Loss: 0.309514
+Epoch 335 [35000/84843] Loss: 0.315390
+Epoch 335 [70000/84843] Loss: 0.401779
+Epoch 335 - Avg Loss: 0.363137 | Train Acc: 96.39%
+Val: loss=0.3736, acc=10576/10975 (96.36%)
+Epoch 336 [0/84843] Loss: 0.392258
+Epoch 336 [35000/84843] Loss: 0.448809
+Epoch 336 [70000/84843] Loss: 0.432952
+Epoch 336 - Avg Loss: 0.359203 | Train Acc: 96.51%
+Val: loss=0.3726, acc=10583/10975 (96.43%)
+Epoch 337 [0/84843] Loss: 0.373482
+Epoch 337 [35000/84843] Loss: 0.299249
+Epoch 337 [70000/84843] Loss: 0.344464
+Epoch 337 - Avg Loss: 0.360492 | Train Acc: 96.49%
+Val: loss=0.3748, acc=10579/10975 (96.39%)
+Epoch 338 [0/84843] Loss: 0.282786
+Epoch 338 [35000/84843] Loss: 0.424692
+Epoch 338 [70000/84843] Loss: 0.357102
+Epoch 338 - Avg Loss: 0.359736 | Train Acc: 96.51%
+Val: loss=0.3749, acc=10569/10975 (96.30%)
+Epoch 339 [0/84843] Loss: 0.378562
+Epoch 339 [35000/84843] Loss: 0.331373
+Epoch 339 [70000/84843] Loss: 0.461793
+Epoch 339 - Avg Loss: 0.361930 | Train Acc: 96.44%
+Val: loss=0.3743, acc=10572/10975 (96.33%)
+Epoch 340 [0/84843] Loss: 0.412213
+Epoch 340 [35000/84843] Loss: 0.332662
+Epoch 340 [70000/84843] Loss: 0.286025
+Epoch 340 - Avg Loss: 0.361833 | Train Acc: 96.39%
+Val: loss=0.3749, acc=10573/10975 (96.34%)
+Epoch 341 [0/84843] Loss: 0.355349
+Epoch 341 [35000/84843] Loss: 0.465767
+Epoch 341 [70000/84843] Loss: 0.279058
+Epoch 341 - Avg Loss: 0.359149 | Train Acc: 96.57%
+Val: loss=0.3716, acc=10583/10975 (96.43%)
+Epoch 342 [0/84843] Loss: 0.521265
+Epoch 342 [35000/84843] Loss: 0.464607
+Epoch 342 [70000/84843] Loss: 0.338821
+Epoch 342 - Avg Loss: 0.360133 | Train Acc: 96.51%
+Val: loss=0.3707, acc=10597/10975 (96.56%)
+Epoch 343 [0/84843] Loss: 0.420607
+Epoch 343 [35000/84843] Loss: 0.332640
+Epoch 343 [70000/84843] Loss: 0.309543
+Epoch 343 - Avg Loss: 0.364669 | Train Acc: 96.30%
+Val: loss=0.3740, acc=10580/10975 (96.40%)
+Epoch 344 [0/84843] Loss: 0.352002
+Epoch 344 [35000/84843] Loss: 0.419919
+Epoch 344 [70000/84843] Loss: 0.324108
+Epoch 344 - Avg Loss: 0.360808 | Train Acc: 96.43%
+Val: loss=0.3707, acc=10601/10975 (96.59%)
+saved best: 96.59%
+Epoch 345 [0/84843] Loss: 0.384751
+Epoch 345 [35000/84843] Loss: 0.304065
+Epoch 345 [70000/84843] Loss: 0.331165
+Epoch 345 - Avg Loss: 0.356141 | Train Acc: 96.65%
+Val: loss=0.3729, acc=10582/10975 (96.42%)
+Epoch 346 [0/84843] Loss: 0.284577
+Epoch 346 [35000/84843] Loss: 0.414872
+Epoch 346 [70000/84843] Loss: 0.506812
+Epoch 346 - Avg Loss: 0.358380 | Train Acc: 96.58%
+Val: loss=0.3717, acc=10582/10975 (96.42%)
+Epoch 347 [0/84843] Loss: 0.299845
+Epoch 347 [35000/84843] Loss: 0.360170
+Epoch 347 [70000/84843] Loss: 0.331628
+Epoch 347 - Avg Loss: 0.358303 | Train Acc: 96.54%
+Val: loss=0.3711, acc=10586/10975 (96.46%)
+Epoch 348 [0/84843] Loss: 0.428346
+Epoch 348 [35000/84843] Loss: 0.304068
+Epoch 348 [70000/84843] Loss: 0.389220
+Epoch 348 - Avg Loss: 0.360256 | Train Acc: 96.46%
+Val: loss=0.3725, acc=10581/10975 (96.41%)
+Epoch 349 [0/84843] Loss: 0.364450
+Epoch 349 [35000/84843] Loss: 0.294188
+Epoch 349 [70000/84843] Loss: 0.388455
+Epoch 349 - Avg Loss: 0.358137 | Train Acc: 96.62%
+Val: loss=0.3737, acc=10595/10975 (96.54%)
+Epoch 350 [0/84843] Loss: 0.451234
+Epoch 350 [35000/84843] Loss: 0.288658
+Epoch 350 [70000/84843] Loss: 0.298751
+Epoch 350 - Avg Loss: 0.359967 | Train Acc: 96.51%
+Val: loss=0.3719, acc=10597/10975 (96.56%)
+Epoch 351 [0/84843] Loss: 0.322843
+Epoch 351 [35000/84843] Loss: 0.352909
+Epoch 351 [70000/84843] Loss: 0.283815
+Epoch 351 - Avg Loss: 0.361172 | Train Acc: 96.47%
+Val: loss=0.3749, acc=10567/10975 (96.28%)
+Epoch 352 [0/84843] Loss: 0.319542
+Epoch 352 [35000/84843] Loss: 0.301159
+Epoch 352 [70000/84843] Loss: 0.276800
+Epoch 352 - Avg Loss: 0.358543 | Train Acc: 96.58%
+Val: loss=0.3712, acc=10590/10975 (96.49%)
+Epoch 353 [0/84843] Loss: 0.316985
+Epoch 353 [35000/84843] Loss: 0.407320
+Epoch 353 [70000/84843] Loss: 0.358410
+Epoch 353 - Avg Loss: 0.361958 | Train Acc: 96.40%
+Val: loss=0.3708, acc=10593/10975 (96.52%)
+Epoch 354 [0/84843] Loss: 0.361697
+Epoch 354 [35000/84843] Loss: 0.351195
+Epoch 354 [70000/84843] Loss: 0.334583
+Epoch 354 - Avg Loss: 0.361775 | Train Acc: 96.39%
+Val: loss=0.3730, acc=10579/10975 (96.39%)
+Epoch 355 [0/84843] Loss: 0.271962
+Epoch 355 [35000/84843] Loss: 0.408945
+Epoch 355 [70000/84843] Loss: 0.405643
+Epoch 355 - Avg Loss: 0.361225 | Train Acc: 96.41%
+Val: loss=0.3718, acc=10583/10975 (96.43%)
+Epoch 356 [0/84843] Loss: 0.340359
+Epoch 356 [35000/84843] Loss: 0.381629
+Epoch 356 [70000/84843] Loss: 0.318527
+Epoch 356 - Avg Loss: 0.358688 | Train Acc: 96.55%
+Val: loss=0.3721, acc=10591/10975 (96.50%)
+Epoch 357 [0/84843] Loss: 0.344309
+Epoch 357 [35000/84843] Loss: 0.337703
+Epoch 357 [70000/84843] Loss: 0.473888
+Epoch 357 - Avg Loss: 0.360743 | Train Acc: 96.43%
+Val: loss=0.3693, acc=10608/10975 (96.66%)
+saved best: 96.66%
+Epoch 358 [0/84843] Loss: 0.338090
+Epoch 358 [35000/84843] Loss: 0.302282
+Epoch 358 [70000/84843] Loss: 0.290176
+Epoch 358 - Avg Loss: 0.359609 | Train Acc: 96.52%
+Val: loss=0.3717, acc=10589/10975 (96.48%)
+Epoch 359 [0/84843] Loss: 0.370172
+Epoch 359 [35000/84843] Loss: 0.323946
+Epoch 359 [70000/84843] Loss: 0.445189
+Epoch 359 - Avg Loss: 0.359454 | Train Acc: 96.48%
+Val: loss=0.3719, acc=10588/10975 (96.47%)
+Epoch 360 [0/84843] Loss: 0.374936
+Epoch 360 [35000/84843] Loss: 0.469721
+Epoch 360 [70000/84843] Loss: 0.414079
+Epoch 360 - Avg Loss: 0.359533 | Train Acc: 96.50%
+Val: loss=0.3728, acc=10582/10975 (96.42%)
+Epoch 361 [0/84843] Loss: 0.363741
+Epoch 361 [35000/84843] Loss: 0.277856
+Epoch 361 [70000/84843] Loss: 0.306105
+Epoch 361 - Avg Loss: 0.356184 | Train Acc: 96.65%
+Val: loss=0.3716, acc=10583/10975 (96.43%)
+Epoch 362 [0/84843] Loss: 0.371044
+Epoch 362 [35000/84843] Loss: 0.278848
+Epoch 362 [70000/84843] Loss: 0.307729
+Epoch 362 - Avg Loss: 0.358269 | Train Acc: 96.54%
+Val: loss=0.3711, acc=10588/10975 (96.47%)
+Epoch 363 [0/84843] Loss: 0.521863
+Epoch 363 [35000/84843] Loss: 0.352331
+Epoch 363 [70000/84843] Loss: 0.346131
+Epoch 363 - Avg Loss: 0.358727 | Train Acc: 96.57%
+Val: loss=0.3732, acc=10585/10975 (96.45%)
+Epoch 364 [0/84843] Loss: 0.309597
+Epoch 364 [35000/84843] Loss: 0.355653
+Epoch 364 [70000/84843] Loss: 0.400829
+Epoch 364 - Avg Loss: 0.361156 | Train Acc: 96.47%
+Val: loss=0.3724, acc=10586/10975 (96.46%)
+Epoch 365 [0/84843] Loss: 0.278542
+Epoch 365 [35000/84843] Loss: 0.385975
+Epoch 365 [70000/84843] Loss: 0.323761
+Epoch 365 - Avg Loss: 0.360608 | Train Acc: 96.49%
+Val: loss=0.3721, acc=10593/10975 (96.52%)
+Epoch 366 [0/84843] Loss: 0.334562
+Epoch 366 [35000/84843] Loss: 0.334466
+Epoch 366 [70000/84843] Loss: 0.446259
+Epoch 366 - Avg Loss: 0.360230 | Train Acc: 96.50%
+Val: loss=0.3712, acc=10590/10975 (96.49%)
+Epoch 367 [0/84843] Loss: 0.386871
+Epoch 367 [35000/84843] Loss: 0.360401
+Epoch 367 [70000/84843] Loss: 0.350454
+Epoch 367 - Avg Loss: 0.357509 | Train Acc: 96.61%
+Val: loss=0.3706, acc=10589/10975 (96.48%)
+Epoch 368 [0/84843] Loss: 0.288225
+Epoch 368 [35000/84843] Loss: 0.475573
+Epoch 368 [70000/84843] Loss: 0.308417
+Epoch 368 - Avg Loss: 0.357516 | Train Acc: 96.58%
+Val: loss=0.3725, acc=10592/10975 (96.51%)
+Epoch 369 [0/84843] Loss: 0.297512
+Epoch 369 [35000/84843] Loss: 0.473569
+Epoch 369 [70000/84843] Loss: 0.323549
+Epoch 369 - Avg Loss: 0.358459 | Train Acc: 96.55%
+Val: loss=0.3716, acc=10590/10975 (96.49%)
+Epoch 370 [0/84843] Loss: 0.293156
+Epoch 370 [35000/84843] Loss: 0.298738
+Epoch 370 [70000/84843] Loss: 0.382177
+Epoch 370 - Avg Loss: 0.359150 | Train Acc: 96.53%
+Val: loss=0.3711, acc=10594/10975 (96.53%)
+Epoch 371 [0/84843] Loss: 0.386277
+Epoch 371 [35000/84843] Loss: 0.394095
+Epoch 371 [70000/84843] Loss: 0.329837
+Epoch 371 - Avg Loss: 0.360155 | Train Acc: 96.47%
+Val: loss=0.3717, acc=10590/10975 (96.49%)
+Epoch 372 [0/84843] Loss: 0.361350
+Epoch 372 [35000/84843] Loss: 0.300876
+Epoch 372 [70000/84843] Loss: 0.291429
+Epoch 372 - Avg Loss: 0.355609 | Train Acc: 96.66%
+Val: loss=0.3720, acc=10586/10975 (96.46%)
+Epoch 373 [0/84843] Loss: 0.283042
+Epoch 373 [35000/84843] Loss: 0.626962
+Epoch 373 [70000/84843] Loss: 0.343616
+Epoch 373 - Avg Loss: 0.356324 | Train Acc: 96.59%
+Val: loss=0.3720, acc=10582/10975 (96.42%)
+Epoch 374 [0/84843] Loss: 0.306829
+Epoch 374 [35000/84843] Loss: 0.304082
+Epoch 374 [70000/84843] Loss: 0.487944
+Epoch 374 - Avg Loss: 0.357588 | Train Acc: 96.56%
+Val: loss=0.3725, acc=10579/10975 (96.39%)
+Epoch 375 [0/84843] Loss: 0.444329
+Epoch 375 [35000/84843] Loss: 0.365043
+Epoch 375 [70000/84843] Loss: 0.387394
+Epoch 375 - Avg Loss: 0.355902 | Train Acc: 96.63%
+Val: loss=0.3720, acc=10597/10975 (96.56%)
+Epoch 376 [0/84843] Loss: 0.509541
+Epoch 376 [35000/84843] Loss: 0.334558
+Epoch 376 [70000/84843] Loss: 0.407434
+Epoch 376 - Avg Loss: 0.360341 | Train Acc: 96.42%
+Val: loss=0.3715, acc=10590/10975 (96.49%)
+Epoch 377 [0/84843] Loss: 0.335449
+Epoch 377 [35000/84843] Loss: 0.306637
+Epoch 377 [70000/84843] Loss: 0.297117
+Epoch 377 - Avg Loss: 0.356766 | Train Acc: 96.68%
+Val: loss=0.3707, acc=10592/10975 (96.51%)
+Epoch 378 [0/84843] Loss: 0.333706
+Epoch 378 [35000/84843] Loss: 0.349307
+Epoch 378 [70000/84843] Loss: 0.311695
+Epoch 378 - Avg Loss: 0.357730 | Train Acc: 96.59%
+Val: loss=0.3711, acc=10589/10975 (96.48%)
+Epoch 379 [0/84843] Loss: 0.429882
+Epoch 379 [35000/84843] Loss: 0.284912
+Epoch 379 [70000/84843] Loss: 0.384930
+Epoch 379 - Avg Loss: 0.356811 | Train Acc: 96.63%
+Val: loss=0.3712, acc=10591/10975 (96.50%)
+Epoch 380 [0/84843] Loss: 0.326271
+Epoch 380 [35000/84843] Loss: 0.295046
+Epoch 380 [70000/84843] Loss: 0.334817
+Epoch 380 - Avg Loss: 0.357194 | Train Acc: 96.61%
+Val: loss=0.3712, acc=10597/10975 (96.56%)
+Epoch 381 [0/84843] Loss: 0.331955
+Epoch 381 [35000/84843] Loss: 0.293173
+Epoch 381 [70000/84843] Loss: 0.332448
+Epoch 381 - Avg Loss: 0.356804 | Train Acc: 96.63%
+Val: loss=0.3722, acc=10584/10975 (96.44%)
+Epoch 382 [0/84843] Loss: 0.360823
+Epoch 382 [35000/84843] Loss: 0.336553
+Epoch 382 [70000/84843] Loss: 0.283539
+Epoch 382 - Avg Loss: 0.356219 | Train Acc: 96.69%
+Val: loss=0.3714, acc=10590/10975 (96.49%)
+Epoch 383 [0/84843] Loss: 0.282895
+Epoch 383 [35000/84843] Loss: 0.325157
+Epoch 383 [70000/84843] Loss: 0.390554
+Epoch 383 - Avg Loss: 0.358656 | Train Acc: 96.53%
+Val: loss=0.3709, acc=10596/10975 (96.55%)
+Epoch 384 [0/84843] Loss: 0.335237
+Epoch 384 [35000/84843] Loss: 0.279791
+Epoch 384 [70000/84843] Loss: 0.311460
+Epoch 384 - Avg Loss: 0.359879 | Train Acc: 96.48%
+Val: loss=0.3719, acc=10590/10975 (96.49%)
+Epoch 385 [0/84843] Loss: 0.333109
+Epoch 385 [35000/84843] Loss: 0.343143
+Epoch 385 [70000/84843] Loss: 0.292897
+Epoch 385 - Avg Loss: 0.357019 | Train Acc: 96.62%
+Val: loss=0.3718, acc=10592/10975 (96.51%)
+Epoch 386 [0/84843] Loss: 0.328706
+Epoch 386 [35000/84843] Loss: 0.276967
+Epoch 386 [70000/84843] Loss: 0.336071
+Epoch 386 - Avg Loss: 0.359164 | Train Acc: 96.47%
+Val: loss=0.3713, acc=10593/10975 (96.52%)
+Epoch 387 [0/84843] Loss: 0.306582
+Epoch 387 [35000/84843] Loss: 0.345678
+Epoch 387 [70000/84843] Loss: 0.533671
+Epoch 387 - Avg Loss: 0.357773 | Train Acc: 96.59%
+Val: loss=0.3717, acc=10594/10975 (96.53%)
+Epoch 388 [0/84843] Loss: 0.294580
+Epoch 388 [35000/84843] Loss: 0.371751
+Epoch 388 [70000/84843] Loss: 0.292440
+Epoch 388 - Avg Loss: 0.358189 | Train Acc: 96.56%
+Val: loss=0.3713, acc=10591/10975 (96.50%)
+Epoch 389 [0/84843] Loss: 0.280381
+Epoch 389 [35000/84843] Loss: 0.320843
+Epoch 389 [70000/84843] Loss: 0.462148
+Epoch 389 - Avg Loss: 0.359557 | Train Acc: 96.44%
+Val: loss=0.3716, acc=10589/10975 (96.48%)
+Epoch 390 [0/84843] Loss: 0.278426
+Epoch 390 [35000/84843] Loss: 0.379573
+Epoch 390 [70000/84843] Loss: 0.314468
+Epoch 390 - Avg Loss: 0.359907 | Train Acc: 96.44%
+Val: loss=0.3713, acc=10588/10975 (96.47%)
+Epoch 391 [0/84843] Loss: 0.268556
+Epoch 391 [35000/84843] Loss: 0.322103
+Epoch 391 [70000/84843] Loss: 0.411471
+Epoch 391 - Avg Loss: 0.357157 | Train Acc: 96.62%
+Val: loss=0.3715, acc=10588/10975 (96.47%)
+Epoch 392 [0/84843] Loss: 0.322567
+Epoch 392 [35000/84843] Loss: 0.287601
+Epoch 392 [70000/84843] Loss: 0.303113
+Epoch 392 - Avg Loss: 0.357011 | Train Acc: 96.62%
+Val: loss=0.3718, acc=10587/10975 (96.46%)
+Epoch 393 [0/84843] Loss: 0.280798
+Epoch 393 [35000/84843] Loss: 0.304742
+Epoch 393 [70000/84843] Loss: 0.319043
+Epoch 393 - Avg Loss: 0.357955 | Train Acc: 96.57%
+Val: loss=0.3718, acc=10588/10975 (96.47%)
+Epoch 394 [0/84843] Loss: 0.553123
+Epoch 394 [35000/84843] Loss: 0.289507
+Epoch 394 [70000/84843] Loss: 0.304089
+Epoch 394 - Avg Loss: 0.357015 | Train Acc: 96.55%
+Val: loss=0.3715, acc=10591/10975 (96.50%)
+Epoch 395 [0/84843] Loss: 0.324798
+Epoch 395 [35000/84843] Loss: 0.418594
+Epoch 395 [70000/84843] Loss: 0.338502
+Epoch 395 - Avg Loss: 0.356543 | Train Acc: 96.60%
+Val: loss=0.3715, acc=10590/10975 (96.49%)
+Epoch 396 [0/84843] Loss: 0.330227
+Epoch 396 [35000/84843] Loss: 0.514480
+Epoch 396 [70000/84843] Loss: 0.379309
+Epoch 396 - Avg Loss: 0.354362 | Train Acc: 96.71%
+Val: loss=0.3717, acc=10589/10975 (96.48%)
+Epoch 397 [0/84843] Loss: 0.304746
+Epoch 397 [35000/84843] Loss: 0.310248
+Epoch 397 [70000/84843] Loss: 0.342171
+Epoch 397 - Avg Loss: 0.358285 | Train Acc: 96.52%
+Val: loss=0.3718, acc=10588/10975 (96.47%)
+Epoch 398 [0/84843] Loss: 0.307933
+Epoch 398 [35000/84843] Loss: 0.317241
+Epoch 398 [70000/84843] Loss: 0.277517
+Epoch 398 - Avg Loss: 0.358766 | Train Acc: 96.53%
+Val: loss=0.3715, acc=10589/10975 (96.48%)
+Epoch 399 [0/84843] Loss: 0.484430
+Epoch 399 [35000/84843] Loss: 0.293226
+Epoch 399 [70000/84843] Loss: 0.312110
+Epoch 399 - Avg Loss: 0.360019 | Train Acc: 96.48%
+Val: loss=0.3720, acc=10587/10975 (96.46%)
+Epoch 400 [0/84843] Loss: 0.376719
+Epoch 400 [35000/84843] Loss: 0.401082
+Epoch 400 [70000/84843] Loss: 0.347319
+Epoch 400 - Avg Loss: 0.358167 | Train Acc: 96.54%
+Val: loss=0.3718, acc=10588/10975 (96.47%)
+Test: loss=0.4316, acc=11392/12101 (94.14%)
