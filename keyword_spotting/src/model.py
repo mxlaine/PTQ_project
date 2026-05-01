@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torchaudio
 
+from new_gru import NewGRU
 from utils import N_MELS, NUM_CLASSES, SAMPLE_RATE
 
 
@@ -29,6 +30,8 @@ class KeywordGRU(nn.Module):
         spec_augment=False,
         freq_mask_param=8,
         time_mask_param=30,
+        use_new_gru=False,
+        dropout=0.3,
     ):
         super().__init__()
         self.mel = build_mel_spectrogram(n_mels=n_mels)
@@ -47,12 +50,13 @@ class KeywordGRU(nn.Module):
         if self.use_delta and self.use_delta_delta:
             input_multiplier += 1
 
-        self.gru = nn.GRU(
+        gru_cls = NewGRU if use_new_gru else nn.GRU
+        self.gru = gru_cls(
             input_size=n_mels * input_multiplier,
             hidden_size=hidden_size,
             num_layers=num_layers,
             batch_first=True,
-            dropout=0.2,
+            dropout=dropout,
         )
 
         self.classifier = nn.Linear(hidden_size, num_classes)

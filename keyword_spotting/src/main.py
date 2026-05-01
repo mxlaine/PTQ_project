@@ -37,7 +37,6 @@ def train_one_epoch(model, loader, optimizer, scheduler, criterion, device, epoc
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
-        scheduler.step()
 
         total_loss += loss.item()
         preds = output.argmax(dim=1)
@@ -102,6 +101,8 @@ def parse_args():
     )
     parser.add_argument("--hidden-size", type=int, default=64)
     parser.add_argument("--num-layers", type=int, default=2)
+    parser.add_argument("--dropout", type=float, default=0.3)
+    parser.add_argument("--use-new-gru", action="store_true", help="Use the from-scratch NewGRU instead of nn.GRU")
     return parser.parse_args()
 
 
@@ -126,18 +127,14 @@ def main():
         spec_augment=args.spec_augment,
         freq_mask_param=args.freq_mask_param,
         time_mask_param=args.time_mask_param,
+        use_new_gru=args.use_new_gru,
+        dropout=args.dropout,
     ).to(device)
 
     epochs = args.epochs
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
-    scheduler = torch.optim.lr_scheduler.OneCycleLR(
-        optimizer,
-        max_lr=args.lr,
-        steps_per_epoch=len(train_loader),
-        epochs=epochs + 1,
-        pct_start=0.3,
-    )
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
 
     class_weights = torch.ones(NUM_CLASSES, device=device)
     class_weights[LABEL_TO_IDX["unknown"]] = 1.20
@@ -159,14 +156,14 @@ def main():
     train_acc_history = []
     val_acc_history = []
 
-    artifact_dir = Path(__file__).resolve().parents[1] / "notebooks"
-    artifact_dir.mkdir(parents=True, exist_ok=True)
-    best_model_path = artifact_dir / f"best_keyword_gru_{args.feature_config}.pt"
-
     # Plots are grouped by job and task similar to .err/.out naming in slurm.
     # Allow SLURM or explicit PLOT_* env vars set by the submit script.
     job_id = os.environ.get("PLOT_JOB") or os.environ.get("SLURM_ARRAY_JOB_ID") or os.environ.get("SLURM_JOB_ID") or "local"
     task_id = os.environ.get("PLOT_TASK") or os.environ.get("SLURM_ARRAY_TASK_ID") or "0"
+
+    artifact_dir = Path(__file__).resolve().parents[1] / "models" / job_id
+    artifact_dir.mkdir(parents=True, exist_ok=True)
+    best_model_path = artifact_dir / f"best_keyword_gru_{args.feature_config}_{job_id}_{task_id}.pt"
 
     plots_dir = Path(__file__).resolve().parents[1] / "plots" / f"{job_id}"
     plots_dir.mkdir(parents=True, exist_ok=True)
@@ -191,26 +188,48 @@ def main():
             best_val = val_acc
             torch.save(model.state_dict(), best_model_path)
             print(f"saved best: {best_val:.2f}%")
+        
+        scheduler.step()
 
     model.load_state_dict(torch.load(best_model_path, map_location=device))
     test_acc, _ = evaluate(model, test_loader, criterion, device, split_name="Test")
 
     pyplot = importlib.import_module("matplotlib.pyplot")
 
+    meta_parts = [
+        f"feature={args.feature_config}",
+        f"n_mels={feature_config['n_mels']}",
+        f"use_delta={feature_config['use_delta']}",
+        f"use_delta_delta={feature_config['use_delta_delta']}",
+    ]
+    if args.spec_augment:
+        meta_parts.append(f"SpecAugment(freq={args.freq_mask_param},time={args.time_mask_param})")
+    meta_parts += [
+        f"hidden={args.hidden_size}",
+        f"layers={args.num_layers}",
+        f"dropout={args.dropout}",
+        f"lr={args.lr}",
+        f"wd={args.weight_decay}",
+        f"label_smooth={args.label_smoothing}",
+    ]
+    meta_txt = " | ".join(meta_parts)
+
     epochs_ran = range(1, len(val_acc_history) + 1)
-    pyplot.figure(figsize=(8, 5))
-    pyplot.plot(epochs_ran, train_acc_history, marker="^", linewidth=2, label="Training Accuracy")
-    pyplot.plot(epochs_ran, val_acc_history, marker="o", linewidth=2, label="Validation Accuracy")
-    pyplot.axhline(y=test_acc, color="r", linestyle="--", label="Final Test Accuracy")
+    pyplot.figure(figsize=(10, 5))
+    pyplot.plot(epochs_ran, train_acc_history, marker="^", markersize=3, linewidth=1.0, label="Training Accuracy", alpha=0.8)
+    pyplot.plot(epochs_ran, val_acc_history, marker="o", markersize=3, linewidth=1.0, label="Validation Accuracy", alpha=0.8)
+    pyplot.axhline(y=test_acc, color="r", linestyle="--", linewidth=1.0, label="Final Test Accuracy")
     pyplot.annotate(
         f"Test: {test_acc:.2f}%",
         (len(val_acc_history), test_acc),
         textcoords="offset points",
-        xytext=(10, 6),
+        xytext=(6, 6),
+        fontsize=8,
     )
     pyplot.xlabel("Epoch")
     pyplot.ylabel("Accuracy (%)")
-    pyplot.title(f"Training and Validation Accuracy ({args.feature_config})")
+    pyplot.title(f"Training and Validation Accuracy ({job_id}_{task_id})")
+    pyplot.suptitle(meta_txt, fontsize=9, y=0.99)
     pyplot.grid(True, alpha=0.3)
     pyplot.legend()
     pyplot.tight_layout()

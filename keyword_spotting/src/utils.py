@@ -18,6 +18,52 @@ N_MELS = 16
 TARGET_LENGTH = 16000
 SAMPLE_RATE = 16000
 
+NOISE_MIX_PROB = 0.5
+NOISE_SNR_DB_RANGE = (0.0, 15.0)
+GAIN_RANGE = (0.7, 1.3)
+SILENCE_GAIN_RANGE = (0.0, 0.1)
+
+
+def get_data_root():
+    return Path(__file__).resolve().parents[1] / "data"
+
+
+@lru_cache(maxsize=1)
+def load_background_noises():
+    noise_dir = get_data_root() / "SpeechCommands" / "speech_commands_v0.02" / "_background_noise_"
+    clips = []
+    for wav_path in sorted(noise_dir.glob("*.wav")):
+        waveform, sr = torchaudio.load(str(wav_path))
+        if sr != SAMPLE_RATE:
+            waveform = torchaudio.functional.resample(waveform, sr, SAMPLE_RATE)
+        if waveform.shape[0] > 1:
+            waveform = waveform.mean(dim=0, keepdim=True)
+        clips.append(waveform)
+    if not clips:
+        raise RuntimeError(f"No background noise wavs found in {noise_dir}")
+    return clips
+
+
+def _random_noise_crop(length: int) -> torch.Tensor:
+    clips = load_background_noises()
+    clip = random.choice(clips)
+    total = clip.shape[-1]
+    if total < length:
+        reps = (length // total) + 1
+        clip = clip.repeat(1, reps)
+        total = clip.shape[-1]
+    start = random.randint(0, total - length)
+    return clip[..., start:start + length].clone()
+
+
+def _mix_noise(signal: torch.Tensor, snr_db: float) -> torch.Tensor:
+    noise = _random_noise_crop(signal.shape[-1])
+    sig_power = signal.pow(2).mean().clamp(min=1e-10)
+    noise_power = noise.pow(2).mean().clamp(min=1e-10)
+    target_noise_power = sig_power / (10.0 ** (snr_db / 10.0))
+    scale = (target_noise_power / noise_power).sqrt()
+    return signal + scale * noise
+
 
 def collate_fn(batch, training=False):
     waveforms, labels = [], []
@@ -37,6 +83,12 @@ def collate_fn(batch, training=False):
             elif shift < 0:
                 waveform = F.pad(waveform[..., -shift:], (0, -shift))
 
+            gain = random.uniform(*GAIN_RANGE)
+            waveform = waveform * gain
+
+            if random.random() < NOISE_MIX_PROB:
+                snr_db = random.uniform(*NOISE_SNR_DB_RANGE)
+                waveform = _mix_noise(waveform, snr_db)
 
         mapped_label = LABEL_TO_IDX[label] if label in COMMANDS_10 else LABEL_TO_IDX["unknown"]
         waveforms.append(waveform)
@@ -44,8 +96,8 @@ def collate_fn(batch, training=False):
 
     num_silence = int(0.1 * len(waveforms))
     for _ in range(num_silence):
-        noise_amp = random.uniform(0.0, 0.002)
-        silent = torch.randn(1, TARGET_LENGTH) * noise_amp
+        silent = _random_noise_crop(TARGET_LENGTH)
+        silent = silent * random.uniform(*SILENCE_GAIN_RANGE)
         waveforms.append(silent)
         labels.append(LABEL_TO_IDX["silence"])
 
@@ -58,10 +110,6 @@ def train_collate(batch):
 
 def eval_collate(batch):
     return collate_fn(batch, training=False)
-
-
-def get_data_root():
-    return Path(__file__).resolve().parents[1] / "data"
 
 
 def build_datasets(data_root=None, download=True):
