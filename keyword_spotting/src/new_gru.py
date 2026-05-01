@@ -64,8 +64,6 @@ class NewGRU(nn.Module):
             self.register_parameter(f"weight_hh_l{layer}", cell.weight_hh)
             self.register_parameter(f"bias_ih_l{layer}", cell.bias_ih)
             self.register_parameter(f"bias_hh_l{layer}", cell.bias_hh)
-        # Plain list — parameters are already owned by NewGRU via register_parameter above,
-        # so using nn.ModuleList would double-register them under different key names.
         self.cells = cells
 
     def forward(self, x: torch.Tensor, h0: Optional[torch.Tensor] = None):
