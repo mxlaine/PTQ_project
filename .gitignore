@@ -1,3 +1,6 @@
+AGENTS.md
+PLAN.md
+
 # Python bytecode and caches
 __pycache__/
 *.py[cod]

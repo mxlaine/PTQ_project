@@ -65,7 +65,29 @@ def _mix_noise(signal: torch.Tensor, snr_db: float) -> torch.Tensor:
     return signal + scale * noise
 
 
-def collate_fn(batch, training=False):
+# Discrete rates chosen so that new_freq = round(16000 * rate) has GCD >= 800 with
+# 16000, keeping the sinc filter length under ~300 taps.  Continuous uniform sampling
+# can produce GCD=2 and filter lengths > 96,000, which makes each batch take seconds.
+_SPEED_RATES = (0.9, 0.95, 1.05, 1.1)
+
+
+@lru_cache(maxsize=8)
+def _get_speed_resampler(new_freq: int) -> torchaudio.transforms.Resample:
+    return torchaudio.transforms.Resample(SAMPLE_RATE, new_freq)
+
+
+def _random_speed_perturb(waveform: torch.Tensor) -> torch.Tensor:
+    rate = random.choice(_SPEED_RATES)
+    new_freq = int(round(SAMPLE_RATE * rate))
+    waveform = _get_speed_resampler(new_freq)(waveform)
+    if waveform.shape[-1] < TARGET_LENGTH:
+        waveform = F.pad(waveform, (0, TARGET_LENGTH - waveform.shape[-1]))
+    else:
+        waveform = waveform[..., :TARGET_LENGTH]
+    return waveform
+
+
+def collate_fn(batch, training=False, speed_perturb=False):
     waveforms, labels = [], []
 
     for waveform, sample_rate, label, *_ in batch:
@@ -77,6 +99,9 @@ def collate_fn(batch, training=False):
             waveform = waveform[..., :TARGET_LENGTH]
 
         if training:
+            if speed_perturb:
+                waveform = _random_speed_perturb(waveform)
+
             shift = random.randint(-800, 800)
             if shift > 0:
                 waveform = F.pad(waveform[..., :-shift], (shift, 0))
@@ -102,6 +127,29 @@ def collate_fn(batch, training=False):
         labels.append(LABEL_TO_IDX["silence"])
 
     return torch.stack(waveforms), torch.tensor(labels)
+
+
+def make_train_collate(speed_perturb=False):
+    def _collate(batch):
+        return collate_fn(batch, training=True, speed_perturb=speed_perturb)
+    return _collate
+
+
+def make_sample_weights(dataset) -> torch.Tensor:
+    """Return a per-sample weight tensor (inverse class frequency) without loading audio.
+
+    Uses dataset._walker (list of file paths); label is the parent directory name.
+    Silence is injected synthetically in collate_fn and not present here — that's fine.
+    """
+    labels = [
+        LABEL_TO_IDX[Path(p).parent.name] if Path(p).parent.name in COMMANDS_10
+        else LABEL_TO_IDX["unknown"]
+        for p in dataset._walker
+    ]
+    label_tensor = torch.tensor(labels)
+    counts = torch.bincount(label_tensor, minlength=NUM_CLASSES).float()
+    weights = 1.0 / counts.clamp(min=1)
+    return weights[label_tensor]
 
 
 def train_collate(batch):
@@ -137,8 +185,18 @@ def build_datasets(data_root=None, download=True):
     return train_set, val_set, test_set
 
 
-def build_dataloaders(batch_size_train=64, batch_size_eval=1024, num_workers=4, pin_memory=True):
+def build_dataloaders(batch_size_train=64, batch_size_eval=1024, num_workers=4, pin_memory=True, speed_perturb=False, balanced_sampler=False):
     train_set, val_set, test_set = build_datasets()
+
+    if balanced_sampler:
+        sample_weights = make_sample_weights(train_set)
+        sampler = torch.utils.data.WeightedRandomSampler(
+            sample_weights, num_samples=len(sample_weights), replacement=True
+        )
+        shuffle = False
+    else:
+        sampler = None
+        shuffle = True
 
     train_loader = torch.utils.data.DataLoader(
         train_set,
@@ -146,8 +204,9 @@ def build_dataloaders(batch_size_train=64, batch_size_eval=1024, num_workers=4, 
         num_workers=num_workers,
         pin_memory=pin_memory,
         persistent_workers=num_workers > 0,
-        shuffle=True,
-        collate_fn=train_collate,
+        shuffle=shuffle,
+        sampler=sampler,
+        collate_fn=make_train_collate(speed_perturb=speed_perturb),
     )
     val_loader = torch.utils.data.DataLoader(
         val_set,

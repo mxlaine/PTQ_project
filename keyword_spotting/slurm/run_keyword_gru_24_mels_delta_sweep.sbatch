@@ -16,8 +16,8 @@ VENV_ACTIVATE="${VENV_ACTIVATE:-/scratch/work/lainem31/PTQ_project/.venv/bin/act
 FEATURE_CONFIG="24_mels_delta"
 
 # Wider sweep with stronger SpecAugment to probe the post-noise-mixing regime.
-FREQ_MASKS=(12 16 20)
-TIME_MASKS=(15 25 35)
+FREQ_MASKS=(0 6 12 16)
+TIME_MASKS=(0 5 15 25)
 EPOCHS="${EPOCHS:-400}"
 LR="${LR:-1e-3}"
 WEIGHT_DECAY="${WEIGHT_DECAY:-1e-4}"

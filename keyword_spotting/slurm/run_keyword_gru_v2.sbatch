@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=keyword-gru-size
+#SBATCH --job-name=keyword-gru-v2
 #SBATCH --output=slurm/%x-%A_%a.out
 #SBATCH --error=slurm/%x-%A_%a.err
 #SBATCH --partition=gpu-v100-32g
@@ -7,28 +7,38 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=24G
 #SBATCH --time=08:00:00
-#SBATCH --array=0-5
+#SBATCH --array=0-35
+
+# Broad feature-config sweep with all v2 augmentations enabled:
+# speed perturbation, LR warmup, and balanced sampler.
+# SpecAugment grid covers the all-time best (freq=10, time=0) and the wider good range.
+# Purpose: determine whether 24_mels_delta remains best under the new training regime.
 
 set -euo pipefail
 
 PROJECT_ROOT="${PROJECT_ROOT:-/scratch/work/lainem31/PTQ_project/keyword_spotting}"
 VENV_ACTIVATE="${VENV_ACTIVATE:-/scratch/work/lainem31/PTQ_project/.venv/bin/activate}"
 
-# Sweep hidden_size x feature_config to find the smallest model that holds ~97%.
-HIDDEN_SIZES=(32 48 64)
-FEATURE_CONFIGS_LIST=("24_mels_delta" "16_mels_delta_delta")
+FEATURE_CONFIGS=(
+  "16_mels_delta_delta"
+  "24_mels_delta"
+  "40_mels"
+  "48_mels"
+)
+
+# Covers the all-time best (freq=10, time=0) plus the wider good range.
+FREQ_MASKS=(10 12 16)
+TIME_MASKS=(0 15 25)
+
 EPOCHS="${EPOCHS:-400}"
-LR_WARMUP_EPOCHS="${LR_WARMUP_EPOCHS:-10}"
 LR="${LR:-1e-3}"
 WEIGHT_DECAY="${WEIGHT_DECAY:-1e-4}"
 BATCH_SIZE_TRAIN="${BATCH_SIZE_TRAIN:-64}"
 BATCH_SIZE_EVAL="${BATCH_SIZE_EVAL:-1024}"
 NUM_WORKERS="${NUM_WORKERS:-4}"
+HIDDEN_SIZE="${HIDDEN_SIZE:-64}"
 NUM_LAYERS="${NUM_LAYERS:-2}"
-
-# Pick SpecAugment values from the wider sweep result; defaults match the mid-range.
-FREQ_MASK="${FREQ_MASK:-5}"
-TIME_MASK="${TIME_MASK:-6}"
+LR_WARMUP_EPOCHS="${LR_WARMUP_EPOCHS:-10}"
 
 mkdir -p "${PROJECT_ROOT}/slurm"
 cd "${PROJECT_ROOT}"
@@ -39,8 +49,8 @@ organize_logs_on_exit() {
   fi
 
   RUN_DIR="${PROJECT_ROOT}/slurm/${SLURM_ARRAY_JOB_ID}"
-  OUT_FILE="${PROJECT_ROOT}/slurm/keyword-gru-size-${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}.out"
-  ERR_FILE="${PROJECT_ROOT}/slurm/keyword-gru-size-${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}.err"
+  OUT_FILE="${PROJECT_ROOT}/slurm/keyword-gru-v2-${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}.out"
+  ERR_FILE="${PROJECT_ROOT}/slurm/keyword-gru-v2-${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}.err"
 
   mkdir -p "${RUN_DIR}"
   [ -f "${OUT_FILE}" ] && mv -f "${OUT_FILE}" "${RUN_DIR}/"
@@ -63,29 +73,34 @@ PLOT_TASK="${SLURM_ARRAY_TASK_ID:-0}"
 export PLOT_JOB PLOT_TASK
 
 if [ -z "${SLURM_ARRAY_TASK_ID:-}" ]; then
-  echo "This script is configured as a Slurm array job. Submit with: sbatch slurm/run_keyword_gru_size_sweep.sbatch" >&2
+  echo "This script is configured as a Slurm array job. Submit with: sbatch slurm/run_keyword_gru_v2.sbatch" >&2
   exit 1
 fi
 
-TOTAL_HIDDEN=${#HIDDEN_SIZES[@]}
-TOTAL_FCFG=${#FEATURE_CONFIGS_LIST[@]}
-TOTAL_TASKS=$(( TOTAL_HIDDEN * TOTAL_FCFG ))
+TOTAL_FEATURES=${#FEATURE_CONFIGS[@]}
+TOTAL_FREQS=${#FREQ_MASKS[@]}
+TOTAL_TIMES=${#TIME_MASKS[@]}
+TOTAL_TASKS=$(( TOTAL_FEATURES * TOTAL_FREQS * TOTAL_TIMES ))
 
 if [ "${SLURM_ARRAY_TASK_ID}" -lt 0 ] || [ "${SLURM_ARRAY_TASK_ID}" -ge "${TOTAL_TASKS}" ]; then
   echo "Invalid SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TASK_ID}; expected 0..$(( TOTAL_TASKS - 1 ))" >&2
   exit 1
 fi
 
-# Map array task to (hidden_size, feature_config).
+# Map task to (feature_config, freq_mask, time_mask)
 IDX=${SLURM_ARRAY_TASK_ID}
-FCFG_IDX=$(( IDX / TOTAL_HIDDEN ))
-HID_IDX=$(( IDX % TOTAL_HIDDEN ))
+FEATURE_IDX=$(( IDX / ( TOTAL_FREQS * TOTAL_TIMES ) ))
+REM=$(( IDX % ( TOTAL_FREQS * TOTAL_TIMES ) ))
+FREQ_IDX=$(( REM / TOTAL_TIMES ))
+TIME_IDX=$(( REM % TOTAL_TIMES ))
 
-HIDDEN_SIZE="${HIDDEN_SIZES[HID_IDX]}"
-FEATURE_CONFIG="${FEATURE_CONFIGS_LIST[FCFG_IDX]}"
+FEATURE_CONFIG="${FEATURE_CONFIGS[FEATURE_IDX]}"
+FREQ_MASK="${FREQ_MASKS[FREQ_IDX]}"
+TIME_MASK="${TIME_MASKS[TIME_IDX]}"
 
-echo "Running task ${SLURM_ARRAY_TASK_ID}: hidden_size=${HIDDEN_SIZE} feature_config=${FEATURE_CONFIG}"
+echo "Running feature config: ${FEATURE_CONFIG} (task ${SLURM_ARRAY_TASK_ID})"
 echo "SpecAugment freq_mask=${FREQ_MASK} time_mask=${TIME_MASK}"
+echo "lr_warmup=${LR_WARMUP_EPOCHS} balanced_sampler=on"
 
 python -u src/main.py \
   --feature-config "${FEATURE_CONFIG}" \
@@ -101,4 +116,5 @@ python -u src/main.py \
   --freq-mask-param "${FREQ_MASK}" \
   --time-mask-param "${TIME_MASK}" \
   --lr-warmup-epochs "${LR_WARMUP_EPOCHS}" \
+  --balanced-sampler \
   "$@"

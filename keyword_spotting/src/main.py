@@ -9,9 +9,11 @@ import torch.nn as nn
 
 from model import KeywordGRU
 from utils import LABEL_TO_IDX, NUM_CLASSES, build_dataloaders
+from torch.optim.lr_scheduler import CosineAnnealingLR, LinearLR, SequentialLR
 
 
 warnings.filterwarnings("ignore", category=UserWarning, module="torchaudio")
+warnings.filterwarnings("ignore", message="The epoch parameter in `scheduler.step\\(\\)`", category=UserWarning)
 
 
 FEATURE_CONFIGS = {
@@ -103,6 +105,9 @@ def parse_args():
     parser.add_argument("--num-layers", type=int, default=2)
     parser.add_argument("--dropout", type=float, default=0.3)
     parser.add_argument("--use-new-gru", action="store_true", help="Use the from-scratch NewGRU instead of nn.GRU")
+    parser.add_argument("--speed-perturb", action="store_true", help="Random time-stretch in [0.9, 1.1]x during training")
+    parser.add_argument("--lr-warmup-epochs", type=int, default=0, help="Linear LR warmup epochs before cosine decay")
+    parser.add_argument("--balanced-sampler", action="store_true", help="WeightedRandomSampler to balance classes during training")
     return parser.parse_args()
 
 
@@ -114,6 +119,8 @@ def main():
         batch_size_eval=args.batch_size_eval,
         num_workers=args.num_workers,
         pin_memory=True,
+        speed_perturb=args.speed_perturb,
+        balanced_sampler=args.balanced_sampler,
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -134,7 +141,13 @@ def main():
     epochs = args.epochs
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
+    warmup_epochs = min(args.lr_warmup_epochs, epochs - 1)
+    if warmup_epochs > 0:
+        warmup_sched = LinearLR(optimizer, start_factor=1e-3, total_iters=warmup_epochs)
+        cosine_sched = CosineAnnealingLR(optimizer, T_max=epochs - warmup_epochs)
+        scheduler = SequentialLR(optimizer, schedulers=[warmup_sched, cosine_sched], milestones=[warmup_epochs])
+    else:
+        scheduler = CosineAnnealingLR(optimizer, T_max=epochs)
 
     class_weights = torch.ones(NUM_CLASSES, device=device)
     class_weights[LABEL_TO_IDX["unknown"]] = 1.20
@@ -145,6 +158,10 @@ def main():
     print(f"Device: {device}")
     print(f"Feature config: {args.feature_config} -> {feature_config}")
     print(f"SpecAugment: {args.spec_augment} freq_mask={args.freq_mask_param} time_mask={args.time_mask_param}")
+    print(f"Hidden size: {args.hidden_size}")
+    print(f"Speed perturbation: {args.speed_perturb}")
+    print(f"LR warmup epochs: {warmup_epochs}")
+    print(f"Balanced sampler: {args.balanced_sampler}")
     if torch.cuda.is_available():
         print(f"GPU Name: {torch.cuda.get_device_name(0)}")
         print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB")
@@ -204,6 +221,10 @@ def main():
     ]
     if args.spec_augment:
         meta_parts.append(f"SpecAugment(freq={args.freq_mask_param},time={args.time_mask_param})")
+    if args.speed_perturb:
+        meta_parts.append("speed_perturb=True")
+    if args.balanced_sampler:
+        meta_parts.append("balanced_sampler=True")
     meta_parts += [
         f"hidden={args.hidden_size}",
         f"layers={args.num_layers}",
@@ -211,6 +232,7 @@ def main():
         f"lr={args.lr}",
         f"wd={args.weight_decay}",
         f"label_smooth={args.label_smoothing}",
+        f"warmup={warmup_epochs}",
     ]
     meta_txt = " | ".join(meta_parts)
 
