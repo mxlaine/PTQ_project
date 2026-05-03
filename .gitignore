@@ -1,0 +1,45 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local environments and editor state
+.venv/
+venv/
+env/
+ENV/
+.vscode/
+.idea/
+
+# Build and packaging outputs
+build/
+dist/
+*.egg-info/
+
+# Logs and run outputs
+*.log
+*.out
+*.err
+
+# Large model / tensor artifacts
+*.pt
+*.pth
+*.onnx
+*.npy
+*.npz
+*.pkl
+*.pickle
+
+# Project datasets and generated experiment outputs
+cnn_testing/data/
+keyword_spotting/data/
+keyword_spotting/.claude/
+keyword_spotting/models/
+keyword_spotting/plots/
+keyword_spotting/notebooks/*.pt
+keyword_spotting/slurm/[0-9]*/
