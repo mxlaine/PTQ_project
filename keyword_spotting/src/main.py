@@ -9,7 +9,7 @@ import torch.nn as nn
 
 from model import KeywordGRU
 from utils import LABEL_TO_IDX, NUM_CLASSES, build_dataloaders
-from torch.optim.lr_scheduler import CosineAnnealingLR, LinearLR, SequentialLR
+from torch.optim.lr_scheduler import CosineAnnealingLR, CosineAnnealingWarmRestarts, LinearLR, SequentialLR
 
 
 warnings.filterwarnings("ignore", category=UserWarning, module="torchaudio")
@@ -24,7 +24,7 @@ FEATURE_CONFIGS = {
 }
 
 
-def train_one_epoch(model, loader, optimizer, scheduler, criterion, device, epoch=None):
+def train_one_epoch(model, loader, optimizer, scheduler, criterion, device, epoch=None, use_amp=False, scaler=None):
     model.train()
     total_loss = 0.0
     correct = 0
@@ -34,11 +34,20 @@ def train_one_epoch(model, loader, optimizer, scheduler, criterion, device, epoc
         data, target = data.to(device), target.to(device)
 
         optimizer.zero_grad()
-        output = model(data)
-        loss = criterion(output, target)
-        loss.backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-        optimizer.step()
+        with torch.amp.autocast('cuda', enabled=use_amp, dtype=torch.float16):
+            output = model(data)
+            loss = criterion(output, target)
+
+        if use_amp:
+            scaler.scale(loss).backward()
+            scaler.unscale_(optimizer)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+            scaler.step(optimizer)
+            scaler.update()
+        else:
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+            optimizer.step()
 
         total_loss += loss.item()
         preds = output.argmax(dim=1)
@@ -60,7 +69,7 @@ def train_one_epoch(model, loader, optimizer, scheduler, criterion, device, epoc
     return accuracy
 
 
-def evaluate(model, loader, criterion, device, split_name="Val"):
+def evaluate(model, loader, criterion, device, split_name="Val", use_amp=False):
     model.eval()
     total_loss = 0.0
     correct = 0
@@ -69,8 +78,9 @@ def evaluate(model, loader, criterion, device, split_name="Val"):
     with torch.no_grad():
         for data, target in loader:
             data, target = data.to(device), target.to(device)
-            output = model(data)
-            loss = criterion(output, target)
+            with torch.amp.autocast('cuda', enabled=use_amp, dtype=torch.float16):
+                output = model(data)
+                loss = criterion(output, target)
 
             total_loss += loss.item() * target.size(0)
             preds = output.argmax(dim=1)
@@ -107,12 +117,19 @@ def parse_args():
     parser.add_argument("--use-new-gru", action="store_true", help="Use the from-scratch NewGRU instead of nn.GRU")
     parser.add_argument("--speed-perturb", action="store_true", help="Random time-stretch in [0.9, 1.1]x during training")
     parser.add_argument("--lr-warmup-epochs", type=int, default=0, help="Linear LR warmup epochs before cosine decay")
+    parser.add_argument("--lr-scheduler", choices=["cosine", "cosine-warm-restarts"], default="cosine")
+    parser.add_argument("--lr-t0", type=int, default=50, help="T_0 (epochs per first cycle) for cosine-warm-restarts")
+    parser.add_argument("--lr-t-mult", type=int, default=2, help="T_mult (cycle length multiplier) for cosine-warm-restarts")
     parser.add_argument("--balanced-sampler", action="store_true", help="WeightedRandomSampler to balance classes during training")
+    parser.add_argument("--amp", action="store_true", help="Enable mixed-precision training (fp16 autocast + GradScaler)")
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    feature_config = FEATURE_CONFIGS[args.feature_config]
 
     train_loader, val_loader, test_loader = build_dataloaders(
         batch_size_train=args.batch_size_train,
@@ -121,10 +138,11 @@ def main():
         pin_memory=True,
         speed_perturb=args.speed_perturb,
         balanced_sampler=args.balanced_sampler,
+        n_mels=feature_config["n_mels"],
+        use_delta=feature_config["use_delta"],
+        use_delta_delta=feature_config["use_delta_delta"],
     )
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    feature_config = FEATURE_CONFIGS[args.feature_config]
     model = KeywordGRU(
         n_mels=feature_config["n_mels"],
         hidden_size=args.hidden_size,
@@ -136,22 +154,33 @@ def main():
         time_mask_param=args.time_mask_param,
         use_new_gru=args.use_new_gru,
         dropout=args.dropout,
+        precomputed_features=True,
     ).to(device)
+    if not args.use_new_gru:
+        model = torch.compile(model)
+
+    scaler = torch.amp.GradScaler('cuda', enabled=args.amp)
 
     epochs = args.epochs
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     warmup_epochs = min(args.lr_warmup_epochs, epochs - 1)
+
+    if args.lr_scheduler == "cosine-warm-restarts":
+        main_sched = CosineAnnealingWarmRestarts(optimizer, T_0=args.lr_t0, T_mult=args.lr_t_mult)
+    else:
+        main_sched = CosineAnnealingLR(optimizer, T_max=epochs - warmup_epochs if warmup_epochs > 0 else epochs)
+
     if warmup_epochs > 0:
         warmup_sched = LinearLR(optimizer, start_factor=1e-3, total_iters=warmup_epochs)
-        cosine_sched = CosineAnnealingLR(optimizer, T_max=epochs - warmup_epochs)
-        scheduler = SequentialLR(optimizer, schedulers=[warmup_sched, cosine_sched], milestones=[warmup_epochs])
+        scheduler = SequentialLR(optimizer, schedulers=[warmup_sched, main_sched], milestones=[warmup_epochs])
     else:
-        scheduler = CosineAnnealingLR(optimizer, T_max=epochs)
+        scheduler = main_sched
 
     class_weights = torch.ones(NUM_CLASSES, device=device)
-    class_weights[LABEL_TO_IDX["unknown"]] = 1.20
-    class_weights[LABEL_TO_IDX["silence"]] = 1.10
+    if not args.balanced_sampler:
+        class_weights[LABEL_TO_IDX["unknown"]] = 1.20
+        class_weights[LABEL_TO_IDX["silence"]] = 1.10
 
     criterion = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=args.label_smoothing)
 
@@ -159,9 +188,19 @@ def main():
     print(f"Feature config: {args.feature_config} -> {feature_config}")
     print(f"SpecAugment: {args.spec_augment} freq_mask={args.freq_mask_param} time_mask={args.time_mask_param}")
     print(f"Hidden size: {args.hidden_size}")
+    print(f"Num layers: {args.num_layers}")
+    print(f"Epochs: {epochs}")
+    print(f"LR: {args.lr}")
     print(f"Speed perturbation: {args.speed_perturb}")
     print(f"LR warmup epochs: {warmup_epochs}")
+    if args.lr_scheduler == "cosine-warm-restarts":
+        print(f"LR scheduler: cosine-warm-restarts T0={args.lr_t0} T_mult={args.lr_t_mult}")
+    else:
+        print(f"LR scheduler: cosine")
     print(f"Balanced sampler: {args.balanced_sampler}")
+    print(f"Dropout: {args.dropout}")
+    print(f"New GRU: {args.use_new_gru}")
+    print(f"AMP: {args.amp}")
     if torch.cuda.is_available():
         print(f"GPU Name: {torch.cuda.get_device_name(0)}")
         print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB")
@@ -195,8 +234,10 @@ def main():
             criterion,
             device,
             epoch=epoch,
+            use_amp=args.amp,
+            scaler=scaler,
         )
-        val_acc, _ = evaluate(model, val_loader, criterion, device, split_name="Val")
+        val_acc, _ = evaluate(model, val_loader, criterion, device, split_name="Val", use_amp=args.amp)
 
         train_acc_history.append(train_acc)
         val_acc_history.append(val_acc)
@@ -209,23 +250,24 @@ def main():
         scheduler.step()
 
     model.load_state_dict(torch.load(best_model_path, map_location=device))
-    test_acc, _ = evaluate(model, test_loader, criterion, device, split_name="Test")
+    test_acc, _ = evaluate(model, test_loader, criterion, device, split_name="Test", use_amp=args.amp)
 
     pyplot = importlib.import_module("matplotlib.pyplot")
 
-    meta_parts = [
+    line1 = [
         f"feature={args.feature_config}",
         f"n_mels={feature_config['n_mels']}",
         f"use_delta={feature_config['use_delta']}",
         f"use_delta_delta={feature_config['use_delta_delta']}",
     ]
     if args.spec_augment:
-        meta_parts.append(f"SpecAugment(freq={args.freq_mask_param},time={args.time_mask_param})")
+        line1.append(f"SpecAugment(freq={args.freq_mask_param},time={args.time_mask_param})")
     if args.speed_perturb:
-        meta_parts.append("speed_perturb=True")
+        line1.append("speed_perturb=True")
     if args.balanced_sampler:
-        meta_parts.append("balanced_sampler=True")
-    meta_parts += [
+        line1.append("balanced_sampler=True")
+
+    line2 = [
         f"hidden={args.hidden_size}",
         f"layers={args.num_layers}",
         f"dropout={args.dropout}",
@@ -233,13 +275,14 @@ def main():
         f"wd={args.weight_decay}",
         f"label_smooth={args.label_smoothing}",
         f"warmup={warmup_epochs}",
+        f"scheduler={args.lr_scheduler}" + (f"(T0={args.lr_t0},Tm={args.lr_t_mult})" if args.lr_scheduler == "cosine-warm-restarts" else ""),
     ]
-    meta_txt = " | ".join(meta_parts)
+    meta_txt = " | ".join(line1) + "\n" + " | ".join(line2)
 
     epochs_ran = range(1, len(val_acc_history) + 1)
     pyplot.figure(figsize=(10, 5))
-    pyplot.plot(epochs_ran, train_acc_history, marker="^", markersize=3, linewidth=1.0, label="Training Accuracy", alpha=0.8)
-    pyplot.plot(epochs_ran, val_acc_history, marker="o", markersize=3, linewidth=1.0, label="Validation Accuracy", alpha=0.8)
+    pyplot.plot(epochs_ran, train_acc_history, marker="^", markersize=1, linewidth=1.0, label="Training Accuracy", alpha=0.8)
+    pyplot.plot(epochs_ran, val_acc_history, marker="o", markersize=1, linewidth=1.0, label="Validation Accuracy", alpha=0.8)
     pyplot.axhline(y=test_acc, color="r", linestyle="--", linewidth=1.0, label="Final Test Accuracy")
     pyplot.annotate(
         f"Test: {test_acc:.2f}%",

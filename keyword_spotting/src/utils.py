@@ -8,6 +8,7 @@ import torchaudio
 from torchaudio import datasets
 
 
+
 COMMANDS_10 = ["yes", "no", "up", "down", "left", "right", "on", "off", "stop", "go"]
 LABELS = COMMANDS_10 + ["unknown", "silence"]
 
@@ -22,6 +23,42 @@ NOISE_MIX_PROB = 0.5
 NOISE_SNR_DB_RANGE = (0.0, 15.0)
 GAIN_RANGE = (0.7, 1.3)
 SILENCE_GAIN_RANGE = (0.0, 0.1)
+
+
+def build_mel_spectrogram(n_mels=N_MELS):
+    return torchaudio.transforms.MelSpectrogram(
+        sample_rate=SAMPLE_RATE,
+        n_fft=512,
+        hop_length=160,
+        win_length=480,
+        n_mels=n_mels,
+        f_min=0.0,
+        f_max=8000.0,
+    )
+
+
+class FeatureExtractor:
+    """Stateless mel+dB+delta extractor for use in dataloader workers (no autograd needed)."""
+
+    def __init__(self, n_mels=N_MELS, use_delta=True, use_delta_delta=True):
+        self.mel = build_mel_spectrogram(n_mels=n_mels)
+        self.db = torchaudio.transforms.AmplitudeToDB()
+        self.use_delta = use_delta
+        self.use_delta_delta = use_delta_delta
+        self.compute_deltas = torchaudio.transforms.ComputeDeltas()
+
+    def __call__(self, waveforms: torch.Tensor) -> torch.Tensor:
+        x = self.mel(waveforms)
+        x = self.db(x)
+        features = [x]
+        if self.use_delta:
+            deltas = self.compute_deltas(x)
+            features.append(deltas)
+            if self.use_delta_delta:
+                ddeltas = self.compute_deltas(deltas)
+                features.append(ddeltas)
+        x = torch.cat(features, dim=2)
+        return x.squeeze(1)  # (B, 1, F, T) -> (B, F, T)
 
 
 def get_data_root():
@@ -87,7 +124,7 @@ def _random_speed_perturb(waveform: torch.Tensor) -> torch.Tensor:
     return waveform
 
 
-def collate_fn(batch, training=False, speed_perturb=False):
+def collate_fn(batch, training=False, speed_perturb=False, feature_extractor=None):
     waveforms, labels = [], []
 
     for waveform, sample_rate, label, *_ in batch:
@@ -126,12 +163,15 @@ def collate_fn(batch, training=False, speed_perturb=False):
         waveforms.append(silent)
         labels.append(LABEL_TO_IDX["silence"])
 
-    return torch.stack(waveforms), torch.tensor(labels)
+    stacked = torch.stack(waveforms)
+    if feature_extractor is not None:
+        stacked = feature_extractor(stacked)
+    return stacked, torch.tensor(labels)
 
 
-def make_train_collate(speed_perturb=False):
+def make_train_collate(speed_perturb=False, feature_extractor=None):
     def _collate(batch):
-        return collate_fn(batch, training=True, speed_perturb=speed_perturb)
+        return collate_fn(batch, training=True, speed_perturb=speed_perturb, feature_extractor=feature_extractor)
     return _collate
 
 
@@ -160,6 +200,12 @@ def eval_collate(batch):
     return collate_fn(batch, training=False)
 
 
+def make_eval_collate(feature_extractor=None):
+    def _collate(batch):
+        return collate_fn(batch, training=False, feature_extractor=feature_extractor)
+    return _collate
+
+
 def build_datasets(data_root=None, download=True):
     root = str(data_root or get_data_root())
 
@@ -185,8 +231,27 @@ def build_datasets(data_root=None, download=True):
     return train_set, val_set, test_set
 
 
-def build_dataloaders(batch_size_train=64, batch_size_eval=1024, num_workers=4, pin_memory=True, speed_perturb=False, balanced_sampler=False):
+def build_dataloaders(
+    batch_size_train=64,
+    batch_size_eval=1024,
+    num_workers=4,
+    pin_memory=True,
+    speed_perturb=False,
+    balanced_sampler=False,
+    n_mels=None,
+    use_delta=None,
+    use_delta_delta=None,
+):
     train_set, val_set, test_set = build_datasets()
+
+    if n_mels is not None:
+        feature_extractor = FeatureExtractor(
+            n_mels=n_mels,
+            use_delta=use_delta if use_delta is not None else True,
+            use_delta_delta=use_delta_delta if use_delta_delta is not None else True,
+        )
+    else:
+        feature_extractor = None
 
     if balanced_sampler:
         sample_weights = make_sample_weights(train_set)
@@ -206,7 +271,7 @@ def build_dataloaders(batch_size_train=64, batch_size_eval=1024, num_workers=4, 
         persistent_workers=num_workers > 0,
         shuffle=shuffle,
         sampler=sampler,
-        collate_fn=make_train_collate(speed_perturb=speed_perturb),
+        collate_fn=make_train_collate(speed_perturb=speed_perturb, feature_extractor=feature_extractor),
     )
     val_loader = torch.utils.data.DataLoader(
         val_set,
@@ -215,7 +280,7 @@ def build_dataloaders(batch_size_train=64, batch_size_eval=1024, num_workers=4, 
         pin_memory=pin_memory,
         persistent_workers=num_workers > 0,
         shuffle=False,
-        collate_fn=eval_collate,
+        collate_fn=make_eval_collate(feature_extractor=feature_extractor),
     )
     test_loader = torch.utils.data.DataLoader(
         test_set,
@@ -224,7 +289,7 @@ def build_dataloaders(batch_size_train=64, batch_size_eval=1024, num_workers=4, 
         pin_memory=pin_memory,
         persistent_workers=num_workers > 0,
         shuffle=False,
-        collate_fn=eval_collate,
+        collate_fn=make_eval_collate(feature_extractor=feature_extractor),
     )
 
     return train_loader, val_loader, test_loader
