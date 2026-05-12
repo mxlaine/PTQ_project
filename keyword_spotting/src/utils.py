@@ -7,15 +7,13 @@ import torch.nn.functional as F
 import torchaudio
 from torchaudio import datasets
 
-
-
 COMMANDS_10 = ["yes", "no", "up", "down", "left", "right", "on", "off", "stop", "go"]
 LABELS = COMMANDS_10 + ["unknown", "silence"]
 
 LABEL_TO_IDX = {label: idx for idx, label in enumerate(LABELS)}
 NUM_CLASSES = len(LABELS)
 
-N_MELS = 16
+N_MELS = 16 # OR 48 only mels
 TARGET_LENGTH = 16000
 SAMPLE_RATE = 16000
 
@@ -102,29 +100,16 @@ def _mix_noise(signal: torch.Tensor, snr_db: float) -> torch.Tensor:
     return signal + scale * noise
 
 
-# Discrete rates chosen so that new_freq = round(16000 * rate) has GCD >= 800 with
-# 16000, keeping the sinc filter length under ~300 taps.  Continuous uniform sampling
-# can produce GCD=2 and filter lengths > 96,000, which makes each batch take seconds.
-_SPEED_RATES = (0.9, 0.95, 1.05, 1.1)
+def _synthesize_silence_batch(num_silence, target_length):
+    waveforms = []
+    for _ in range(num_silence):
+        silent = _random_noise_crop(target_length)
+        silent = silent * random.uniform(*SILENCE_GAIN_RANGE)
+        waveforms.append(silent)
+    return waveforms
 
 
-@lru_cache(maxsize=8)
-def _get_speed_resampler(new_freq: int) -> torchaudio.transforms.Resample:
-    return torchaudio.transforms.Resample(SAMPLE_RATE, new_freq)
-
-
-def _random_speed_perturb(waveform: torch.Tensor) -> torch.Tensor:
-    rate = random.choice(_SPEED_RATES)
-    new_freq = int(round(SAMPLE_RATE * rate))
-    waveform = _get_speed_resampler(new_freq)(waveform)
-    if waveform.shape[-1] < TARGET_LENGTH:
-        waveform = F.pad(waveform, (0, TARGET_LENGTH - waveform.shape[-1]))
-    else:
-        waveform = waveform[..., :TARGET_LENGTH]
-    return waveform
-
-
-def collate_fn(batch, training=False, speed_perturb=False, feature_extractor=None):
+def collate_fn(batch, training=False, feature_extractor=None):
     waveforms, labels = [], []
 
     for waveform, sample_rate, label, *_ in batch:
@@ -136,9 +121,6 @@ def collate_fn(batch, training=False, speed_perturb=False, feature_extractor=Non
             waveform = waveform[..., :TARGET_LENGTH]
 
         if training:
-            if speed_perturb:
-                waveform = _random_speed_perturb(waveform)
-
             shift = random.randint(-800, 800)
             if shift > 0:
                 waveform = F.pad(waveform[..., :-shift], (shift, 0))
@@ -157,11 +139,9 @@ def collate_fn(batch, training=False, speed_perturb=False, feature_extractor=Non
         labels.append(mapped_label)
 
     num_silence = int(0.1 * len(waveforms))
-    for _ in range(num_silence):
-        silent = _random_noise_crop(TARGET_LENGTH)
-        silent = silent * random.uniform(*SILENCE_GAIN_RANGE)
-        waveforms.append(silent)
-        labels.append(LABEL_TO_IDX["silence"])
+    silence_waveforms = _synthesize_silence_batch(num_silence, TARGET_LENGTH)
+    waveforms.extend(silence_waveforms)
+    labels.extend([LABEL_TO_IDX["silence"]] * num_silence)
 
     stacked = torch.stack(waveforms)
     if feature_extractor is not None:
@@ -169,35 +149,41 @@ def collate_fn(batch, training=False, speed_perturb=False, feature_extractor=Non
     return stacked, torch.tensor(labels)
 
 
-def make_train_collate(speed_perturb=False, feature_extractor=None):
+def make_train_collate(feature_extractor=None):
     def _collate(batch):
-        return collate_fn(batch, training=True, speed_perturb=speed_perturb, feature_extractor=feature_extractor)
+        return collate_fn(batch, training=True, feature_extractor=feature_extractor)
     return _collate
 
 
-def make_sample_weights(dataset) -> torch.Tensor:
-    """Return a per-sample weight tensor (inverse class frequency) without loading audio.
+class BalancedUnderSampler(torch.utils.data.Sampler):
+    """BC-ResNet style class-balanced under-sampler.
 
-    Uses dataset._walker (list of file paths); label is the parent directory name.
-    Silence is injected synthetically in collate_fn and not present here — that's fine.
+    Each epoch samples the same number of indices per class (size of the smallest class),
+    drawn without replacement, then concatenates and shuffles the result.
     """
-    labels = [
-        LABEL_TO_IDX[Path(p).parent.name] if Path(p).parent.name in COMMANDS_10
-        else LABEL_TO_IDX["unknown"]
-        for p in dataset._walker
-    ]
-    label_tensor = torch.tensor(labels)
-    counts = torch.bincount(label_tensor, minlength=NUM_CLASSES).float()
-    weights = 1.0 / counts.clamp(min=1)
-    return weights[label_tensor]
 
+    def __init__(self, dataset):
+        labels = [
+            LABEL_TO_IDX[Path(p).parent.name] if Path(p).parent.name in COMMANDS_10
+            else LABEL_TO_IDX["unknown"]
+            for p in dataset._walker
+        ]
+        self._indices_by_class = {}
+        for idx, label in enumerate(labels):
+            self._indices_by_class.setdefault(label, []).append(idx)
+        non_empty_counts = [len(v) for v in self._indices_by_class.values() if v]
+        self._target_count = min(non_empty_counts)
+        self._length = self._target_count * len(self._indices_by_class)
 
-def train_collate(batch):
-    return collate_fn(batch, training=True)
+    def __iter__(self):
+        sampled = []
+        for class_indices in self._indices_by_class.values():
+            sampled.extend(random.sample(class_indices, self._target_count))
+        random.shuffle(sampled)
+        return iter(sampled)
 
-
-def eval_collate(batch):
-    return collate_fn(batch, training=False)
+    def __len__(self):
+        return self._length
 
 
 def make_eval_collate(feature_extractor=None):
@@ -234,13 +220,12 @@ def build_datasets(data_root=None, download=True):
 def build_dataloaders(
     batch_size_train=64,
     batch_size_eval=1024,
-    num_workers=4,
     pin_memory=True,
-    speed_perturb=False,
     balanced_sampler=False,
     n_mels=None,
     use_delta=None,
     use_delta_delta=None,
+    seed=None,
 ):
     train_set, val_set, test_set = build_datasets()
 
@@ -254,40 +239,43 @@ def build_dataloaders(
         feature_extractor = None
 
     if balanced_sampler:
-        sample_weights = make_sample_weights(train_set)
-        sampler = torch.utils.data.WeightedRandomSampler(
-            sample_weights, num_samples=len(sample_weights), replacement=True
-        )
+        sampler = BalancedUnderSampler(train_set)
         shuffle = False
     else:
         sampler = None
         shuffle = True
 
+    train_generator = None
+    if seed is not None and shuffle:
+        train_generator = torch.Generator()
+        train_generator.manual_seed(seed)
+
     train_loader = torch.utils.data.DataLoader(
         train_set,
         batch_size=batch_size_train,
-        num_workers=num_workers,
+        num_workers=4,
         pin_memory=pin_memory,
-        persistent_workers=num_workers > 0,
+        persistent_workers=True,
         shuffle=shuffle,
         sampler=sampler,
-        collate_fn=make_train_collate(speed_perturb=speed_perturb, feature_extractor=feature_extractor),
+        generator=train_generator,
+        collate_fn=make_train_collate(feature_extractor=feature_extractor),
     )
     val_loader = torch.utils.data.DataLoader(
         val_set,
         batch_size=batch_size_eval,
-        num_workers=num_workers,
+        num_workers=4,
         pin_memory=pin_memory,
-        persistent_workers=num_workers > 0,
+        persistent_workers=True,
         shuffle=False,
         collate_fn=make_eval_collate(feature_extractor=feature_extractor),
     )
     test_loader = torch.utils.data.DataLoader(
         test_set,
         batch_size=batch_size_eval,
-        num_workers=num_workers,
+        num_workers=4,
         pin_memory=pin_memory,
-        persistent_workers=num_workers > 0,
+        persistent_workers=True,
         shuffle=False,
         collate_fn=make_eval_collate(feature_extractor=feature_extractor),
     )

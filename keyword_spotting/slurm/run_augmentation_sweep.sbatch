@@ -7,31 +7,28 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=24G
 #SBATCH --time=08:00:00
-#SBATCH --array=0-3
+#SBATCH --array=0-1
 
 set -euo pipefail
 
 PROJECT_ROOT="${PROJECT_ROOT:-/scratch/work/lainem31/PTQ_project/keyword_spotting}"
 VENV_ACTIVATE="${VENV_ACTIVATE:-/scratch/work/lainem31/PTQ_project/.venv/bin/activate}"
 
-# Fixed best config: 24_mels_delta with all-time best SpecAugment (job 17518365 task 0)
-FEATURE_CONFIG="24_mels_delta"
+# Default to the new main investigation config (16_mels + delta + delta-delta).
+FEATURE_CONFIG="${FEATURE_CONFIG:-16_mels_delta_delta}"
 FREQ_MASK=16
 TIME_MASK=25
-EPOCHS="${EPOCHS:-400}"
+EPOCHS="${EPOCHS:-325}"
 LR="${LR:-1e-3}"
 WEIGHT_DECAY="${WEIGHT_DECAY:-1e-4}"
 BATCH_SIZE_TRAIN="${BATCH_SIZE_TRAIN:-64}"
 BATCH_SIZE_EVAL="${BATCH_SIZE_EVAL:-1024}"
-NUM_WORKERS="${NUM_WORKERS:-4}"
 HIDDEN_SIZE="${HIDDEN_SIZE:-64}"
-NUM_LAYERS="${NUM_LAYERS:-2}"
+SEED="${SEED:-0}"
 
-# Grid: speed_perturb (off/on) x lr_warmup (0/10) = 4 tasks
-SPEED_FLAGS=("" "--speed-perturb")
+# Grid: lr_warmup (0/10) = 2 tasks
 LR_WARMUPS=(0 10)
 
-TOTAL_SPEED=${#SPEED_FLAGS[@]}
 TOTAL_LR=${#LR_WARMUPS[@]}
 
 mkdir -p "${PROJECT_ROOT}/slurm"
@@ -71,24 +68,16 @@ if [ -z "${SLURM_ARRAY_TASK_ID:-}" ]; then
   exit 1
 fi
 
-TOTAL_TASKS=$(( TOTAL_SPEED * TOTAL_LR ))
-
-if [ "${SLURM_ARRAY_TASK_ID}" -lt 0 ] || [ "${SLURM_ARRAY_TASK_ID}" -ge "${TOTAL_TASKS}" ]; then
-  echo "Invalid SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TASK_ID}; expected 0..$(( TOTAL_TASKS - 1 ))" >&2
+if [ "${SLURM_ARRAY_TASK_ID}" -lt 0 ] || [ "${SLURM_ARRAY_TASK_ID}" -ge "${TOTAL_LR}" ]; then
+  echo "Invalid SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TASK_ID}; expected 0..$(( TOTAL_LR - 1 ))" >&2
   exit 1
 fi
 
-# Map task id to (speed_perturb, lr_warmup)
-IDX=${SLURM_ARRAY_TASK_ID}
-SPEED_IDX=$(( IDX / TOTAL_LR ))
-LR_IDX=$(( IDX % TOTAL_LR ))
-
-SPEED_FLAG="${SPEED_FLAGS[SPEED_IDX]}"
-LR_WARMUP="${LR_WARMUPS[LR_IDX]}"
+LR_WARMUP="${LR_WARMUPS[SLURM_ARRAY_TASK_ID]}"
 
 echo "Running feature config: ${FEATURE_CONFIG} (task ${SLURM_ARRAY_TASK_ID})"
 echo "SpecAugment freq_mask=${FREQ_MASK} time_mask=${TIME_MASK}"
-echo "speed_perturb=${SPEED_FLAG:-off} lr_warmup=${LR_WARMUP}"
+echo "lr_warmup=${LR_WARMUP}"
 
 python -u src/main.py \
   --feature-config "${FEATURE_CONFIG}" \
@@ -97,12 +86,11 @@ python -u src/main.py \
   --weight-decay "${WEIGHT_DECAY}" \
   --batch-size-train "${BATCH_SIZE_TRAIN}" \
   --batch-size-eval "${BATCH_SIZE_EVAL}" \
-  --num-workers "${NUM_WORKERS}" \
   --hidden-size "${HIDDEN_SIZE}" \
-  --num-layers "${NUM_LAYERS}" \
+  --seed "${SEED}" \
+  --use-new-gru \
   --spec-augment \
   --freq-mask-param "${FREQ_MASK}" \
   --time-mask-param "${TIME_MASK}" \
   --lr-warmup-epochs "${LR_WARMUP}" \
-  ${SPEED_FLAG} \
   "$@"

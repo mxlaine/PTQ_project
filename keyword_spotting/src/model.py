@@ -34,9 +34,6 @@ class KeywordGRU(nn.Module):
         if self.apply_specaugment:
             self.freq_mask = torchaudio.transforms.FrequencyMasking(freq_mask_param)
             self.time_mask = torchaudio.transforms.TimeMasking(time_mask_param)
-            # torchaudio masking ops generate CPU random tensors internally, which
-            # Triton can't handle — keep this path out of torch.compile
-            self._apply_spec_augment = torch.compiler.disable(self._apply_spec_augment)
 
         input_multiplier = 1
         if self.use_delta:

@@ -35,51 +35,71 @@ outdir.mkdir(parents=True, exist_ok=True)
 outfile = outdir / f"train_val_from_log_{job}_{task}.png"
 
 # Parse sweep metadata for top-of-plot annotation
-feature = None
-n_mels = None
-use_delta = None
-use_delta_delta = None
-specaugment = None
-freq_mask = None
-time_mask = None
+def _search(pattern, text, group=1):
+    m = re.search(pattern, text)
+    return m.group(group) if m else None
 
-m_feat = re.search(r"Running feature config:\s*(\S+)", text)
-if not m_feat:
-    m_feat = re.search(r"Feature config:\s*(\S+)", text)
-if m_feat:
-    feature = m_feat.group(1)
-
-m_n = re.search(r"'n_mels'\s*:\s*(\d+)", text)
-if m_n:
-    n_mels = m_n.group(1)
-
-m_ud = re.search(r"'use_delta'\s*:\s*(True|False)", text)
-if m_ud:
-    use_delta = m_ud.group(1)
-
-m_udd = re.search(r"'use_delta_delta'\s*:\s*(True|False)", text)
-if m_udd:
-    use_delta_delta = m_udd.group(1)
+feature = _search(r"Running feature config:\s*(\S+)", text) or _search(r"Feature config:\s*(\S+)", text)
+n_mels = _search(r"'n_mels'\s*:\s*(\d+)", text)
+use_delta = _search(r"'use_delta'\s*:\s*(True|False)", text)
+use_delta_delta = _search(r"'use_delta_delta'\s*:\s*(True|False)", text)
+speed_perturb = _search(r"Speed perturbation:\s*(True|False)", text)
+balanced_sampler = _search(r"Balanced sampler:\s*(True|False)", text)
 
 m_sa = re.search(r"SpecAugment[: ]+.*freq_mask=?\s*(\d+).*time_mask=?\s*(\d+)", text)
-if m_sa:
-    specaugment = True
-    freq_mask = m_sa.group(1)
-    time_mask = m_sa.group(2)
+freq_mask = m_sa.group(1) if m_sa else None
+time_mask = m_sa.group(2) if m_sa else None
 
-meta_parts = []
+hidden = _search(r"Hidden size:\s*(\d+)", text)
+num_layers = _search(r"Num layers:\s*(\d+)", text)
+dropout = _search(r"Dropout:\s*([\d.]+)", text)
+lr = _search(r"^LR:\s*([\d.e+-]+)", text) or _search(r"\bLR:\s*([\d.e+-]+)", text)
+warmup = _search(r"LR warmup epochs:\s*(\d+)", text)
+new_gru = _search(r"New GRU:\s*(True|False)", text)
+
+m_sched = re.search(r"LR scheduler:\s*cosine-warm-restarts T0=(\d+) T_mult=(\d+)", text)
+if m_sched:
+    scheduler_str = f"cosine-warm-restarts(T0={m_sched.group(1)},Tm={m_sched.group(2)})"
+elif re.search(r"LR scheduler:\s*cosine", text):
+    scheduler_str = "cosine"
+else:
+    scheduler_str = None
+
+line1 = []
 if feature:
-    meta_parts.append(f"feature={feature}")
+    line1.append(f"feature={feature}")
 if n_mels:
-    meta_parts.append(f"n_mels={n_mels}")
+    line1.append(f"n_mels={n_mels}")
 if use_delta is not None:
-    meta_parts.append(f"use_delta={use_delta}")
+    line1.append(f"use_delta={use_delta}")
 if use_delta_delta is not None:
-    meta_parts.append(f"use_delta_delta={use_delta_delta}")
-if specaugment:
-    meta_parts.append(f"SpecAugment(freq={freq_mask},time={time_mask})")
+    line1.append(f"use_delta_delta={use_delta_delta}")
+if m_sa:
+    line1.append(f"SpecAugment(freq={freq_mask},time={time_mask})")
+if speed_perturb == "True":
+    line1.append("speed_perturb=True")
+if balanced_sampler == "True":
+    line1.append("balanced_sampler=True")
+if new_gru == "True":
+    line1.append("new_gru=True")
 
-meta_txt = " | ".join(meta_parts)
+line2 = []
+if hidden:
+    line2.append(f"hidden_size={hidden}")
+if num_layers:
+    line2.append(f"layers={num_layers}")
+if dropout:
+    line2.append(f"dropout={dropout}")
+if lr:
+    line2.append(f"lr={lr}")
+if warmup:
+    line2.append(f"warmup_epochs={warmup}")
+if scheduler_str:
+    line2.append(f"scheduler={scheduler_str}")
+
+meta_txt = " | ".join(line1)
+if line2:
+    meta_txt += "\n" + " | ".join(line2)
 
 plt.figure(figsize=(10,5))
 ms = 3
