@@ -1,5 +1,7 @@
 AGENTS.md
 PLAN.md
+CLAUDE.md
+plans/
 
 # Python bytecode and caches
 __pycache__/
