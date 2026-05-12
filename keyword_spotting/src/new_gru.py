@@ -1,8 +1,31 @@
-from typing import Optional
+from typing import List, Optional
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+
+
+@torch.jit.script
+def _recurrent_loop(
+    gi_all: torch.Tensor,
+    h: torch.Tensor,
+    weight_hh: torch.Tensor,
+    bias_hh: torch.Tensor,
+    collect_outputs: bool,
+) -> tuple[torch.Tensor, List[torch.Tensor]]:
+    outputs: List[torch.Tensor] = []
+    for t in range(gi_all.shape[1]):
+        gi = gi_all[:, t]
+        gh = F.linear(h, weight_hh, bias_hh)
+        i_r, i_z, i_n = gi.chunk(3, dim=-1)
+        h_r, h_z, h_n = gh.chunk(3, dim=-1)
+        r = torch.sigmoid(i_r + h_r)
+        z = torch.sigmoid(i_z + h_z)
+        n = torch.tanh(i_n + r * h_n)
+        h = (1.0 - z) * n + z * h
+        if collect_outputs:
+            outputs.append(h)
+    return h, outputs
 
 
 class NewGRUCell(nn.Module):
@@ -22,19 +45,6 @@ class NewGRUCell(nn.Module):
         stdv = 1.0 / (self.hidden_size ** 0.5)
         for p in self.parameters():
             nn.init.uniform_(p, -stdv, stdv)
-
-    def forward(self, x: torch.Tensor, h: torch.Tensor) -> torch.Tensor:
-        gi = F.linear(x, self.weight_ih, self.bias_ih)
-        gh = F.linear(h, self.weight_hh, self.bias_hh)
-
-        i_r, i_z, i_n = gi.chunk(3, dim=-1)
-        h_r, h_z, h_n = gh.chunk(3, dim=-1)
-
-        r = torch.sigmoid(i_r + h_r)
-        z = torch.sigmoid(i_z + h_z)
-        n = torch.tanh(i_n + r * h_n)
-
-        return (1.0 - z) * n + z * h
 
 
 class NewGRU(nn.Module):
@@ -66,7 +76,12 @@ class NewGRU(nn.Module):
             self.register_parameter(f"bias_hh_l{layer}", cell.bias_hh)
         self.cells = cells
 
-    def forward(self, x: torch.Tensor, h0: Optional[torch.Tensor] = None):
+    def forward(
+        self,
+        x: torch.Tensor,
+        h0: Optional[torch.Tensor] = None,
+        return_sequences: bool = True,
+    ):
         batch, seq_len, _ = x.shape
         device = x.device
         dtype = x.dtype
@@ -79,11 +94,17 @@ class NewGRU(nn.Module):
 
         for layer, cell in enumerate(self.cells):
             h = h0[layer]
-            outputs = []
-            for t in range(seq_len):
-                h = cell(layer_input[:, t, :], h)
-                outputs.append(h)
-            layer_output = torch.stack(outputs, dim=1)
+            is_last_layer = layer == self.num_layers - 1
+            collect_outputs = return_sequences or not is_last_layer
+
+            # One batched matmul over the full sequence instead of T per-step matmuls
+            gi_all = F.linear(layer_input, cell.weight_ih, cell.bias_ih)  # (B, T, 3H)
+            h, outputs = _recurrent_loop(gi_all, h, cell.weight_hh, cell.bias_hh, collect_outputs)
+
+            if not collect_outputs:
+                layer_output = h.unsqueeze(1)
+            else:
+                layer_output = torch.stack(outputs, dim=1)
             h_n_layers.append(h)
 
             if layer < self.num_layers - 1 and self.dropout > 0.0 and self.training:
@@ -92,7 +113,9 @@ class NewGRU(nn.Module):
             layer_input = layer_output
 
         h_n = torch.stack(h_n_layers, dim=0)
-        return layer_input, h_n
+        if return_sequences:
+            return layer_input, h_n
+        return h_n[-1], h_n
 
 
 def from_torch_gru(gru: nn.GRU) -> NewGRU:

@@ -67,7 +67,7 @@ def test_checkpoint_accuracy():
     new_model.load_state_dict(state)
 
     _, _, test_loader = build_dataloaders(
-        batch_size_train=64, batch_size_eval=256, num_workers=2, pin_memory=False
+        batch_size_train=64, batch_size_eval=256, pin_memory=False
     )
 
     correct_t = correct_n = total = 0

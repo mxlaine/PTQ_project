@@ -7,30 +7,28 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=24G
 #SBATCH --time=08:00:00
-#SBATCH --array=0-47
+#SBATCH --array=0-35
 
 set -euo pipefail
 
 PROJECT_ROOT="${PROJECT_ROOT:-/scratch/work/lainem31/PTQ_project/keyword_spotting}"
 VENV_ACTIVATE="${VENV_ACTIVATE:-/scratch/work/lainem31/PTQ_project/.venv/bin/activate}"
 FEATURE_CONFIGS=(
+  "16_mels"
   "16_mels_delta_delta"
-  "24_mels_delta"
-  "40_mels"
   "48_mels"
 )
 
 # Sweep values for SpecAugment mask sizes. Adjust these arrays to change sweep.
 FREQ_MASKS=(0 4 8 12)
 TIME_MASKS=(10 30 50)
-EPOCHS="${EPOCHS:-400}"
+EPOCHS="${EPOCHS:-325}"
 LR="${LR:-1e-3}"
 WEIGHT_DECAY="${WEIGHT_DECAY:-1e-4}"
 BATCH_SIZE_TRAIN="${BATCH_SIZE_TRAIN:-64}"
 BATCH_SIZE_EVAL="${BATCH_SIZE_EVAL:-1024}"
-NUM_WORKERS="${NUM_WORKERS:-4}"
 HIDDEN_SIZE="${HIDDEN_SIZE:-64}"
-NUM_LAYERS="${NUM_LAYERS:-2}"
+SEED="${SEED:-0}"
 
 mkdir -p "${PROJECT_ROOT}/slurm"
 cd "${PROJECT_ROOT}"
@@ -102,9 +100,9 @@ python -u src/main.py \
   --weight-decay "${WEIGHT_DECAY}" \
   --batch-size-train "${BATCH_SIZE_TRAIN}" \
   --batch-size-eval "${BATCH_SIZE_EVAL}" \
-  --num-workers "${NUM_WORKERS}" \
   --hidden-size "${HIDDEN_SIZE}" \
-  --num-layers "${NUM_LAYERS}" \
+  --seed "${SEED}" \
+  --use-new-gru \
   --spec-augment \
   --freq-mask-param "${FREQ_MASK}" \
   --time-mask-param "${TIME_MASK}" \
