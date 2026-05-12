@@ -12,13 +12,10 @@ This work is part of an IC Design project. The model has to be implemented in
 hardware, so a number of constraints are fixed up-front and the rest of the
 experimental effort is spent maximising accuracy within them:
 
-| Constraint | Value |
-|---|---|
 | Architecture | 2 stacked unidirectional GRU layers + linear head (fixed) |
 | Max hidden size | 64 (≈ 47k parameters total) |
 | Output classes | 12 (10 keywords + `unknown` + `silence`) |
 | Dataset | Google Speech Commands v2 |
-| No attention pooling, no extra layers, no parameter inflation | |
 
 Everything in this repo — feature engineering, augmentation, training schedule,
 regularisation, evaluation tooling — exists to push validation/test accuracy up
