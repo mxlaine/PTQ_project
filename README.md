@@ -1,47 +1,15 @@
 # Keyword Spotting on FPGA-Constrained Hardware
 
-A research codebase exploring how small, efficient recurrent networks can recognise
-spoken commands well enough to be useful — under the strict parameter and
-architecture budget of a custom FPGA accelerator. The goal is not state-of-the-art
-accuracy at any cost, but the best accuracy we can wring out of a model that an
-RTL team will actually be able to synthesise.
-
-## Project context
-
 This work is part of an IC Design project. The model has to be implemented in
-hardware, so a number of constraints are fixed up-front and the rest of the
-experimental effort is spent maximising accuracy within them:
+hardware, so a number of constraints have to be accounted for and the rest of the
+effort is spent maximising accuracy within them:
 
-| Architecture | 2 stacked unidirectional GRU layers + linear head (fixed) |
+| Architecture | 2 stacked unidirectional GRU layers + linear head |
 | Max hidden size | 64 (≈ 47k parameters total) |
 | Output classes | 12 (10 keywords + `unknown` + `silence`) |
 | Dataset | Google Speech Commands v2 |
 
-Everything in this repo — feature engineering, augmentation, training schedule,
-regularisation, evaluation tooling — exists to push validation/test accuracy up
-while leaving the model topology and parameter count untouched.
-
-## Repository layout
-
-```
-PTQ_project/
-├── keyword_spotting/        # Main project
-│   ├── src/
-│   │   ├── main.py          # Training entrypoint (CLI)
-│   │   ├── model.py         # KeywordGRU: features + 2x GRU + classifier
-│   │   ├── new_gru.py       # From-scratch TorchScript GRU (hardware-faithful)
-│   │   ├── test_new_gru.py  # Parity tests vs. torch.nn.GRU
-│   │   └── utils.py         # Mel/delta features, augmentation, samplers, dataloaders
-│   ├── slurm/               # SLURM array scripts (one per sweep)
-│   ├── scripts/             # Log parsing, plotting, sweep summary
-│   ├── notebooks/
-│   ├── models/              # Best checkpoints per run (git-ignored)
-│   ├── plots/               # Training curves (git-ignored)
-│   └── data/                # Speech Commands v2 (git-ignored)
-└── cnn_testing/             # Standalone MNIST CNN notebook
-```
-
-## The model
+## Model
 
 `KeywordGRU` ([keyword_spotting/src/model.py](keyword_spotting/src/model.py)) is
 deliberately small and shaped to match the planned FPGA datapath:
