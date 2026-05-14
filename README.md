@@ -1,8 +1,7 @@
 # Keyword Spotting on FPGA-Constrained Hardware
 
 This work is part of an IC Design project. The model has to be implemented in
-hardware, so a number of constraints have to be accounted for and the rest of the
-effort is spent maximising accuracy within them:
+hardware, so a number of constraints have to be accounted for:
 
 
 - Architecture: 2 stacked unidirectional GRU layers + linear head
