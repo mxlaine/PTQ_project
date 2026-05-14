@@ -5,10 +5,10 @@ hardware, so a number of constraints have to be accounted for and the rest of th
 effort is spent maximising accuracy within them:
 
 
-Architecture: 2 stacked unidirectional GRU layers + linear head
-Max hidden size: 64 (≈ 47k parameters total)
-Output classes: 12 (10 keywords + unknown + silence)
-Dataset: Google Speech Commands v2
+- Architecture: 2 stacked unidirectional GRU layers + linear head
+- Max hidden size: 64 (≈ 47k parameters total)
+- Output classes: 12 (10 keywords + unknown + silence)
+- Dataset: Google Speech Commands v2
 
 ## Model
 
