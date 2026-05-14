@@ -4,6 +4,7 @@ This work is part of an IC Design project. The model has to be implemented in
 hardware, so a number of constraints have to be accounted for and the rest of the
 effort is spent maximising accuracy within them:
 
+|---|---|
 | Architecture | 2 stacked unidirectional GRU layers + linear head |
 | Max hidden size | 64 (≈ 47k parameters total) |
 | Output classes | 12 (10 keywords + `unknown` + `silence`) |
