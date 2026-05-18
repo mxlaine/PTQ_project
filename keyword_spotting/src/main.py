@@ -208,8 +208,6 @@ def main():
 
     wr_sched = main_sched if args.lr_scheduler == "cosine-warm-restarts" else None
 
-    # When the under-sampler is on, classes are already balanced per epoch — adding
-    # class weights on top would double-count. Apply weights only without the sampler.
     class_weights = torch.ones(NUM_CLASSES, device=device)
     if not args.balanced_sampler:
         class_weights[LABEL_TO_IDX["unknown"]] = 1.20
@@ -263,8 +261,6 @@ def main():
     train_acc_history = []
     val_acc_history = []
 
-    # Plots are grouped by job and task similar to .err/.out naming in slurm.
-    # Allow SLURM or explicit PLOT_* env vars set by the submit script.
     job_id = os.environ.get("PLOT_JOB") or os.environ.get("SLURM_ARRAY_JOB_ID") or os.environ.get("SLURM_JOB_ID") or "local"
     task_id = os.environ.get("PLOT_TASK") or os.environ.get("SLURM_ARRAY_TASK_ID") or "0"
 
@@ -342,13 +338,10 @@ def main():
     epochs_ran = list(range(1, len(val_acc_history) + 1))
 
     def _draw(ax, train_y, val_y, test_y, test_label):
-        # Curves
         ax.plot(epochs_ran, train_y, marker="^", markersize=1, linewidth=1.0,
                 label="Training", alpha=0.8)
         ax.plot(epochs_ran, val_y, marker="o", markersize=1, linewidth=1.0,
                 label="Validation", alpha=0.8)
-        # Test marker: a short dash at the right edge + label outside the axes,
-        # so it never obstructs the training/validation curves.
         ax.axhline(y=test_y, xmin=0.97, xmax=1.0, color="r", linewidth=2.0)
         ax.annotate(
             test_label,
@@ -375,9 +368,7 @@ def main():
         print(f"Failed to save plot: {e}")
     pyplot.close(fig)
 
-    # Log-scale error-rate plot: error = 100 - accuracy on a log y-axis, which
-    # spreads out near-ceiling differences for comparison with SotA KWS methods
-    # (e.g. BC-ResNet). EPS keeps perfect-accuracy points loggable.
+    # Log-scale error-rate plot
     EPS = 0.05
     train_err = [max(100.0 - a, EPS) for a in train_acc_history]
     val_err = [max(100.0 - a, EPS) for a in val_acc_history]

@@ -24,7 +24,6 @@ class KeywordGRU(nn.Module):
     ):
         super().__init__()
         self.precomputed_features = precomputed_features
-        # Keep mel buffers so existing checkpoints load cleanly regardless of precomputed_features.
         self.mel = build_mel_spectrogram(n_mels=n_mels)
         self.db = torchaudio.transforms.AmplitudeToDB()
         self.use_delta = use_delta

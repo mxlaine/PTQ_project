@@ -172,12 +172,6 @@ def make_train_collate(feature_extractor=None):
 
 
 class BalancedUnderSampler(torch.utils.data.Sampler):
-    """BC-ResNet style class-balanced under-sampler.
-
-    Each epoch samples the same number of indices per class (size of the smallest class),
-    drawn without replacement, then concatenates and shuffles the result.
-    """
-
     def __init__(self, dataset):
         labels = [
             LABEL_TO_IDX[Path(p).parent.name] if Path(p).parent.name in COMMANDS_10

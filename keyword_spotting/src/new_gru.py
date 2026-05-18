@@ -97,7 +97,6 @@ class NewGRU(nn.Module):
             is_last_layer = layer == self.num_layers - 1
             collect_outputs = return_sequences or not is_last_layer
 
-            # One batched matmul over the full sequence instead of T per-step matmuls
             gi_all = F.linear(layer_input, cell.weight_ih, cell.bias_ih)  # (B, T, 3H)
             h, outputs = _recurrent_loop(gi_all, h, cell.weight_hh, cell.bias_hh, collect_outputs)
 
