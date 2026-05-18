@@ -1,0 +1,15 @@
+{
+  "calib_batches": 16,
+  "checkpoint": "/scratch/work/lainem31/PTQ_project/keyword_spotting/models/17792221/best_keyword_gru_16_mels_delta_delta_17792221_9.pt",
+  "compression_total": 4.378301333109751,
+  "delta_pp": 0.11589403973509604,
+  "feature_config": "16_mels_delta_delta",
+  "fp32_test_acc": 97.36754966887418,
+  "hidden_size": 64,
+  "int8_test_acc": 97.25165562913908,
+  "int8_total_kib": 46.58984375,
+  "macs": 4654848,
+  "params": 47628,
+  "percentile": 99.99,
+  "seed": 0
+}

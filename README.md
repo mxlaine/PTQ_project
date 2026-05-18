@@ -9,6 +9,20 @@ hardware, so a number of constraints have to be accounted for:
 - Output classes: 12 (10 keywords + unknown + silence)
 - Dataset: Google Speech Commands v2
 
+## Setup
+
+```bash
+git clone <repo-url>
+cd PTQ_project
+python -m venv .venv
+source .venv/bin/activate
+pip install -r keyword_spotting/requirements.txt
+```
+
+The Google Speech Commands v2 dataset is downloaded automatically by
+`torchaudio` into `keyword_spotting/data/` on the first run — no manual
+download step is needed.
+
 ## Model
 
 `KeywordGRU` ([keyword_spotting/src/model.py](keyword_spotting/src/model.py)):
@@ -43,29 +57,43 @@ parameters to be tested:
   cosine warm restarts with optional linear warmup and per-cycle ceiling decay.
 - Seed controls model for reproducibility.
 
-Run locally:
+Run locally (with the virtualenv from **Setup** active):
 
 ```bash
-source .venv/bin/activate
 python keyword_spotting/src/main.py --help
 ```
 
 Example training run `--use-new-gru --spec-augment
 --balanced-sampler --label-smoothing 0.05 --lr-scheduler cosine --epochs 325`.
 
-All flags available with ´python3 src/main.py --help´
+## PTQ (Post-Training Quantization)
+
+`src/calibrate_ptq.py` loads an FP32 checkpoint,
+runs percentile-based INT8 calibration, evaluates accuracy, writes
+`scales.json`, `summary.json`, and `size_report.json` to `--out-dir`, and
+prints a full "Static model footprint / Memory bandwidth / Layer-by-layer"
+breakdown to stdout. The quantisation modules live in
+[keyword_spotting/src/ptq/](keyword_spotting/src/ptq/).
 
 ## Experiment infrastructure
 
-Various SLURM array jobs under [keyword_spotting/slurm/](keyword_spotting/slurm/),
-Examples in the repo cover:
+Every experiment is a SLURM array job under [keyword_spotting/slurm/](keyword_spotting/slurm/),
+parameterised so a single submission sweeps a Cartesian product of settings.
+Active scripts:
 
-- `run_keyword_gru.sbatch` — feature config x SpecAugment mask sizes
-- `run_keyword_gru_size_sweep.sbatch` — hidden size (16/32/48/64)
-- `run_lr_wd_sweep.sbatch` — learning rate x weight decay
-- `run_dropout_sweep.sbatch` — dropout
-- `run_specaugment_sweep.sbatch` — finer SpecAugment grid
-- `run_augmentation_sweep.sbatch` — toggle augmentation components
+- `run_keyword_gru_size_sweep.sbatch` — hidden size sweep (16/32/48/64)
+- `run_ptq_sweep.sbatch` — PTQ calibration sweep across hidden sizes and seeds
+- `run_ptq_single.sbatch` — single PTQ calibration run
+
+The sbatch scripts resolve the project and virtualenv from the `PROJECT_ROOT`
+and `VENV_ACTIVATE` environment variables (they fall back to the author's
+cluster paths). Set them for your own environment when submitting:
+
+```bash
+PROJECT_ROOT=/path/to/keyword_spotting \
+VENV_ACTIVATE=/path/to/.venv/bin/activate \
+sbatch keyword_spotting/slurm/run_ptq_sweep.sbatch
+```
 
 Each task writes its training log into a directory under `slurm/<jobid>/`,
 and the best checkpoint into `models/<jobid>/`. Plots of train/val/test curves
@@ -84,6 +112,15 @@ post-hoc analysis:
   re-seeded "best-of" runs.
 - `summarize_results.py` parse logs across one or more job directories into a
   table of best/final accuracy, runtime, and configuration. 
+
+## Tests
+
+[keyword_spotting/tests/](keyword_spotting/tests/) holds numerical-parity and
+quantisation checks (custom GRU vs `torch.nn.GRU`, PTQ round-trip). Run them with:
+
+```bash
+cd keyword_spotting && python -m pytest tests/
+```
 
 ## Tech stack
 

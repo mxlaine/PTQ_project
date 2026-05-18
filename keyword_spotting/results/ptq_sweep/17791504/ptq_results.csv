@@ -1,0 +1,5 @@
+feature_config,hidden_size,seed,fp32_acc,int8_acc,delta_pp,params,macs
+16_mels_delta_delta,16,0,94.7517,94.4785,0.2732,5004,465600
+16_mels_delta_delta,32,0,96.5646,96.4321,0.1325,14604,1396608
+16_mels_delta_delta,48,0,97.1689,97.2020,-0.0331,28812,2793024
+16_mels_delta_delta,64,0,97.3675,97.2517,0.1159,47628,4654848

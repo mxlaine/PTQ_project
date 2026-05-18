@@ -17,6 +17,22 @@ N_MELS = 16 # OR 48 only mels
 TARGET_LENGTH = 16000
 SAMPLE_RATE = 16000
 
+
+def compute_macs(n_mels, input_multiplier, hidden_size, num_layers, num_classes, n_frames):
+    """Analytical MAC count for a stacked GRU + linear classifier head.
+
+    Per timestep, each GRU layer needs 3 gates * (input_size * hidden + hidden * hidden) MACs.
+    Layer 1 input_size = n_mels * input_multiplier; subsequent layers input_size = hidden_size.
+    Only the final hidden state is fed to the classifier, so its MACs aren't multiplied by n_frames.
+    """
+    feat_dim = n_mels * input_multiplier
+    macs = 0
+    for layer_idx in range(num_layers):
+        in_size = feat_dim if layer_idx == 0 else hidden_size
+        macs += n_frames * 3 * hidden_size * (in_size + hidden_size)
+    macs += hidden_size * num_classes
+    return macs
+
 NOISE_MIX_PROB = 0.5
 NOISE_SNR_DB_RANGE = (0.0, 15.0)
 GAIN_RANGE = (0.7, 1.3)
