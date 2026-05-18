@@ -1,0 +1,22 @@
+{
+  "classifier_in_quant": 0.007873808033764362,
+  "classifier_w_quant": 0.029018867760896683,
+  "gru.cells.0.gh_quant": 0.07495250552892685,
+  "gru.cells.0.gi_quant": 0.18681448698043823,
+  "gru.cells.0.h_quant": 0.007874015718698502,
+  "gru.cells.0.sig_r_quant": 0.007874015718698502,
+  "gru.cells.0.sig_z_quant": 0.007874015718698502,
+  "gru.cells.0.tanh_n_quant": 0.007874015718698502,
+  "gru.cells.0.w_hh_quant": 0.03494252637028694,
+  "gru.cells.0.w_ih_quant": 0.08642484992742538,
+  "gru.cells.0.x_quant": 0.04211978614330292,
+  "gru.cells.1.gh_quant": 0.05576369911432266,
+  "gru.cells.1.gi_quant": 0.0482913963496685,
+  "gru.cells.1.h_quant": 0.007873914204537868,
+  "gru.cells.1.sig_r_quant": 0.007874015718698502,
+  "gru.cells.1.sig_z_quant": 0.007874015718698502,
+  "gru.cells.1.tanh_n_quant": 0.007874015718698502,
+  "gru.cells.1.w_hh_quant": 0.02409208193421364,
+  "gru.cells.1.w_ih_quant": 0.018615594133734703,
+  "gru.cells.1.x_quant": 0.007874015718698502
+}

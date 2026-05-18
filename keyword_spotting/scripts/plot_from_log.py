@@ -33,6 +33,7 @@ if mm:
 outdir = Path(__file__).resolve().parents[1] / 'plots' / job
 outdir.mkdir(parents=True, exist_ok=True)
 outfile = outdir / f"train_val_from_log_{job}_{task}.png"
+log_outfile = outdir / f"train_val_from_log_{job}_{task}_log.png"
 
 # Parse sweep metadata for top-of-plot annotation
 def _search(pattern, text, group=1):
@@ -101,29 +102,65 @@ meta_txt = " | ".join(line1)
 if line2:
     meta_txt += "\n" + " | ".join(line2)
 
-plt.figure(figsize=(10,5))
 ms = 3
 lw = 1.0
-if train:
-    plt.plot(range(1, len(train)+1), train, marker='^', markersize=ms, linewidth=lw, label='Training Accuracy', alpha=0.8)
-if val:
-    plt.plot(range(1, len(val)+1), val, marker='o', markersize=ms, linewidth=lw, label='Validation Accuracy', alpha=0.8)
-if test_acc is not None:
-    plt.axhline(y=test_acc, color='r', linestyle='--', linewidth=lw, label='Final Test Accuracy')
-    # annotate near the end of validation curve
-    x_annot = len(val) if val else (len(train) if train else 0)
-    if x_annot == 0:
-        x_annot = 1
-    plt.annotate(f"Test: {test_acc:.2f}%", (x_annot, test_acc), textcoords='offset points', xytext=(6,6), fontsize=8)
 
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy (%)')
-plt.title(f'Training and Validation Accuracy ({job}_{task})')
-if meta_txt:
-    plt.suptitle(meta_txt, fontsize=9, y=0.99)
 
-plt.grid(True, alpha=0.3)
-plt.legend()
-plt.tight_layout()
-plt.savefig(outfile)
-print(f"Saved plot to {outfile}")
+def draw_plot(train_y, val_y, test_y, test_label, ylabel, title, outpath, logscale):
+    fig, ax = plt.subplots(figsize=(10, 5))
+    if train_y:
+        ax.plot(range(1, len(train_y)+1), train_y, marker='^', markersize=ms,
+                linewidth=lw, label='Training', alpha=0.8)
+    if val_y:
+        ax.plot(range(1, len(val_y)+1), val_y, marker='o', markersize=ms,
+                linewidth=lw, label='Validation', alpha=0.8)
+    if test_y is not None:
+        # Test marker: a short dash at the right edge + label outside the axes,
+        # so it never obstructs the training/validation curves.
+        ax.axhline(y=test_y, xmin=0.97, xmax=1.0, color='r', linewidth=2.0)
+        ax.annotate(
+            test_label,
+            xy=(1.0, test_y), xycoords=('axes fraction', 'data'),
+            xytext=(5, 0), textcoords='offset points',
+            va='center', ha='left', fontsize=8, color='r',
+            annotation_clip=False,
+        )
+    if logscale:
+        ax.set_yscale('log')
+    ax.set_xlabel('Epoch')
+    ax.set_ylabel(ylabel)
+    ax.set_title(title)
+    if meta_txt:
+        fig.suptitle(meta_txt, fontsize=9, y=0.99)
+    ax.grid(True, which='both', alpha=0.3)
+    if train_y or val_y:
+        ax.legend(loc='best')
+    fig.tight_layout(rect=(0, 0, 0.92, 1))
+    fig.savefig(outpath)
+    plt.close(fig)
+    print(f"Saved plot to {outpath}")
+
+
+# Linear accuracy plot
+draw_plot(
+    train, val, test_acc,
+    f"Test {test_acc:.2f}%" if test_acc is not None else "",
+    'Accuracy (%)',
+    f'Training and Validation Accuracy ({job}_{task})',
+    outfile, logscale=False,
+)
+
+# Log-scale error-rate plot: error = 100 - accuracy on a log y-axis, which
+# spreads out near-ceiling differences for comparison with SotA KWS methods
+# (e.g. BC-ResNet). EPS keeps perfect-accuracy points loggable.
+EPS = 0.05
+train_err = [max(100.0 - a, EPS) for a in train]
+val_err = [max(100.0 - a, EPS) for a in val]
+test_err = max(100.0 - test_acc, EPS) if test_acc is not None else None
+draw_plot(
+    train_err, val_err, test_err,
+    f"Test {test_err:.2f}%" if test_err is not None else "",
+    'Error rate (%)',
+    f'Training and Validation Error — log scale ({job}_{task})',
+    log_outfile, logscale=True,
+)

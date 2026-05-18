@@ -1,0 +1,80 @@
+{
+  "bias_kib": 0.19921875,
+  "bw_reduction": 4.0,
+  "by_layer": {
+    "classifier.bias": {
+      "fp32_bytes": 48,
+      "kind": "bias",
+      "n_params": 12
+    },
+    "classifier.weight": {
+      "fp32_bytes": 768,
+      "kind": "weight",
+      "n_params": 192
+    },
+    "gru.bias_hh_l0": {
+      "fp32_bytes": 192,
+      "kind": "bias",
+      "n_params": 48
+    },
+    "gru.bias_hh_l1": {
+      "fp32_bytes": 192,
+      "kind": "bias",
+      "n_params": 48
+    },
+    "gru.bias_ih_l0": {
+      "fp32_bytes": 192,
+      "kind": "bias",
+      "n_params": 48
+    },
+    "gru.bias_ih_l1": {
+      "fp32_bytes": 192,
+      "kind": "bias",
+      "n_params": 48
+    },
+    "gru.weight_hh_l0": {
+      "fp32_bytes": 3072,
+      "kind": "weight",
+      "n_params": 768
+    },
+    "gru.weight_hh_l1": {
+      "fp32_bytes": 3072,
+      "kind": "weight",
+      "n_params": 768
+    },
+    "gru.weight_ih_l0": {
+      "fp32_bytes": 9216,
+      "kind": "weight",
+      "n_params": 2304
+    },
+    "gru.weight_ih_l1": {
+      "fp32_bytes": 3072,
+      "kind": "weight",
+      "n_params": 768
+    },
+    "mel.mel_scale.fb": {
+      "fp32_bytes": 49344,
+      "kind": "other",
+      "n_params": 12336
+    },
+    "mel.spectrogram.window": {
+      "fp32_bytes": 1920,
+      "kind": "other",
+      "n_params": 480
+    }
+  },
+  "compression_total": 14.020456333595593,
+  "compression_weights": 4.0,
+  "fp32_bias_kib": 0.796875,
+  "fp32_bw_kib": 19.546875,
+  "fp32_other_kib": 50.0625,
+  "fp32_total_kib": 69.609375,
+  "fp32_weight_kib": 18.75,
+  "int8_bw_kib": 4.88671875,
+  "int8_total_kib": 4.96484375,
+  "int8_weight_kib": 4.6875,
+  "keep_bias_fp32": false,
+  "n_params": 17820,
+  "n_scales": 20,
+  "scales_kib": 0.078125
+}

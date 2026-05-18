@@ -13,6 +13,9 @@ __pycache__/
 .ruff_cache/
 .ipynb_checkpoints/
 
+# macOS metadata
+.DS_Store
+
 # Local environments and editor state
 .venv/
 venv/
@@ -41,10 +44,15 @@ dist/
 *.pickle
 
 # Project datasets and generated experiment outputs
-cnn_testing/data/
 keyword_spotting/data/
 keyword_spotting/.claude/
 keyword_spotting/models/
 keyword_spotting/plots/
 keyword_spotting/notebooks/*.pt
 keyword_spotting/slurm/[0-9]*/
+
+# Presentation material and archived reference scripts
+# (kept locally, not part of the student-facing code release)
+keyword_spotting/docs/
+keyword_spotting/slurm/archive/
+keyword_spotting/scripts/archive/
