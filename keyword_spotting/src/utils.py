@@ -210,6 +210,8 @@ def make_eval_collate(feature_extractor=None):
 
 def build_datasets(data_root=None, download=True):
     root = str(data_root or get_data_root())
+    if download:
+        Path(root).mkdir(parents=True, exist_ok=True)
 
     train_set = datasets.SPEECHCOMMANDS(
         root=root,

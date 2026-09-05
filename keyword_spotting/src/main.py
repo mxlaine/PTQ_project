@@ -169,7 +169,7 @@ def main():
     train_loader, val_loader, test_loader = build_dataloaders(
         batch_size_train=args.batch_size_train,
         batch_size_eval=args.batch_size_eval,
-        pin_memory=True,
+        pin_memory=(device.type == "cuda"),
         balanced_sampler=args.balanced_sampler,
         n_mels=feature_config["n_mels"],
         use_delta=feature_config["use_delta"],

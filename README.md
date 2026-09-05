@@ -9,6 +9,11 @@ hardware, so a number of constraints have to be accounted for:
 - Output classes: 12 (10 keywords + unknown + silence)
 - Dataset: Google Speech Commands v2
 
+## Disclaimer
+
+This work has been primarily run on Aalto University's Triton cluster using Nvidia V100 GPUs, so 
+CPU and non-CUDA GPU performance is largely untested.
+
 ## Setup
 
 ```bash
@@ -20,8 +25,9 @@ pip install -r keyword_spotting/requirements.txt
 ```
 
 The Google Speech Commands v2 dataset is downloaded automatically by
-`torchaudio` into `keyword_spotting/data/` on the first run — no manual
-download step is needed.
+`torchaudio` into `keyword_spotting/data/` on the first run.
+
+
 
 ## Model
 
