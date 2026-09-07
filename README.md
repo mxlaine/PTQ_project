@@ -31,16 +31,18 @@ and the 99.99th percentile.
 <!-- results:end -->
 
 ![Test accuracy versus hidden size](docs/images/accuracy.png)
+![Estimated weight storage](docs/images/weight-storage.png)
 
 Weight storage counts weights only: four bytes per FP32 weight versus one byte
 per INT8 weight. Biases, scales, and frontend buffers are excluded. It is an
 estimate of representation size, not a measurement of runtime memory or speed.
 The archived total-size reports use different bias/buffer assumptions.
 
-The trained checkpoints are **not included**; the summaries reference paths on
-the original cluster. You can regenerate the table and figures from the committed
-JSON files, but cannot independently rerun these accuracy measurements from this
-checkout alone.
+All **12 FP32 checkpoints** behind this table are included in the
+[checkpoint bundle](keyword_spotting/checkpoints/README-sweep/), together with
+training/evaluation logs and a manifest linking each file to its result and SHA-256 checksum.
+The weights total about 1.38 MiB. The archived summaries retain their original
+Triton paths; the reproduction command below uses the bundled local files.
 
 ## Why a custom GRU?
 
@@ -87,16 +89,41 @@ python keyword_spotting/scripts/publish_results.py
 This updates the table in this README and the figures in `docs/images/`, including
 [the weight-storage plot](docs/images/weight-storage.png).
 
+### Evaluate the published checkpoints
+
+Verify all bundled files without installing PyTorch or downloading data:
+
+```bash
+python keyword_spotting/scripts/reproduce_results.py --all --verify-only
+```
+
+With the project dependencies installed, rerun the hidden-size-64, seed-0 result:
+
+```bash
+python keyword_spotting/scripts/reproduce_results.py --hidden-size 64 --seed 0
+```
+
+Use `--all` to rerun all 12 configurations. Speech Commands v2 is downloaded on
+first use. The script verifies checkpoint hashes, recalibrates on 16 validation
+batches (`--batch-size-eval 256`, with 25 synthetic silence clips added to each
+full batch), then evaluates FP32 and simulated INT8 test accuracy.
+New reports go to `keyword_spotting/results/reproduced/`; the archived table is
+unchanged. Results can vary with hardware and library versions. Silence clips
+are sampled during evaluation, so the FP32/INT8 comparison also includes variation
+from those samples; it is not a comparison on an identical fixed set of silence clips.
+
 ### Train and calibrate
 
 Training downloads Speech Commands v2 through `torchaudio` into
 `keyword_spotting/data/` on first use. This example uses the 16-band Δ/ΔΔ
-configuration and hidden size 64:
+configuration and hidden size 64, with the training settings recorded in
+[the original log](keyword_spotting/checkpoints/README-sweep/training-logs/h64_s0.txt):
 
 ```bash
 python keyword_spotting/src/main.py \
   --feature-config 16_mels_delta_delta --hidden-size 64 --seed 0 \
-  --use-new-gru --spec-augment --freq-mask-param 5 --time-mask-param 6 \
+  --use-new-gru --spec-augment --freq-mask-param 5 --time-mask-param 0 \
+  --lr 0.002 --weight-decay 0 --dropout 0.1 --lr-scheduler cosine \
   --lr-warmup-epochs 10 --epochs 325
 ```
 
@@ -138,6 +165,15 @@ and regenerate training curves.
 
 The tests check random-input GRU parity, quantize/dequantize error, parity with
 quantization disabled, and a calibration/evaluation smoke test with random
-weights. The trained-checkpoint parity test requires an unbundled checkpoint
-and is skipped when it is absent. These checks do not reproduce the table's
-accuracy measurements or establish equivalence to integer hardware.
+weights. A separate test verifies the bundled checkpoint hashes and compares
+`NewGRU` with `torch.nn.GRU` using all 12 trained weight sets and synthetic inputs,
+without a dataset download:
+
+```bash
+python -m pytest keyword_spotting/tests/test_published_checkpoints.py
+```
+
+The older 24-band checkpoint accuracy test still requires a separate checkpoint
+and is skipped when it is absent. Synthetic-input parity does not measure keyword
+accuracy; use the reproduction command above for dataset evaluation. Neither
+check establishes equivalence to integer hardware.

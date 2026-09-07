@@ -43,6 +43,9 @@ dist/
 *.pkl
 *.pickle
 
+# Small FP32 checkpoints supporting the published three-seed table.
+!keyword_spotting/checkpoints/README-sweep/*.pt
+
 # Project datasets and generated experiment outputs
 keyword_spotting/data/
 keyword_spotting/.claude/

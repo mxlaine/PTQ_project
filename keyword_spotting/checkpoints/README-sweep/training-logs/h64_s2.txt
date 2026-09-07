@@ -1,0 +1,2004 @@
+Task 11: feature=16_mels_delta_delta hidden=64 seed=2
+lr=2e-3 wd=0 dropout=0.1 warmup=10 freq_mask=5 time_mask=0
+Device: cuda
+Seed: 2
+Feature config: 16_mels_delta_delta -> {'n_mels': 16, 'use_delta': True, 'use_delta_delta': True}
+SpecAugment: True freq_mask=5 time_mask=0
+Hidden size: 64
+Epochs: 325
+LR: 0.002
+LR warmup epochs: 10
+LR scheduler: cosine
+Balanced sampler: False
+Dropout: 0.1
+New GRU: True
+CPU count: 32
+GPU Name: Tesla V100-PCIE-32GB
+GPU Memory: 34.07 GB
+Total model parameters: 47,628
+Total MACs: 4,654,848
+Epoch 1 [0/84843] Loss: 2.477846
+Epoch 1 [35000/84843] Loss: 2.397900
+Epoch 1 [70000/84843] Loss: 2.324362
+Epoch 1 - Avg Loss: 2.391886 | Train Acc: 31.25%
+Val: loss=2.3161, acc=5865/10975 (53.44%)
+saved best: 53.44%
+Epoch 1 timing: total=100.8s train=96.2s eval=4.5s | data_wait=4.5s fwd=33.6s bwd=57.5s (965 samples/s)
+Epoch 2 [0/84843] Loss: 2.327779
+Epoch 2 [35000/84843] Loss: 1.368034
+Epoch 2 [70000/84843] Loss: 1.104212
+Epoch 2 - Avg Loss: 1.409955 | Train Acc: 63.94%
+Val: loss=1.2035, acc=7441/10975 (67.80%)
+saved best: 67.80%
+Epoch 2 timing: total=76.0s train=72.1s eval=3.9s | data_wait=2.5s fwd=21.9s bwd=47.3s (1288 samples/s)
+Epoch 3 [0/84843] Loss: 1.164722
+Epoch 3 [35000/84843] Loss: 1.206705
+Epoch 3 [70000/84843] Loss: 1.055265
+Epoch 3 - Avg Loss: 1.078831 | Train Acc: 69.75%
+Val: loss=0.8357, acc=8595/10975 (78.31%)
+saved best: 78.31%
+Epoch 3 timing: total=73.3s train=69.2s eval=4.1s | data_wait=3.1s fwd=22.4s bwd=43.3s (1341 samples/s)
+Epoch 4 [0/84843] Loss: 0.874624
+Epoch 4 [35000/84843] Loss: 0.638477
+Epoch 4 [70000/84843] Loss: 0.763782
+Epoch 4 - Avg Loss: 0.762046 | Train Acc: 81.37%
+Val: loss=0.5578, acc=9867/10975 (89.90%)
+saved best: 89.90%
+Epoch 4 timing: total=74.6s train=70.7s eval=3.9s | data_wait=2.3s fwd=23.3s bwd=44.6s (1313 samples/s)
+Epoch 5 [0/84843] Loss: 0.517628
+Epoch 5 [35000/84843] Loss: 0.712562
+Epoch 5 [70000/84843] Loss: 0.463118
+Epoch 5 - Avg Loss: 0.617185 | Train Acc: 87.05%
+Val: loss=0.4909, acc=10168/10975 (92.65%)
+saved best: 92.65%
+Epoch 5 timing: total=73.5s train=69.6s eval=3.8s | data_wait=2.3s fwd=23.7s bwd=43.3s (1333 samples/s)
+Epoch 6 [0/84843] Loss: 0.491599
+Epoch 6 [35000/84843] Loss: 0.493080
+Epoch 6 [70000/84843] Loss: 0.540922
+Epoch 6 - Avg Loss: 0.558829 | Train Acc: 89.21%
+Val: loss=0.4604, acc=10254/10975 (93.43%)
+saved best: 93.43%
+Epoch 6 timing: total=82.4s train=78.5s eval=3.9s | data_wait=11.7s fwd=22.9s bwd=43.6s (1182 samples/s)
+Epoch 7 [0/84843] Loss: 0.457147
+Epoch 7 [35000/84843] Loss: 0.607974
+Epoch 7 [70000/84843] Loss: 0.454215
+Epoch 7 - Avg Loss: 0.529310 | Train Acc: 90.35%
+Val: loss=0.4467, acc=10283/10975 (93.69%)
+saved best: 93.69%
+Epoch 7 timing: total=74.5s train=70.4s eval=4.1s | data_wait=2.3s fwd=23.0s bwd=44.7s (1318 samples/s)
+Epoch 8 [0/84843] Loss: 0.508525
+Epoch 8 [35000/84843] Loss: 0.499665
+Epoch 8 [70000/84843] Loss: 0.391701
+Epoch 8 - Avg Loss: 0.510611 | Train Acc: 91.05%
+Val: loss=0.4178, acc=10411/10975 (94.86%)
+saved best: 94.86%
+Epoch 8 timing: total=74.2s train=70.0s eval=4.1s | data_wait=2.2s fwd=22.2s bwd=45.2s (1325 samples/s)
+Epoch 9 [0/84843] Loss: 0.445368
+Epoch 9 [35000/84843] Loss: 0.496563
+Epoch 9 [70000/84843] Loss: 0.472917
+Epoch 9 - Avg Loss: 0.497257 | Train Acc: 91.49%
+Val: loss=0.4060, acc=10497/10975 (95.64%)
+saved best: 95.64%
+Epoch 9 timing: total=76.4s train=72.6s eval=3.8s | data_wait=2.0s fwd=25.0s bwd=45.2s (1278 samples/s)
+Epoch 10 [0/84843] Loss: 0.628280
+Epoch 10 [35000/84843] Loss: 0.430066
+Epoch 10 [70000/84843] Loss: 0.555263
+Epoch 10 - Avg Loss: 0.490790 | Train Acc: 91.81%
+Val: loss=0.4109, acc=10423/10975 (94.97%)
+Epoch 10 timing: total=76.1s train=72.3s eval=3.8s | data_wait=5.1s fwd=22.6s bwd=44.2s (1283 samples/s)
+Epoch 11 [0/84843] Loss: 0.528654
+Epoch 11 [35000/84843] Loss: 0.410496
+Epoch 11 [70000/84843] Loss: 0.441059
+Epoch 11 - Avg Loss: 0.488893 | Train Acc: 91.90%
+Val: loss=0.4079, acc=10448/10975 (95.20%)
+Epoch 11 timing: total=77.8s train=74.2s eval=3.6s | data_wait=5.4s fwd=23.7s bwd=44.7s (1251 samples/s)
+Epoch 12 [0/84843] Loss: 0.542493
+Epoch 12 [35000/84843] Loss: 0.420476
+Epoch 12 [70000/84843] Loss: 0.507445
+Epoch 12 - Avg Loss: 0.477389 | Train Acc: 92.32%
+Val: loss=0.4094, acc=10444/10975 (95.16%)
+Epoch 12 timing: total=76.0s train=72.3s eval=3.7s | data_wait=4.5s fwd=23.8s bwd=43.6s (1283 samples/s)
+Epoch 13 [0/84843] Loss: 0.462252
+Epoch 13 [35000/84843] Loss: 0.519696
+Epoch 13 [70000/84843] Loss: 0.613311
+Epoch 13 - Avg Loss: 0.474054 | Train Acc: 92.42%
+Val: loss=0.3999, acc=10460/10975 (95.31%)
+Epoch 13 timing: total=78.8s train=74.5s eval=4.3s | data_wait=6.3s fwd=22.5s bwd=45.4s (1246 samples/s)
+Epoch 14 [0/84843] Loss: 0.528321
+Epoch 14 [35000/84843] Loss: 0.368106
+Epoch 14 [70000/84843] Loss: 0.603340
+Epoch 14 - Avg Loss: 0.469312 | Train Acc: 92.57%
+Val: loss=0.4123, acc=10419/10975 (94.93%)
+Epoch 14 timing: total=75.1s train=71.4s eval=3.7s | data_wait=3.0s fwd=23.6s bwd=44.4s (1300 samples/s)
+Epoch 15 [0/84843] Loss: 0.447907
+Epoch 15 [35000/84843] Loss: 0.385654
+Epoch 15 [70000/84843] Loss: 0.428832
+Epoch 15 - Avg Loss: 0.464559 | Train Acc: 92.74%
+Val: loss=0.4236, acc=10375/10975 (94.53%)
+Epoch 15 timing: total=76.7s train=72.6s eval=4.1s | data_wait=3.7s fwd=23.1s bwd=45.4s (1279 samples/s)
+Epoch 16 [0/84843] Loss: 0.366395
+Epoch 16 [35000/84843] Loss: 0.568324
+Epoch 16 [70000/84843] Loss: 0.402040
+Epoch 16 - Avg Loss: 0.458956 | Train Acc: 92.93%
+Val: loss=0.3964, acc=10492/10975 (95.60%)
+Epoch 16 timing: total=73.4s train=69.3s eval=4.1s | data_wait=2.3s fwd=22.4s bwd=44.2s (1339 samples/s)
+Epoch 17 [0/84843] Loss: 0.322983
+Epoch 17 [35000/84843] Loss: 0.402404
+Epoch 17 [70000/84843] Loss: 0.563431
+Epoch 17 - Avg Loss: 0.460840 | Train Acc: 92.86%
+Val: loss=0.3984, acc=10467/10975 (95.37%)
+Epoch 17 timing: total=74.4s train=70.6s eval=3.7s | data_wait=2.1s fwd=22.7s bwd=45.5s (1314 samples/s)
+Epoch 18 [0/84843] Loss: 0.533967
+Epoch 18 [35000/84843] Loss: 0.330654
+Epoch 18 [70000/84843] Loss: 0.380140
+Epoch 18 - Avg Loss: 0.455196 | Train Acc: 93.06%
+Val: loss=0.3967, acc=10489/10975 (95.57%)
+Epoch 18 timing: total=72.8s train=69.1s eval=3.7s | data_wait=1.7s fwd=22.4s bwd=44.7s (1342 samples/s)
+Epoch 19 [0/84843] Loss: 0.560666
+Epoch 19 [35000/84843] Loss: 0.409256
+Epoch 19 [70000/84843] Loss: 0.366443
+Epoch 19 - Avg Loss: 0.453073 | Train Acc: 93.14%
+Val: loss=0.4107, acc=10432/10975 (95.05%)
+Epoch 19 timing: total=75.5s train=71.5s eval=4.0s | data_wait=2.6s fwd=22.6s bwd=45.9s (1298 samples/s)
+Epoch 20 [0/84843] Loss: 0.396858
+Epoch 20 [35000/84843] Loss: 0.398038
+Epoch 20 [70000/84843] Loss: 0.420898
+Epoch 20 - Avg Loss: 0.452124 | Train Acc: 93.15%
+Val: loss=0.3989, acc=10482/10975 (95.51%)
+Epoch 20 timing: total=76.8s train=72.9s eval=3.9s | data_wait=5.0s fwd=23.0s bwd=44.6s (1272 samples/s)
+Epoch 21 [0/84843] Loss: 0.433088
+Epoch 21 [35000/84843] Loss: 0.334185
+Epoch 21 [70000/84843] Loss: 0.636096
+Epoch 21 - Avg Loss: 0.450989 | Train Acc: 93.24%
+Val: loss=0.3854, acc=10529/10975 (95.94%)
+saved best: 95.94%
+Epoch 21 timing: total=75.3s train=71.7s eval=3.6s | data_wait=3.6s fwd=22.2s bwd=45.5s (1294 samples/s)
+Epoch 22 [0/84843] Loss: 0.461831
+Epoch 22 [35000/84843] Loss: 0.489935
+Epoch 22 [70000/84843] Loss: 0.330385
+Epoch 22 - Avg Loss: 0.447965 | Train Acc: 93.38%
+Val: loss=0.3994, acc=10456/10975 (95.27%)
+Epoch 22 timing: total=74.1s train=69.8s eval=4.4s | data_wait=3.0s fwd=22.4s bwd=43.9s (1330 samples/s)
+Epoch 23 [0/84843] Loss: 0.367848
+Epoch 23 [35000/84843] Loss: 0.500003
+Epoch 23 [70000/84843] Loss: 0.559886
+Epoch 23 - Avg Loss: 0.446302 | Train Acc: 93.36%
+Val: loss=0.3948, acc=10497/10975 (95.64%)
+Epoch 23 timing: total=75.4s train=71.2s eval=4.2s | data_wait=3.2s fwd=24.0s bwd=43.6s (1303 samples/s)
+Epoch 24 [0/84843] Loss: 0.312650
+Epoch 24 [35000/84843] Loss: 0.341222
+Epoch 24 [70000/84843] Loss: 0.435807
+Epoch 24 - Avg Loss: 0.445481 | Train Acc: 93.39%
+Val: loss=0.3855, acc=10526/10975 (95.91%)
+Epoch 24 timing: total=75.4s train=71.4s eval=4.0s | data_wait=4.0s fwd=22.9s bwd=44.2s (1299 samples/s)
+Epoch 25 [0/84843] Loss: 0.310430
+Epoch 25 [35000/84843] Loss: 0.471983
+Epoch 25 [70000/84843] Loss: 0.440744
+Epoch 25 - Avg Loss: 0.444057 | Train Acc: 93.54%
+Val: loss=0.3977, acc=10487/10975 (95.55%)
+Epoch 25 timing: total=74.3s train=69.4s eval=4.9s | data_wait=2.9s fwd=22.4s bwd=43.7s (1337 samples/s)
+Epoch 26 [0/84843] Loss: 0.334479
+Epoch 26 [35000/84843] Loss: 0.562026
+Epoch 26 [70000/84843] Loss: 0.511295
+Epoch 26 - Avg Loss: 0.443049 | Train Acc: 93.51%
+Val: loss=0.3912, acc=10505/10975 (95.72%)
+Epoch 26 timing: total=75.5s train=71.6s eval=3.9s | data_wait=4.3s fwd=23.2s bwd=43.7s (1297 samples/s)
+Epoch 27 [0/84843] Loss: 0.371487
+Epoch 27 [35000/84843] Loss: 0.439174
+Epoch 27 [70000/84843] Loss: 0.480888
+Epoch 27 - Avg Loss: 0.444986 | Train Acc: 93.42%
+Val: loss=0.3795, acc=10541/10975 (96.05%)
+saved best: 96.05%
+Epoch 27 timing: total=92.2s train=84.7s eval=7.5s | data_wait=16.7s fwd=23.1s bwd=44.5s (1096 samples/s)
+Epoch 28 [0/84843] Loss: 0.384692
+Epoch 28 [35000/84843] Loss: 0.387249
+Epoch 28 [70000/84843] Loss: 0.367708
+Epoch 28 - Avg Loss: 0.439165 | Train Acc: 93.69%
+Val: loss=0.3913, acc=10515/10975 (95.81%)
+Epoch 28 timing: total=86.8s train=82.5s eval=4.3s | data_wait=14.6s fwd=22.9s bwd=44.7s (1124 samples/s)
+Epoch 29 [0/84843] Loss: 0.580740
+Epoch 29 [35000/84843] Loss: 0.432481
+Epoch 29 [70000/84843] Loss: 0.502923
+Epoch 29 - Avg Loss: 0.442085 | Train Acc: 93.62%
+Val: loss=0.3921, acc=10481/10975 (95.50%)
+Epoch 29 timing: total=74.6s train=71.1s eval=3.6s | data_wait=2.5s fwd=23.9s bwd=44.3s (1305 samples/s)
+Epoch 30 [0/84843] Loss: 0.344618
+Epoch 30 [35000/84843] Loss: 0.316585
+Epoch 30 [70000/84843] Loss: 0.448119
+Epoch 30 - Avg Loss: 0.440738 | Train Acc: 93.50%
+Val: loss=0.3801, acc=10544/10975 (96.07%)
+saved best: 96.07%
+Epoch 30 timing: total=75.8s train=72.0s eval=3.9s | data_wait=2.8s fwd=24.2s bwd=44.6s (1289 samples/s)
+Epoch 31 [0/84843] Loss: 0.446737
+Epoch 31 [35000/84843] Loss: 0.396628
+Epoch 31 [70000/84843] Loss: 0.415424
+Epoch 31 - Avg Loss: 0.439283 | Train Acc: 93.66%
+Val: loss=0.3898, acc=10510/10975 (95.76%)
+Epoch 31 timing: total=93.5s train=86.4s eval=7.0s | data_wait=19.3s fwd=22.8s bwd=43.9s (1074 samples/s)
+Epoch 32 [0/84843] Loss: 0.375023
+Epoch 32 [35000/84843] Loss: 0.344793
+Epoch 32 [70000/84843] Loss: 0.393172
+Epoch 32 - Avg Loss: 0.436955 | Train Acc: 93.74%
+Val: loss=0.3857, acc=10500/10975 (95.67%)
+Epoch 32 timing: total=90.6s train=85.3s eval=5.3s | data_wait=17.5s fwd=22.3s bwd=45.1s (1088 samples/s)
+Epoch 33 [0/84843] Loss: 0.346421
+Epoch 33 [35000/84843] Loss: 0.380385
+Epoch 33 [70000/84843] Loss: 0.398465
+Epoch 33 - Avg Loss: 0.437225 | Train Acc: 93.77%
+Val: loss=0.3788, acc=10570/10975 (96.31%)
+saved best: 96.31%
+Epoch 33 timing: total=97.8s train=94.4s eval=3.4s | data_wait=25.9s fwd=23.8s bwd=44.3s (983 samples/s)
+Epoch 34 [0/84843] Loss: 0.421747
+Epoch 34 [35000/84843] Loss: 0.407219
+Epoch 34 [70000/84843] Loss: 0.429746
+Epoch 34 - Avg Loss: 0.439145 | Train Acc: 93.65%
+Val: loss=0.3792, acc=10546/10975 (96.09%)
+Epoch 34 timing: total=73.3s train=69.7s eval=3.6s | data_wait=3.1s fwd=21.4s bwd=44.8s (1331 samples/s)
+Epoch 35 [0/84843] Loss: 0.398553
+Epoch 35 [35000/84843] Loss: 0.535508
+Epoch 35 [70000/84843] Loss: 0.504651
+Epoch 35 - Avg Loss: 0.436103 | Train Acc: 93.78%
+Val: loss=0.3841, acc=10505/10975 (95.72%)
+Epoch 35 timing: total=73.1s train=69.7s eval=3.4s | data_wait=2.4s fwd=23.1s bwd=43.9s (1331 samples/s)
+Epoch 36 [0/84843] Loss: 0.485947
+Epoch 36 [35000/84843] Loss: 0.321764
+Epoch 36 [70000/84843] Loss: 0.486629
+Epoch 36 - Avg Loss: 0.436684 | Train Acc: 93.70%
+Val: loss=0.3831, acc=10517/10975 (95.83%)
+Epoch 36 timing: total=72.9s train=69.4s eval=3.4s | data_wait=3.4s fwd=22.4s bwd=43.2s (1336 samples/s)
+Epoch 37 [0/84843] Loss: 0.427556
+Epoch 37 [35000/84843] Loss: 0.405442
+Epoch 37 [70000/84843] Loss: 0.493024
+Epoch 37 - Avg Loss: 0.435582 | Train Acc: 93.86%
+Val: loss=0.3858, acc=10520/10975 (95.85%)
+Epoch 37 timing: total=74.0s train=70.5s eval=3.5s | data_wait=2.6s fwd=23.7s bwd=43.9s (1315 samples/s)
+Epoch 38 [0/84843] Loss: 0.443909
+Epoch 38 [35000/84843] Loss: 0.502384
+Epoch 38 [70000/84843] Loss: 0.465460
+Epoch 38 - Avg Loss: 0.436003 | Train Acc: 93.77%
+Val: loss=0.3779, acc=10569/10975 (96.30%)
+Epoch 38 timing: total=75.3s train=71.3s eval=4.0s | data_wait=2.9s fwd=23.2s bwd=44.8s (1301 samples/s)
+Epoch 39 [0/84843] Loss: 0.335132
+Epoch 39 [35000/84843] Loss: 0.382891
+Epoch 39 [70000/84843] Loss: 0.331400
+Epoch 39 - Avg Loss: 0.432230 | Train Acc: 93.89%
+Val: loss=0.3808, acc=10532/10975 (95.96%)
+Epoch 39 timing: total=76.5s train=72.7s eval=3.8s | data_wait=4.8s fwd=23.7s bwd=43.8s (1276 samples/s)
+Epoch 40 [0/84843] Loss: 0.441681
+Epoch 40 [35000/84843] Loss: 0.567539
+Epoch 40 [70000/84843] Loss: 0.357472
+Epoch 40 - Avg Loss: 0.433667 | Train Acc: 93.91%
+Val: loss=0.3830, acc=10542/10975 (96.05%)
+Epoch 40 timing: total=75.2s train=71.9s eval=3.3s | data_wait=4.2s fwd=22.4s bwd=44.9s (1291 samples/s)
+Epoch 41 [0/84843] Loss: 0.453158
+Epoch 41 [35000/84843] Loss: 0.486417
+Epoch 41 [70000/84843] Loss: 0.449181
+Epoch 41 - Avg Loss: 0.435216 | Train Acc: 93.79%
+Val: loss=0.3791, acc=10547/10975 (96.10%)
+Epoch 41 timing: total=75.8s train=72.3s eval=3.4s | data_wait=4.3s fwd=24.6s bwd=43.0s (1283 samples/s)
+Epoch 42 [0/84843] Loss: 0.480502
+Epoch 42 [35000/84843] Loss: 0.652231
+Epoch 42 [70000/84843] Loss: 0.453345
+Epoch 42 - Avg Loss: 0.432787 | Train Acc: 93.91%
+Val: loss=0.3812, acc=10541/10975 (96.05%)
+Epoch 42 timing: total=75.7s train=71.6s eval=4.1s | data_wait=3.5s fwd=23.2s bwd=44.6s (1296 samples/s)
+Epoch 43 [0/84843] Loss: 0.495026
+Epoch 43 [35000/84843] Loss: 0.380679
+Epoch 43 [70000/84843] Loss: 0.569801
+Epoch 43 - Avg Loss: 0.433249 | Train Acc: 93.88%
+Val: loss=0.3849, acc=10529/10975 (95.94%)
+Epoch 43 timing: total=73.2s train=69.6s eval=3.6s | data_wait=4.1s fwd=22.3s bwd=42.9s (1333 samples/s)
+Epoch 44 [0/84843] Loss: 0.417736
+Epoch 44 [35000/84843] Loss: 0.488258
+Epoch 44 [70000/84843] Loss: 0.485925
+Epoch 44 - Avg Loss: 0.430887 | Train Acc: 93.92%
+Val: loss=0.3737, acc=10570/10975 (96.31%)
+Epoch 44 timing: total=77.5s train=74.0s eval=3.5s | data_wait=4.1s fwd=24.5s bwd=45.0s (1254 samples/s)
+Epoch 45 [0/84843] Loss: 0.462717
+Epoch 45 [35000/84843] Loss: 0.499682
+Epoch 45 [70000/84843] Loss: 0.406197
+Epoch 45 - Avg Loss: 0.430365 | Train Acc: 93.98%
+Val: loss=0.3820, acc=10542/10975 (96.05%)
+Epoch 45 timing: total=77.7s train=74.4s eval=3.3s | data_wait=4.8s fwd=25.2s bwd=44.0s (1248 samples/s)
+Epoch 46 [0/84843] Loss: 0.375942
+Epoch 46 [35000/84843] Loss: 0.547046
+Epoch 46 [70000/84843] Loss: 0.341163
+Epoch 46 - Avg Loss: 0.430505 | Train Acc: 93.94%
+Val: loss=0.3746, acc=10556/10975 (96.18%)
+Epoch 46 timing: total=73.9s train=70.6s eval=3.3s | data_wait=2.6s fwd=22.8s bwd=44.8s (1315 samples/s)
+Epoch 47 [0/84843] Loss: 0.498918
+Epoch 47 [35000/84843] Loss: 0.538262
+Epoch 47 [70000/84843] Loss: 0.467335
+Epoch 47 - Avg Loss: 0.430576 | Train Acc: 94.01%
+Val: loss=0.3915, acc=10493/10975 (95.61%)
+Epoch 47 timing: total=74.4s train=70.6s eval=3.8s | data_wait=2.8s fwd=23.4s bwd=44.1s (1314 samples/s)
+Epoch 48 [0/84843] Loss: 0.319119
+Epoch 48 [35000/84843] Loss: 0.501797
+Epoch 48 [70000/84843] Loss: 0.348335
+Epoch 48 - Avg Loss: 0.431245 | Train Acc: 93.95%
+Val: loss=0.3769, acc=10551/10975 (96.14%)
+Epoch 48 timing: total=74.8s train=71.2s eval=3.6s | data_wait=3.1s fwd=23.5s bwd=44.1s (1304 samples/s)
+Epoch 49 [0/84843] Loss: 0.502914
+Epoch 49 [35000/84843] Loss: 0.364895
+Epoch 49 [70000/84843] Loss: 0.377214
+Epoch 49 - Avg Loss: 0.432008 | Train Acc: 93.91%
+Val: loss=0.3803, acc=10523/10975 (95.88%)
+Epoch 49 timing: total=95.6s train=91.7s eval=3.9s | data_wait=23.4s fwd=22.7s bwd=45.2s (1012 samples/s)
+Epoch 50 [0/84843] Loss: 0.436558
+Epoch 50 [35000/84843] Loss: 0.414471
+Epoch 50 [70000/84843] Loss: 0.454311
+Epoch 50 - Avg Loss: 0.427852 | Train Acc: 94.09%
+Val: loss=0.3777, acc=10547/10975 (96.10%)
+Epoch 50 timing: total=75.6s train=71.7s eval=3.8s | data_wait=3.7s fwd=23.2s bwd=44.4s (1294 samples/s)
+Epoch 51 [0/84843] Loss: 0.421647
+Epoch 51 [35000/84843] Loss: 0.400139
+Epoch 51 [70000/84843] Loss: 0.451395
+Epoch 51 - Avg Loss: 0.429494 | Train Acc: 94.04%
+Val: loss=0.3747, acc=10576/10975 (96.36%)
+saved best: 96.36%
+Epoch 51 timing: total=81.7s train=77.3s eval=4.2s | data_wait=4.1s fwd=24.1s bwd=48.7s (1201 samples/s)
+Epoch 52 [0/84843] Loss: 0.326359
+Epoch 52 [35000/84843] Loss: 0.452497
+Epoch 52 [70000/84843] Loss: 0.519337
+Epoch 52 - Avg Loss: 0.429991 | Train Acc: 93.96%
+Val: loss=0.3783, acc=10552/10975 (96.15%)
+Epoch 52 timing: total=76.5s train=72.3s eval=4.2s | data_wait=4.4s fwd=23.0s bwd=44.6s (1283 samples/s)
+Epoch 53 [0/84843] Loss: 0.383525
+Epoch 53 [35000/84843] Loss: 0.398097
+Epoch 53 [70000/84843] Loss: 0.418697
+Epoch 53 - Avg Loss: 0.430596 | Train Acc: 93.94%
+Val: loss=0.3750, acc=10573/10975 (96.34%)
+Epoch 53 timing: total=75.6s train=72.0s eval=3.6s | data_wait=3.7s fwd=23.0s bwd=45.0s (1288 samples/s)
+Epoch 54 [0/84843] Loss: 0.516260
+Epoch 54 [35000/84843] Loss: 0.432181
+Epoch 54 [70000/84843] Loss: 0.389028
+Epoch 54 - Avg Loss: 0.427085 | Train Acc: 94.12%
+Val: loss=0.3749, acc=10557/10975 (96.19%)
+Epoch 54 timing: total=101.4s train=97.5s eval=3.9s | data_wait=29.5s fwd=23.7s bwd=43.9s (952 samples/s)
+Epoch 55 [0/84843] Loss: 0.437385
+Epoch 55 [35000/84843] Loss: 0.363274
+Epoch 55 [70000/84843] Loss: 0.431672
+Epoch 55 - Avg Loss: 0.428954 | Train Acc: 94.00%
+Val: loss=0.3764, acc=10555/10975 (96.17%)
+Epoch 55 timing: total=75.8s train=71.2s eval=4.6s | data_wait=3.5s fwd=22.9s bwd=44.4s (1303 samples/s)
+Epoch 56 [0/84843] Loss: 0.470423
+Epoch 56 [35000/84843] Loss: 0.413080
+Epoch 56 [70000/84843] Loss: 0.437843
+Epoch 56 - Avg Loss: 0.428489 | Train Acc: 94.03%
+Val: loss=0.3720, acc=10574/10975 (96.35%)
+Epoch 56 timing: total=75.1s train=71.4s eval=3.7s | data_wait=3.1s fwd=23.2s bwd=44.7s (1300 samples/s)
+Epoch 57 [0/84843] Loss: 0.377175
+Epoch 57 [35000/84843] Loss: 0.345404
+Epoch 57 [70000/84843] Loss: 0.477334
+Epoch 57 - Avg Loss: 0.430139 | Train Acc: 93.93%
+Val: loss=0.3762, acc=10551/10975 (96.14%)
+Epoch 57 timing: total=93.8s train=87.0s eval=6.9s | data_wait=19.9s fwd=22.4s bwd=44.3s (1067 samples/s)
+Epoch 58 [0/84843] Loss: 0.447646
+Epoch 58 [35000/84843] Loss: 0.425485
+Epoch 58 [70000/84843] Loss: 0.370972
+Epoch 58 - Avg Loss: 0.429221 | Train Acc: 94.07%
+Val: loss=0.3758, acc=10550/10975 (96.13%)
+Epoch 58 timing: total=79.9s train=75.3s eval=4.6s | data_wait=8.0s fwd=21.7s bwd=45.2s (1232 samples/s)
+Epoch 59 [0/84843] Loss: 0.327116
+Epoch 59 [35000/84843] Loss: 0.454090
+Epoch 59 [70000/84843] Loss: 0.481875
+Epoch 59 - Avg Loss: 0.427864 | Train Acc: 94.05%
+Val: loss=0.3755, acc=10538/10975 (96.02%)
+Epoch 59 timing: total=97.8s train=94.0s eval=3.8s | data_wait=26.4s fwd=22.2s bwd=44.9s (987 samples/s)
+Epoch 60 [0/84843] Loss: 0.467324
+Epoch 60 [35000/84843] Loss: 0.555589
+Epoch 60 [70000/84843] Loss: 0.525713
+Epoch 60 - Avg Loss: 0.428241 | Train Acc: 94.08%
+Val: loss=0.3745, acc=10563/10975 (96.25%)
+Epoch 60 timing: total=76.7s train=72.5s eval=4.2s | data_wait=3.3s fwd=23.9s bwd=44.9s (1280 samples/s)
+Epoch 61 [0/84843] Loss: 0.354945
+Epoch 61 [35000/84843] Loss: 0.587059
+Epoch 61 [70000/84843] Loss: 0.440781
+Epoch 61 - Avg Loss: 0.425778 | Train Acc: 94.12%
+Val: loss=0.3745, acc=10566/10975 (96.27%)
+Epoch 61 timing: total=76.4s train=72.2s eval=4.2s | data_wait=3.2s fwd=23.0s bwd=45.6s (1286 samples/s)
+Epoch 62 [0/84843] Loss: 0.540404
+Epoch 62 [35000/84843] Loss: 0.414056
+Epoch 62 [70000/84843] Loss: 0.311968
+Epoch 62 - Avg Loss: 0.427386 | Train Acc: 94.08%
+Val: loss=0.3755, acc=10583/10975 (96.43%)
+saved best: 96.43%
+Epoch 62 timing: total=74.6s train=70.9s eval=3.7s | data_wait=3.2s fwd=22.2s bwd=45.1s (1309 samples/s)
+Epoch 63 [0/84843] Loss: 0.388896
+Epoch 63 [35000/84843] Loss: 0.445397
+Epoch 63 [70000/84843] Loss: 0.393482
+Epoch 63 - Avg Loss: 0.428587 | Train Acc: 94.07%
+Val: loss=0.3768, acc=10547/10975 (96.10%)
+Epoch 63 timing: total=75.0s train=71.2s eval=3.9s | data_wait=3.3s fwd=23.0s bwd=44.4s (1304 samples/s)
+Epoch 64 [0/84843] Loss: 0.580525
+Epoch 64 [35000/84843] Loss: 0.456376
+Epoch 64 [70000/84843] Loss: 0.488881
+Epoch 64 - Avg Loss: 0.425413 | Train Acc: 94.15%
+Val: loss=0.3734, acc=10562/10975 (96.24%)
+Epoch 64 timing: total=76.7s train=72.0s eval=4.7s | data_wait=5.4s fwd=23.0s bwd=43.2s (1288 samples/s)
+Epoch 65 [0/84843] Loss: 0.333357
+Epoch 65 [35000/84843] Loss: 0.418146
+Epoch 65 [70000/84843] Loss: 0.489779
+Epoch 65 - Avg Loss: 0.427737 | Train Acc: 94.14%
+Val: loss=0.3826, acc=10531/10975 (95.95%)
+Epoch 65 timing: total=74.7s train=71.3s eval=3.4s | data_wait=2.7s fwd=23.2s bwd=45.0s (1301 samples/s)
+Epoch 66 [0/84843] Loss: 0.384067
+Epoch 66 [35000/84843] Loss: 0.526535
+Epoch 66 [70000/84843] Loss: 0.401948
+Epoch 66 - Avg Loss: 0.425750 | Train Acc: 94.09%
+Val: loss=0.3796, acc=10536/10975 (96.00%)
+Epoch 66 timing: total=75.5s train=71.5s eval=4.0s | data_wait=5.2s fwd=21.8s bwd=44.1s (1298 samples/s)
+Epoch 67 [0/84843] Loss: 0.410870
+Epoch 67 [35000/84843] Loss: 0.347166
+Epoch 67 [70000/84843] Loss: 0.442445
+Epoch 67 - Avg Loss: 0.425713 | Train Acc: 94.09%
+Val: loss=0.3704, acc=10560/10975 (96.22%)
+Epoch 67 timing: total=97.4s train=90.4s eval=7.0s | data_wait=23.2s fwd=23.4s bwd=43.4s (1026 samples/s)
+Epoch 68 [0/84843] Loss: 0.285290
+Epoch 68 [35000/84843] Loss: 0.357378
+Epoch 68 [70000/84843] Loss: 0.362257
+Epoch 68 - Avg Loss: 0.425549 | Train Acc: 94.10%
+Val: loss=0.3755, acc=10568/10975 (96.29%)
+Epoch 68 timing: total=75.4s train=71.8s eval=3.7s | data_wait=3.3s fwd=23.2s bwd=44.9s (1293 samples/s)
+Epoch 69 [0/84843] Loss: 0.365036
+Epoch 69 [35000/84843] Loss: 0.369248
+Epoch 69 [70000/84843] Loss: 0.358314
+Epoch 69 - Avg Loss: 0.427019 | Train Acc: 94.08%
+Val: loss=0.3718, acc=10552/10975 (96.15%)
+Epoch 69 timing: total=74.4s train=70.0s eval=4.3s | data_wait=2.1s fwd=22.8s bwd=44.8s (1325 samples/s)
+Epoch 70 [0/84843] Loss: 0.557206
+Epoch 70 [35000/84843] Loss: 0.320926
+Epoch 70 [70000/84843] Loss: 0.344522
+Epoch 70 - Avg Loss: 0.424712 | Train Acc: 94.07%
+Val: loss=0.3735, acc=10561/10975 (96.23%)
+Epoch 70 timing: total=73.6s train=69.6s eval=4.0s | data_wait=2.5s fwd=23.0s bwd=43.7s (1333 samples/s)
+Epoch 71 [0/84843] Loss: 0.361401
+Epoch 71 [35000/84843] Loss: 0.391331
+Epoch 71 [70000/84843] Loss: 0.395718
+Epoch 71 - Avg Loss: 0.426735 | Train Acc: 94.08%
+Val: loss=0.3803, acc=10540/10975 (96.04%)
+Epoch 71 timing: total=74.9s train=71.2s eval=3.7s | data_wait=2.4s fwd=23.6s bwd=44.7s (1304 samples/s)
+Epoch 72 [0/84843] Loss: 0.354780
+Epoch 72 [35000/84843] Loss: 0.306030
+Epoch 72 [70000/84843] Loss: 0.464115
+Epoch 72 - Avg Loss: 0.424334 | Train Acc: 94.25%
+Val: loss=0.3717, acc=10584/10975 (96.44%)
+saved best: 96.44%
+Epoch 72 timing: total=76.0s train=71.7s eval=4.3s | data_wait=3.0s fwd=24.0s bwd=44.3s (1294 samples/s)
+Epoch 73 [0/84843] Loss: 0.426201
+Epoch 73 [35000/84843] Loss: 0.475879
+Epoch 73 [70000/84843] Loss: 0.358522
+Epoch 73 - Avg Loss: 0.422595 | Train Acc: 94.30%
+Val: loss=0.3759, acc=10560/10975 (96.22%)
+Epoch 73 timing: total=77.3s train=71.8s eval=5.5s | data_wait=3.6s fwd=23.8s bwd=44.1s (1292 samples/s)
+Epoch 74 [0/84843] Loss: 0.335332
+Epoch 74 [35000/84843] Loss: 0.392539
+Epoch 74 [70000/84843] Loss: 0.354647
+Epoch 74 - Avg Loss: 0.423606 | Train Acc: 94.21%
+Val: loss=0.3754, acc=10548/10975 (96.11%)
+Epoch 74 timing: total=76.1s train=72.5s eval=3.6s | data_wait=3.4s fwd=23.7s bwd=45.1s (1280 samples/s)
+Epoch 75 [0/84843] Loss: 0.337346
+Epoch 75 [35000/84843] Loss: 0.387569
+Epoch 75 [70000/84843] Loss: 0.404154
+Epoch 75 - Avg Loss: 0.425449 | Train Acc: 94.23%
+Val: loss=0.3709, acc=10571/10975 (96.32%)
+Epoch 75 timing: total=76.4s train=72.2s eval=4.1s | data_wait=5.2s fwd=23.3s bwd=43.3s (1285 samples/s)
+Epoch 76 [0/84843] Loss: 0.448969
+Epoch 76 [35000/84843] Loss: 0.413415
+Epoch 76 [70000/84843] Loss: 0.541262
+Epoch 76 - Avg Loss: 0.422789 | Train Acc: 94.27%
+Val: loss=0.3855, acc=10517/10975 (95.83%)
+Epoch 76 timing: total=74.7s train=71.0s eval=3.6s | data_wait=2.6s fwd=24.2s bwd=43.8s (1307 samples/s)
+Epoch 77 [0/84843] Loss: 0.474671
+Epoch 77 [35000/84843] Loss: 0.376198
+Epoch 77 [70000/84843] Loss: 0.392783
+Epoch 77 - Avg Loss: 0.423182 | Train Acc: 94.23%
+Val: loss=0.3775, acc=10535/10975 (95.99%)
+Epoch 77 timing: total=83.0s train=79.0s eval=4.1s | data_wait=11.2s fwd=22.3s bwd=45.1s (1175 samples/s)
+Epoch 78 [0/84843] Loss: 0.475138
+Epoch 78 [35000/84843] Loss: 0.459119
+Epoch 78 [70000/84843] Loss: 0.409416
+Epoch 78 - Avg Loss: 0.425087 | Train Acc: 94.15%
+Val: loss=0.3719, acc=10556/10975 (96.18%)
+Epoch 78 timing: total=74.4s train=70.7s eval=3.7s | data_wait=3.6s fwd=22.9s bwd=43.8s (1313 samples/s)
+Epoch 79 [0/84843] Loss: 0.465126
+Epoch 79 [35000/84843] Loss: 0.401234
+Epoch 79 [70000/84843] Loss: 0.485827
+Epoch 79 - Avg Loss: 0.424425 | Train Acc: 94.19%
+Val: loss=0.3720, acc=10565/10975 (96.26%)
+Epoch 79 timing: total=74.6s train=70.9s eval=3.7s | data_wait=4.3s fwd=23.0s bwd=43.2s (1309 samples/s)
+Epoch 80 [0/84843] Loss: 0.359816
+Epoch 80 [35000/84843] Loss: 0.464157
+Epoch 80 [70000/84843] Loss: 0.423578
+Epoch 80 - Avg Loss: 0.422115 | Train Acc: 94.27%
+Val: loss=0.3739, acc=10550/10975 (96.13%)
+Epoch 80 timing: total=73.3s train=69.6s eval=3.6s | data_wait=2.7s fwd=22.3s bwd=44.3s (1332 samples/s)
+Epoch 81 [0/84843] Loss: 0.399132
+Epoch 81 [35000/84843] Loss: 0.483213
+Epoch 81 [70000/84843] Loss: 0.346307
+Epoch 81 - Avg Loss: 0.419955 | Train Acc: 94.32%
+Val: loss=0.3781, acc=10533/10975 (95.97%)
+Epoch 81 timing: total=76.7s train=72.6s eval=4.1s | data_wait=5.0s fwd=22.7s bwd=44.5s (1278 samples/s)
+Epoch 82 [0/84843] Loss: 0.383644
+Epoch 82 [35000/84843] Loss: 0.368736
+Epoch 82 [70000/84843] Loss: 0.472035
+Epoch 82 - Avg Loss: 0.421381 | Train Acc: 94.30%
+Val: loss=0.3765, acc=10547/10975 (96.10%)
+Epoch 82 timing: total=76.6s train=72.9s eval=3.6s | data_wait=5.0s fwd=23.0s bwd=44.6s (1272 samples/s)
+Epoch 83 [0/84843] Loss: 0.410653
+Epoch 83 [35000/84843] Loss: 0.508219
+Epoch 83 [70000/84843] Loss: 0.389075
+Epoch 83 - Avg Loss: 0.420876 | Train Acc: 94.37%
+Val: loss=0.3738, acc=10549/10975 (96.12%)
+Epoch 83 timing: total=76.7s train=73.1s eval=3.6s | data_wait=4.5s fwd=24.1s bwd=44.1s (1270 samples/s)
+Epoch 84 [0/84843] Loss: 0.597876
+Epoch 84 [35000/84843] Loss: 0.349943
+Epoch 84 [70000/84843] Loss: 0.435943
+Epoch 84 - Avg Loss: 0.419640 | Train Acc: 94.35%
+Val: loss=0.3733, acc=10557/10975 (96.19%)
+Epoch 84 timing: total=73.6s train=69.8s eval=3.8s | data_wait=4.0s fwd=22.3s bwd=43.1s (1330 samples/s)
+Epoch 85 [0/84843] Loss: 0.502918
+Epoch 85 [35000/84843] Loss: 0.357385
+Epoch 85 [70000/84843] Loss: 0.391620
+Epoch 85 - Avg Loss: 0.419235 | Train Acc: 94.40%
+Val: loss=0.3704, acc=10572/10975 (96.33%)
+Epoch 85 timing: total=75.6s train=71.6s eval=4.1s | data_wait=3.9s fwd=24.4s bwd=42.9s (1297 samples/s)
+Epoch 86 [0/84843] Loss: 0.461017
+Epoch 86 [35000/84843] Loss: 0.538240
+Epoch 86 [70000/84843] Loss: 0.391633
+Epoch 86 - Avg Loss: 0.418190 | Train Acc: 94.46%
+Val: loss=0.3704, acc=10557/10975 (96.19%)
+Epoch 86 timing: total=77.5s train=73.7s eval=3.8s | data_wait=6.1s fwd=21.6s bwd=45.6s (1260 samples/s)
+Epoch 87 [0/84843] Loss: 0.453775
+Epoch 87 [35000/84843] Loss: 0.374182
+Epoch 87 [70000/84843] Loss: 0.374563
+Epoch 87 - Avg Loss: 0.418757 | Train Acc: 94.42%
+Val: loss=0.3692, acc=10578/10975 (96.38%)
+Epoch 87 timing: total=76.9s train=71.9s eval=5.0s | data_wait=5.4s fwd=21.8s bwd=44.3s (1291 samples/s)
+Epoch 88 [0/84843] Loss: 0.457150
+Epoch 88 [35000/84843] Loss: 0.499448
+Epoch 88 [70000/84843] Loss: 0.489204
+Epoch 88 - Avg Loss: 0.421329 | Train Acc: 94.26%
+Val: loss=0.3734, acc=10559/10975 (96.21%)
+Epoch 88 timing: total=76.5s train=72.5s eval=4.0s | data_wait=6.0s fwd=22.6s bwd=43.5s (1279 samples/s)
+Epoch 89 [0/84843] Loss: 0.387860
+Epoch 89 [35000/84843] Loss: 0.471807
+Epoch 89 [70000/84843] Loss: 0.434825
+Epoch 89 - Avg Loss: 0.420626 | Train Acc: 94.33%
+Val: loss=0.3686, acc=10589/10975 (96.48%)
+saved best: 96.48%
+Epoch 89 timing: total=74.6s train=70.9s eval=3.7s | data_wait=3.8s fwd=22.1s bwd=44.7s (1309 samples/s)
+Epoch 90 [0/84843] Loss: 0.313904
+Epoch 90 [35000/84843] Loss: 0.344984
+Epoch 90 [70000/84843] Loss: 0.396221
+Epoch 90 - Avg Loss: 0.419678 | Train Acc: 94.29%
+Val: loss=0.3712, acc=10580/10975 (96.40%)
+Epoch 90 timing: total=75.6s train=71.8s eval=3.8s | data_wait=4.0s fwd=23.0s bwd=44.5s (1292 samples/s)
+Epoch 91 [0/84843] Loss: 0.417355
+Epoch 91 [35000/84843] Loss: 0.316597
+Epoch 91 [70000/84843] Loss: 0.480991
+Epoch 91 - Avg Loss: 0.418435 | Train Acc: 94.40%
+Val: loss=0.3709, acc=10578/10975 (96.38%)
+Epoch 91 timing: total=75.3s train=71.2s eval=4.1s | data_wait=3.7s fwd=23.1s bwd=44.1s (1302 samples/s)
+Epoch 92 [0/84843] Loss: 0.367999
+Epoch 92 [35000/84843] Loss: 0.471973
+Epoch 92 [70000/84843] Loss: 0.465722
+Epoch 92 - Avg Loss: 0.419635 | Train Acc: 94.39%
+Val: loss=0.3730, acc=10568/10975 (96.29%)
+Epoch 92 timing: total=75.4s train=71.5s eval=3.9s | data_wait=2.6s fwd=24.3s bwd=44.3s (1297 samples/s)
+Epoch 93 [0/84843] Loss: 0.401390
+Epoch 93 [35000/84843] Loss: 0.351743
+Epoch 93 [70000/84843] Loss: 0.366703
+Epoch 93 - Avg Loss: 0.419753 | Train Acc: 94.30%
+Val: loss=0.3734, acc=10553/10975 (96.15%)
+Epoch 93 timing: total=75.4s train=71.6s eval=3.9s | data_wait=3.1s fwd=23.3s bwd=44.8s (1297 samples/s)
+Epoch 94 [0/84843] Loss: 0.371987
+Epoch 94 [35000/84843] Loss: 0.424693
+Epoch 94 [70000/84843] Loss: 0.573393
+Epoch 94 - Avg Loss: 0.415249 | Train Acc: 94.53%
+Val: loss=0.3725, acc=10562/10975 (96.24%)
+Epoch 94 timing: total=74.3s train=71.0s eval=3.3s | data_wait=2.1s fwd=23.9s bwd=44.6s (1306 samples/s)
+Epoch 95 [0/84843] Loss: 0.542678
+Epoch 95 [35000/84843] Loss: 0.346074
+Epoch 95 [70000/84843] Loss: 0.476802
+Epoch 95 - Avg Loss: 0.418320 | Train Acc: 94.41%
+Val: loss=0.3820, acc=10531/10975 (95.95%)
+Epoch 95 timing: total=76.2s train=73.0s eval=3.2s | data_wait=4.5s fwd=24.1s bwd=44.1s (1270 samples/s)
+Epoch 96 [0/84843] Loss: 0.480710
+Epoch 96 [35000/84843] Loss: 0.421406
+Epoch 96 [70000/84843] Loss: 0.508591
+Epoch 96 - Avg Loss: 0.416509 | Train Acc: 94.43%
+Val: loss=0.3738, acc=10565/10975 (96.26%)
+Epoch 96 timing: total=77.8s train=74.4s eval=3.5s | data_wait=6.0s fwd=23.4s bwd=44.6s (1247 samples/s)
+Epoch 97 [0/84843] Loss: 0.390012
+Epoch 97 [35000/84843] Loss: 0.388535
+Epoch 97 [70000/84843] Loss: 0.324377
+Epoch 97 - Avg Loss: 0.419401 | Train Acc: 94.35%
+Val: loss=0.3686, acc=10583/10975 (96.43%)
+Epoch 97 timing: total=72.4s train=68.9s eval=3.5s | data_wait=1.9s fwd=23.1s bwd=43.6s (1346 samples/s)
+Epoch 98 [0/84843] Loss: 0.333805
+Epoch 98 [35000/84843] Loss: 0.400524
+Epoch 98 [70000/84843] Loss: 0.305199
+Epoch 98 - Avg Loss: 0.416827 | Train Acc: 94.53%
+Val: loss=0.3698, acc=10585/10975 (96.45%)
+Epoch 98 timing: total=75.0s train=71.4s eval=3.6s | data_wait=3.2s fwd=23.6s bwd=44.2s (1300 samples/s)
+Epoch 99 [0/84843] Loss: 0.432428
+Epoch 99 [35000/84843] Loss: 0.364913
+Epoch 99 [70000/84843] Loss: 0.320222
+Epoch 99 - Avg Loss: 0.416576 | Train Acc: 94.48%
+Val: loss=0.3706, acc=10560/10975 (96.22%)
+Epoch 99 timing: total=72.7s train=69.1s eval=3.6s | data_wait=3.6s fwd=21.9s bwd=43.3s (1342 samples/s)
+Epoch 100 [0/84843] Loss: 0.527256
+Epoch 100 [35000/84843] Loss: 0.402691
+Epoch 100 [70000/84843] Loss: 0.386475
+Epoch 100 - Avg Loss: 0.415617 | Train Acc: 94.50%
+Val: loss=0.3712, acc=10574/10975 (96.35%)
+Epoch 100 timing: total=74.9s train=71.4s eval=3.4s | data_wait=2.9s fwd=23.7s bwd=44.5s (1299 samples/s)
+Epoch 101 [0/84843] Loss: 0.481528
+Epoch 101 [35000/84843] Loss: 0.466252
+Epoch 101 [70000/84843] Loss: 0.351997
+Epoch 101 - Avg Loss: 0.414646 | Train Acc: 94.54%
+Val: loss=0.3698, acc=10561/10975 (96.23%)
+Epoch 101 timing: total=77.5s train=73.8s eval=3.7s | data_wait=2.7s fwd=23.3s bwd=47.4s (1257 samples/s)
+Epoch 102 [0/84843] Loss: 0.523996
+Epoch 102 [35000/84843] Loss: 0.294843
+Epoch 102 [70000/84843] Loss: 0.452654
+Epoch 102 - Avg Loss: 0.414560 | Train Acc: 94.54%
+Val: loss=0.3664, acc=10607/10975 (96.65%)
+saved best: 96.65%
+Epoch 102 timing: total=76.2s train=72.6s eval=3.4s | data_wait=3.0s fwd=25.0s bwd=44.3s (1278 samples/s)
+Epoch 103 [0/84843] Loss: 0.356490
+Epoch 103 [35000/84843] Loss: 0.331711
+Epoch 103 [70000/84843] Loss: 0.443464
+Epoch 103 - Avg Loss: 0.418918 | Train Acc: 94.34%
+Val: loss=0.3710, acc=10595/10975 (96.54%)
+Epoch 103 timing: total=74.4s train=70.9s eval=3.5s | data_wait=3.9s fwd=22.7s bwd=43.9s (1309 samples/s)
+Epoch 104 [0/84843] Loss: 0.378376
+Epoch 104 [35000/84843] Loss: 0.394650
+Epoch 104 [70000/84843] Loss: 0.427791
+Epoch 104 - Avg Loss: 0.415663 | Train Acc: 94.47%
+Val: loss=0.3726, acc=10569/10975 (96.30%)
+Epoch 104 timing: total=76.3s train=72.5s eval=3.8s | data_wait=3.3s fwd=24.5s bwd=44.3s (1280 samples/s)
+Epoch 105 [0/84843] Loss: 0.406617
+Epoch 105 [35000/84843] Loss: 0.365711
+Epoch 105 [70000/84843] Loss: 0.386626
+Epoch 105 - Avg Loss: 0.415761 | Train Acc: 94.52%
+Val: loss=0.3678, acc=10590/10975 (96.49%)
+Epoch 105 timing: total=72.8s train=69.0s eval=3.8s | data_wait=2.3s fwd=21.6s bwd=44.7s (1345 samples/s)
+Epoch 106 [0/84843] Loss: 0.488212
+Epoch 106 [35000/84843] Loss: 0.619413
+Epoch 106 [70000/84843] Loss: 0.421546
+Epoch 106 - Avg Loss: 0.417421 | Train Acc: 94.36%
+Val: loss=0.3666, acc=10600/10975 (96.58%)
+Epoch 106 timing: total=75.6s train=71.7s eval=3.9s | data_wait=2.5s fwd=23.8s bwd=45.0s (1294 samples/s)
+Epoch 107 [0/84843] Loss: 0.405959
+Epoch 107 [35000/84843] Loss: 0.388528
+Epoch 107 [70000/84843] Loss: 0.343899
+Epoch 107 - Avg Loss: 0.414960 | Train Acc: 94.52%
+Val: loss=0.3731, acc=10559/10975 (96.21%)
+Epoch 107 timing: total=76.0s train=72.3s eval=3.7s | data_wait=3.3s fwd=23.8s bwd=44.9s (1284 samples/s)
+Epoch 108 [0/84843] Loss: 0.376781
+Epoch 108 [35000/84843] Loss: 0.481539
+Epoch 108 [70000/84843] Loss: 0.483922
+Epoch 108 - Avg Loss: 0.413074 | Train Acc: 94.63%
+Val: loss=0.3716, acc=10567/10975 (96.28%)
+Epoch 108 timing: total=76.0s train=72.4s eval=3.6s | data_wait=3.1s fwd=24.6s bwd=44.3s (1282 samples/s)
+Epoch 109 [0/84843] Loss: 0.381921
+Epoch 109 [35000/84843] Loss: 0.482458
+Epoch 109 [70000/84843] Loss: 0.354436
+Epoch 109 - Avg Loss: 0.415572 | Train Acc: 94.48%
+Val: loss=0.3721, acc=10587/10975 (96.46%)
+Epoch 109 timing: total=72.4s train=68.9s eval=3.5s | data_wait=2.0s fwd=22.0s bwd=44.5s (1348 samples/s)
+Epoch 110 [0/84843] Loss: 0.340601
+Epoch 110 [35000/84843] Loss: 0.456585
+Epoch 110 [70000/84843] Loss: 0.446901
+Epoch 110 - Avg Loss: 0.412032 | Train Acc: 94.63%
+Val: loss=0.3690, acc=10592/10975 (96.51%)
+Epoch 110 timing: total=71.4s train=67.9s eval=3.5s | data_wait=2.2s fwd=22.0s bwd=43.3s (1366 samples/s)
+Epoch 111 [0/84843] Loss: 0.388436
+Epoch 111 [35000/84843] Loss: 0.327767
+Epoch 111 [70000/84843] Loss: 0.412869
+Epoch 111 - Avg Loss: 0.415487 | Train Acc: 94.49%
+Val: loss=0.3700, acc=10570/10975 (96.31%)
+Epoch 111 timing: total=90.9s train=85.0s eval=5.8s | data_wait=17.6s fwd=22.3s bwd=44.8s (1091 samples/s)
+Epoch 112 [0/84843] Loss: 0.355520
+Epoch 112 [35000/84843] Loss: 0.353542
+Epoch 112 [70000/84843] Loss: 0.414121
+Epoch 112 - Avg Loss: 0.411475 | Train Acc: 94.67%
+Val: loss=0.3668, acc=10581/10975 (96.41%)
+Epoch 112 timing: total=81.2s train=77.0s eval=4.1s | data_wait=9.7s fwd=22.2s bwd=44.7s (1205 samples/s)
+Epoch 113 [0/84843] Loss: 0.382865
+Epoch 113 [35000/84843] Loss: 0.473139
+Epoch 113 [70000/84843] Loss: 0.344295
+Epoch 113 - Avg Loss: 0.413892 | Train Acc: 94.56%
+Val: loss=0.3732, acc=10561/10975 (96.23%)
+Epoch 113 timing: total=74.4s train=70.6s eval=3.9s | data_wait=2.6s fwd=22.5s bwd=45.1s (1315 samples/s)
+Epoch 114 [0/84843] Loss: 0.438724
+Epoch 114 [35000/84843] Loss: 0.392245
+Epoch 114 [70000/84843] Loss: 0.384390
+Epoch 114 - Avg Loss: 0.411694 | Train Acc: 94.59%
+Val: loss=0.3660, acc=10601/10975 (96.59%)
+Epoch 114 timing: total=74.4s train=70.4s eval=4.0s | data_wait=3.0s fwd=23.7s bwd=43.3s (1318 samples/s)
+Epoch 115 [0/84843] Loss: 0.470135
+Epoch 115 [35000/84843] Loss: 0.397843
+Epoch 115 [70000/84843] Loss: 0.442280
+Epoch 115 - Avg Loss: 0.413952 | Train Acc: 94.52%
+Val: loss=0.3691, acc=10572/10975 (96.33%)
+Epoch 115 timing: total=72.1s train=68.6s eval=3.5s | data_wait=1.6s fwd=22.0s bwd=44.6s (1353 samples/s)
+Epoch 116 [0/84843] Loss: 0.378268
+Epoch 116 [35000/84843] Loss: 0.637317
+Epoch 116 [70000/84843] Loss: 0.467191
+Epoch 116 - Avg Loss: 0.415054 | Train Acc: 94.49%
+Val: loss=0.3664, acc=10599/10975 (96.57%)
+Epoch 116 timing: total=75.0s train=71.2s eval=3.8s | data_wait=2.8s fwd=23.6s bwd=44.3s (1303 samples/s)
+Epoch 117 [0/84843] Loss: 0.463065
+Epoch 117 [35000/84843] Loss: 0.335503
+Epoch 117 [70000/84843] Loss: 0.405719
+Epoch 117 - Avg Loss: 0.412918 | Train Acc: 94.59%
+Val: loss=0.3690, acc=10586/10975 (96.46%)
+Epoch 117 timing: total=73.6s train=69.5s eval=4.2s | data_wait=1.5s fwd=22.5s bwd=45.1s (1336 samples/s)
+Epoch 118 [0/84843] Loss: 0.375720
+Epoch 118 [35000/84843] Loss: 0.429552
+Epoch 118 [70000/84843] Loss: 0.531422
+Epoch 118 - Avg Loss: 0.410642 | Train Acc: 94.71%
+Val: loss=0.3656, acc=10590/10975 (96.49%)
+Epoch 118 timing: total=74.2s train=70.2s eval=4.0s | data_wait=1.9s fwd=23.3s bwd=44.6s (1321 samples/s)
+Epoch 119 [0/84843] Loss: 0.368049
+Epoch 119 [35000/84843] Loss: 0.477617
+Epoch 119 [70000/84843] Loss: 0.483442
+Epoch 119 - Avg Loss: 0.410164 | Train Acc: 94.68%
+Val: loss=0.3644, acc=10596/10975 (96.55%)
+Epoch 119 timing: total=75.4s train=71.6s eval=3.8s | data_wait=3.3s fwd=23.0s bwd=44.9s (1296 samples/s)
+Epoch 120 [0/84843] Loss: 0.393474
+Epoch 120 [35000/84843] Loss: 0.329844
+Epoch 120 [70000/84843] Loss: 0.377631
+Epoch 120 - Avg Loss: 0.410532 | Train Acc: 94.73%
+Val: loss=0.3662, acc=10601/10975 (96.59%)
+Epoch 120 timing: total=75.6s train=72.0s eval=3.6s | data_wait=4.0s fwd=23.8s bwd=43.8s (1290 samples/s)
+Epoch 121 [0/84843] Loss: 0.326566
+Epoch 121 [35000/84843] Loss: 0.436047
+Epoch 121 [70000/84843] Loss: 0.324726
+Epoch 121 - Avg Loss: 0.411341 | Train Acc: 94.60%
+Val: loss=0.3609, acc=10615/10975 (96.72%)
+saved best: 96.72%
+Epoch 121 timing: total=77.3s train=73.8s eval=3.6s | data_wait=5.4s fwd=24.9s bwd=43.1s (1258 samples/s)
+Epoch 122 [0/84843] Loss: 0.386950
+Epoch 122 [35000/84843] Loss: 0.392877
+Epoch 122 [70000/84843] Loss: 0.369542
+Epoch 122 - Avg Loss: 0.410488 | Train Acc: 94.72%
+Val: loss=0.3653, acc=10602/10975 (96.60%)
+Epoch 122 timing: total=76.7s train=72.9s eval=3.8s | data_wait=4.9s fwd=23.5s bwd=44.1s (1273 samples/s)
+Epoch 123 [0/84843] Loss: 0.350034
+Epoch 123 [35000/84843] Loss: 0.339490
+Epoch 123 [70000/84843] Loss: 0.322139
+Epoch 123 - Avg Loss: 0.409088 | Train Acc: 94.67%
+Val: loss=0.3667, acc=10585/10975 (96.45%)
+Epoch 123 timing: total=75.8s train=72.0s eval=3.8s | data_wait=5.0s fwd=23.0s bwd=43.7s (1289 samples/s)
+Epoch 124 [0/84843] Loss: 0.453921
+Epoch 124 [35000/84843] Loss: 0.395588
+Epoch 124 [70000/84843] Loss: 0.411899
+Epoch 124 - Avg Loss: 0.410409 | Train Acc: 94.62%
+Val: loss=0.3624, acc=10599/10975 (96.57%)
+Epoch 124 timing: total=76.6s train=72.2s eval=4.4s | data_wait=4.5s fwd=23.0s bwd=44.3s (1285 samples/s)
+Epoch 125 [0/84843] Loss: 0.388345
+Epoch 125 [35000/84843] Loss: 0.366767
+Epoch 125 [70000/84843] Loss: 0.438119
+Epoch 125 - Avg Loss: 0.408215 | Train Acc: 94.70%
+Val: loss=0.3668, acc=10592/10975 (96.51%)
+Epoch 125 timing: total=74.8s train=70.8s eval=4.0s | data_wait=2.7s fwd=23.2s bwd=44.5s (1311 samples/s)
+Epoch 126 [0/84843] Loss: 0.341736
+Epoch 126 [35000/84843] Loss: 0.312954
+Epoch 126 [70000/84843] Loss: 0.352632
+Epoch 126 - Avg Loss: 0.408332 | Train Acc: 94.79%
+Val: loss=0.3652, acc=10578/10975 (96.38%)
+Epoch 126 timing: total=74.6s train=71.0s eval=3.7s | data_wait=2.8s fwd=24.2s bwd=43.5s (1308 samples/s)
+Epoch 127 [0/84843] Loss: 0.395226
+Epoch 127 [35000/84843] Loss: 0.373281
+Epoch 127 [70000/84843] Loss: 0.329553
+Epoch 127 - Avg Loss: 0.408412 | Train Acc: 94.74%
+Val: loss=0.3654, acc=10597/10975 (96.56%)
+Epoch 127 timing: total=75.1s train=71.5s eval=3.6s | data_wait=2.7s fwd=23.7s bwd=44.7s (1298 samples/s)
+Epoch 128 [0/84843] Loss: 0.375655
+Epoch 128 [35000/84843] Loss: 0.427608
+Epoch 128 [70000/84843] Loss: 0.382211
+Epoch 128 - Avg Loss: 0.408144 | Train Acc: 94.80%
+Val: loss=0.3688, acc=10587/10975 (96.46%)
+Epoch 128 timing: total=73.9s train=70.3s eval=3.6s | data_wait=3.8s fwd=22.6s bwd=43.5s (1320 samples/s)
+Epoch 129 [0/84843] Loss: 0.373019
+Epoch 129 [35000/84843] Loss: 0.384030
+Epoch 129 [70000/84843] Loss: 0.360280
+Epoch 129 - Avg Loss: 0.407453 | Train Acc: 94.84%
+Val: loss=0.3675, acc=10580/10975 (96.40%)
+Epoch 129 timing: total=74.9s train=71.1s eval=3.7s | data_wait=3.1s fwd=23.5s bwd=44.1s (1304 samples/s)
+Epoch 130 [0/84843] Loss: 0.356535
+Epoch 130 [35000/84843] Loss: 0.393934
+Epoch 130 [70000/84843] Loss: 0.492502
+Epoch 130 - Avg Loss: 0.407291 | Train Acc: 94.86%
+Val: loss=0.3625, acc=10595/10975 (96.54%)
+Epoch 130 timing: total=75.0s train=71.3s eval=3.7s | data_wait=3.1s fwd=24.3s bwd=43.6s (1301 samples/s)
+Epoch 131 [0/84843] Loss: 0.524150
+Epoch 131 [35000/84843] Loss: 0.390127
+Epoch 131 [70000/84843] Loss: 0.500358
+Epoch 131 - Avg Loss: 0.405802 | Train Acc: 94.78%
+Val: loss=0.3647, acc=10593/10975 (96.52%)
+Epoch 131 timing: total=73.0s train=69.4s eval=3.6s | data_wait=3.2s fwd=22.1s bwd=43.8s (1337 samples/s)
+Epoch 132 [0/84843] Loss: 0.448759
+Epoch 132 [35000/84843] Loss: 0.378166
+Epoch 132 [70000/84843] Loss: 0.354345
+Epoch 132 - Avg Loss: 0.408018 | Train Acc: 94.81%
+Val: loss=0.3665, acc=10581/10975 (96.41%)
+Epoch 132 timing: total=75.5s train=72.1s eval=3.4s | data_wait=3.9s fwd=24.3s bwd=43.5s (1287 samples/s)
+Epoch 133 [0/84843] Loss: 0.426562
+Epoch 133 [35000/84843] Loss: 0.390757
+Epoch 133 [70000/84843] Loss: 0.353263
+Epoch 133 - Avg Loss: 0.403938 | Train Acc: 94.90%
+Val: loss=0.3644, acc=10604/10975 (96.62%)
+Epoch 133 timing: total=75.6s train=71.7s eval=3.9s | data_wait=3.3s fwd=24.5s bwd=43.5s (1295 samples/s)
+Epoch 134 [0/84843] Loss: 0.347846
+Epoch 134 [35000/84843] Loss: 0.534224
+Epoch 134 [70000/84843] Loss: 0.428663
+Epoch 134 - Avg Loss: 0.405060 | Train Acc: 94.91%
+Val: loss=0.3608, acc=10617/10975 (96.74%)
+saved best: 96.74%
+Epoch 134 timing: total=75.3s train=71.7s eval=3.6s | data_wait=3.4s fwd=22.6s bwd=45.3s (1294 samples/s)
+Epoch 135 [0/84843] Loss: 0.436900
+Epoch 135 [35000/84843] Loss: 0.505271
+Epoch 135 [70000/84843] Loss: 0.320932
+Epoch 135 - Avg Loss: 0.403529 | Train Acc: 94.99%
+Val: loss=0.3649, acc=10600/10975 (96.58%)
+Epoch 135 timing: total=77.2s train=73.1s eval=4.2s | data_wait=4.8s fwd=24.1s bwd=43.7s (1270 samples/s)
+Epoch 136 [0/84843] Loss: 0.320400
+Epoch 136 [35000/84843] Loss: 0.415154
+Epoch 136 [70000/84843] Loss: 0.451366
+Epoch 136 - Avg Loss: 0.406964 | Train Acc: 94.77%
+Val: loss=0.3661, acc=10602/10975 (96.60%)
+Epoch 136 timing: total=72.9s train=69.2s eval=3.7s | data_wait=2.6s fwd=21.7s bwd=44.5s (1341 samples/s)
+Epoch 137 [0/84843] Loss: 0.446626
+Epoch 137 [35000/84843] Loss: 0.403970
+Epoch 137 [70000/84843] Loss: 0.456134
+Epoch 137 - Avg Loss: 0.405118 | Train Acc: 94.91%
+Val: loss=0.3629, acc=10595/10975 (96.54%)
+Epoch 137 timing: total=72.1s train=68.4s eval=3.7s | data_wait=2.4s fwd=22.7s bwd=42.9s (1357 samples/s)
+Epoch 138 [0/84843] Loss: 0.419593
+Epoch 138 [35000/84843] Loss: 0.440516
+Epoch 138 [70000/84843] Loss: 0.374777
+Epoch 138 - Avg Loss: 0.405796 | Train Acc: 94.83%
+Val: loss=0.3649, acc=10586/10975 (96.46%)
+Epoch 138 timing: total=74.9s train=71.7s eval=3.2s | data_wait=3.8s fwd=23.4s bwd=44.2s (1294 samples/s)
+Epoch 139 [0/84843] Loss: 0.336003
+Epoch 139 [35000/84843] Loss: 0.396301
+Epoch 139 [70000/84843] Loss: 0.536384
+Epoch 139 - Avg Loss: 0.407142 | Train Acc: 94.80%
+Val: loss=0.3644, acc=10571/10975 (96.32%)
+Epoch 139 timing: total=71.3s train=67.6s eval=3.7s | data_wait=2.0s fwd=23.4s bwd=41.9s (1373 samples/s)
+Epoch 140 [0/84843] Loss: 0.412104
+Epoch 140 [35000/84843] Loss: 0.475426
+Epoch 140 [70000/84843] Loss: 0.399910
+Epoch 140 - Avg Loss: 0.405091 | Train Acc: 94.85%
+Val: loss=0.3651, acc=10597/10975 (96.56%)
+Epoch 140 timing: total=73.1s train=69.6s eval=3.5s | data_wait=3.1s fwd=22.8s bwd=43.3s (1333 samples/s)
+Epoch 141 [0/84843] Loss: 0.369902
+Epoch 141 [35000/84843] Loss: 0.336274
+Epoch 141 [70000/84843] Loss: 0.407918
+Epoch 141 - Avg Loss: 0.405089 | Train Acc: 94.86%
+Val: loss=0.3689, acc=10578/10975 (96.38%)
+Epoch 141 timing: total=74.9s train=71.2s eval=3.6s | data_wait=2.7s fwd=23.6s bwd=44.5s (1303 samples/s)
+Epoch 142 [0/84843] Loss: 0.350080
+Epoch 142 [35000/84843] Loss: 0.461549
+Epoch 142 [70000/84843] Loss: 0.363488
+Epoch 142 - Avg Loss: 0.401047 | Train Acc: 95.11%
+Val: loss=0.3594, acc=10636/10975 (96.91%)
+saved best: 96.91%
+Epoch 142 timing: total=74.3s train=70.7s eval=3.6s | data_wait=3.6s fwd=22.8s bwd=43.9s (1312 samples/s)
+Epoch 143 [0/84843] Loss: 0.309499
+Epoch 143 [35000/84843] Loss: 0.535616
+Epoch 143 [70000/84843] Loss: 0.445102
+Epoch 143 - Avg Loss: 0.404312 | Train Acc: 94.89%
+Val: loss=0.3605, acc=10614/10975 (96.71%)
+Epoch 143 timing: total=72.4s train=68.7s eval=3.6s | data_wait=2.2s fwd=22.9s bwd=43.2s (1350 samples/s)
+Epoch 144 [0/84843] Loss: 0.509761
+Epoch 144 [35000/84843] Loss: 0.446016
+Epoch 144 [70000/84843] Loss: 0.378765
+Epoch 144 - Avg Loss: 0.403243 | Train Acc: 94.91%
+Val: loss=0.3629, acc=10604/10975 (96.62%)
+Epoch 144 timing: total=72.5s train=69.1s eval=3.4s | data_wait=2.0s fwd=23.3s bwd=43.5s (1343 samples/s)
+Epoch 145 [0/84843] Loss: 0.430461
+Epoch 145 [35000/84843] Loss: 0.447070
+Epoch 145 [70000/84843] Loss: 0.408534
+Epoch 145 - Avg Loss: 0.403199 | Train Acc: 94.93%
+Val: loss=0.3646, acc=10596/10975 (96.55%)
+Epoch 145 timing: total=71.5s train=68.1s eval=3.4s | data_wait=1.2s fwd=22.8s bwd=43.8s (1363 samples/s)
+Epoch 146 [0/84843] Loss: 0.424076
+Epoch 146 [35000/84843] Loss: 0.349417
+Epoch 146 [70000/84843] Loss: 0.361530
+Epoch 146 - Avg Loss: 0.401420 | Train Acc: 95.08%
+Val: loss=0.3636, acc=10611/10975 (96.68%)
+Epoch 146 timing: total=75.1s train=71.9s eval=3.3s | data_wait=3.3s fwd=23.4s bwd=44.7s (1292 samples/s)
+Epoch 147 [0/84843] Loss: 0.304104
+Epoch 147 [35000/84843] Loss: 0.319115
+Epoch 147 [70000/84843] Loss: 0.477103
+Epoch 147 - Avg Loss: 0.403095 | Train Acc: 94.99%
+Val: loss=0.3585, acc=10641/10975 (96.96%)
+saved best: 96.96%
+Epoch 147 timing: total=74.0s train=70.7s eval=3.3s | data_wait=3.1s fwd=22.6s bwd=44.7s (1312 samples/s)
+Epoch 148 [0/84843] Loss: 0.409628
+Epoch 148 [35000/84843] Loss: 0.433498
+Epoch 148 [70000/84843] Loss: 0.403891
+Epoch 148 - Avg Loss: 0.402433 | Train Acc: 95.01%
+Val: loss=0.3645, acc=10593/10975 (96.52%)
+Epoch 148 timing: total=74.3s train=70.5s eval=3.8s | data_wait=3.0s fwd=24.4s bwd=42.6s (1317 samples/s)
+Epoch 149 [0/84843] Loss: 0.336473
+Epoch 149 [35000/84843] Loss: 0.357671
+Epoch 149 [70000/84843] Loss: 0.328699
+Epoch 149 - Avg Loss: 0.398440 | Train Acc: 95.20%
+Val: loss=0.3618, acc=10614/10975 (96.71%)
+Epoch 149 timing: total=74.3s train=70.6s eval=3.8s | data_wait=3.3s fwd=23.0s bwd=43.9s (1315 samples/s)
+Epoch 150 [0/84843] Loss: 0.306965
+Epoch 150 [35000/84843] Loss: 0.391124
+Epoch 150 [70000/84843] Loss: 0.362667
+Epoch 150 - Avg Loss: 0.397856 | Train Acc: 95.15%
+Val: loss=0.3680, acc=10582/10975 (96.42%)
+Epoch 150 timing: total=74.6s train=71.5s eval=3.2s | data_wait=3.7s fwd=22.7s bwd=44.7s (1298 samples/s)
+Epoch 151 [0/84843] Loss: 0.482081
+Epoch 151 [35000/84843] Loss: 0.347889
+Epoch 151 [70000/84843] Loss: 0.452752
+Epoch 151 - Avg Loss: 0.400133 | Train Acc: 95.03%
+Val: loss=0.3617, acc=10603/10975 (96.61%)
+Epoch 151 timing: total=76.2s train=72.7s eval=3.5s | data_wait=3.6s fwd=24.8s bwd=43.9s (1277 samples/s)
+Epoch 152 [0/84843] Loss: 0.350431
+Epoch 152 [35000/84843] Loss: 0.417282
+Epoch 152 [70000/84843] Loss: 0.334217
+Epoch 152 - Avg Loss: 0.401413 | Train Acc: 95.06%
+Val: loss=0.3587, acc=10622/10975 (96.78%)
+Epoch 152 timing: total=74.7s train=71.3s eval=3.4s | data_wait=3.5s fwd=24.3s bwd=43.1s (1302 samples/s)
+Epoch 153 [0/84843] Loss: 0.355654
+Epoch 153 [35000/84843] Loss: 0.530284
+Epoch 153 [70000/84843] Loss: 0.447728
+Epoch 153 - Avg Loss: 0.398684 | Train Acc: 95.12%
+Val: loss=0.3614, acc=10608/10975 (96.66%)
+Epoch 153 timing: total=80.0s train=76.1s eval=3.9s | data_wait=3.5s fwd=26.7s bwd=45.4s (1219 samples/s)
+Epoch 154 [0/84843] Loss: 0.362837
+Epoch 154 [35000/84843] Loss: 0.421700
+Epoch 154 [70000/84843] Loss: 0.399406
+Epoch 154 - Avg Loss: 0.399625 | Train Acc: 95.03%
+Val: loss=0.3604, acc=10612/10975 (96.69%)
+Epoch 154 timing: total=73.9s train=70.1s eval=3.8s | data_wait=3.0s fwd=23.9s bwd=42.8s (1324 samples/s)
+Epoch 155 [0/84843] Loss: 0.481692
+Epoch 155 [35000/84843] Loss: 0.317327
+Epoch 155 [70000/84843] Loss: 0.494719
+Epoch 155 - Avg Loss: 0.400245 | Train Acc: 95.08%
+Val: loss=0.3609, acc=10611/10975 (96.68%)
+Epoch 155 timing: total=74.7s train=71.0s eval=3.6s | data_wait=3.5s fwd=24.0s bwd=43.1s (1306 samples/s)
+Epoch 156 [0/84843] Loss: 0.291191
+Epoch 156 [35000/84843] Loss: 0.302590
+Epoch 156 [70000/84843] Loss: 0.315527
+Epoch 156 - Avg Loss: 0.398648 | Train Acc: 95.20%
+Val: loss=0.3611, acc=10606/10975 (96.64%)
+Epoch 156 timing: total=72.2s train=68.9s eval=3.2s | data_wait=2.1s fwd=22.5s bwd=43.9s (1346 samples/s)
+Epoch 157 [0/84843] Loss: 0.399979
+Epoch 157 [35000/84843] Loss: 0.392121
+Epoch 157 [70000/84843] Loss: 0.475776
+Epoch 157 - Avg Loss: 0.399081 | Train Acc: 95.15%
+Val: loss=0.3635, acc=10591/10975 (96.50%)
+Epoch 157 timing: total=74.0s train=70.5s eval=3.5s | data_wait=3.0s fwd=23.6s bwd=43.5s (1315 samples/s)
+Epoch 158 [0/84843] Loss: 0.443805
+Epoch 158 [35000/84843] Loss: 0.422136
+Epoch 158 [70000/84843] Loss: 0.351285
+Epoch 158 - Avg Loss: 0.398645 | Train Acc: 95.14%
+Val: loss=0.3614, acc=10617/10975 (96.74%)
+Epoch 158 timing: total=73.2s train=69.2s eval=4.0s | data_wait=2.4s fwd=22.8s bwd=43.6s (1341 samples/s)
+Epoch 159 [0/84843] Loss: 0.342254
+Epoch 159 [35000/84843] Loss: 0.402410
+Epoch 159 [70000/84843] Loss: 0.380032
+Epoch 159 - Avg Loss: 0.397594 | Train Acc: 95.16%
+Val: loss=0.3605, acc=10612/10975 (96.69%)
+Epoch 159 timing: total=75.1s train=71.4s eval=3.7s | data_wait=3.1s fwd=23.2s bwd=44.8s (1300 samples/s)
+Epoch 160 [0/84843] Loss: 0.358955
+Epoch 160 [35000/84843] Loss: 0.384398
+Epoch 160 [70000/84843] Loss: 0.403812
+Epoch 160 - Avg Loss: 0.398645 | Train Acc: 95.16%
+Val: loss=0.3600, acc=10616/10975 (96.73%)
+Epoch 160 timing: total=74.0s train=70.5s eval=3.5s | data_wait=3.4s fwd=22.1s bwd=44.6s (1316 samples/s)
+Epoch 161 [0/84843] Loss: 0.366386
+Epoch 161 [35000/84843] Loss: 0.426064
+Epoch 161 [70000/84843] Loss: 0.488037
+Epoch 161 - Avg Loss: 0.395620 | Train Acc: 95.25%
+Val: loss=0.3620, acc=10617/10975 (96.74%)
+Epoch 161 timing: total=75.6s train=71.1s eval=4.5s | data_wait=3.2s fwd=23.2s bwd=44.3s (1306 samples/s)
+Epoch 162 [0/84843] Loss: 0.393508
+Epoch 162 [35000/84843] Loss: 0.427246
+Epoch 162 [70000/84843] Loss: 0.335528
+Epoch 162 - Avg Loss: 0.393962 | Train Acc: 95.30%
+Val: loss=0.3547, acc=10634/10975 (96.89%)
+Epoch 162 timing: total=73.1s train=69.7s eval=3.4s | data_wait=2.2s fwd=24.0s bwd=43.1s (1332 samples/s)
+Epoch 163 [0/84843] Loss: 0.404915
+Epoch 163 [35000/84843] Loss: 0.527037
+Epoch 163 [70000/84843] Loss: 0.356553
+Epoch 163 - Avg Loss: 0.394416 | Train Acc: 95.30%
+Val: loss=0.3590, acc=10611/10975 (96.68%)
+Epoch 163 timing: total=100.9s train=97.1s eval=3.8s | data_wait=31.4s fwd=22.6s bwd=42.8s (955 samples/s)
+Epoch 164 [0/84843] Loss: 0.379478
+Epoch 164 [35000/84843] Loss: 0.339901
+Epoch 164 [70000/84843] Loss: 0.368922
+Epoch 164 - Avg Loss: 0.395954 | Train Acc: 95.22%
+Val: loss=0.3540, acc=10635/10975 (96.90%)
+Epoch 164 timing: total=73.5s train=69.8s eval=3.7s | data_wait=3.1s fwd=22.1s bwd=44.2s (1329 samples/s)
+Epoch 165 [0/84843] Loss: 0.433756
+Epoch 165 [35000/84843] Loss: 0.442436
+Epoch 165 [70000/84843] Loss: 0.550987
+Epoch 165 - Avg Loss: 0.396937 | Train Acc: 95.21%
+Val: loss=0.3574, acc=10641/10975 (96.96%)
+Epoch 165 timing: total=74.5s train=71.1s eval=3.5s | data_wait=3.2s fwd=23.8s bwd=43.7s (1306 samples/s)
+Epoch 166 [0/84843] Loss: 0.465218
+Epoch 166 [35000/84843] Loss: 0.359850
+Epoch 166 [70000/84843] Loss: 0.386521
+Epoch 166 - Avg Loss: 0.394243 | Train Acc: 95.28%
+Val: loss=0.3567, acc=10631/10975 (96.87%)
+Epoch 166 timing: total=93.4s train=86.3s eval=7.1s | data_wait=18.3s fwd=23.2s bwd=44.4s (1075 samples/s)
+Epoch 167 [0/84843] Loss: 0.399958
+Epoch 167 [35000/84843] Loss: 0.414036
+Epoch 167 [70000/84843] Loss: 0.350020
+Epoch 167 - Avg Loss: 0.393925 | Train Acc: 95.24%
+Val: loss=0.3606, acc=10617/10975 (96.74%)
+Epoch 167 timing: total=83.1s train=78.9s eval=4.3s | data_wait=11.9s fwd=23.3s bwd=43.3s (1176 samples/s)
+Epoch 168 [0/84843] Loss: 0.431647
+Epoch 168 [35000/84843] Loss: 0.348260
+Epoch 168 [70000/84843] Loss: 0.349017
+Epoch 168 - Avg Loss: 0.394021 | Train Acc: 95.32%
+Val: loss=0.3675, acc=10595/10975 (96.54%)
+Epoch 168 timing: total=73.4s train=69.9s eval=3.6s | data_wait=2.6s fwd=24.0s bwd=42.9s (1328 samples/s)
+Epoch 169 [0/84843] Loss: 0.501517
+Epoch 169 [35000/84843] Loss: 0.356035
+Epoch 169 [70000/84843] Loss: 0.430106
+Epoch 169 - Avg Loss: 0.393622 | Train Acc: 95.22%
+Val: loss=0.3594, acc=10599/10975 (96.57%)
+Epoch 169 timing: total=73.8s train=70.1s eval=3.7s | data_wait=1.7s fwd=23.4s bwd=44.6s (1324 samples/s)
+Epoch 170 [0/84843] Loss: 0.441940
+Epoch 170 [35000/84843] Loss: 0.593199
+Epoch 170 [70000/84843] Loss: 0.398367
+Epoch 170 - Avg Loss: 0.393843 | Train Acc: 95.37%
+Val: loss=0.3597, acc=10605/10975 (96.63%)
+Epoch 170 timing: total=74.4s train=70.7s eval=3.6s | data_wait=3.1s fwd=22.8s bwd=44.4s (1312 samples/s)
+Epoch 171 [0/84843] Loss: 0.378517
+Epoch 171 [35000/84843] Loss: 0.336385
+Epoch 171 [70000/84843] Loss: 0.374799
+Epoch 171 - Avg Loss: 0.391959 | Train Acc: 95.43%
+Val: loss=0.3607, acc=10603/10975 (96.61%)
+Epoch 171 timing: total=69.9s train=66.5s eval=3.4s | data_wait=0.7s fwd=22.3s bwd=43.2s (1396 samples/s)
+Epoch 172 [0/84843] Loss: 0.438540
+Epoch 172 [35000/84843] Loss: 0.475583
+Epoch 172 [70000/84843] Loss: 0.374079
+Epoch 172 - Avg Loss: 0.393725 | Train Acc: 95.32%
+Val: loss=0.3643, acc=10595/10975 (96.54%)
+Epoch 172 timing: total=71.1s train=67.8s eval=3.3s | data_wait=0.4s fwd=24.4s bwd=42.7s (1369 samples/s)
+Epoch 173 [0/84843] Loss: 0.364271
+Epoch 173 [35000/84843] Loss: 0.351347
+Epoch 173 [70000/84843] Loss: 0.362296
+Epoch 173 - Avg Loss: 0.391384 | Train Acc: 95.47%
+Val: loss=0.3599, acc=10601/10975 (96.59%)
+Epoch 173 timing: total=72.1s train=68.7s eval=3.4s | data_wait=0.4s fwd=22.6s bwd=45.4s (1351 samples/s)
+Epoch 174 [0/84843] Loss: 0.373789
+Epoch 174 [35000/84843] Loss: 0.323089
+Epoch 174 [70000/84843] Loss: 0.323394
+Epoch 174 - Avg Loss: 0.392659 | Train Acc: 95.40%
+Val: loss=0.3602, acc=10615/10975 (96.72%)
+Epoch 174 timing: total=73.3s train=69.3s eval=4.1s | data_wait=4.0s fwd=22.3s bwd=42.6s (1340 samples/s)
+Epoch 175 [0/84843] Loss: 0.435576
+Epoch 175 [35000/84843] Loss: 0.395764
+Epoch 175 [70000/84843] Loss: 0.343571
+Epoch 175 - Avg Loss: 0.391724 | Train Acc: 95.39%
+Val: loss=0.3539, acc=10643/10975 (96.97%)
+saved best: 96.97%
+Epoch 175 timing: total=75.3s train=71.3s eval=3.7s | data_wait=3.6s fwd=23.7s bwd=43.6s (1301 samples/s)
+Epoch 176 [0/84843] Loss: 0.474157
+Epoch 176 [35000/84843] Loss: 0.334034
+Epoch 176 [70000/84843] Loss: 0.407373
+Epoch 176 - Avg Loss: 0.389982 | Train Acc: 95.49%
+Val: loss=0.3589, acc=10626/10975 (96.82%)
+Epoch 176 timing: total=75.0s train=71.2s eval=3.8s | data_wait=3.7s fwd=23.7s bwd=43.4s (1304 samples/s)
+Epoch 177 [0/84843] Loss: 0.356270
+Epoch 177 [35000/84843] Loss: 0.404876
+Epoch 177 [70000/84843] Loss: 0.468690
+Epoch 177 - Avg Loss: 0.389346 | Train Acc: 95.47%
+Val: loss=0.3554, acc=10631/10975 (96.87%)
+Epoch 177 timing: total=74.0s train=70.3s eval=3.7s | data_wait=3.4s fwd=22.8s bwd=43.7s (1320 samples/s)
+Epoch 178 [0/84843] Loss: 0.474846
+Epoch 178 [35000/84843] Loss: 0.407000
+Epoch 178 [70000/84843] Loss: 0.385538
+Epoch 178 - Avg Loss: 0.389254 | Train Acc: 95.49%
+Val: loss=0.3578, acc=10605/10975 (96.63%)
+Epoch 178 timing: total=74.0s train=70.5s eval=3.5s | data_wait=4.1s fwd=22.8s bwd=43.3s (1317 samples/s)
+Epoch 179 [0/84843] Loss: 0.416116
+Epoch 179 [35000/84843] Loss: 0.362361
+Epoch 179 [70000/84843] Loss: 0.514096
+Epoch 179 - Avg Loss: 0.392609 | Train Acc: 95.31%
+Val: loss=0.3527, acc=10646/10975 (97.00%)
+saved best: 97.00%
+Epoch 179 timing: total=76.0s train=72.1s eval=3.9s | data_wait=3.4s fwd=24.5s bwd=43.8s (1286 samples/s)
+Epoch 180 [0/84843] Loss: 0.452720
+Epoch 180 [35000/84843] Loss: 0.452890
+Epoch 180 [70000/84843] Loss: 0.326134
+Epoch 180 - Avg Loss: 0.391070 | Train Acc: 95.38%
+Val: loss=0.3535, acc=10629/10975 (96.85%)
+Epoch 180 timing: total=73.7s train=70.3s eval=3.4s | data_wait=3.0s fwd=22.2s bwd=44.7s (1320 samples/s)
+Epoch 181 [0/84843] Loss: 0.399480
+Epoch 181 [35000/84843] Loss: 0.353167
+Epoch 181 [70000/84843] Loss: 0.382426
+Epoch 181 - Avg Loss: 0.388914 | Train Acc: 95.47%
+Val: loss=0.3536, acc=10633/10975 (96.88%)
+Epoch 181 timing: total=78.6s train=74.4s eval=4.3s | data_wait=5.6s fwd=23.7s bwd=44.7s (1248 samples/s)
+Epoch 182 [0/84843] Loss: 0.383146
+Epoch 182 [35000/84843] Loss: 0.392977
+Epoch 182 [70000/84843] Loss: 0.399994
+Epoch 182 - Avg Loss: 0.388775 | Train Acc: 95.54%
+Val: loss=0.3562, acc=10626/10975 (96.82%)
+Epoch 182 timing: total=73.5s train=70.0s eval=3.5s | data_wait=3.5s fwd=23.4s bwd=42.8s (1325 samples/s)
+Epoch 183 [0/84843] Loss: 0.427997
+Epoch 183 [35000/84843] Loss: 0.422894
+Epoch 183 [70000/84843] Loss: 0.542302
+Epoch 183 - Avg Loss: 0.388777 | Train Acc: 95.53%
+Val: loss=0.3589, acc=10611/10975 (96.68%)
+Epoch 183 timing: total=72.3s train=68.7s eval=3.6s | data_wait=2.5s fwd=22.3s bwd=43.5s (1351 samples/s)
+Epoch 184 [0/84843] Loss: 0.418673
+Epoch 184 [35000/84843] Loss: 0.322108
+Epoch 184 [70000/84843] Loss: 0.425844
+Epoch 184 - Avg Loss: 0.388589 | Train Acc: 95.58%
+Val: loss=0.3547, acc=10628/10975 (96.84%)
+Epoch 184 timing: total=74.6s train=71.2s eval=3.5s | data_wait=4.6s fwd=22.5s bwd=43.7s (1304 samples/s)
+Epoch 185 [0/84843] Loss: 0.400542
+Epoch 185 [35000/84843] Loss: 0.326866
+Epoch 185 [70000/84843] Loss: 0.356865
+Epoch 185 - Avg Loss: 0.386411 | Train Acc: 95.56%
+Val: loss=0.3544, acc=10636/10975 (96.91%)
+Epoch 185 timing: total=76.1s train=72.0s eval=4.1s | data_wait=4.0s fwd=24.2s bwd=43.5s (1288 samples/s)
+Epoch 186 [0/84843] Loss: 0.316972
+Epoch 186 [35000/84843] Loss: 0.359978
+Epoch 186 [70000/84843] Loss: 0.443855
+Epoch 186 - Avg Loss: 0.387059 | Train Acc: 95.63%
+Val: loss=0.3535, acc=10634/10975 (96.89%)
+Epoch 186 timing: total=73.7s train=69.6s eval=4.1s | data_wait=3.4s fwd=21.7s bwd=44.1s (1334 samples/s)
+Epoch 187 [0/84843] Loss: 0.377767
+Epoch 187 [35000/84843] Loss: 0.326816
+Epoch 187 [70000/84843] Loss: 0.397967
+Epoch 187 - Avg Loss: 0.386343 | Train Acc: 95.60%
+Val: loss=0.3537, acc=10645/10975 (96.99%)
+Epoch 187 timing: total=74.5s train=71.1s eval=3.4s | data_wait=3.3s fwd=23.5s bwd=43.8s (1306 samples/s)
+Epoch 188 [0/84843] Loss: 0.506632
+Epoch 188 [35000/84843] Loss: 0.291544
+Epoch 188 [70000/84843] Loss: 0.500696
+Epoch 188 - Avg Loss: 0.387388 | Train Acc: 95.55%
+Val: loss=0.3592, acc=10602/10975 (96.60%)
+Epoch 188 timing: total=73.2s train=69.5s eval=3.7s | data_wait=3.5s fwd=22.4s bwd=43.3s (1335 samples/s)
+Epoch 189 [0/84843] Loss: 0.400491
+Epoch 189 [35000/84843] Loss: 0.451838
+Epoch 189 [70000/84843] Loss: 0.392985
+Epoch 189 - Avg Loss: 0.385635 | Train Acc: 95.54%
+Val: loss=0.3543, acc=10625/10975 (96.81%)
+Epoch 189 timing: total=73.2s train=69.3s eval=3.9s | data_wait=2.0s fwd=23.0s bwd=43.9s (1339 samples/s)
+Epoch 190 [0/84843] Loss: 0.361798
+Epoch 190 [35000/84843] Loss: 0.350008
+Epoch 190 [70000/84843] Loss: 0.319637
+Epoch 190 - Avg Loss: 0.385534 | Train Acc: 95.70%
+Val: loss=0.3508, acc=10652/10975 (97.06%)
+saved best: 97.06%
+Epoch 190 timing: total=73.3s train=69.5s eval=3.7s | data_wait=2.1s fwd=23.2s bwd=43.8s (1334 samples/s)
+Epoch 191 [0/84843] Loss: 0.370801
+Epoch 191 [35000/84843] Loss: 0.329284
+Epoch 191 [70000/84843] Loss: 0.388737
+Epoch 191 - Avg Loss: 0.385352 | Train Acc: 95.62%
+Val: loss=0.3494, acc=10649/10975 (97.03%)
+Epoch 191 timing: total=72.7s train=68.8s eval=3.9s | data_wait=3.3s fwd=22.7s bwd=42.4s (1349 samples/s)
+Epoch 192 [0/84843] Loss: 0.393610
+Epoch 192 [35000/84843] Loss: 0.332186
+Epoch 192 [70000/84843] Loss: 0.354509
+Epoch 192 - Avg Loss: 0.383172 | Train Acc: 95.74%
+Val: loss=0.3539, acc=10630/10975 (96.86%)
+Epoch 192 timing: total=73.8s train=70.0s eval=3.7s | data_wait=3.3s fwd=22.9s bwd=43.4s (1325 samples/s)
+Epoch 193 [0/84843] Loss: 0.467602
+Epoch 193 [35000/84843] Loss: 0.374180
+Epoch 193 [70000/84843] Loss: 0.341223
+Epoch 193 - Avg Loss: 0.385388 | Train Acc: 95.61%
+Val: loss=0.3562, acc=10629/10975 (96.85%)
+Epoch 193 timing: total=76.5s train=72.9s eval=3.6s | data_wait=3.5s fwd=24.4s bwd=44.6s (1273 samples/s)
+Epoch 194 [0/84843] Loss: 0.399454
+Epoch 194 [35000/84843] Loss: 0.476570
+Epoch 194 [70000/84843] Loss: 0.384450
+Epoch 194 - Avg Loss: 0.387081 | Train Acc: 95.54%
+Val: loss=0.3533, acc=10631/10975 (96.87%)
+Epoch 194 timing: total=74.7s train=70.9s eval=3.9s | data_wait=3.1s fwd=23.2s bwd=44.2s (1309 samples/s)
+Epoch 195 [0/84843] Loss: 0.319629
+Epoch 195 [35000/84843] Loss: 0.410278
+Epoch 195 [70000/84843] Loss: 0.290755
+Epoch 195 - Avg Loss: 0.383288 | Train Acc: 95.75%
+Val: loss=0.3516, acc=10647/10975 (97.01%)
+Epoch 195 timing: total=72.1s train=68.4s eval=3.7s | data_wait=2.6s fwd=22.1s bwd=43.3s (1357 samples/s)
+Epoch 196 [0/84843] Loss: 0.352924
+Epoch 196 [35000/84843] Loss: 0.327729
+Epoch 196 [70000/84843] Loss: 0.445107
+Epoch 196 - Avg Loss: 0.383781 | Train Acc: 95.72%
+Val: loss=0.3537, acc=10633/10975 (96.88%)
+Epoch 196 timing: total=72.4s train=68.7s eval=3.6s | data_wait=2.0s fwd=22.7s bwd=43.8s (1350 samples/s)
+Epoch 197 [0/84843] Loss: 0.408544
+Epoch 197 [35000/84843] Loss: 0.416960
+Epoch 197 [70000/84843] Loss: 0.384763
+Epoch 197 - Avg Loss: 0.385306 | Train Acc: 95.63%
+Val: loss=0.3518, acc=10641/10975 (96.96%)
+Epoch 197 timing: total=101.0s train=97.5s eval=3.6s | data_wait=32.0s fwd=22.5s bwd=42.6s (952 samples/s)
+Epoch 198 [0/84843] Loss: 0.330580
+Epoch 198 [35000/84843] Loss: 0.356737
+Epoch 198 [70000/84843] Loss: 0.299734
+Epoch 198 - Avg Loss: 0.383295 | Train Acc: 95.71%
+Val: loss=0.3506, acc=10645/10975 (96.99%)
+Epoch 198 timing: total=78.4s train=73.4s eval=5.0s | data_wait=5.7s fwd=22.7s bwd=44.7s (1265 samples/s)
+Epoch 199 [0/84843] Loss: 0.395159
+Epoch 199 [35000/84843] Loss: 0.361442
+Epoch 199 [70000/84843] Loss: 0.362961
+Epoch 199 - Avg Loss: 0.382023 | Train Acc: 95.74%
+Val: loss=0.3510, acc=10646/10975 (97.00%)
+Epoch 199 timing: total=94.8s train=91.3s eval=3.5s | data_wait=24.9s fwd=22.9s bwd=43.1s (1016 samples/s)
+Epoch 200 [0/84843] Loss: 0.426783
+Epoch 200 [35000/84843] Loss: 0.392730
+Epoch 200 [70000/84843] Loss: 0.293748
+Epoch 200 - Avg Loss: 0.383527 | Train Acc: 95.68%
+Val: loss=0.3512, acc=10639/10975 (96.94%)
+Epoch 200 timing: total=99.3s train=92.9s eval=6.4s | data_wait=25.3s fwd=23.3s bwd=44.0s (998 samples/s)
+Epoch 201 [0/84843] Loss: 0.490152
+Epoch 201 [35000/84843] Loss: 0.375940
+Epoch 201 [70000/84843] Loss: 0.375061
+Epoch 201 - Avg Loss: 0.380028 | Train Acc: 95.86%
+Val: loss=0.3537, acc=10646/10975 (97.00%)
+Epoch 201 timing: total=73.7s train=70.4s eval=3.2s | data_wait=4.1s fwd=22.7s bwd=43.3s (1317 samples/s)
+Epoch 202 [0/84843] Loss: 0.433458
+Epoch 202 [35000/84843] Loss: 0.339308
+Epoch 202 [70000/84843] Loss: 0.387211
+Epoch 202 - Avg Loss: 0.383072 | Train Acc: 95.73%
+Val: loss=0.3527, acc=10633/10975 (96.88%)
+Epoch 202 timing: total=73.9s train=69.9s eval=4.0s | data_wait=2.1s fwd=24.1s bwd=43.4s (1328 samples/s)
+Epoch 203 [0/84843] Loss: 0.455108
+Epoch 203 [35000/84843] Loss: 0.456332
+Epoch 203 [70000/84843] Loss: 0.375479
+Epoch 203 - Avg Loss: 0.380835 | Train Acc: 95.80%
+Val: loss=0.3516, acc=10647/10975 (97.01%)
+Epoch 203 timing: total=95.3s train=91.8s eval=3.3s | data_wait=24.4s fwd=22.9s bwd=44.2s (1010 samples/s)
+Epoch 204 [0/84843] Loss: 0.379041
+Epoch 204 [35000/84843] Loss: 0.314381
+Epoch 204 [70000/84843] Loss: 0.311521
+Epoch 204 - Avg Loss: 0.379957 | Train Acc: 95.80%
+Val: loss=0.3557, acc=10619/10975 (96.76%)
+Epoch 204 timing: total=76.3s train=73.0s eval=3.3s | data_wait=1.9s fwd=25.7s bwd=44.8s (1271 samples/s)
+Epoch 205 [0/84843] Loss: 0.406673
+Epoch 205 [35000/84843] Loss: 0.360186
+Epoch 205 [70000/84843] Loss: 0.381945
+Epoch 205 - Avg Loss: 0.380120 | Train Acc: 95.83%
+Val: loss=0.3522, acc=10634/10975 (96.89%)
+Epoch 205 timing: total=70.0s train=66.6s eval=3.4s | data_wait=1.5s fwd=22.0s bwd=42.8s (1392 samples/s)
+Epoch 206 [0/84843] Loss: 0.359581
+Epoch 206 [35000/84843] Loss: 0.431345
+Epoch 206 [70000/84843] Loss: 0.348188
+Epoch 206 - Avg Loss: 0.377782 | Train Acc: 95.94%
+Val: loss=0.3513, acc=10655/10975 (97.08%)
+saved best: 97.08%
+Epoch 206 timing: total=74.6s train=70.8s eval=3.6s | data_wait=2.6s fwd=23.0s bwd=44.7s (1311 samples/s)
+Epoch 207 [0/84843] Loss: 0.468364
+Epoch 207 [35000/84843] Loss: 0.365878
+Epoch 207 [70000/84843] Loss: 0.454267
+Epoch 207 - Avg Loss: 0.380066 | Train Acc: 95.79%
+Val: loss=0.3529, acc=10640/10975 (96.95%)
+Epoch 207 timing: total=71.7s train=68.3s eval=3.4s | data_wait=3.2s fwd=22.0s bwd=42.8s (1358 samples/s)
+Epoch 208 [0/84843] Loss: 0.421272
+Epoch 208 [35000/84843] Loss: 0.354494
+Epoch 208 [70000/84843] Loss: 0.387774
+Epoch 208 - Avg Loss: 0.378883 | Train Acc: 95.91%
+Val: loss=0.3519, acc=10643/10975 (96.97%)
+Epoch 208 timing: total=71.4s train=68.0s eval=3.4s | data_wait=2.8s fwd=21.9s bwd=42.9s (1365 samples/s)
+Epoch 209 [0/84843] Loss: 0.343989
+Epoch 209 [35000/84843] Loss: 0.419521
+Epoch 209 [70000/84843] Loss: 0.366592
+Epoch 209 - Avg Loss: 0.378243 | Train Acc: 95.93%
+Val: loss=0.3519, acc=10647/10975 (97.01%)
+Epoch 209 timing: total=70.1s train=66.7s eval=3.4s | data_wait=2.4s fwd=21.3s bwd=42.5s (1392 samples/s)
+Epoch 210 [0/84843] Loss: 0.321853
+Epoch 210 [35000/84843] Loss: 0.380149
+Epoch 210 [70000/84843] Loss: 0.395006
+Epoch 210 - Avg Loss: 0.380722 | Train Acc: 95.90%
+Val: loss=0.3485, acc=10648/10975 (97.02%)
+Epoch 210 timing: total=73.8s train=70.3s eval=3.4s | data_wait=2.8s fwd=22.9s bwd=44.3s (1320 samples/s)
+Epoch 211 [0/84843] Loss: 0.477275
+Epoch 211 [35000/84843] Loss: 0.489234
+Epoch 211 [70000/84843] Loss: 0.402193
+Epoch 211 - Avg Loss: 0.379971 | Train Acc: 95.81%
+Val: loss=0.3497, acc=10662/10975 (97.15%)
+saved best: 97.15%
+Epoch 211 timing: total=73.9s train=69.8s eval=4.1s | data_wait=2.3s fwd=24.5s bwd=42.6s (1329 samples/s)
+Epoch 212 [0/84843] Loss: 0.305367
+Epoch 212 [35000/84843] Loss: 0.358143
+Epoch 212 [70000/84843] Loss: 0.414448
+Epoch 212 - Avg Loss: 0.378377 | Train Acc: 95.90%
+Val: loss=0.3497, acc=10660/10975 (97.13%)
+Epoch 212 timing: total=71.7s train=67.9s eval=3.8s | data_wait=2.3s fwd=22.6s bwd=42.5s (1367 samples/s)
+Epoch 213 [0/84843] Loss: 0.455428
+Epoch 213 [35000/84843] Loss: 0.488834
+Epoch 213 [70000/84843] Loss: 0.322145
+Epoch 213 - Avg Loss: 0.379008 | Train Acc: 95.89%
+Val: loss=0.3505, acc=10662/10975 (97.15%)
+Epoch 213 timing: total=70.9s train=67.5s eval=3.4s | data_wait=1.6s fwd=22.8s bwd=42.7s (1374 samples/s)
+Epoch 214 [0/84843] Loss: 0.405392
+Epoch 214 [35000/84843] Loss: 0.383475
+Epoch 214 [70000/84843] Loss: 0.311061
+Epoch 214 - Avg Loss: 0.378231 | Train Acc: 95.85%
+Val: loss=0.3518, acc=10654/10975 (97.08%)
+Epoch 214 timing: total=75.6s train=72.2s eval=3.5s | data_wait=3.5s fwd=25.4s bwd=42.9s (1286 samples/s)
+Epoch 215 [0/84843] Loss: 0.415806
+Epoch 215 [35000/84843] Loss: 0.299242
+Epoch 215 [70000/84843] Loss: 0.373642
+Epoch 215 - Avg Loss: 0.377077 | Train Acc: 95.95%
+Val: loss=0.3474, acc=10666/10975 (97.18%)
+saved best: 97.18%
+Epoch 215 timing: total=72.8s train=68.9s eval=3.9s | data_wait=3.5s fwd=22.3s bwd=42.7s (1347 samples/s)
+Epoch 216 [0/84843] Loss: 0.328448
+Epoch 216 [35000/84843] Loss: 0.333695
+Epoch 216 [70000/84843] Loss: 0.394680
+Epoch 216 - Avg Loss: 0.377268 | Train Acc: 95.99%
+Val: loss=0.3515, acc=10644/10975 (96.98%)
+Epoch 216 timing: total=78.3s train=74.8s eval=3.5s | data_wait=7.5s fwd=24.2s bwd=42.8s (1240 samples/s)
+Epoch 217 [0/84843] Loss: 0.368109
+Epoch 217 [35000/84843] Loss: 0.344294
+Epoch 217 [70000/84843] Loss: 0.300158
+Epoch 217 - Avg Loss: 0.378893 | Train Acc: 95.86%
+Val: loss=0.3480, acc=10647/10975 (97.01%)
+Epoch 217 timing: total=73.7s train=69.9s eval=3.8s | data_wait=2.6s fwd=22.6s bwd=44.3s (1328 samples/s)
+Epoch 218 [0/84843] Loss: 0.331582
+Epoch 218 [35000/84843] Loss: 0.302749
+Epoch 218 [70000/84843] Loss: 0.393303
+Epoch 218 - Avg Loss: 0.376034 | Train Acc: 96.05%
+Val: loss=0.3469, acc=10665/10975 (97.18%)
+Epoch 218 timing: total=72.6s train=68.8s eval=3.8s | data_wait=3.2s fwd=21.7s bwd=43.5s (1349 samples/s)
+Epoch 219 [0/84843] Loss: 0.414314
+Epoch 219 [35000/84843] Loss: 0.452121
+Epoch 219 [70000/84843] Loss: 0.359212
+Epoch 219 - Avg Loss: 0.373971 | Train Acc: 96.05%
+Val: loss=0.3462, acc=10666/10975 (97.18%)
+Epoch 219 timing: total=75.6s train=71.9s eval=3.7s | data_wait=2.8s fwd=25.1s bwd=43.6s (1290 samples/s)
+Epoch 220 [0/84843] Loss: 0.365751
+Epoch 220 [35000/84843] Loss: 0.501105
+Epoch 220 [70000/84843] Loss: 0.395338
+Epoch 220 - Avg Loss: 0.378273 | Train Acc: 95.88%
+Val: loss=0.3497, acc=10648/10975 (97.02%)
+Epoch 220 timing: total=74.7s train=71.4s eval=3.3s | data_wait=3.7s fwd=23.9s bwd=43.4s (1300 samples/s)
+Epoch 221 [0/84843] Loss: 0.430201
+Epoch 221 [35000/84843] Loss: 0.295957
+Epoch 221 [70000/84843] Loss: 0.360525
+Epoch 221 - Avg Loss: 0.375775 | Train Acc: 95.97%
+Val: loss=0.3489, acc=10642/10975 (96.97%)
+Epoch 221 timing: total=75.0s train=71.9s eval=3.1s | data_wait=5.8s fwd=22.8s bwd=42.9s (1290 samples/s)
+Epoch 222 [0/84843] Loss: 0.444525
+Epoch 222 [35000/84843] Loss: 0.346849
+Epoch 222 [70000/84843] Loss: 0.359988
+Epoch 222 - Avg Loss: 0.376094 | Train Acc: 95.97%
+Val: loss=0.3481, acc=10675/10975 (97.27%)
+saved best: 97.27%
+Epoch 222 timing: total=74.0s train=70.6s eval=3.1s | data_wait=3.8s fwd=22.4s bwd=44.0s (1314 samples/s)
+Epoch 223 [0/84843] Loss: 0.332479
+Epoch 223 [35000/84843] Loss: 0.305229
+Epoch 223 [70000/84843] Loss: 0.378664
+Epoch 223 - Avg Loss: 0.373675 | Train Acc: 96.09%
+Val: loss=0.3482, acc=10661/10975 (97.14%)
+Epoch 223 timing: total=72.8s train=69.9s eval=3.0s | data_wait=3.2s fwd=23.4s bwd=42.8s (1328 samples/s)
+Epoch 224 [0/84843] Loss: 0.385632
+Epoch 224 [35000/84843] Loss: 0.334930
+Epoch 224 [70000/84843] Loss: 0.333921
+Epoch 224 - Avg Loss: 0.373977 | Train Acc: 96.06%
+Val: loss=0.3478, acc=10662/10975 (97.15%)
+Epoch 224 timing: total=74.8s train=71.2s eval=3.6s | data_wait=2.8s fwd=23.4s bwd=44.7s (1303 samples/s)
+Epoch 225 [0/84843] Loss: 0.356776
+Epoch 225 [35000/84843] Loss: 0.359176
+Epoch 225 [70000/84843] Loss: 0.392062
+Epoch 225 - Avg Loss: 0.375458 | Train Acc: 96.00%
+Val: loss=0.3492, acc=10647/10975 (97.01%)
+Epoch 225 timing: total=71.0s train=67.6s eval=3.4s | data_wait=2.5s fwd=21.9s bwd=42.8s (1373 samples/s)
+Epoch 226 [0/84843] Loss: 0.392861
+Epoch 226 [35000/84843] Loss: 0.321883
+Epoch 226 [70000/84843] Loss: 0.404987
+Epoch 226 - Avg Loss: 0.372824 | Train Acc: 96.12%
+Val: loss=0.3467, acc=10673/10975 (97.25%)
+Epoch 226 timing: total=71.8s train=68.5s eval=3.3s | data_wait=2.9s fwd=22.5s bwd=42.8s (1354 samples/s)
+Epoch 227 [0/84843] Loss: 0.341500
+Epoch 227 [35000/84843] Loss: 0.468965
+Epoch 227 [70000/84843] Loss: 0.420767
+Epoch 227 - Avg Loss: 0.375028 | Train Acc: 96.03%
+Val: loss=0.3477, acc=10648/10975 (97.02%)
+Epoch 227 timing: total=71.6s train=68.6s eval=3.0s | data_wait=2.8s fwd=22.1s bwd=43.4s (1353 samples/s)
+Epoch 228 [0/84843] Loss: 0.328028
+Epoch 228 [35000/84843] Loss: 0.327684
+Epoch 228 [70000/84843] Loss: 0.370565
+Epoch 228 - Avg Loss: 0.373698 | Train Acc: 96.10%
+Val: loss=0.3464, acc=10670/10975 (97.22%)
+Epoch 228 timing: total=73.5s train=70.5s eval=3.1s | data_wait=3.0s fwd=24.2s bwd=42.8s (1317 samples/s)
+Epoch 229 [0/84843] Loss: 0.446700
+Epoch 229 [35000/84843] Loss: 0.397545
+Epoch 229 [70000/84843] Loss: 0.303264
+Epoch 229 - Avg Loss: 0.374726 | Train Acc: 95.99%
+Val: loss=0.3476, acc=10670/10975 (97.22%)
+Epoch 229 timing: total=73.6s train=70.1s eval=3.4s | data_wait=3.4s fwd=22.4s bwd=44.0s (1323 samples/s)
+Epoch 230 [0/84843] Loss: 0.298220
+Epoch 230 [35000/84843] Loss: 0.367854
+Epoch 230 [70000/84843] Loss: 0.397029
+Epoch 230 - Avg Loss: 0.374380 | Train Acc: 96.07%
+Val: loss=0.3497, acc=10665/10975 (97.18%)
+Epoch 230 timing: total=72.8s train=69.4s eval=3.4s | data_wait=3.2s fwd=23.1s bwd=42.7s (1337 samples/s)
+Epoch 231 [0/84843] Loss: 0.393326
+Epoch 231 [35000/84843] Loss: 0.444337
+Epoch 231 [70000/84843] Loss: 0.305807
+Epoch 231 - Avg Loss: 0.373682 | Train Acc: 96.10%
+Val: loss=0.3494, acc=10655/10975 (97.08%)
+Epoch 231 timing: total=75.8s train=72.4s eval=3.4s | data_wait=3.8s fwd=24.2s bwd=44.0s (1282 samples/s)
+Epoch 232 [0/84843] Loss: 0.356770
+Epoch 232 [35000/84843] Loss: 0.315201
+Epoch 232 [70000/84843] Loss: 0.479169
+Epoch 232 - Avg Loss: 0.373845 | Train Acc: 96.11%
+Val: loss=0.3487, acc=10668/10975 (97.20%)
+Epoch 232 timing: total=72.4s train=69.2s eval=3.1s | data_wait=2.1s fwd=22.9s bwd=43.8s (1341 samples/s)
+Epoch 233 [0/84843] Loss: 0.358546
+Epoch 233 [35000/84843] Loss: 0.303614
+Epoch 233 [70000/84843] Loss: 0.333612
+Epoch 233 - Avg Loss: 0.373379 | Train Acc: 96.11%
+Val: loss=0.3481, acc=10657/10975 (97.10%)
+Epoch 233 timing: total=72.7s train=69.6s eval=3.1s | data_wait=2.4s fwd=23.8s bwd=43.0s (1333 samples/s)
+Epoch 234 [0/84843] Loss: 0.285023
+Epoch 234 [35000/84843] Loss: 0.379405
+Epoch 234 [70000/84843] Loss: 0.460115
+Epoch 234 - Avg Loss: 0.371973 | Train Acc: 96.17%
+Val: loss=0.3486, acc=10654/10975 (97.08%)
+Epoch 234 timing: total=72.9s train=69.6s eval=3.3s | data_wait=2.9s fwd=22.1s bwd=44.2s (1333 samples/s)
+Epoch 235 [0/84843] Loss: 0.341190
+Epoch 235 [35000/84843] Loss: 0.409355
+Epoch 235 [70000/84843] Loss: 0.364070
+Epoch 235 - Avg Loss: 0.370006 | Train Acc: 96.18%
+Val: loss=0.3478, acc=10653/10975 (97.07%)
+Epoch 235 timing: total=73.2s train=70.3s eval=2.9s | data_wait=2.6s fwd=22.6s bwd=44.8s (1320 samples/s)
+Epoch 236 [0/84843] Loss: 0.363144
+Epoch 236 [35000/84843] Loss: 0.366707
+Epoch 236 [70000/84843] Loss: 0.397380
+Epoch 236 - Avg Loss: 0.373050 | Train Acc: 96.10%
+Val: loss=0.3485, acc=10658/10975 (97.11%)
+Epoch 236 timing: total=74.2s train=71.1s eval=3.1s | data_wait=2.4s fwd=24.4s bwd=44.0s (1305 samples/s)
+Epoch 237 [0/84843] Loss: 0.375430
+Epoch 237 [35000/84843] Loss: 0.309854
+Epoch 237 [70000/84843] Loss: 0.400094
+Epoch 237 - Avg Loss: 0.371754 | Train Acc: 96.15%
+Val: loss=0.3470, acc=10661/10975 (97.14%)
+Epoch 237 timing: total=99.9s train=96.8s eval=3.1s | data_wait=30.6s fwd=22.8s bwd=43.0s (959 samples/s)
+Epoch 238 [0/84843] Loss: 0.478260
+Epoch 238 [35000/84843] Loss: 0.411387
+Epoch 238 [70000/84843] Loss: 0.328674
+Epoch 238 - Avg Loss: 0.372643 | Train Acc: 96.09%
+Val: loss=0.3461, acc=10662/10975 (97.15%)
+Epoch 238 timing: total=74.1s train=70.9s eval=3.2s | data_wait=4.0s fwd=24.3s bwd=42.3s (1308 samples/s)
+Epoch 239 [0/84843] Loss: 0.378433
+Epoch 239 [35000/84843] Loss: 0.390623
+Epoch 239 [70000/84843] Loss: 0.360732
+Epoch 239 - Avg Loss: 0.371787 | Train Acc: 96.15%
+Val: loss=0.3462, acc=10666/10975 (97.18%)
+Epoch 239 timing: total=75.0s train=72.0s eval=3.0s | data_wait=3.3s fwd=25.8s bwd=42.6s (1288 samples/s)
+Epoch 240 [0/84843] Loss: 0.378706
+Epoch 240 [35000/84843] Loss: 0.392729
+Epoch 240 [70000/84843] Loss: 0.319280
+Epoch 240 - Avg Loss: 0.370537 | Train Acc: 96.16%
+Val: loss=0.3451, acc=10669/10975 (97.21%)
+Epoch 240 timing: total=77.8s train=72.0s eval=5.9s | data_wait=6.2s fwd=22.2s bwd=43.1s (1290 samples/s)
+Epoch 241 [0/84843] Loss: 0.390549
+Epoch 241 [35000/84843] Loss: 0.374538
+Epoch 241 [70000/84843] Loss: 0.386312
+Epoch 241 - Avg Loss: 0.371506 | Train Acc: 96.14%
+Val: loss=0.3459, acc=10660/10975 (97.13%)
+Epoch 241 timing: total=90.4s train=87.3s eval=3.0s | data_wait=20.9s fwd=23.0s bwd=43.1s (1062 samples/s)
+Epoch 242 [0/84843] Loss: 0.329887
+Epoch 242 [35000/84843] Loss: 0.391816
+Epoch 242 [70000/84843] Loss: 0.367454
+Epoch 242 - Avg Loss: 0.370352 | Train Acc: 96.22%
+Val: loss=0.3465, acc=10649/10975 (97.03%)
+Epoch 242 timing: total=73.3s train=70.3s eval=3.0s | data_wait=3.1s fwd=24.1s bwd=42.7s (1321 samples/s)
+Epoch 243 [0/84843] Loss: 0.362388
+Epoch 243 [35000/84843] Loss: 0.305229
+Epoch 243 [70000/84843] Loss: 0.329936
+Epoch 243 - Avg Loss: 0.370769 | Train Acc: 96.17%
+Val: loss=0.3489, acc=10651/10975 (97.05%)
+Epoch 243 timing: total=76.4s train=73.2s eval=3.1s | data_wait=8.0s fwd=21.5s bwd=43.3s (1267 samples/s)
+Epoch 244 [0/84843] Loss: 0.306901
+Epoch 244 [35000/84843] Loss: 0.390129
+Epoch 244 [70000/84843] Loss: 0.455912
+Epoch 244 - Avg Loss: 0.368719 | Train Acc: 96.26%
+Val: loss=0.3468, acc=10657/10975 (97.10%)
+Epoch 244 timing: total=73.1s train=68.8s eval=4.3s | data_wait=3.3s fwd=22.7s bwd=42.4s (1349 samples/s)
+Epoch 245 [0/84843] Loss: 0.307309
+Epoch 245 [35000/84843] Loss: 0.470857
+Epoch 245 [70000/84843] Loss: 0.407082
+Epoch 245 - Avg Loss: 0.372371 | Train Acc: 96.12%
+Val: loss=0.3465, acc=10666/10975 (97.18%)
+Epoch 245 timing: total=71.2s train=68.1s eval=3.1s | data_wait=4.4s fwd=21.0s bwd=42.3s (1362 samples/s)
+Epoch 246 [0/84843] Loss: 0.323484
+Epoch 246 [35000/84843] Loss: 0.289849
+Epoch 246 [70000/84843] Loss: 0.386097
+Epoch 246 - Avg Loss: 0.368414 | Train Acc: 96.23%
+Val: loss=0.3486, acc=10647/10975 (97.01%)
+Epoch 246 timing: total=73.8s train=70.7s eval=3.0s | data_wait=2.9s fwd=23.6s bwd=43.8s (1312 samples/s)
+Epoch 247 [0/84843] Loss: 0.366323
+Epoch 247 [35000/84843] Loss: 0.377685
+Epoch 247 [70000/84843] Loss: 0.370839
+Epoch 247 - Avg Loss: 0.368107 | Train Acc: 96.28%
+Val: loss=0.3495, acc=10651/10975 (97.05%)
+Epoch 247 timing: total=74.9s train=71.2s eval=3.7s | data_wait=2.8s fwd=23.9s bwd=44.0s (1304 samples/s)
+Epoch 248 [0/84843] Loss: 0.350726
+Epoch 248 [35000/84843] Loss: 0.417111
+Epoch 248 [70000/84843] Loss: 0.370626
+Epoch 248 - Avg Loss: 0.368437 | Train Acc: 96.26%
+Val: loss=0.3467, acc=10658/10975 (97.11%)
+Epoch 248 timing: total=73.5s train=69.4s eval=4.1s | data_wait=2.3s fwd=21.7s bwd=45.0s (1338 samples/s)
+Epoch 249 [0/84843] Loss: 0.342659
+Epoch 249 [35000/84843] Loss: 0.333892
+Epoch 249 [70000/84843] Loss: 0.357205
+Epoch 249 - Avg Loss: 0.369508 | Train Acc: 96.22%
+Val: loss=0.3474, acc=10658/10975 (97.11%)
+Epoch 249 timing: total=74.5s train=71.2s eval=3.3s | data_wait=3.7s fwd=23.1s bwd=44.1s (1303 samples/s)
+Epoch 250 [0/84843] Loss: 0.312110
+Epoch 250 [35000/84843] Loss: 0.318949
+Epoch 250 [70000/84843] Loss: 0.401565
+Epoch 250 - Avg Loss: 0.368686 | Train Acc: 96.25%
+Val: loss=0.3489, acc=10652/10975 (97.06%)
+Epoch 250 timing: total=73.9s train=70.7s eval=3.2s | data_wait=2.8s fwd=23.0s bwd=44.5s (1313 samples/s)
+Epoch 251 [0/84843] Loss: 0.338717
+Epoch 251 [35000/84843] Loss: 0.408173
+Epoch 251 [70000/84843] Loss: 0.364791
+Epoch 251 - Avg Loss: 0.366644 | Train Acc: 96.33%
+Val: loss=0.3451, acc=10673/10975 (97.25%)
+Epoch 251 timing: total=72.8s train=69.5s eval=3.3s | data_wait=3.3s fwd=23.0s bwd=42.9s (1335 samples/s)
+Epoch 252 [0/84843] Loss: 0.354836
+Epoch 252 [35000/84843] Loss: 0.317266
+Epoch 252 [70000/84843] Loss: 0.441736
+Epoch 252 - Avg Loss: 0.368449 | Train Acc: 96.23%
+Val: loss=0.3454, acc=10664/10975 (97.17%)
+Epoch 252 timing: total=73.4s train=70.3s eval=3.1s | data_wait=3.7s fwd=23.4s bwd=42.8s (1320 samples/s)
+Epoch 253 [0/84843] Loss: 0.468917
+Epoch 253 [35000/84843] Loss: 0.376905
+Epoch 253 [70000/84843] Loss: 0.363638
+Epoch 253 - Avg Loss: 0.368092 | Train Acc: 96.28%
+Val: loss=0.3470, acc=10671/10975 (97.23%)
+Epoch 253 timing: total=74.2s train=70.9s eval=3.3s | data_wait=3.7s fwd=22.9s bwd=44.0s (1308 samples/s)
+Epoch 254 [0/84843] Loss: 0.350195
+Epoch 254 [35000/84843] Loss: 0.309904
+Epoch 254 [70000/84843] Loss: 0.311300
+Epoch 254 - Avg Loss: 0.368899 | Train Acc: 96.23%
+Val: loss=0.3447, acc=10668/10975 (97.20%)
+Epoch 254 timing: total=73.0s train=69.6s eval=3.4s | data_wait=3.1s fwd=23.0s bwd=43.2s (1334 samples/s)
+Epoch 255 [0/84843] Loss: 0.399312
+Epoch 255 [35000/84843] Loss: 0.398239
+Epoch 255 [70000/84843] Loss: 0.371574
+Epoch 255 - Avg Loss: 0.369685 | Train Acc: 96.29%
+Val: loss=0.3449, acc=10670/10975 (97.22%)
+Epoch 255 timing: total=72.5s train=69.2s eval=3.3s | data_wait=1.9s fwd=23.8s bwd=43.2s (1341 samples/s)
+Epoch 256 [0/84843] Loss: 0.347442
+Epoch 256 [35000/84843] Loss: 0.294832
+Epoch 256 [70000/84843] Loss: 0.393499
+Epoch 256 - Avg Loss: 0.366421 | Train Acc: 96.35%
+Val: loss=0.3472, acc=10660/10975 (97.13%)
+Epoch 256 timing: total=78.3s train=75.3s eval=3.1s | data_wait=2.4s fwd=27.0s bwd=45.4s (1233 samples/s)
+Epoch 257 [0/84843] Loss: 0.367449
+Epoch 257 [35000/84843] Loss: 0.439388
+Epoch 257 [70000/84843] Loss: 0.368714
+Epoch 257 - Avg Loss: 0.365599 | Train Acc: 96.42%
+Val: loss=0.3456, acc=10665/10975 (97.18%)
+Epoch 257 timing: total=72.6s train=69.5s eval=3.1s | data_wait=4.4s fwd=21.1s bwd=43.6s (1336 samples/s)
+Epoch 258 [0/84843] Loss: 0.356369
+Epoch 258 [35000/84843] Loss: 0.363641
+Epoch 258 [70000/84843] Loss: 0.342318
+Epoch 258 - Avg Loss: 0.366779 | Train Acc: 96.34%
+Val: loss=0.3465, acc=10667/10975 (97.19%)
+Epoch 258 timing: total=75.2s train=71.7s eval=3.5s | data_wait=4.5s fwd=22.9s bwd=43.9s (1294 samples/s)
+Epoch 259 [0/84843] Loss: 0.336011
+Epoch 259 [35000/84843] Loss: 0.402622
+Epoch 259 [70000/84843] Loss: 0.369219
+Epoch 259 - Avg Loss: 0.367945 | Train Acc: 96.33%
+Val: loss=0.3469, acc=10664/10975 (97.17%)
+Epoch 259 timing: total=72.7s train=69.4s eval=3.3s | data_wait=3.5s fwd=22.4s bwd=43.1s (1338 samples/s)
+Epoch 260 [0/84843] Loss: 0.304594
+Epoch 260 [35000/84843] Loss: 0.349737
+Epoch 260 [70000/84843] Loss: 0.300717
+Epoch 260 - Avg Loss: 0.367437 | Train Acc: 96.31%
+Val: loss=0.3454, acc=10673/10975 (97.25%)
+Epoch 260 timing: total=74.7s train=71.6s eval=3.0s | data_wait=4.9s fwd=23.4s bwd=42.9s (1296 samples/s)
+Epoch 261 [0/84843] Loss: 0.383226
+Epoch 261 [35000/84843] Loss: 0.301151
+Epoch 261 [70000/84843] Loss: 0.299443
+Epoch 261 - Avg Loss: 0.366112 | Train Acc: 96.42%
+Val: loss=0.3452, acc=10668/10975 (97.20%)
+Epoch 261 timing: total=71.6s train=68.1s eval=3.5s | data_wait=3.2s fwd=22.5s bwd=42.0s (1362 samples/s)
+Epoch 262 [0/84843] Loss: 0.319361
+Epoch 262 [35000/84843] Loss: 0.334825
+Epoch 262 [70000/84843] Loss: 0.496107
+Epoch 262 - Avg Loss: 0.368021 | Train Acc: 96.32%
+Val: loss=0.3463, acc=10663/10975 (97.16%)
+Epoch 262 timing: total=73.4s train=70.3s eval=3.1s | data_wait=3.5s fwd=21.9s bwd=44.5s (1320 samples/s)
+Epoch 263 [0/84843] Loss: 0.341147
+Epoch 263 [35000/84843] Loss: 0.297152
+Epoch 263 [70000/84843] Loss: 0.325222
+Epoch 263 - Avg Loss: 0.364706 | Train Acc: 96.47%
+Val: loss=0.3463, acc=10665/10975 (97.18%)
+Epoch 263 timing: total=74.8s train=71.4s eval=3.4s | data_wait=4.4s fwd=23.5s bwd=43.1s (1299 samples/s)
+Epoch 264 [0/84843] Loss: 0.434188
+Epoch 264 [35000/84843] Loss: 0.382948
+Epoch 264 [70000/84843] Loss: 0.300536
+Epoch 264 - Avg Loss: 0.367165 | Train Acc: 96.27%
+Val: loss=0.3454, acc=10673/10975 (97.25%)
+Epoch 264 timing: total=72.6s train=69.1s eval=3.6s | data_wait=3.7s fwd=21.7s bwd=43.3s (1344 samples/s)
+Epoch 265 [0/84843] Loss: 0.306434
+Epoch 265 [35000/84843] Loss: 0.296620
+Epoch 265 [70000/84843] Loss: 0.400789
+Epoch 265 - Avg Loss: 0.367000 | Train Acc: 96.30%
+Val: loss=0.3452, acc=10668/10975 (97.20%)
+Epoch 265 timing: total=71.6s train=68.0s eval=3.6s | data_wait=3.4s fwd=21.1s bwd=43.2s (1364 samples/s)
+Epoch 266 [0/84843] Loss: 0.325399
+Epoch 266 [35000/84843] Loss: 0.448726
+Epoch 266 [70000/84843] Loss: 0.351110
+Epoch 266 - Avg Loss: 0.365799 | Train Acc: 96.35%
+Val: loss=0.3431, acc=10667/10975 (97.19%)
+Epoch 266 timing: total=70.9s train=67.0s eval=3.9s | data_wait=2.6s fwd=21.8s bwd=42.3s (1385 samples/s)
+Epoch 267 [0/84843] Loss: 0.393847
+Epoch 267 [35000/84843] Loss: 0.299322
+Epoch 267 [70000/84843] Loss: 0.361230
+Epoch 267 - Avg Loss: 0.365042 | Train Acc: 96.34%
+Val: loss=0.3435, acc=10675/10975 (97.27%)
+Epoch 267 timing: total=70.7s train=67.1s eval=3.5s | data_wait=2.5s fwd=22.8s bwd=41.5s (1382 samples/s)
+Epoch 268 [0/84843] Loss: 0.284328
+Epoch 268 [35000/84843] Loss: 0.320989
+Epoch 268 [70000/84843] Loss: 0.368141
+Epoch 268 - Avg Loss: 0.366005 | Train Acc: 96.35%
+Val: loss=0.3439, acc=10675/10975 (97.27%)
+Epoch 268 timing: total=72.0s train=68.6s eval=3.3s | data_wait=2.1s fwd=23.9s bwd=42.3s (1352 samples/s)
+Epoch 269 [0/84843] Loss: 0.411517
+Epoch 269 [35000/84843] Loss: 0.441693
+Epoch 269 [70000/84843] Loss: 0.389169
+Epoch 269 - Avg Loss: 0.365817 | Train Acc: 96.38%
+Val: loss=0.3438, acc=10672/10975 (97.24%)
+Epoch 269 timing: total=77.9s train=72.6s eval=5.3s | data_wait=4.1s fwd=23.3s bwd=44.6s (1278 samples/s)
+Epoch 270 [0/84843] Loss: 0.468488
+Epoch 270 [35000/84843] Loss: 0.410720
+Epoch 270 [70000/84843] Loss: 0.313685
+Epoch 270 - Avg Loss: 0.364822 | Train Acc: 96.41%
+Val: loss=0.3444, acc=10671/10975 (97.23%)
+Epoch 270 timing: total=76.7s train=73.3s eval=3.4s | data_wait=5.5s fwd=23.2s bwd=44.1s (1267 samples/s)
+Epoch 271 [0/84843] Loss: 0.297076
+Epoch 271 [35000/84843] Loss: 0.325821
+Epoch 271 [70000/84843] Loss: 0.435223
+Epoch 271 - Avg Loss: 0.363699 | Train Acc: 96.48%
+Val: loss=0.3439, acc=10669/10975 (97.21%)
+Epoch 271 timing: total=75.2s train=71.3s eval=3.9s | data_wait=6.0s fwd=21.6s bwd=43.3s (1302 samples/s)
+Epoch 272 [0/84843] Loss: 0.315460
+Epoch 272 [35000/84843] Loss: 0.424813
+Epoch 272 [70000/84843] Loss: 0.405271
+Epoch 272 - Avg Loss: 0.365102 | Train Acc: 96.40%
+Val: loss=0.3446, acc=10670/10975 (97.22%)
+Epoch 272 timing: total=76.3s train=72.9s eval=3.4s | data_wait=7.4s fwd=22.4s bwd=42.7s (1273 samples/s)
+Epoch 273 [0/84843] Loss: 0.318585
+Epoch 273 [35000/84843] Loss: 0.404767
+Epoch 273 [70000/84843] Loss: 0.288943
+Epoch 273 - Avg Loss: 0.368402 | Train Acc: 96.28%
+Val: loss=0.3447, acc=10669/10975 (97.21%)
+Epoch 273 timing: total=76.6s train=73.1s eval=3.5s | data_wait=7.1s fwd=22.7s bwd=42.9s (1270 samples/s)
+Epoch 274 [0/84843] Loss: 0.440157
+Epoch 274 [35000/84843] Loss: 0.362384
+Epoch 274 [70000/84843] Loss: 0.398066
+Epoch 274 - Avg Loss: 0.366271 | Train Acc: 96.36%
+Val: loss=0.3457, acc=10669/10975 (97.21%)
+Epoch 274 timing: total=72.5s train=69.2s eval=3.3s | data_wait=1.7s fwd=24.0s bwd=43.1s (1341 samples/s)
+Epoch 275 [0/84843] Loss: 0.415167
+Epoch 275 [35000/84843] Loss: 0.412069
+Epoch 275 [70000/84843] Loss: 0.322932
+Epoch 275 - Avg Loss: 0.363891 | Train Acc: 96.46%
+Val: loss=0.3457, acc=10663/10975 (97.16%)
+Epoch 275 timing: total=69.3s train=66.1s eval=3.2s | data_wait=0.4s fwd=22.9s bwd=42.4s (1405 samples/s)
+Epoch 276 [0/84843] Loss: 0.363458
+Epoch 276 [35000/84843] Loss: 0.367569
+Epoch 276 [70000/84843] Loss: 0.297971
+Epoch 276 - Avg Loss: 0.365342 | Train Acc: 96.41%
+Val: loss=0.3455, acc=10661/10975 (97.14%)
+Epoch 276 timing: total=68.4s train=65.1s eval=3.2s | data_wait=0.4s fwd=23.1s bwd=41.2s (1425 samples/s)
+Epoch 277 [0/84843] Loss: 0.438407
+Epoch 277 [35000/84843] Loss: 0.308145
+Epoch 277 [70000/84843] Loss: 0.310236
+Epoch 277 - Avg Loss: 0.364903 | Train Acc: 96.43%
+Val: loss=0.3437, acc=10673/10975 (97.25%)
+Epoch 277 timing: total=66.9s train=63.7s eval=3.2s | data_wait=0.4s fwd=20.4s bwd=42.6s (1456 samples/s)
+Epoch 278 [0/84843] Loss: 0.409271
+Epoch 278 [35000/84843] Loss: 0.421277
+Epoch 278 [70000/84843] Loss: 0.388109
+Epoch 278 - Avg Loss: 0.364811 | Train Acc: 96.49%
+Val: loss=0.3439, acc=10671/10975 (97.23%)
+Epoch 278 timing: total=66.9s train=63.4s eval=3.5s | data_wait=0.4s fwd=19.6s bwd=43.0s (1463 samples/s)
+Epoch 279 [0/84843] Loss: 0.324708
+Epoch 279 [35000/84843] Loss: 0.299616
+Epoch 279 [70000/84843] Loss: 0.361724
+Epoch 279 - Avg Loss: 0.363894 | Train Acc: 96.46%
+Val: loss=0.3422, acc=10669/10975 (97.21%)
+Epoch 279 timing: total=69.5s train=66.0s eval=3.5s | data_wait=0.4s fwd=22.3s bwd=42.9s (1407 samples/s)
+Epoch 280 [0/84843] Loss: 0.285963
+Epoch 280 [35000/84843] Loss: 0.289769
+Epoch 280 [70000/84843] Loss: 0.485655
+Epoch 280 - Avg Loss: 0.364159 | Train Acc: 96.51%
+Val: loss=0.3439, acc=10667/10975 (97.19%)
+Epoch 280 timing: total=68.7s train=65.5s eval=3.2s | data_wait=1.2s fwd=21.0s bwd=42.9s (1418 samples/s)
+Epoch 281 [0/84843] Loss: 0.319640
+Epoch 281 [35000/84843] Loss: 0.441718
+Epoch 281 [70000/84843] Loss: 0.467029
+Epoch 281 - Avg Loss: 0.364088 | Train Acc: 96.51%
+Val: loss=0.3432, acc=10671/10975 (97.23%)
+Epoch 281 timing: total=71.7s train=67.6s eval=4.0s | data_wait=2.5s fwd=21.5s bwd=43.2s (1372 samples/s)
+Epoch 282 [0/84843] Loss: 0.419900
+Epoch 282 [35000/84843] Loss: 0.342762
+Epoch 282 [70000/84843] Loss: 0.333322
+Epoch 282 - Avg Loss: 0.363217 | Train Acc: 96.47%
+Val: loss=0.3439, acc=10670/10975 (97.22%)
+Epoch 282 timing: total=76.0s train=72.5s eval=3.4s | data_wait=3.8s fwd=22.9s bwd=45.5s (1280 samples/s)
+Epoch 283 [0/84843] Loss: 0.325405
+Epoch 283 [35000/84843] Loss: 0.422961
+Epoch 283 [70000/84843] Loss: 0.297476
+Epoch 283 - Avg Loss: 0.362871 | Train Acc: 96.45%
+Val: loss=0.3429, acc=10673/10975 (97.25%)
+Epoch 283 timing: total=73.5s train=69.6s eval=3.9s | data_wait=3.4s fwd=23.1s bwd=42.7s (1333 samples/s)
+Epoch 284 [0/84843] Loss: 0.369084
+Epoch 284 [35000/84843] Loss: 0.312067
+Epoch 284 [70000/84843] Loss: 0.292851
+Epoch 284 - Avg Loss: 0.362931 | Train Acc: 96.49%
+Val: loss=0.3434, acc=10676/10975 (97.28%)
+saved best: 97.28%
+Epoch 284 timing: total=77.4s train=72.8s eval=4.4s | data_wait=8.0s fwd=21.6s bwd=42.8s (1275 samples/s)
+Epoch 285 [0/84843] Loss: 0.368554
+Epoch 285 [35000/84843] Loss: 0.320721
+Epoch 285 [70000/84843] Loss: 0.325862
+Epoch 285 - Avg Loss: 0.363190 | Train Acc: 96.42%
+Val: loss=0.3444, acc=10676/10975 (97.28%)
+Epoch 285 timing: total=75.8s train=71.7s eval=4.1s | data_wait=4.6s fwd=22.7s bwd=44.1s (1294 samples/s)
+Epoch 286 [0/84843] Loss: 0.383949
+Epoch 286 [35000/84843] Loss: 0.288225
+Epoch 286 [70000/84843] Loss: 0.359793
+Epoch 286 - Avg Loss: 0.365410 | Train Acc: 96.39%
+Val: loss=0.3428, acc=10680/10975 (97.31%)
+saved best: 97.31%
+Epoch 286 timing: total=74.4s train=70.4s eval=4.0s | data_wait=3.6s fwd=23.6s bwd=42.8s (1318 samples/s)
+Epoch 287 [0/84843] Loss: 0.455715
+Epoch 287 [35000/84843] Loss: 0.376873
+Epoch 287 [70000/84843] Loss: 0.399122
+Epoch 287 - Avg Loss: 0.363623 | Train Acc: 96.47%
+Val: loss=0.3428, acc=10681/10975 (97.32%)
+saved best: 97.32%
+Epoch 287 timing: total=78.0s train=74.9s eval=3.1s | data_wait=7.6s fwd=22.8s bwd=44.2s (1238 samples/s)
+Epoch 288 [0/84843] Loss: 0.351486
+Epoch 288 [35000/84843] Loss: 0.357539
+Epoch 288 [70000/84843] Loss: 0.302727
+Epoch 288 - Avg Loss: 0.363375 | Train Acc: 96.48%
+Val: loss=0.3433, acc=10674/10975 (97.26%)
+Epoch 288 timing: total=74.3s train=70.0s eval=4.4s | data_wait=4.7s fwd=22.2s bwd=42.7s (1327 samples/s)
+Epoch 289 [0/84843] Loss: 0.357368
+Epoch 289 [35000/84843] Loss: 0.405571
+Epoch 289 [70000/84843] Loss: 0.313944
+Epoch 289 - Avg Loss: 0.363558 | Train Acc: 96.53%
+Val: loss=0.3445, acc=10667/10975 (97.19%)
+Epoch 289 timing: total=75.3s train=72.3s eval=3.0s | data_wait=5.9s fwd=23.2s bwd=42.9s (1284 samples/s)
+Epoch 290 [0/84843] Loss: 0.323431
+Epoch 290 [35000/84843] Loss: 0.337228
+Epoch 290 [70000/84843] Loss: 0.294577
+Epoch 290 - Avg Loss: 0.361930 | Train Acc: 96.48%
+Val: loss=0.3440, acc=10671/10975 (97.23%)
+Epoch 290 timing: total=76.9s train=71.1s eval=5.8s | data_wait=5.4s fwd=23.0s bwd=42.2s (1306 samples/s)
+Epoch 291 [0/84843] Loss: 0.299477
+Epoch 291 [35000/84843] Loss: 0.446242
+Epoch 291 [70000/84843] Loss: 0.384001
+Epoch 291 - Avg Loss: 0.362911 | Train Acc: 96.44%
+Val: loss=0.3437, acc=10676/10975 (97.28%)
+Epoch 291 timing: total=78.4s train=75.4s eval=3.0s | data_wait=8.2s fwd=23.2s bwd=43.6s (1231 samples/s)
+Epoch 292 [0/84843] Loss: 0.358684
+Epoch 292 [35000/84843] Loss: 0.359110
+Epoch 292 [70000/84843] Loss: 0.400481
+Epoch 292 - Avg Loss: 0.362847 | Train Acc: 96.49%
+Val: loss=0.3436, acc=10688/10975 (97.38%)
+saved best: 97.38%
+Epoch 292 timing: total=76.2s train=73.0s eval=3.2s | data_wait=6.8s fwd=22.8s bwd=43.0s (1272 samples/s)
+Epoch 293 [0/84843] Loss: 0.283418
+Epoch 293 [35000/84843] Loss: 0.440037
+Epoch 293 [70000/84843] Loss: 0.347828
+Epoch 293 - Avg Loss: 0.361768 | Train Acc: 96.54%
+Val: loss=0.3441, acc=10678/10975 (97.29%)
+Epoch 293 timing: total=73.9s train=70.9s eval=3.0s | data_wait=5.3s fwd=21.6s bwd=43.6s (1310 samples/s)
+Epoch 294 [0/84843] Loss: 0.410417
+Epoch 294 [35000/84843] Loss: 0.427510
+Epoch 294 [70000/84843] Loss: 0.312246
+Epoch 294 - Avg Loss: 0.363319 | Train Acc: 96.49%
+Val: loss=0.3434, acc=10673/10975 (97.25%)
+Epoch 294 timing: total=71.9s train=68.8s eval=3.1s | data_wait=2.0s fwd=24.3s bwd=42.1s (1350 samples/s)
+Epoch 295 [0/84843] Loss: 0.424967
+Epoch 295 [35000/84843] Loss: 0.486998
+Epoch 295 [70000/84843] Loss: 0.338279
+Epoch 295 - Avg Loss: 0.363016 | Train Acc: 96.49%
+Val: loss=0.3427, acc=10685/10975 (97.36%)
+Epoch 295 timing: total=73.1s train=69.9s eval=3.2s | data_wait=4.5s fwd=22.1s bwd=42.9s (1328 samples/s)
+Epoch 296 [0/84843] Loss: 0.378647
+Epoch 296 [35000/84843] Loss: 0.346310
+Epoch 296 [70000/84843] Loss: 0.393756
+Epoch 296 - Avg Loss: 0.361811 | Train Acc: 96.51%
+Val: loss=0.3426, acc=10676/10975 (97.28%)
+Epoch 296 timing: total=75.2s train=72.0s eval=3.1s | data_wait=5.8s fwd=22.4s bwd=43.5s (1288 samples/s)
+Epoch 297 [0/84843] Loss: 0.431662
+Epoch 297 [35000/84843] Loss: 0.283716
+Epoch 297 [70000/84843] Loss: 0.334941
+Epoch 297 - Avg Loss: 0.362663 | Train Acc: 96.48%
+Val: loss=0.3422, acc=10683/10975 (97.34%)
+Epoch 297 timing: total=72.8s train=69.2s eval=3.6s | data_wait=4.3s fwd=22.9s bwd=41.6s (1341 samples/s)
+Epoch 298 [0/84843] Loss: 0.321290
+Epoch 298 [35000/84843] Loss: 0.295110
+Epoch 298 [70000/84843] Loss: 0.371316
+Epoch 298 - Avg Loss: 0.363407 | Train Acc: 96.46%
+Val: loss=0.3430, acc=10680/10975 (97.31%)
+Epoch 298 timing: total=74.6s train=71.3s eval=3.3s | data_wait=4.0s fwd=22.4s bwd=44.4s (1302 samples/s)
+Epoch 299 [0/84843] Loss: 0.341709
+Epoch 299 [35000/84843] Loss: 0.289154
+Epoch 299 [70000/84843] Loss: 0.465245
+Epoch 299 - Avg Loss: 0.363370 | Train Acc: 96.45%
+Val: loss=0.3425, acc=10683/10975 (97.34%)
+Epoch 299 timing: total=76.0s train=72.8s eval=3.2s | data_wait=6.8s fwd=22.7s bwd=42.9s (1275 samples/s)
+Epoch 300 [0/84843] Loss: 0.360395
+Epoch 300 [35000/84843] Loss: 0.416302
+Epoch 300 [70000/84843] Loss: 0.386957
+Epoch 300 - Avg Loss: 0.361952 | Train Acc: 96.52%
+Val: loss=0.3426, acc=10676/10975 (97.28%)
+Epoch 300 timing: total=76.2s train=73.0s eval=3.2s | data_wait=6.0s fwd=23.9s bwd=42.8s (1271 samples/s)
+Epoch 301 [0/84843] Loss: 0.372422
+Epoch 301 [35000/84843] Loss: 0.300755
+Epoch 301 [70000/84843] Loss: 0.336587
+Epoch 301 - Avg Loss: 0.361604 | Train Acc: 96.49%
+Val: loss=0.3435, acc=10667/10975 (97.19%)
+Epoch 301 timing: total=86.3s train=81.2s eval=5.1s | data_wait=15.7s fwd=22.1s bwd=43.1s (1142 samples/s)
+Epoch 302 [0/84843] Loss: 0.302914
+Epoch 302 [35000/84843] Loss: 0.313622
+Epoch 302 [70000/84843] Loss: 0.288298
+Epoch 302 - Avg Loss: 0.361253 | Train Acc: 96.55%
+Val: loss=0.3436, acc=10671/10975 (97.23%)
+Epoch 302 timing: total=88.2s train=85.1s eval=3.1s | data_wait=18.9s fwd=23.0s bwd=42.8s (1090 samples/s)
+Epoch 303 [0/84843] Loss: 0.292555
+Epoch 303 [35000/84843] Loss: 0.359036
+Epoch 303 [70000/84843] Loss: 0.390539
+Epoch 303 - Avg Loss: 0.362294 | Train Acc: 96.50%
+Val: loss=0.3427, acc=10674/10975 (97.26%)
+Epoch 303 timing: total=73.6s train=70.3s eval=3.2s | data_wait=4.9s fwd=22.1s bwd=43.0s (1319 samples/s)
+Epoch 304 [0/84843] Loss: 0.293884
+Epoch 304 [35000/84843] Loss: 0.365131
+Epoch 304 [70000/84843] Loss: 0.334993
+Epoch 304 - Avg Loss: 0.361637 | Train Acc: 96.54%
+Val: loss=0.3432, acc=10674/10975 (97.26%)
+Epoch 304 timing: total=75.7s train=72.1s eval=3.5s | data_wait=4.6s fwd=23.5s bwd=43.7s (1286 samples/s)
+Epoch 305 [0/84843] Loss: 0.372966
+Epoch 305 [35000/84843] Loss: 0.317169
+Epoch 305 [70000/84843] Loss: 0.306520
+Epoch 305 - Avg Loss: 0.362554 | Train Acc: 96.48%
+Val: loss=0.3429, acc=10671/10975 (97.23%)
+Epoch 305 timing: total=125.1s train=121.8s eval=3.2s | data_wait=59.6s fwd=20.3s bwd=41.5s (762 samples/s)
+Epoch 306 [0/84843] Loss: 0.370864
+Epoch 306 [35000/84843] Loss: 0.329286
+Epoch 306 [70000/84843] Loss: 0.370651
+Epoch 306 - Avg Loss: 0.361614 | Train Acc: 96.52%
+Val: loss=0.3427, acc=10671/10975 (97.23%)
+Epoch 306 timing: total=96.3s train=82.7s eval=13.6s | data_wait=15.8s fwd=23.3s bwd=43.3s (1122 samples/s)
+Epoch 307 [0/84843] Loss: 0.359779
+Epoch 307 [35000/84843] Loss: 0.320400
+Epoch 307 [70000/84843] Loss: 0.310344
+Epoch 307 - Avg Loss: 0.360143 | Train Acc: 96.58%
+Val: loss=0.3428, acc=10674/10975 (97.26%)
+Epoch 307 timing: total=117.8s train=113.4s eval=4.4s | data_wait=46.4s fwd=23.1s bwd=43.4s (819 samples/s)
+Epoch 308 [0/84843] Loss: 0.400032
+Epoch 308 [35000/84843] Loss: 0.299264
+Epoch 308 [70000/84843] Loss: 0.341540
+Epoch 308 - Avg Loss: 0.361733 | Train Acc: 96.54%
+Val: loss=0.3427, acc=10674/10975 (97.26%)
+Epoch 308 timing: total=78.2s train=75.1s eval=3.2s | data_wait=7.6s fwd=24.0s bwd=43.1s (1236 samples/s)
+Epoch 309 [0/84843] Loss: 0.390382
+Epoch 309 [35000/84843] Loss: 0.438672
+Epoch 309 [70000/84843] Loss: 0.336641
+Epoch 309 - Avg Loss: 0.360489 | Train Acc: 96.57%
+Val: loss=0.3430, acc=10669/10975 (97.21%)
+Epoch 309 timing: total=75.5s train=71.8s eval=3.7s | data_wait=5.7s fwd=22.3s bwd=43.4s (1293 samples/s)
+Epoch 310 [0/84843] Loss: 0.370937
+Epoch 310 [35000/84843] Loss: 0.384672
+Epoch 310 [70000/84843] Loss: 0.348975
+Epoch 310 - Avg Loss: 0.361745 | Train Acc: 96.56%
+Val: loss=0.3427, acc=10674/10975 (97.26%)
+Epoch 310 timing: total=76.5s train=73.3s eval=3.2s | data_wait=6.5s fwd=23.6s bwd=42.9s (1265 samples/s)
+Epoch 311 [0/84843] Loss: 0.326579
+Epoch 311 [35000/84843] Loss: 0.372450
+Epoch 311 [70000/84843] Loss: 0.472330
+Epoch 311 - Avg Loss: 0.362101 | Train Acc: 96.51%
+Val: loss=0.3426, acc=10674/10975 (97.26%)
+Epoch 311 timing: total=78.9s train=75.4s eval=3.6s | data_wait=9.3s fwd=22.0s bwd=43.7s (1231 samples/s)
+Epoch 312 [0/84843] Loss: 0.338171
+Epoch 312 [35000/84843] Loss: 0.346554
+Epoch 312 [70000/84843] Loss: 0.316968
+Epoch 312 - Avg Loss: 0.361630 | Train Acc: 96.55%
+Val: loss=0.3428, acc=10671/10975 (97.23%)
+Epoch 312 timing: total=75.6s train=72.4s eval=3.3s | data_wait=4.0s fwd=23.9s bwd=44.1s (1282 samples/s)
+Epoch 313 [0/84843] Loss: 0.421004
+Epoch 313 [35000/84843] Loss: 0.314477
+Epoch 313 [70000/84843] Loss: 0.361689
+Epoch 313 - Avg Loss: 0.361426 | Train Acc: 96.52%
+Val: loss=0.3427, acc=10676/10975 (97.28%)
+Epoch 313 timing: total=73.3s train=69.8s eval=3.5s | data_wait=3.0s fwd=22.2s bwd=44.2s (1330 samples/s)
+Epoch 314 [0/84843] Loss: 0.352119
+Epoch 314 [35000/84843] Loss: 0.308997
+Epoch 314 [70000/84843] Loss: 0.428844
+Epoch 314 - Avg Loss: 0.363727 | Train Acc: 96.45%
+Val: loss=0.3428, acc=10672/10975 (97.24%)
+Epoch 314 timing: total=97.9s train=94.5s eval=3.4s | data_wait=28.8s fwd=21.9s bwd=43.4s (982 samples/s)
+Epoch 315 [0/84843] Loss: 0.392826
+Epoch 315 [35000/84843] Loss: 0.311230
+Epoch 315 [70000/84843] Loss: 0.347105
+Epoch 315 - Avg Loss: 0.361093 | Train Acc: 96.50%
+Val: loss=0.3429, acc=10672/10975 (97.24%)
+Epoch 315 timing: total=76.3s train=73.1s eval=3.2s | data_wait=6.7s fwd=23.1s bwd=42.9s (1270 samples/s)
+Epoch 316 [0/84843] Loss: 0.362320
+Epoch 316 [35000/84843] Loss: 0.406141
+Epoch 316 [70000/84843] Loss: 0.366069
+Epoch 316 - Avg Loss: 0.361798 | Train Acc: 96.50%
+Val: loss=0.3426, acc=10673/10975 (97.25%)
+Epoch 316 timing: total=72.0s train=68.3s eval=3.8s | data_wait=2.0s fwd=22.2s bwd=43.7s (1359 samples/s)
+Epoch 317 [0/84843] Loss: 0.325346
+Epoch 317 [35000/84843] Loss: 0.322730
+Epoch 317 [70000/84843] Loss: 0.300811
+Epoch 317 - Avg Loss: 0.362266 | Train Acc: 96.49%
+Val: loss=0.3424, acc=10674/10975 (97.26%)
+Epoch 317 timing: total=77.4s train=74.1s eval=3.3s | data_wait=8.1s fwd=22.3s bwd=43.3s (1253 samples/s)
+Epoch 318 [0/84843] Loss: 0.366057
+Epoch 318 [35000/84843] Loss: 0.306122
+Epoch 318 [70000/84843] Loss: 0.374536
+Epoch 318 - Avg Loss: 0.363153 | Train Acc: 96.46%
+Val: loss=0.3425, acc=10672/10975 (97.24%)
+Epoch 318 timing: total=76.4s train=73.0s eval=3.4s | data_wait=8.0s fwd=22.2s bwd=42.5s (1271 samples/s)
+Epoch 319 [0/84843] Loss: 0.343751
+Epoch 319 [35000/84843] Loss: 0.406373
+Epoch 319 [70000/84843] Loss: 0.361422
+Epoch 319 - Avg Loss: 0.363963 | Train Acc: 96.44%
+Val: loss=0.3425, acc=10673/10975 (97.25%)
+Epoch 319 timing: total=77.5s train=74.0s eval=3.6s | data_wait=5.8s fwd=23.3s bwd=44.4s (1254 samples/s)
+Epoch 320 [0/84843] Loss: 0.413107
+Epoch 320 [35000/84843] Loss: 0.329133
+Epoch 320 [70000/84843] Loss: 0.447183
+Epoch 320 - Avg Loss: 0.362884 | Train Acc: 96.53%
+Val: loss=0.3425, acc=10675/10975 (97.27%)
+Epoch 320 timing: total=71.6s train=67.9s eval=3.7s | data_wait=2.9s fwd=21.6s bwd=43.1s (1367 samples/s)
+Epoch 321 [0/84843] Loss: 0.309401
+Epoch 321 [35000/84843] Loss: 0.333577
+Epoch 321 [70000/84843] Loss: 0.366042
+Epoch 321 - Avg Loss: 0.361233 | Train Acc: 96.54%
+Val: loss=0.3428, acc=10672/10975 (97.24%)
+Epoch 321 timing: total=73.6s train=70.1s eval=3.5s | data_wait=3.9s fwd=23.7s bwd=42.0s (1324 samples/s)
+Epoch 322 [0/84843] Loss: 0.316936
+Epoch 322 [35000/84843] Loss: 0.327606
+Epoch 322 [70000/84843] Loss: 0.353388
+Epoch 322 - Avg Loss: 0.362639 | Train Acc: 96.48%
+Val: loss=0.3424, acc=10673/10975 (97.25%)
+Epoch 322 timing: total=73.5s train=69.8s eval=3.6s | data_wait=4.5s fwd=21.9s bwd=43.1s (1329 samples/s)
+Epoch 323 [0/84843] Loss: 0.371824
+Epoch 323 [35000/84843] Loss: 0.326814
+Epoch 323 [70000/84843] Loss: 0.311753
+Epoch 323 - Avg Loss: 0.363205 | Train Acc: 96.45%
+Val: loss=0.3425, acc=10674/10975 (97.26%)
+Epoch 323 timing: total=73.6s train=70.2s eval=3.4s | data_wait=3.8s fwd=22.7s bwd=43.3s (1321 samples/s)
+Epoch 324 [0/84843] Loss: 0.298648
+Epoch 324 [35000/84843] Loss: 0.372637
+Epoch 324 [70000/84843] Loss: 0.298709
+Epoch 324 - Avg Loss: 0.360993 | Train Acc: 96.58%
+Val: loss=0.3425, acc=10673/10975 (97.25%)
+Epoch 324 timing: total=71.2s train=67.3s eval=3.9s | data_wait=2.6s fwd=22.0s bwd=42.4s (1378 samples/s)
+Epoch 325 [0/84843] Loss: 0.400189
+Epoch 325 [35000/84843] Loss: 0.415837
+Epoch 325 [70000/84843] Loss: 0.314615
+Epoch 325 - Avg Loss: 0.362198 | Train Acc: 96.49%
+Val: loss=0.3428, acc=10673/10975 (97.25%)
+Epoch 325 timing: total=74.8s train=71.2s eval=3.5s | data_wait=5.2s fwd=21.9s bwd=43.7s (1303 samples/s)
+Test: loss=0.3481, acc=11773/12101 (97.29%)
+Saved plot to /scratch/work/lainem31/PTQ_project/keyword_spotting/plots/17792221/train_val_16_mels_delta_delta_17792221_11.png

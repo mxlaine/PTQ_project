@@ -1,0 +1,140 @@
+Task 15: feature=16_mels_delta_delta hidden=32 seed=0
+Checkpoint: /scratch/work/lainem31/PTQ_project/keyword_spotting/models/17792221/best_keyword_gru_16_mels_delta_delta_17792221_3.pt
+Out dir: /scratch/work/lainem31/PTQ_project/keyword_spotting/results/ptq_sweep/17803125/16_mels_delta_delta_h32_s0
+Device: cuda
+Feature config: 16_mels_delta_delta -> {'n_mels': 16, 'use_delta': True, 'use_delta_delta': True}
+Hidden size: 32
+Checkpoint: /scratch/work/lainem31/PTQ_project/keyword_spotting/models/17792221/best_keyword_gru_16_mels_delta_delta_17792221_3.pt
+  FP32 Test batch 1: running acc=93.24% (262/281)
+  FP32 Test batch 2: running acc=94.48% (531/562)
+  FP32 Test batch 3: running acc=95.73% (807/843)
+  FP32 Test batch 4: running acc=96.26% (1082/1124)
+  FP32 Test batch 5: running acc=96.87% (1361/1405)
+  FP32 Test batch 6: running acc=96.50% (1627/1686)
+  FP32 Test batch 7: running acc=96.54% (1899/1967)
+  FP32 Test batch 8: running acc=96.44% (2168/2248)
+  FP32 Test batch 9: running acc=95.69% (2420/2529)
+  FP32 Test batch 10: running acc=95.66% (2688/2810)
+  FP32 Test batch 11: running acc=95.57% (2954/3091)
+  FP32 Test batch 12: running acc=95.43% (3218/3372)
+  FP32 Test batch 13: running acc=95.65% (3494/3653)
+  FP32 Test batch 14: running acc=95.91% (3773/3934)
+  FP32 Test batch 15: running acc=96.01% (4047/4215)
+  FP32 Test batch 16: running acc=95.77% (4306/4496)
+  FP32 Test batch 17: running acc=95.83% (4578/4777)
+  FP32 Test batch 18: running acc=95.89% (4850/5058)
+  FP32 Test batch 19: running acc=96.09% (5130/5339)
+  FP32 Test batch 20: running acc=96.26% (5410/5620)
+  FP32 Test batch 21: running acc=96.41% (5689/5901)
+  FP32 Test batch 22: running acc=96.43% (5961/6182)
+  FP32 Test batch 23: running acc=96.47% (6235/6463)
+  FP32 Test batch 24: running acc=96.57% (6513/6744)
+  FP32 Test batch 25: running acc=96.71% (6794/7025)
+  FP32 Test batch 26: running acc=96.76% (7069/7306)
+  FP32 Test batch 27: running acc=96.67% (7334/7587)
+  FP32 Test batch 28: running acc=96.61% (7601/7868)
+  FP32 Test batch 29: running acc=96.70% (7880/8149)
+  FP32 Test batch 30: running acc=96.81% (8161/8430)
+  FP32 Test batch 31: running acc=96.84% (8436/8711)
+  FP32 Test batch 32: running acc=96.75% (8700/8992)
+  FP32 Test batch 33: running acc=96.59% (8957/9273)
+  FP32 Test batch 34: running acc=96.69% (9238/9554)
+  FP32 Test batch 35: running acc=96.75% (9515/9835)
+  FP32 Test batch 36: running acc=96.68% (9780/10116)
+  FP32 Test batch 37: running acc=96.53% (10036/10397)
+  FP32 Test batch 38: running acc=96.52% (10306/10678)
+  FP32 Test batch 39: running acc=96.55% (10581/10959)
+  FP32 Test batch 40: running acc=96.60% (10858/11240)
+  FP32 Test batch 41: running acc=96.52% (11120/11521)
+  FP32 Test batch 42: running acc=96.51% (11390/11802)
+  FP32 Test batch 43: running acc=96.56% (11665/12080)
+FP32 Test: acc=11665/12080 (96.56%)  time=32.4s
+Calibrating on 16 val batches (percentile=99.99)...
+Calibration done in 11.2s
+  INT8 Test batch 1: running acc=92.88% (261/281)
+  INT8 Test batch 2: running acc=94.48% (531/562)
+  INT8 Test batch 3: running acc=95.73% (807/843)
+  INT8 Test batch 4: running acc=96.44% (1084/1124)
+  INT8 Test batch 5: running acc=97.01% (1363/1405)
+  INT8 Test batch 6: running acc=96.38% (1625/1686)
+  INT8 Test batch 7: running acc=96.44% (1897/1967)
+  INT8 Test batch 8: running acc=96.31% (2165/2248)
+  INT8 Test batch 9: running acc=95.49% (2415/2529)
+  INT8 Test batch 10: running acc=95.44% (2682/2810)
+  INT8 Test batch 11: running acc=95.24% (2944/3091)
+  INT8 Test batch 12: running acc=95.05% (3205/3372)
+  INT8 Test batch 13: running acc=95.35% (3483/3653)
+  INT8 Test batch 14: running acc=95.65% (3763/3934)
+  INT8 Test batch 15: running acc=95.82% (4039/4215)
+  INT8 Test batch 16: running acc=95.60% (4298/4496)
+  INT8 Test batch 17: running acc=95.69% (4571/4777)
+  INT8 Test batch 18: running acc=95.77% (4844/5058)
+  INT8 Test batch 19: running acc=95.95% (5123/5339)
+  INT8 Test batch 20: running acc=96.14% (5403/5620)
+  INT8 Test batch 21: running acc=96.29% (5682/5901)
+  INT8 Test batch 22: running acc=96.34% (5956/6182)
+  INT8 Test batch 23: running acc=96.41% (6231/6463)
+  INT8 Test batch 24: running acc=96.52% (6509/6744)
+  INT8 Test batch 25: running acc=96.65% (6790/7025)
+  INT8 Test batch 26: running acc=96.69% (7064/7306)
+  INT8 Test batch 27: running acc=96.56% (7326/7587)
+  INT8 Test batch 28: running acc=96.49% (7592/7868)
+  INT8 Test batch 29: running acc=96.59% (7871/8149)
+  INT8 Test batch 30: running acc=96.70% (8152/8430)
+  INT8 Test batch 31: running acc=96.74% (8427/8711)
+  INT8 Test batch 32: running acc=96.61% (8687/8992)
+  INT8 Test batch 33: running acc=96.45% (8944/9273)
+  INT8 Test batch 34: running acc=96.56% (9225/9554)
+  INT8 Test batch 35: running acc=96.61% (9502/9835)
+  INT8 Test batch 36: running acc=96.54% (9766/10116)
+  INT8 Test batch 37: running acc=96.39% (10022/10397)
+  INT8 Test batch 38: running acc=96.37% (10290/10678)
+  INT8 Test batch 39: running acc=96.40% (10565/10959)
+  INT8 Test batch 40: running acc=96.47% (10843/11240)
+  INT8 Test batch 41: running acc=96.38% (11104/11521)
+  INT8 Test batch 42: running acc=96.37% (11373/11802)
+  INT8 Test batch 43: running acc=96.43% (11649/12080)
+INT8 Test: acc=11649/12080 (96.43%)  time=14.5s
+Accuracy delta (FP32 - INT8): 0.132 pp
+Wrote scales to /scratch/work/lainem31/PTQ_project/keyword_spotting/results/ptq_sweep/17803125/16_mels_delta_delta_h32_s0/scales.json (20 entries)
+============================================================
+Static model footprint
+============================================================
+Parameters total           : 19,196
+FP32 weights               :    55.50 KiB
+FP32 biases                :     1.55 KiB
+FP32 other (buffers etc.)  :    17.94 KiB
+FP32 TOTAL                 :    74.98 KiB
+
+INT8 weights               :    13.88 KiB
+Biases (INT8 kept)         :     0.39 KiB
+Scales metadata (20 entries):     0.08 KiB
+INT8 TOTAL                 :    14.34 KiB
+
+Compression (weights only) :   4.00x
+Compression (total)        :   5.23x
+
+============================================================
+Memory bandwidth per single inference (analytical)
+============================================================
+Weight+bias bytes loaded (FP32) :    57.05 KiB / inference
+Weight+bias bytes loaded (INT8) :    14.26 KiB / inference
+Bandwidth reduction             :   4.00x
+
+============================================================
+Layer-by-layer parameter breakdown
+============================================================
+  classifier.bias                                     kind=bias    n=      12  fp32=   0.05 KiB
+  classifier.weight                                   kind=weight  n=     384  fp32=   1.50 KiB
+  gru.bias_hh_l0                                      kind=bias    n=      96  fp32=   0.38 KiB
+  gru.bias_hh_l1                                      kind=bias    n=      96  fp32=   0.38 KiB
+  gru.bias_ih_l0                                      kind=bias    n=      96  fp32=   0.38 KiB
+  gru.bias_ih_l1                                      kind=bias    n=      96  fp32=   0.38 KiB
+  gru.weight_hh_l0                                    kind=weight  n=   3,072  fp32=  12.00 KiB
+  gru.weight_hh_l1                                    kind=weight  n=   3,072  fp32=  12.00 KiB
+  gru.weight_ih_l0                                    kind=weight  n=   4,608  fp32=  18.00 KiB
+  gru.weight_ih_l1                                    kind=weight  n=   3,072  fp32=  12.00 KiB
+  mel.mel_scale.fb                                    kind=other   n=   4,112  fp32=  16.06 KiB
+  mel.spectrogram.window                              kind=other   n=     480  fp32=   1.88 KiB
+Params: 14,604  MACs: 1,396,608
+Wrote summary to /scratch/work/lainem31/PTQ_project/keyword_spotting/results/ptq_sweep/17803125/16_mels_delta_delta_h32_s0/summary.json
