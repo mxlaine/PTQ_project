@@ -7,8 +7,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-ROOT = Path(__file__).resolve().parents[2]
-SWEEP = ROOT / "keyword_spotting/results/ptq_sweep/17803125"
+ROOT = Path(__file__).resolve().parents[1]
+SWEEP = ROOT / "results/ptq_sweep/17803125"
 OUT = ROOT / "docs/images"
 
 

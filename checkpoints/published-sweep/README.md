@@ -7,7 +7,7 @@ checkpoint bytes. Together they occupy 1,441,752 bytes (about 1.38 MiB).
 
 [manifest.json](manifest.json) maps each checkpoint to its archived summary,
 original cluster path, SHA-256 checksum, [training log](training-logs/), and [PTQ evaluation log](evaluation-logs/).
-Paths used for local files are relative to `keyword_spotting/`. The original
+Paths used for local files are relative to the repository root. The original
 summaries remain unchanged so their cluster provenance is preserved.
 
 The training logs are from job `17792221`. They record 325 epochs, AdamW with
@@ -19,15 +19,15 @@ The logs contain the validation-based checkpoint decisions and final test result
 From the repository root:
 
 ```bash
-python keyword_spotting/scripts/reproduce_results.py --all --verify-only
-python keyword_spotting/scripts/reproduce_results.py --hidden-size 64 --seed 0
+python scripts/reproduce_results.py --all --verify-only
+python scripts/reproduce_results.py --hidden-size 64 --seed 0
 ```
 
 The second command requires the project dependencies and Speech Commands v2
 (downloaded on first use). Add `--all` to evaluate all 12 checkpoints. It runs
 fresh calibration with batch size 256 (plus 25 synthetic silence clips per full
 batch), 16 validation batches, and percentile 99.99;
-new reports go to `keyword_spotting/results/reproduced/`. It does not overwrite
+new reports go to `results/reproduced/`. It does not overwrite
 or regenerate the archived published results.
 
 The checkpoints store FP32 weights and frontend buffers, not packed INT8 models

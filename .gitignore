@@ -44,18 +44,17 @@ dist/
 *.pickle
 
 # Small FP32 checkpoints supporting the published three-seed table.
-!keyword_spotting/checkpoints/README-sweep/*.pt
+!checkpoints/published-sweep/*.pt
 
 # Project datasets and generated experiment outputs
-keyword_spotting/data/
-keyword_spotting/.claude/
-keyword_spotting/models/
-keyword_spotting/plots/
-keyword_spotting/notebooks/*.pt
-keyword_spotting/slurm/[0-9]*/
+data/
+.claude/
+models/
+plots/
+notebooks/*.pt
+slurm/[0-9]*/
 
 # Presentation material and archived reference scripts
 # (kept locally, not part of the student-facing code release)
-keyword_spotting/docs/
-keyword_spotting/slurm/archive/
-keyword_spotting/scripts/archive/
+slurm/archive/
+scripts/archive/

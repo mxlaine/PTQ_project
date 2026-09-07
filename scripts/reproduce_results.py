@@ -7,7 +7,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "checkpoints/README-sweep/manifest.json"
+MANIFEST = ROOT / "checkpoints/published-sweep/manifest.json"
 
 
 def main():

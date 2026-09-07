@@ -12,7 +12,7 @@ import torch
 from new_gru import from_torch_gru
 
 ROOT = Path(__file__).resolve().parents[1]
-ENTRIES = json.loads((ROOT / "checkpoints/README-sweep/manifest.json").read_text())
+ENTRIES = json.loads((ROOT / "checkpoints/published-sweep/manifest.json").read_text())
 
 
 def load_runner():
