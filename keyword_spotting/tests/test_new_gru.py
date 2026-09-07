@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import pytest
 import torch
 import torch.nn as nn
 
@@ -33,14 +34,13 @@ def test_random_input_equivalence():
     print(f"random-input max |Δ| output={out_diff:.2e} hidden={h_diff:.2e}")
     assert out_diff < 1e-5, f"output mismatch: {out_diff}"
     assert h_diff < 1e-5, f"hidden mismatch: {h_diff}"
-    print("[PASS] random-input bit-equivalence")
+    print("[PASS] random-input numerical parity")
 
 
 def test_checkpoint_accuracy():
     ckpt_path = Path(__file__).resolve().parents[1] / "notebooks" / "best_keyword_gru_24_mels_delta.pt"
     if not ckpt_path.exists():
-        print(f"[SKIP] checkpoint not found: {ckpt_path}")
-        return
+        pytest.skip(f"checkpoint not found: {ckpt_path}")
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -84,5 +84,4 @@ def test_checkpoint_accuracy():
 
 
 if __name__ == "__main__":
-    test_random_input_equivalence()
-    test_checkpoint_accuracy()
+    raise SystemExit(pytest.main([__file__]))

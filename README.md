@@ -1,22 +1,25 @@
 # Quantized Keyword Spotting
 
-Hardware-constrained keyword spotting with two-layer GRUs and custom INT8
-post-training quantization in PyTorch, developed as part of an IC design project.
-The training and calibration pipeline explores accuracy and storage tradeoffs
-under these hardware constraints:
+This IC design project studies how much accuracy a small keyword-spotting GRU
+loses under INT8 post-training quantization. The hardware constraints were two
+unidirectional GRU layers, a maximum hidden size of 64, and a linear head for
+12 classes: ten keywords, unknown, and silence.
 
-- Architecture: 2 stacked unidirectional GRU layers + linear head
-- Max hidden size: 64 (≈ 47k parameters total)
-- Output classes: 12 (10 keywords + unknown + silence)
-- Dataset: Google Speech Commands v2
+The code trains models on Google Speech Commands v2 and simulates quantization
+inside the recurrent cell. It uses floating-point operations with quantized and
+dequantized values; it is not an integer inference runtime or an FPGA implementation.
 
 ## Results
 
-Google Speech Commands v2, 12 classes, 16 mel bands with Δ/ΔΔ features,
-two GRU layers, and hidden sizes 16–64. Values below are mean ± sample standard
-deviation across seeds 0, 1 and 2 from the committed
-[sweep 17803125](keyword_spotting/results/ptq_sweep/17803125/).
-Calibration used 16 batches and the 99.99th percentile.
+At hidden size 64, mean test accuracy changes from **97.24% to 97.17%** across
+three seeds. Hidden size 48 reaches **97.04%** after quantization with about
+40% less weight storage than hidden size 64, making model size another useful
+tradeoff alongside precision.
+
+These results use 16 log-mel bands with Δ/ΔΔ features, two GRU layers, and
+seeds 0, 1, and 2 from [sweep 17803125](keyword_spotting/results/ptq_sweep/17803125/).
+The table reports mean ± sample standard deviation. Calibration used 16 batches
+and the 99.99th percentile.
 
 <!-- results:start -->
 | Hidden size | Parameters | FP32 test accuracy | INT8 simulation test accuracy | Weight storage FP32 → INT8 |
@@ -28,117 +31,93 @@ Calibration used 16 batches and the 99.99th percentile.
 <!-- results:end -->
 
 ![Test accuracy versus hidden size](docs/images/accuracy.png)
-![Estimated weight storage](docs/images/weight-storage.png)
 
-For GRU-64, the mean accuracy decrease is **0.072 percentage points**.
-INT8 weights require one quarter of the FP32 weight storage. These are static
-representation estimates, not measured process memory, inference speedups or an
-FPGA implementation. The PTQ evaluator uses quantize/dequantize simulation with
-floating-point operations and biases. Weight sizes exclude biases, scales and
-frontend buffers; the archived total-size reports use different buffer/bias
-assumptions and should not be interpreted as deployed model sizes.
+Weight storage counts weights only: four bytes per FP32 weight versus one byte
+per INT8 weight. Biases, scales, and frontend buffers are excluded. It is an
+estimate of representation size, not a measurement of runtime memory or speed.
+The archived total-size reports use different bias/buffer assumptions.
 
-Each run's `summary.json` records accuracy and configuration; `size_report.json`
-records storage estimates. Rebuild this table and both figures with:
+The trained checkpoints are **not included**; the summaries reference paths on
+the original cluster. You can regenerate the table and figures from the committed
+JSON files, but cannot independently rerun these accuracy measurements from this
+checkout alone.
+
+## Why a custom GRU?
+
+[NewGRU](keyword_spotting/src/new_gru.py) exposes the recurrent cell's intermediate
+values so calibration can observe and quantize them. Its recurrent loop uses
+TorchScript; it is slower than the cuDNN-backed `torch.nn.GRU` implementation.
+The tests compare its outputs and hidden states with `torch.nn.GRU`.
+
+[The PTQ cell](keyword_spotting/src/ptq/quant_new_gru.py) quantizes input and
+recurrent weights, inputs, linear outputs, hidden states, and gate outputs.
+Weights use max-based scales; activations use percentile calibration, while
+sigmoid and tanh outputs use fixed ranges. Biases and arithmetic remain
+floating point. Integer accumulation, nonlinear approximations, and deployment
+latency would need separate validation on the target hardware.
+
+The [audio frontend](keyword_spotting/src/model.py) produces log-mel features,
+optionally adds Δ/ΔΔ, and normalizes each utterance before the two GRU layers
+and classifier. The training code includes time shifts, background noise,
+SpecAugment, and optional class balancing. Checkpoints are selected by validation
+accuracy and evaluated on the test split after training.
+
+## Run locally
+
+```bash
+git clone https://github.com/mxlaine/PTQ_project.git
+cd PTQ_project
+python -m venv .venv
+source .venv/bin/activate
+pip install -r keyword_spotting/requirements.txt
+python -m pytest keyword_spotting/tests/
+```
+
+PyTorch and torchaudio are pinned to 2.8.0. Training and calibration were run
+primarily on Aalto University's Triton cluster with NVIDIA V100 GPUs; the
+requirements file does not lock the entire cluster environment.
+
+To regenerate the results presentation without a dataset or GPU, only
+Matplotlib and the Python standard library are needed:
 
 ```bash
 python keyword_spotting/scripts/publish_results.py
 ```
 
-## Architecture
+This updates the table in this README and the figures in `docs/images/`, including
+[the weight-storage plot](docs/images/weight-storage.png).
 
-```mermaid
-flowchart LR
-    A[Audio] --> B[16-band log-mel + Δ + ΔΔ]
-    B --> C[Per-utterance normalization]
-    C --> D[GRU layer 1]
-    D --> E[GRU layer 2]
-    E --> F[Linear head: 12 classes]
-```
+### Train and calibrate
 
-## Setup
+Training downloads Speech Commands v2 through `torchaudio` into
+`keyword_spotting/data/` on first use. This example uses the 16-band Δ/ΔΔ
+configuration and hidden size 64:
 
 ```bash
-git clone git@github.com:mxlaine/PTQ_project.git
-cd PTQ_project
-python -m venv .venv
-source .venv/bin/activate
-pip install -r keyword_spotting/requirements.txt
+python keyword_spotting/src/main.py \
+  --feature-config 16_mels_delta_delta --hidden-size 64 --seed 0 \
+  --use-new-gru --spec-augment --freq-mask-param 5 --time-mask-param 6 \
+  --lr-warmup-epochs 10 --epochs 325
 ```
 
-The Google Speech Commands v2 dataset is downloaded automatically by
-`torchaudio` into `keyword_spotting/data/` on the first run.
-
-## Model
-
-`KeywordGRU` ([keyword_spotting/src/model.py](keyword_spotting/src/model.py)):
-
-- 16- or 48-band log-mel spectrogram, optional Δ and ΔΔ features,
-  per-utterance mean/std normalisation.
-- 2 unidirectional GRU layers + linear classifier head.
-- SpecAugment (frequency + time masking) applied to
-  the mels and deltas/delta-deltas before normalisation.
-
-### Custom GRU (`NewGRU`)
-
-[keyword_spotting/src/new_gru.py](keyword_spotting/src/new_gru.py) reimplements
-a GRU to have better visibility of weights for post-training quantization:
-
-- TorchScript-compiles the recurrent loop to reduce Python-loop overhead and
-  expose GRU parameters for custom quantization.
-- Numerical parity tests compare outputs and hidden states with `torch.nn.GRU`.
-- Slower than the cuDNN-backed `torch.nn.GRU` implementation.
-
-## Training pipeline
-
-`src/main.py` is main entry point of training, testing and validation. Various flags allow different 
-parameters to be tested:
-
-- Data augmentation with random time shift, background-noise mixing at
-  SNRs in 0–15 dB (drawn from the Speech Commands `_background_noise_` clips),
-  silence synthesis (10% of each batch), SpecAugment.
-- Optional BC-ResNet style under-sampler that
-  draws an equal number of examples from each class (unknown class is much larger than other classes in
-  original dataset due to the task being a subset of the full 35 class task).
-- Optimisation with AdamW, gradient clipping, label smoothing, cosine LR decay or
-  cosine warm restarts with optional linear warmup and per-cycle ceiling decay.
-- Seed controls model for reproducibility.
-
-Run locally (with the virtualenv from **Setup** active):
+After training, pass the saved FP32 checkpoint to calibration:
 
 ```bash
-python keyword_spotting/src/main.py --help
+python keyword_spotting/src/calibrate_ptq.py \
+  --checkpoint /path/to/checkpoint.pt \
+  --feature-config 16_mels_delta_delta --hidden-size 64 --seed 0 \
+  --calib-batches 16 --percentile 99.99 --out-dir ptq-output
 ```
 
-Example training run:
+Calibration writes `scales.json`, `summary.json`, and `size_report.json`.
+The checkpoint architecture must match the feature configuration and hidden size.
+Both entry points provide `--help` for the remaining options.
 
-```bash
-python keyword_spotting/src/main.py --use-new-gru --spec-augment \
-  --balanced-sampler --label-smoothing 0.05 --lr-scheduler cosine --epochs 325
-```
+### Cluster runs
 
-## PTQ (Post-Training Quantization)
-
-`src/calibrate_ptq.py` loads an FP32 checkpoint,
-runs percentile-based INT8 calibration, evaluates accuracy, writes
-`scales.json`, `summary.json`, and `size_report.json` to `--out-dir`, and
-prints a full "Static model footprint / Memory bandwidth / Layer-by-layer"
-breakdown to stdout. The quantisation modules live in
-[keyword_spotting/src/ptq/](keyword_spotting/src/ptq/).
-
-## Experiment infrastructure
-
-Every experiment is a SLURM array job under [keyword_spotting/slurm/](keyword_spotting/slurm/),
-parameterised so a single submission sweeps a Cartesian product of settings.
-Active scripts:
-
-- `run_keyword_gru_size_sweep.sbatch` — hidden size sweep (16/32/48/64)
-- `run_ptq_sweep.sbatch` — PTQ calibration sweep across hidden sizes and seeds
-- `run_ptq_single.sbatch` — single PTQ calibration run
-
-The sbatch scripts resolve the project and virtualenv from the `PROJECT_ROOT`
-and `VENV_ACTIVATE` environment variables (they fall back to the author's
-cluster paths). Set them for your own environment when submitting:
+[The SLURM scripts](keyword_spotting/slurm/) contain the training size sweep,
+PTQ sweep, and single-run calibration job. Set the project and virtualenv paths
+before submitting; defaults point to the original cluster workspace:
 
 ```bash
 PROJECT_ROOT=/path/to/keyword_spotting \
@@ -146,45 +125,19 @@ VENV_ACTIVATE=/path/to/.venv/bin/activate \
 sbatch keyword_spotting/slurm/run_ptq_sweep.sbatch
 ```
 
-Each task writes its training log into a directory under `slurm/<jobid>/`,
-and the best checkpoint into `models/<jobid>/`. Plots of train/val/test curves
-are created under `plots/<jobid>/`.
+The PTQ sweep also needs a `CHECKPOINT_INDEX` JSON file mapping each feature
+configuration, hidden size, and seed to an available checkpoint. The default is
+`$PROJECT_ROOT/results/ptq_checkpoint_index.json`; replace its cluster paths or
+set `CHECKPOINT_INDEX` to your own file before submitting.
 
-Every sweep includes the four required hidden
-sizes (16, 32, 48, 64).
+The training sweep covers hidden sizes 16/32/48/64, three feature configurations,
+and three seeds. [Analysis scripts](keyword_spotting/scripts/) summarize logs
+and regenerate training curves.
 
-## Analysis tooling
+## Test coverage
 
-[keyword_spotting/scripts/](keyword_spotting/scripts/) contains small CLIs for
-post-hoc analysis:
-
-- `plot_from_log.py` regenerate training curves from a single log file.
-- `plot_sweep.py` / `plot_group.py` overlay curves across a sweep or across
-  re-seeded "best-of" runs.
-- `summarize_results.py` parse logs across one or more job directories into a
-  table of best/final accuracy, runtime, and configuration. 
-
-## Tests
-
-[keyword_spotting/tests/](keyword_spotting/tests/) holds numerical-parity and
-quantisation checks (custom GRU vs `torch.nn.GRU`, PTQ round-trip). Run them with:
-
-```bash
-cd keyword_spotting && python -m pytest tests/
-```
-
-## Reproducibility and environment
-
-Training and calibration were primarily run on Aalto University's Triton cluster
-with NVIDIA V100 GPUs. CPU and other accelerator performance has not been
-benchmarked. Install the pinned PyTorch/torchaudio versions in the requirements
-file to reproduce the original environment.
-
-The committed summaries support regenerating the presentation above without a
-GPU or dataset download. Re-running accuracy evaluation also requires the original
-trained checkpoints (the summaries reference cluster-local paths) and Speech
-Commands v2. Checkpoints are not bundled with these results.
-
-## Tech stack
-
-PyTorch, torchaudio, TorchScript, NumPy, Matplotlib, SLURM.
+The tests check random-input GRU parity, quantize/dequantize error, parity with
+quantization disabled, and a calibration/evaluation smoke test with random
+weights. The trained-checkpoint parity test requires an unbundled checkpoint
+and is skipped when it is absent. These checks do not reproduce the table's
+accuracy measurements or establish equivalence to integer hardware.
