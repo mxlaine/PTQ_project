@@ -1,24 +1,19 @@
 # Quantized Keyword Spotting
 
 This IC design project studies how much accuracy a small keyword-spotting GRU
-loses under INT8 post-training quantization. The hardware constraints were two
+loses under INT8 post-training quantization. The model constraints were two
 unidirectional GRU layers, a maximum hidden size of 64, and a linear head for
-12 classes: ten keywords, unknown, and silence.
-
-The code trains models on Google Speech Commands v2 and simulates quantization
-inside the recurrent cell. It uses floating-point operations with quantized and
-dequantized values; it is not an integer inference runtime or an FPGA implementation.
+12 classes (ten keywords, unknown, and silence).
 
 ## Results
 
 At hidden size 64, mean test accuracy changes from **97.24% to 97.17%** across
-three seeds. Hidden size 48 reaches **97.04%** after quantization with about
-40% less weight storage than hidden size 64, making model size another useful
-tradeoff alongside precision.
+three seeds. Hidden size 48 reaches an accuracy of **97.04%** after quantization with about
+40% less weight storage than hidden size 64.
 
-These results use 16 log-mel bands with Δ/ΔΔ features, two GRU layers, and
+These results use 16 log-mel bands with delta / delta-delta features, two GRU layers, and
 seeds 0, 1, and 2 from [sweep 17803125](results/ptq_sweep/17803125/).
-The table reports mean ± sample standard deviation. Calibration used 16 batches
+The table reports mean {\pm} sample standard deviation. Calibration used 16 batches
 and the 99.99th percentile.
 
 <!-- results:start -->
